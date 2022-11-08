@@ -1,13 +1,30 @@
 import React from "react";
-import { MenuIcon, XIcon } from "@heroicons/react/outline";
+import { MenuIcon } from "@heroicons/react/outline";
 
 const Navbar = () => {
   return (
-    <div className="w-screen h-[80px] z-10 bg-zinc-200 fixed drop-shadlow-lg">
-      <div className="px-2 flex justify-between items-center w-full h-full">
-        <h1 className="text-3xl font-bold mr-4 sm:text-4xl">WellCare</h1>
+    <div className="p-5 bg-slate-600 text-white h-16 flex flex-col justify-center">
+      <div className="flex justify-between">
+        {/* Routes + Logo */}
+        <div className="flex flex-row space-x-24">
+          {/* logo */}
+          <div className="font-black">LOGO</div>
+          {/* Routes */}
+          <div className="flex flex-row space-x-3">
+            <ul>Home</ul>
+            <ul>About</ul>
+            <ul>Support</ul>
+            <ul>Platforms</ul>
+            <ul>Pricing</ul>
+          </div>
+        </div>
+
+        {/* Sign In Login Button */}
+        <div className="flex flex-row space-x-2 font-bold">
+          <div>Signin</div>
+          <div>Login</div>
+        </div>
       </div>
-      <MenuIcon className="w-5" />
     </div>
   );
 };
