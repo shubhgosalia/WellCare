@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { AuthenticationError } = require("../Utils/Errors");
 const {promisify} = require('util');
-const User = require('../models/patient');
+const Patient = require('../models/patient');
 
 const Auth = async (req,_res,next)=>{
     try{      
