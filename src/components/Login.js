@@ -40,7 +40,7 @@ const Login = () => {
           </div>
 
           {/* right sidebar */}
-          <div className="w-2/3 h-full text-black">
+          <div className="w-2/3 h-full text-black p-5">
             {/* logo */}
             <div className="flex-col space-y-0 text-center ">
               <div className="font-black text-4xl text-blue-700">WellCare</div>
@@ -50,6 +50,49 @@ const Login = () => {
             {/* form */}
             <div className=" py-8 px-6 shadow rounded-lg sm:px-10">
               <form className="mb-0 space-y-6" action="#" method="POST">
+                {/*  */}
+                {/*  */}
+                <div className="flex flex-row justify-between space-x-2">
+                  {/* FirstName */}
+                  <div className="w-1/2">
+                    <label
+                      for="text"
+                      className="block text-sm font-medium text-gray-200"
+                    >
+                      First Name
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        id="text"
+                        name="text"
+                        type="text"
+                        autocomplete="text"
+                        required
+                        className="w-full rounded p-2 text-lg"
+                      />
+                    </div>
+                  </div>
+                  {/* Last Name */}
+                  <div className="w-1/2">
+                    <label
+                      for="text"
+                      className="block text-sm font-medium text-gray-200"
+                    >
+                      Last Name
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        id="text"
+                        name="text"
+                        type="text"
+                        autocomplete="text"
+                        required
+                        className="w-full rounded p-2 text-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
+
                 {/* email */}
                 <div>
                   <label
@@ -90,13 +133,33 @@ const Login = () => {
                   </div>
                 </div>
 
+                {/* confirm password */}
+                <div>
+                  <label
+                    for="password"
+                    className="block text-sm font-medium text-gray-200"
+                  >
+                    Confirm Password
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="cpassword"
+                      name="cpassword"
+                      type="password"
+                      autocomplete="current-password"
+                      required
+                      className="w-full rounded p-2 text-lg"
+                    />
+                  </div>
+                </div>
+
                 {/* company size */}
                 <div>
                   <label
                     for="company-size"
                     className="block text-sm font-medium text-gray-200"
                   >
-                    Company size
+                    Purpose
                   </label>
                   <div className="mt-1">
                     <select
@@ -105,9 +168,9 @@ const Login = () => {
                       className="rounded p-2"
                     >
                       <option value="">Please select</option>
-                      <option value="small">1 to 10 employees</option>
-                      <option value="medium">11 to 50 employees</option>
-                      <option value="large">50+ employees</option>
+                      <option value="small">Yoga Training</option>
+                      <option value="medium">Gym Training</option>
+                      <option value="large">Nutritionist Consulting</option>
                     </select>
                   </div>
                 </div>
@@ -126,14 +189,14 @@ const Login = () => {
                   >
                     I agree to the
                     <a
-                      href="#"
+                      href="/"
                       className="text-indigo-600 hover:text-indigo-500 px-1"
                     >
                       Terms
                     </a>
                     and
                     <a
-                      href="#"
+                      href="/"
                       className="text-indigo-600 hover:text-indigo-500 px-1"
                     >
                       Privacy Policy
