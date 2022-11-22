@@ -1,10 +1,10 @@
-require("./index");
-const connectToMongo = require("./db");
-const express = require("express");
-const dotenv = require("dotenv");
-dotenv.config({ path: "./config.env" });
+const app = require("./index");
+const connectToMongo = require('./db');
+// const express = require('express');
+const dotenv = require('dotenv');
+dotenv.config({path:"./config.env"});
 connectToMongo();
-const app = express();
+// const app = express();
 const port = process.env.PORT || 3001;
 
 process.on("unhandledRejection", (reason) => {
