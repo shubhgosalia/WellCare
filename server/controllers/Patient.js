@@ -2,16 +2,17 @@ const Patient = require("../models/patient");
 const {RegisterJoi} = require("../joi/PatientJoi");
 const SendEmail = require("../utils/SendMail");
 const {ClientError} = require("../Utils/Errors");
+const bcrypt = require('bcrypt')
 
 //registering the patient
 exports.Register = async(req,res,next)=>{
  try{
-    await RegisterJoi(req.body);
+    let user = await RegisterJoi(req.body);
     //hashing the password
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(user.password, salt);
-    await User.create({email : user.email,username : user.username,password : user.password,phoneNumber: user.phoneNumber,age: user.age, gender: user.gender});
-    mailoptions = {
+    await Patient.create({email : user.email,username : user.username,password : user.password,phoneNumber: user.phoneNumber,age: user.age, gender: user.gender});
+    let mailoptions = {
         to: req.body.email,
         subject: "Welcome to Well Care",
         text: `We welcome you to well care , ${req.body.username}. Hooping for a good experience`,
