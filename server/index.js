@@ -1,5 +1,5 @@
 const express = require('express');
-const { NotFoundError, ClientError } = require('./Utils/Errors');
+const { NotFoundError } = require('./Utils/Errors');
 const app = express();
 const helmet = require('helmet');
 const cors = require('cors');
@@ -11,6 +11,7 @@ app.use(cors({
    origin: ['http://localhost:3000'],
    credentials: true,
 }));
+
 // app.use(cookieParser());
 app.use((_req,_res,next)=>{
     if(process.env.ENV == 'development'){
@@ -22,8 +23,13 @@ app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 
 //API 
-app.use("/patient",require("./routes/patient"));
-
+console.log("hello");
+app.use((req,res,next)=>{
+   console.log("heyyy");
+   next();
+})
+app.use("/patient",require("./routes/Patient"));
+console.log("byee");
 
 //request for serving the favicon
 app.get("/favicon.ico",(req,res)=>{
