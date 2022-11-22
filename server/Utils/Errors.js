@@ -40,9 +40,20 @@ class AuthorizationError extends Error{
     }
 }
 
+class ServerError extends Error{
+    constructor(msg){
+        super(msg);
+        this.msg = msg;
+        this.statusCode = 500;
+        this.name = "ServerError";
+        Error.captureStackTrace(this, this.constructor);
+    }
+}
+
 module.exports = {
     AuthenticationError,
     AuthorizationError,
     ClientError,
     NotFoundError,
+    ServerError
 }

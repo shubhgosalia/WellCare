@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
+const {ServerError} = require("./Errors");
 
-const SendEmail = (options) => {
+const SendEmail = (options,next) => {
   const transporter = nodemailer.createTransport({
     host: process.env.MAIL_HOST,
     port: process.env.MAIL_PORT,
@@ -20,9 +21,10 @@ const SendEmail = (options) => {
 
   transporter.sendMail(mailOptions, function (error, info) {
     if (error) {
-      console.log(error);
+      console.log("error in nodemailer : ",error);
+      throw new ServerError("Something went wrong!");
     } else {
-      console.log(info);
+      console.log("info : ",info);
     }
   });
 };

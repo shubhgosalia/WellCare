@@ -28,7 +28,13 @@ exports.Register = async(req,res,next)=>{
     //     subject: "Welcome to Well Care",
     //     text: `We welcome you to well care , ${req.body.username}. Hooping for a good experience`,
     // };
-    // SendEmail(mailoptions);
+    // try{
+    //   SendEmail(mailoptions,next);
+    //   console.log("yes executed");
+    // }catch(err){
+    //   console.log("helloooooo");
+    //   throw err;
+    // }
 
     return res.status(201).json({
         message: "User registered successfully",
