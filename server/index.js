@@ -24,7 +24,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //API
+console.log("Index chalu hai");
 app.use("/patient", require("./routes/patient/authenticator"));
+console.log("Index chalu hai2");
 
 //request for serving the favicon
 app.get("/favicon.ico", (req, res) => {
