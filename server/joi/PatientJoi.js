@@ -2,6 +2,7 @@
 const joi = require('joi');
 const {ClientError} = require("../Utils/Errors");
 
+//using joi for validating the user entered fields
 exports.RegisterJoi = async (body)=>{
    const schema = joi.object({
      name: joi.string().required(),

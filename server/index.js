@@ -7,6 +7,7 @@ const cors = require("cors");
 
 //middlewares
 app.use(helmet());
+//cors used to prevent requests from unknown origins
 app.use(cors({
    origin: ['http://localhost:3000'],
    credentials: true,
@@ -19,27 +20,29 @@ app.use((_req, _res, next) => {
   }
   next();
 });
+//it will help in attaching the content to the body of the request
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
 
 //API 
-console.log("hello");
-app.use((req,res,next)=>{
+app.use((_req,_res,next)=>{
    console.log("heyyy");
    next();
-})
+});
+
+//requests related to patients will be redirected here
 app.use("/patient",require("./routes/Patient"));
-console.log("byee");
 
 //request for serving the favicon
 app.get("/favicon.ico", (req, res) => {
   return res.sendStatus(204);
 });
 
-app.all("*", (req, _res, next) => {
-  console.log("path : ", req.originalUrl);
-  console.log(new NotFoundError("Sorry,this page does not exists").stack);
-  return next(new NotFoundError("Sorry,this page does not exists"));
+//any unknown route will be executed here throwing not found error
+app.all("*",(req,_res,next)=>{
+   console.log("path : ",req.originalUrl);
+   console.log(new NotFoundError("Sorry,this page does not exists").stack);
+   return next(new NotFoundError("Sorry,this page does not exists"));
 });
 
 //global error middleware
