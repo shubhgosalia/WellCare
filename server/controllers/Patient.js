@@ -10,11 +10,13 @@ const {promisify} = require("util");
 exports.Register = async(req,res,next)=>{
  try{
    console.log("abcde");
+   //validating the fields
     let user = await RegisterJoi(req.body);
     console.log("user : ",user);
     //hashing the password
     const salt = await bcrypt.genSalt(10);
     newpassword = await bcrypt.hash(user.password, salt);
+    //creating new patient object
     let patient = new Patient({name: user.name,
                           email : user.email,
                           username : user.username,
@@ -22,19 +24,20 @@ exports.Register = async(req,res,next)=>{
                           phoneNumber: user.phoneNumber,
                           age: user.age, 
                           gender: user.gender});
+    //storing in the database
     await patient.save();
-    // let mailoptions = {
-    //     to: req.body.email,
-    //     subject: "Welcome to Well Care",
-    //     text: `We welcome you to well care , ${req.body.username}. Hooping for a good experience`,
-    // };
-    // try{
-    //   SendEmail(mailoptions,next);
-    //   console.log("yes executed");
-    // }catch(err){
-    //   console.log("helloooooo");
-    //   throw err;
-    // }
+
+    //sending the mail
+    let mailoptions = {
+        to: req.body.email,
+        subject: "Welcome to Well Care",
+        text: `We welcome you to well care , ${user.username}. Hooping for a good experience`,
+    };
+    try{
+     await SendEmail(mailoptions,next);
+    }catch(err){
+      throw err;
+    }
 
     return res.status(201).json({
         message: "User registered successfully",
@@ -42,11 +45,11 @@ exports.Register = async(req,res,next)=>{
     });
  }catch(err){
     console.log("Error in the register patient route : ",err);
-    throw err;
+    return next(err);
  }
 }
 
-
+//signing the jwt
 const signJWT = async (user_id) => {
     return await promisify(jwt.sign)({id : user_id}, process.env.JWT_SECRET);
   };
@@ -99,7 +102,7 @@ exports.Login = async(req,res,next)=>{
           });
     }catch(err){
         console.log("Error in the login patient route : ",err);
-        throw err;
+        return next(err);
     }
 }
 

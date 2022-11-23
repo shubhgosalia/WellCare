@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+
+//patient model
 const patientSchema = new mongoose.Schema({
     name:{
         type:String,
