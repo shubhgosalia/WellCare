@@ -41,11 +41,11 @@ exports.Register = async (req, res, next) => {
         </div>
       ),
     };
-    // try {
-    //   await SendEmail(mailoptions, next);
-    // } catch (err) {
-    //   throw err;
-    // }
+    try {
+      await SendEmail(mailoptions, next);
+    } catch (err) {
+      throw err;
+    }
 
     return res.status(201).json({
       message: "User registered successfully",
