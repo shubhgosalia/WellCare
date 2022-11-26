@@ -2,45 +2,54 @@ const mongoose = require('mongoose');
 
 //patient model
 const patientSchema = new mongoose.Schema({
-    name:{
-        type:String,
-        required:[true,"User should have a name"]
+    name: {
+        type: String,
+        required: [true, "User should have a name"]
     },
-    email:{
-        type:String,
-        required:[true,"User should have a Email"],
+    email: {
+        type: String,
+        required: [true, "User should have a Email"],
         unique: true
     },
-    phoneNumber:{
-        type:String,
-        required:[true,"User should have a Phone Number"]
+    phoneNumber: {
+        type: String,
+        required: [true, "User should have a Phone Number"]
     },
-    username:{
-        type:String,
-        required:[true,"User should have a username"],
+    username: {
+        type: String,
+        required: [true, "User should have a username"],
         unique: true
     },
-    password:{
-        type:String,
-        required:[true,"User should have a password"]
+    password: {
+        type: String,
+        required: [true, "User should have a password"]
     },
-    gender:{
-        type:String,
-        required:[true,"User should have a Gender"]
+    gender: {
+        type: String,
+        required: [true, "User should have a Gender"]
     },
-    age:{
-        type:Number,
-        required:[true,"User should have a Age"]
+    age: {
+        type: Number,
+        required: [true, "User should have a Age"]
     },
-    time_registered:{
+    time_registered: {
         type: Date,
         default: Date.now
     },
     mailVerified: {
         type: Boolean,
         default: false
+    },
+    verifyToken: {
+        type: String,
+        default: null
+    },
+    verifyTokenExpiry: {
+        type: Date,
+        default: null
     }
-})
-const Patient = mongoose.model("Patient",patientSchema);
+});
+
+const Patient = mongoose.model("Patient", patientSchema);
 
 module.exports = Patient;
