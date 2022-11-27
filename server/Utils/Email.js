@@ -4,6 +4,7 @@ const {ServerError} = require("./Errors");
 //sending mail to the client
 const SendEmail = (options,next) => {
   return new Promise((resolve,reject)=>{
+    console.log(process.env.MAIL_USERNAME)
     const transporter = nodemailer.createTransport({
       host: process.env.MAIL_HOST,
       port: process.env.MAIL_PORT,

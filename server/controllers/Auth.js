@@ -1,4 +1,5 @@
 const Patient = require("../models/patient");
+const Doctor=require('../models/doctor');
 const { AuthenticationError, ClientError } = require("../Utils/Errors");
 const SendEmail = require("../Utils/Email");
 const jwt = require("jsonwebtoken");
@@ -25,9 +26,10 @@ exports.VerifyAccount = async (req, res, next) => {
         }
         //DOCTOR PART
         else {
-            console.log("needs to be done for the doctor as well")
+            user = await Doctor.find({ token: a });
+            console.log("Doctor : ", user[0]);
         }
-        //if there is no such patient
+        //if there is no such patient or Doctor
         if (!user[0]) {
             throw new AuthenticationError("No such account exists...");
         }
@@ -37,7 +39,7 @@ exports.VerifyAccount = async (req, res, next) => {
             if (last_sym === "@") {
                 await Patient.findByIdAndDelete(user[0].id);
             } else {
-                console.log("needs to delete the doctor record")
+                await Doctor.findByIdAndDelete(user[0].id);
             }
             throw new AuthenticationError("invalid/expired url... please register again");
         }
@@ -46,7 +48,7 @@ exports.VerifyAccount = async (req, res, next) => {
         if (last_sym === "@") {
             await Patient.findByIdAndUpdate(user[0].id, { verifyToken: null, verifyTokenExpiry: null, mailVerified: true });
         } else {
-            console.log("doctor k liye karna hai");
+            await Doctor.findByIdAndUpdate(user[0].id, { verifyToken: null, verifyTokenExpiry: null, mailVerified: true });
         }
 
         //sending welcome email
@@ -99,7 +101,16 @@ exports.Login = async (req, res, next) => {
                 ]
             });
         } else {
-            console.log("similarly it will be done for the doctor as well");
+            user = await Doctor.findOne({
+                $or: [
+                    {
+                        "username": user_name
+                    },
+                    {
+                        "email": user_name
+                    }
+                ]
+            });
         }
 
         if (!user) {
@@ -150,7 +161,7 @@ exports.GeneratePasswordLink = async (req, res, next) => {
         }
         //DOCTOR PART
         else {
-            console.log("needs to be done for the doctor as well")
+            user = await Doctor.find({ email: req.body.email });
         }
 
         //if there is no such patient/doctor
@@ -171,7 +182,7 @@ exports.GeneratePasswordLink = async (req, res, next) => {
             await Patient.findByIdAndUpdate(user[0].id, { verifyToken: token, verifyTokenExpiry: Date.now() + 60 * 60 * 1000 * 24 });
         }
         else {
-            console.log("for the doctor");
+            await Doctor.findByIdAndUpdate(user[0].id, { verifyToken: token, verifyTokenExpiry: Date.now() + 60 * 60 * 1000 * 24 });
         }
 
         //sending password link
@@ -188,7 +199,7 @@ exports.GeneratePasswordLink = async (req, res, next) => {
             if (req.body.type === "Patient") {
                 await Patient.findByIdAndUpdate(user[0].id, { verifyToken: null, verifyTokenExpiry: null });
             } else {
-                console.log("for the doctor");
+                await Doctor.findByIdAndUpdate(user[0].id, { verifyToken: null, verifyTokenExpiry: null });
             }
         }
 
@@ -219,10 +230,10 @@ exports.SetPassword = async (req, res, next) => {
         }
         // DOCTOR PART
         else {
-            console.log("needs to be done for the doctor as well")
+            user = await Doctor.find({ token: a });
         }
 
-        //if there is no such patient
+        //if there is no such patient or doctor
         if (!user[0] || !user[0].mailVerified) {
             throw new AuthenticationError("No such id exists or mail not verified yet...");
         }
@@ -242,7 +253,7 @@ exports.SetPassword = async (req, res, next) => {
         }
         //for doctor
         else {
-            console.log("hello");
+            await Doctor.findByIdAndUpdate(user[0].id, { verifyToken: null, verifyTokenExpiry: null, password: newpassword });
         }
 
         return res.status(200).json({

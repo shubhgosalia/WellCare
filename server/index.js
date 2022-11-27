@@ -36,6 +36,9 @@ app.use("/auth", require("./routes/Auth"));
 //requests related to patients will be redirected here
 app.use("/patient", require("./routes/Patient"));
 
+//requests related to doctor will be redirected here
+app.use("/doctor", require("./routes/Doctor"));
+
 //request for serving the favicon
 app.get("/favicon.ico", (_req, res) => {
    return res.sendStatus(204);
