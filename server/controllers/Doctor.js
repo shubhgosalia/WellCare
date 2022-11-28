@@ -9,7 +9,6 @@ const Review= require('../models/review')
 exports.Register = async (req, res, next) => {
     try {
       console.log("abcde");
-
       const {path,filename}=req.file
       //validating the fields
       let user = await RegisterDoctorJoi(req.body);
@@ -76,7 +75,7 @@ exports.Register = async (req, res, next) => {
     }
   }
 
-
+  // This is the controller to get all doctors 
   exports.getDoctors=async(req,res,next)=>{
     try{
       console.log(req.user);
@@ -93,32 +92,13 @@ exports.Register = async (req, res, next) => {
       return next(err);
     }
   }
-
+  // This is controller for to get a particular doctor
   exports.getDoctor=async(req,res,next)=>{
     try{
-      const doctor=await Doctor.findById(req.params.id);
+      const doctor=await Doctor.findById(req.params.id).populate('review');
       res.status(200).json({
         status:"Success",
         data:doctor
-      })
-    }
-    catch(err){
-      return next(err);
-    }
-  }
-
-  exports.createReviews=async(req,res,next)=>{
-    try{
-      let doctor=await Doctor.findById(req.params.id);
-      const review=new Review(req.body)
-      doctor.reviews.push(review)
-      await review.save()
-      await doctor.save()
-      res.status(200).json({
-        status:"Success",
-        data:{
-          review
-        }
       })
     }
     catch(err){

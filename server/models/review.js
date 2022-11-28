@@ -1,18 +1,43 @@
 const mongoose = require('mongoose');
 const reviewSchema=new mongoose.Schema({
-    text:{
+    review:{
         type:String,
-        required:[true,'It should have body']
+        required:[true,'It should have review']
     },
-    // patient_id:{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:'Patient'
-    // },
-    // doctor_id:{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:'Doctor'
-    // }
+    patient:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Patient',
+        required:[true,'It should have a patient Id']
+    },
+    doctor:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:'Doctor',
+        required:[true,'It should have a patient Id']
+    }
+},
+{
+    toJSON:{virtuals:true},
+    toObject:{virtuals:true}
 })
-const Review=mongoose.model('Review',reviewSchema)
 
+// Query Middlewares
+
+// Middleware to populate reviews
+reviewSchema.pre(/^find/,function(next){
+    // this.populate({
+    //     path:'patient',
+    //     select:'username'
+    // }).populate({
+    //     path:'doctor',
+    //     select:'username'
+    // });
+    this.populate({
+        path:'patient',
+        select:'username'
+    });
+    next();
+})
+
+
+const Review=mongoose.model('Review',reviewSchema)
 module.exports=Review;

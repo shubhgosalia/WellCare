@@ -79,15 +79,20 @@ const doctorSchema = new mongoose.Schema({
     verifyTokenExpiry: {
         type: Date,
         default: null
-    },
-    reviews:[
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref:'Review'
-        }
-    ]
+    }
+},
+{
+    toJSON:{virtuals:true},  
+    toObject:{virtuals:true}
 });
 
+// Virtual populate
+// To populate all reviews of the doctor
+doctorSchema.virtual('review',{
+    ref:'Review',
+    foreignField:'doctor',
+    localField: '_id'
+})
 const Doctor = mongoose.model("Doctor", doctorSchema);
 
 module.exports = Doctor;

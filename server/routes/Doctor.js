@@ -14,5 +14,4 @@ router.get('/',getDoctors);
 // get a particular Doctor route
 router.get('/:id',getDoctor);
 
-router.post('/:id/review',createReviews)
 module.exports = router;

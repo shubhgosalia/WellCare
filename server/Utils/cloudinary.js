@@ -9,7 +9,7 @@ cloudinary.config({
     api_secret:process.env.CLOUDINARY_SECRET
 })
 const storage = new CloudinaryStorage({
-    cloudinary,
+    cloudinary:cloudinary,
     params: {
       folder: 'Well Care',
       allowed_formats:['jpg','png','jpeg','jfif']
