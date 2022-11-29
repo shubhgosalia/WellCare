@@ -14,10 +14,18 @@ const Navbar = () => {
           {/* Routes */}
           <div className="flex flex-row space-x-20 font-medium p-2">
             {/*  */}
-            <div>Home</div>
-            <div>Doctor</div>
-            <div>Services</div>
-            <div>Review</div>
+            <div>
+              <a href="/">Home</a>
+            </div>
+            <div>
+              <a href="/">Doctor</a>
+            </div>
+            <div>
+              <a href="/login">Login</a>
+            </div>
+            <div>
+              <a href="/signup">Sign up</a>
+            </div>
           </div>
 
           {/* My account Button */}

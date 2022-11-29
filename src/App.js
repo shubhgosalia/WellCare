@@ -4,19 +4,27 @@ import "./App.css";
 // import About from "./components/About";
 // import Service from "./components/Services";
 // import Footer from "./components/Footer";
-// import Login from "./../src/components/Login";
-import Home from "./components/Home/Home";
+import Login from "components/Login";
+import Home from "components/Home/Home";
+import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import Signup from "components/Signup";
 
 function App() {
   return (
     <>
-      {/*<Navbar />
-       <Hero />
-      <About />
-      <Service />
-      <Footer /> */}
-      {/* <Login /> */}
-      <Home />
+      <Router>
+        <Routes>
+          {/* Home */}
+          <Route exact path="/" element={<Home />} />
+          {/* Login */}
+          <Route exact path="/login" element={<Login />} />
+          {/* Sign up */}
+          <Route exact path="/signup" element={<Signup />} />
+          {/* Landing Page */}
+          <Route exact path="/landing" element={<Signup />} />
+        </Routes>
+      </Router>
     </>
   );
 }
