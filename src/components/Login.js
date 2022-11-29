@@ -169,7 +169,7 @@ const Login = () => {
                     >
                       <option value="">Please select</option>
                       <option value="small">Yoga Training</option>
-                      <option value="medium">Gym Training</option>
+                      <option value="medium">Physio Consulting</option>
                       <option value="large">Nutritionist Consulting</option>
                     </select>
                   </div>
