@@ -1,4 +1,5 @@
 import React from "react";
+import LightRightArrowIcon from "components/Icons/Light/rightArrow";
 
 const Navbar = () => {
   return (
@@ -20,9 +21,9 @@ const Navbar = () => {
           </div>
 
           {/* My account Button */}
-          <div className="font-medium text-white bg-blue-600 p-2 rounded">
-            My Account
-            <i className="fa-regular fa-arrow-right"></i>
+          <div className="font-medium text-white bg-blue-600 p-2 rounded flex flex-row">
+            <div>My Account</div>
+            <LightRightArrowIcon size={20} color="#000000" />
           </div>
         </div>
       </div>
