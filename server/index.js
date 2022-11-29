@@ -42,7 +42,7 @@ app.use("/doctor", require("./routes/Doctor"));
 //requests related to reviews will be redirected here
 app.use("/review", require("./routes/Review"));
 
-0
+
 //request for serving the favicon
 app.get("/favicon.ico", (_req, res) => {
    return res.sendStatus(204);

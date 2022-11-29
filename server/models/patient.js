@@ -32,6 +32,17 @@ const patientSchema = new mongoose.Schema({
         type: Number,
         required: [true, "User should have a Age"]
     },
+    profile_pic: {
+        image_url: {
+            type: String,
+            // required:[true, "User should have a  image url"],
+            default: "https://res.cloudinary.com/dprscch9k/image/upload/v1669703344/default_pic1_gnjm3i.png"
+        },
+        file_name: {
+            type: String,
+            // required: [true, "User should have a  image file_name"]
+        }
+    },
     time_registered: {
         type: Date,
         default: Date.now

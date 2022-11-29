@@ -1,38 +1,34 @@
-const Review=require('../models/review');
+const Review = require('../models/review');
 
-module.exports.createReview=async(req,res,next)=>{
-    try{
-        const review=await Review.create(req.body);
-        
+module.exports.createReview = async (req, res, next) => {
+    try {
+        const review = await Review.create({ review: String(req.body.review), patient: req.user.id, doctor: req.body.doctor });
         res.status(200).json({
-            status:"Success",
-            data:{
+            status: "success",
+            data: {
                 review
             }
-        })
+        });
     }
-    catch(err){
-        res.status(404).json({
-            status:"Fail",
-            message:err
-        })
+    catch (err) {
+        console.log("in the create reviews : ", err);
+        return next(err);
     }
 }
 
-module.exports.getReviews=async(req,res,next)=>{
-    try{    
-        const reviews=await Review.find();
-        res.status(200).json({
-            status:"Success",
-            data:{
-                reviews
-            }
-        })
-    }   
-    catch(err){
-        res.status(404).json({
-            status:"Fail",
-            message:err
-        })
-    }
-}
+//getting the reviews for a particular doctor
+// module.exports.getReviews = async (req, res, next) => {
+//     try {
+//         const reviews = await Review.find();
+//         res.status(200).json({
+//             status: "success",
+//             data: {
+//                 reviews
+//             }
+//         });
+//     }
+//     catch (err) {
+//         console.log("in the get reviews : ", err);
+//         return next(err);
+//     }
+// }
