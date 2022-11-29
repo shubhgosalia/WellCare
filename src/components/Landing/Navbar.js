@@ -35,9 +35,11 @@ const Navbar = () => {
         </div>
         <div className="hidden md:flex pr-4">
           <button className="border-none bg-transparent text-black mr-4">
-            Sign In
+            <a href="/login">Login</a>
           </button>
-          <button className="px-8 py-3">Sign Up</button>
+          <button className="px-8 py-3">
+            <a href="/signup">Signup</a>
+          </button>
         </div>
         <div className="md:hidden" onclick={handleClick}>
           {!nav ? <MenuIcon className="w-5" /> : <XIcon className="w-5" />}
@@ -77,10 +79,12 @@ const Navbar = () => {
         </li>
 
         <div className="flex flex-col my-4">
-          <button className="bg-transparent text-indigo-600 px-8 py-3 mb-4">
-            Sign In
+          <button className="bg-transparent text-blue-600 px-8 py-3 mb-4">
+            <a href="/login">Login</a>
           </button>
-          <button className="px-8 py-3">Sign Up</button>
+          <button className="px-8 py-3">
+            <a href="/signup">Signup</a>
+          </button>
         </div>
       </ul>
     </div>
