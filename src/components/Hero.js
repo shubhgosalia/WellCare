@@ -14,7 +14,7 @@ const Hero = () => {
             Your hollistic well-being our topmost priority
           </p>
           <h1 className="py-3 text-5xl md:text-7xl font-bold">WellCare</h1>
-          <p className="text-2xl">Well, we Care!</p>
+          <p className="text-2xl">Well, we Care!!</p>
           <button className="py-3 px-6 sm:w-[60%] my-8 rounded-md">
             Get Started
           </button>
