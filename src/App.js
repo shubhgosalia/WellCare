@@ -4,6 +4,7 @@ import Home from "components/Home/Home";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Signup from "components/Authentication/Signup";
+import Landing from "components/Landing/Landing";
 
 function App() {
   // const [currentStep, setCurrentStep] = useState(1);
@@ -43,7 +44,7 @@ function App() {
           {/* Sign up */}
           <Route exact path="/signup" element={<Signup />} />
           {/* Landing Page */}
-          <Route exact path="/landing" element={<Signup />} />
+          <Route exact path="/landing" element={<Landing />} />
         </Routes>
       </Router>
     </>

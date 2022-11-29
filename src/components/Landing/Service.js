@@ -1,8 +1,8 @@
 import React from "react";
-import service from "../assets/service.png";
-import physio from "../assets/physiotherapy.png";
-import nutrition from "../assets/nutrition.jpg";
-import yoga from "../assets/yoga.png";
+import service from "assets/service.png";
+import physio from "assets/physiotherapy.png";
+import nutrition from "assets/nutrition.jpg";
+import yoga from "assets/yoga.png";
 
 const Service = () => {
   return (

@@ -1,6 +1,5 @@
 import React from "react";
-import bgImg from "../assets/holistic_health.png";
-import logo from "../assets/wellcarelogo.png";
+import bgImg from "assets/holistic_health.png";
 
 const Hero = () => {
   return (
