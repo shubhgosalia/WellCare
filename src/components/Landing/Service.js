@@ -1,13 +1,14 @@
 import React from "react";
-import service from "assets/service.png";
+import service from "assets/Services.avif";
 import physio from "assets/physiotherapy.png";
 import nutrition from "assets/nutrition.jpg";
 import yoga from "assets/yoga.png";
 
 const Service = () => {
   return (
-    <div name="service" className="w-full mt-24">
+    <div name="service" className="w-full bg-dark-100 pb-24">
       <div className="w-full h-[700px] bg-gray-900/90 absolute">
+        {/* Image */}
         <img
           className="w-full h-full object-cover mix-blend-overlay"
           src={service}

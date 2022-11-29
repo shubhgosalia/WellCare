@@ -5,16 +5,6 @@ module.exports = {
     extend: {
       colors: {
         // Configure your color palette here
-        50: "#eff6ff",
-        100: "#dbeafe",
-        200: "#bfdbfe",
-        300: "#93c5fd",
-        400: "#60a5fa",
-        500: "#3b82f6",
-        600: "#2563eb",
-        700: "#1d4ed8",
-        800: "#1e40af",
-        900: "#1e3a8a",
         "dark-900": "#e5e5e5",
         "dark-800": "#cccccc",
         "dark-700": "#b2b2b2",
@@ -23,7 +13,7 @@ module.exports = {
         "dark-400": "#666666",
         "dark-300": "#4c4c4c",
         "dark-200": "#323232",
-        "dark-100": "#191919",
+        "dark-100": "#100C08",
         // text color
       },
       fontFamily: {
