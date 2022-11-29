@@ -1,4 +1,4 @@
-import { useStepperContext } from "../../contexts/StepperContext";
+import { useStepperContext } from "./contexts/StepperContext";
 
 export default function Step3() {
   const { userData, setUserData } = useStepperContext();
