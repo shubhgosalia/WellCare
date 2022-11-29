@@ -1,6 +1,6 @@
 import React from "react";
 import Search from "components/Home/Search";
-import NavbarHome from "components/Home/Navbar";
+import NavbarHome from "components/Utils/Navbar";
 
 const Home = () => {
   return (
