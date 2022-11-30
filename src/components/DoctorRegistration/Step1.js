@@ -1,4 +1,4 @@
-import { useStepperContext } from "./contexts/StepperContext";
+import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
 
 export default function Step1() {
   const { userData, setUserData } = useStepperContext();
@@ -81,7 +81,7 @@ export default function Step1() {
         </div>
         <div className="mt-5 w-full flex-1">
           <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
-            Specialization
+            Category
           </label>
           <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
             <select aria-label="Default select example required">

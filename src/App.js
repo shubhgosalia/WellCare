@@ -5,34 +5,12 @@ import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Signup from "components/Authentication/Signup";
 import Landing from "components/Landing/Landing";
+import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
+// import PasswordSetup from "components/PasswordSetup/ForgotPassword";
+import ResetPassword from "components/PasswordSetup/ResetPassword";
+import ForgotPassword from "./components/PasswordSetup/ForgotPassword";
 
 function App() {
-  // const [currentStep, setCurrentStep] = useState(1);
-
-  // const steps = ["Step 1", "Step 2", "Step 3", "Complete"];
-
-  // const displayStep = (step) => {
-  //   switch (step) {
-  //     case 1:
-  //       return <Step1 />;
-  //     case 2:
-  //       return <Step2 />;
-  //     case 3:
-  //       return <Step3 />;
-  //     case 4:
-  //       return <Final />;
-  //     default:
-  //   }
-  // };
-
-  // const handleClick = (direction) => {
-  //   let newStep = currentStep;
-
-  //   direction === "next" ? newStep++ : newStep--;
-  //   // check if steps are within bounds
-  //   newStep > 0 && newStep <= steps.length && setCurrentStep(newStep);
-  // };
-
   return (
     <>
       <Router>
@@ -45,6 +23,16 @@ function App() {
           <Route exact path="/signup" element={<Signup />} />
           {/* Landing Page */}
           <Route exact path="/landing" element={<Landing />} />
+          {/*Doctor registration page*/}
+          <Route
+            exact
+            path="/doctorRegistration"
+            element={<DoctorRegistration />}
+          />
+          {/* forgot password page */}
+          <Route exact path="/forgotPassword" element={<ForgotPassword />} />
+          {/* reset password page */}
+          <Route exact path="/resetPassword" element={<ResetPassword />} />
         </Routes>
       </Router>
     </>
