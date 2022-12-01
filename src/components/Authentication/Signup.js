@@ -51,6 +51,47 @@ const Signup = () => {
             <div className=" py-8 px-6 shadow rounded-lg sm:px-10">
               <form className="mb-0 space-y-6" action="#" method="POST">
                 {/*  */}
+                {/*  */}
+                <div className="flex flex-row justify-between space-x-2">
+                  {/* FirstName */}
+                  <div className="w-1/2">
+                    <label
+                      for="text"
+                      className="block text-sm font-medium text-gray-200"
+                    >
+                      First Name
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        id="text"
+                        name="text"
+                        type="text"
+                        autocomplete="text"
+                        required
+                        className="w-full rounded p-2 text-lg"
+                      />
+                    </div>
+                  </div>
+                  {/* Last Name */}
+                  <div className="w-1/2">
+                    <label
+                      for="text"
+                      className="block text-sm font-medium text-gray-200"
+                    >
+                      Last Name
+                    </label>
+                    <div className="mt-1">
+                      <input
+                        id="text"
+                        name="text"
+                        type="text"
+                        autocomplete="text"
+                        required
+                        className="w-full rounded p-2 text-lg"
+                      />
+                    </div>
+                  </div>
+                </div>
 
                 {/* email */}
                 <div>
@@ -92,6 +133,48 @@ const Signup = () => {
                   </div>
                 </div>
 
+                {/* confirm password */}
+                <div>
+                  <label
+                    for="password"
+                    className="block text-sm font-medium text-gray-200"
+                  >
+                    Confirm Password
+                  </label>
+                  <div className="mt-1">
+                    <input
+                      id="cpassword"
+                      name="cpassword"
+                      type="password"
+                      autocomplete="current-password"
+                      required
+                      className="w-full rounded p-2 text-lg"
+                    />
+                  </div>
+                </div>
+
+                {/* company size */}
+                <div>
+                  <label
+                    for="company-size"
+                    className="block text-sm font-medium text-gray-200"
+                  >
+                    Purpose
+                  </label>
+                  <div className="mt-1">
+                    <select
+                      name="company-size"
+                      id="company-size"
+                      className="rounded p-2"
+                    >
+                      <option value="">Please select</option>
+                      <option value="small">Yoga Training</option>
+                      <option value="medium">Physio Consulting</option>
+                      <option value="large">Nutritionist Consulting</option>
+                    </select>
+                  </div>
+                </div>
+
                 {/* t&c */}
                 <div className="flex items-center">
                   <input
@@ -118,7 +201,6 @@ const Signup = () => {
                     >
                       Privacy Policy
                     </a>
-                    .
                   </label>
                 </div>
                 {/* Sign in Button */}

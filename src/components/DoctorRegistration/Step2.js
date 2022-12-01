@@ -1,4 +1,4 @@
-import { useStepperContext } from "./contexts/StepperContext";
+import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
 
 export default function Step2() {
   const { userData, setUserData } = useStepperContext();
@@ -20,6 +20,7 @@ export default function Step2() {
             name="email"
             placeholder="email"
             type="email"
+            required
             className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />
         </div>
@@ -36,6 +37,7 @@ export default function Step2() {
             placeholder="Phone No."
             type="text"
             pattern="[0-9]*"
+            required
             className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />
         </div>
@@ -51,6 +53,7 @@ export default function Step2() {
             name="city"
             placeholder="City"
             type="text"
+            required
             className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />
         </div>
@@ -66,10 +69,26 @@ export default function Step2() {
             name="license_no"
             placeholder="License No."
             type="text"
+            required
             className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />
         </div>
       </div>
+
+      {/* <div className="mt-3 w-full mx-2 flex-1">
+        <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
+          Your Bio (include experience)
+        </label>
+        <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
+          <textarea
+            onChange={handleChange}
+            value={userData["bio"] || ""}
+            name="textarea"
+            placeholder="your bio"
+            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+          ></textarea>
+        </div>
+      </div> */}
     </div>
   );
 }

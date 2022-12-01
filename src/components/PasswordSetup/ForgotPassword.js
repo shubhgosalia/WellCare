@@ -1,6 +1,6 @@
 import React from "react";
 
-const Forgot = () => {
+const ForgotPassword = () => {
   return (
     <section class="bg-dark-100 dark:bg-gray-900">
       <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -44,4 +44,4 @@ const Forgot = () => {
   );
 };
 
-export default Forgot;
+export default ForgotPassword;

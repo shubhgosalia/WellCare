@@ -19,7 +19,9 @@ const Hero = () => {
             </div>
             <p className="text-lg text-dark-600 ml-2">Must for HealthCare</p>
           </h1>
-          <button className="py-3 px-6 sm:w-[60%] my-8">Get Started</button>
+          <button className="py-3 px-6 sm:w-[60%] my-8">
+            <a href="/signup">Get Started</a>
+          </button>
         </div>
 
         {/* Image */}
