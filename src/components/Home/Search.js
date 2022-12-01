@@ -1,6 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 const Search = () => {
+
+  //doctor data
+  let [data, setData] = useState([]);
+  //filters
+  let [filter, setFilter] = useState({
+    gender: "",
+    specialization: "",
+    city: ""
+  });
+
+  //getting the data from the server
+  const getData = async () => {
+    try {
+      let newObj;
+      if (filter.gender !== "")
+        newObj["gender"] = filter.gender;
+      if (filter.city !== "")
+        newObj["city"] = filter.city;
+      if (filter.specialization !== "")
+        newObj["specialization"] = filter.specialization
+
+      let res = await axios.get('127.0.0.1:4000/doctor', { params: { newObj } });
+      console.log("res : ", res);
+
+    } catch (err) {
+      console.log("error aa gya search mein : ", err);
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong! ):'
+      });
+    }
+  }
+
+  // Calling the getData function 
+  useEffect(() => {
+    getData();
+  }, []);
+
+  //updating thr filters
+  const updateFilters = (e) => {
+    console.log('e : ', e.target.name);
+    console.log('e : ', e.target.value);
+    setData((prevObj) => {
+      return { ...prevObj, [e.target.name]: e.target.value }
+    });
+  }
+
   return (
     <>
       {/* Main Container */}
@@ -23,47 +73,6 @@ const Search = () => {
         <div className="flex flex-row px-20">
           {/* form */}
           <div className="w-1/3 bg-blue-600 p-4 text-dark-100 rounded flex flex-col space-y-5">
-            {/* Search Doctors */}
-            <div>
-              <label
-                for="doctorSearch"
-                className="block text-base font-medium "
-              >
-                Search Doctor:
-              </label>
-              <div className="mt-1">
-                <input
-                  id="doctorSearch"
-                  name="text"
-                  type="text"
-                  autocomplete="text"
-                  required
-                  className="w-full rounded p-2 text-lg"
-                  placeholder="Search"
-                />
-              </div>
-            </div>
-
-            {/* Search Doctors */}
-            <div>
-              <label
-                for="doctorSearch"
-                className="block text-base font-medium "
-              >
-                Search Doctor:
-              </label>
-              <div className="mt-1">
-                <input
-                  id="doctorSearch"
-                  name="text"
-                  type="text"
-                  autocomplete="text"
-                  required
-                  className="w-full rounded p-2 text-lg"
-                  placeholder="Search"
-                />
-              </div>
-            </div>
 
             {/* Search Doctors */}
             <div>
@@ -88,10 +97,10 @@ const Search = () => {
 
             {/* Speciality */}
             <div>
-              <label for="speciality" className="block text-base font-medium ">
+              <label for="specialization" className="block text-base font-medium ">
                 Speciality:
               </label>
-              <select name="speciality" id="state" className="rounded p-2">
+              <select name="specialization" id="state" className="rounded p-2" onChange={updateFilters}>
                 <option value="">Please select</option>
                 <option value="small">Yoga Training</option>
                 <option value="medium">Gym Training</option>
@@ -99,16 +108,15 @@ const Search = () => {
               </select>
             </div>
 
-            {/* State */}
+            {/* Gender */}
             <div>
               <label for="state" className="block text-base font-medium ">
-                Select State:
+                Select Gender:
               </label>
-              <select name="state" id="state" className="rounded p-2 w-full">
+              <select name="gender" id="state" className="rounded p-2 w-full" onChange={updateFilters}>
                 <option value="">Please select</option>
-                <option value="small">Maharashtra</option>
-                <option value="medium">Gujarat</option>
-                <option value="large">Goa</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
               </select>
             </div>
 
@@ -117,24 +125,10 @@ const Search = () => {
               <label for="city" className="block text-base font-medium ">
                 Search City:
               </label>
-              <select name="city" id="state" className="rounded p-2">
+              <select name="city" id="state" className="rounded p-2" onChange={updateFilters}>
                 <option value="">Please select</option>
-                <option value="small">Mumbai</option>
-                <option value="medium">Nagpur</option>
-                <option value="large">Nashik</option>
-              </select>
-            </div>
-
-            {/* City */}
-            <div>
-              <label for="city" className="block text-base font-medium ">
-                Search City:
-              </label>
-              <select name="city" id="state" className="rounded p-2 w-2/3">
-                <option value="">Please select</option>
-                <option value="small">Mumbai</option>
-                <option value="medium">Nagpur</option>
-                <option value="large">Nashik</option>
+                <option value="mumbai">Mumbai</option>
+                <option value="pune">Pune</option>
               </select>
             </div>
           </div>
