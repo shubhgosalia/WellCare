@@ -1,55 +1,53 @@
 import React, { useEffect, useState } from "react";
-import Swal from 'sweetalert2';
-import axios from 'axios';
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Search = () => {
-
   //doctor data
   let [data, setData] = useState([]);
   //filters
   let [filter, setFilter] = useState({
     gender: "",
     specialization: "",
-    city: ""
+    city: "",
   });
 
   //getting the data from the server
   const getData = async () => {
     try {
       let newObj;
-      if (filter.gender !== "")
-        newObj["gender"] = filter.gender;
-      if (filter.city !== "")
-        newObj["city"] = filter.city;
+      if (filter.gender !== "") newObj["gender"] = filter.gender;
+      if (filter.city !== "") newObj["city"] = filter.city;
       if (filter.specialization !== "")
-        newObj["specialization"] = filter.specialization
+        newObj["specialization"] = filter.specialization;
 
-      let res = await axios.get('127.0.0.1:4000/doctor', { params: { newObj } });
+      let res = await axios.get("127.0.0.1:4000/doctor", {
+        params: { newObj },
+      });
       console.log("res : ", res);
-
     } catch (err) {
       console.log("error aa gya search mein : ", err);
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong! ):'
-      });
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Something went wrong! ):'
+      // });
     }
-  }
+  };
 
-  // Calling the getData function 
+  // Calling the getData function
   useEffect(() => {
     getData();
   }, []);
 
   //updating thr filters
   const updateFilters = (e) => {
-    console.log('e : ', e.target.name);
-    console.log('e : ', e.target.value);
+    console.log("e : ", e.target.name);
+    console.log("e : ", e.target.value);
     setData((prevObj) => {
-      return { ...prevObj, [e.target.name]: e.target.value }
+      return { ...prevObj, [e.target.name]: e.target.value };
     });
-  }
+  };
 
   return (
     <>
@@ -73,7 +71,6 @@ const Search = () => {
         <div className="flex flex-row px-20">
           {/* form */}
           <div className="w-1/3 bg-blue-600 p-4 text-dark-100 rounded flex flex-col space-y-5">
-
             {/* Search Doctors */}
             <div>
               <label
@@ -97,10 +94,18 @@ const Search = () => {
 
             {/* Speciality */}
             <div>
-              <label for="specialization" className="block text-base font-medium ">
+              <label
+                for="specialization"
+                className="block text-base font-medium "
+              >
                 Speciality:
               </label>
-              <select name="specialization" id="state" className="rounded p-2" onChange={updateFilters}>
+              <select
+                name="specialization"
+                id="state"
+                className="rounded p-2"
+                onChange={updateFilters}
+              >
                 <option value="">Please select</option>
                 <option value="small">Yoga Training</option>
                 <option value="medium">Gym Training</option>
@@ -113,7 +118,12 @@ const Search = () => {
               <label for="state" className="block text-base font-medium ">
                 Select Gender:
               </label>
-              <select name="gender" id="state" className="rounded p-2 w-full" onChange={updateFilters}>
+              <select
+                name="gender"
+                id="state"
+                className="rounded p-2 w-full"
+                onChange={updateFilters}
+              >
                 <option value="">Please select</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -125,7 +135,12 @@ const Search = () => {
               <label for="city" className="block text-base font-medium ">
                 Search City:
               </label>
-              <select name="city" id="state" className="rounded p-2" onChange={updateFilters}>
+              <select
+                name="city"
+                id="state"
+                className="rounded p-2"
+                onChange={updateFilters}
+              >
                 <option value="">Please select</option>
                 <option value="mumbai">Mumbai</option>
                 <option value="pune">Pune</option>

@@ -1,13 +1,117 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Signup = () => {
+  const navigate = useNavigate();
+  //patient data
+  let [data, setData] = useState({
+    name: "",
+    email: "",
+    phoneNumber: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+    gender: "",
+    age: "",
+    checked: false,
+  });
+
+  const submit = async (event) => {
+    //send the data to the backend
+    try {
+      if (data.password !== data.confirmPassword) {
+        // setKey("password");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Passwords do not match.",
+        });
+        setData((prevState) => {
+          return { ...prevState, password: "", confirmPassword: "" };
+        });
+        return;
+      }
+      if (!data.checked) {
+        // setKey("password");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please check the checkbox..",
+        });
+        return;
+      }
+      event.preventDefault();
+      let postData = {
+        name: data.name,
+        email: data.email,
+        phoneNumber: data.phoneNumber,
+        password: data.password,
+        gender: data.gender,
+        age: data.age,
+        username: data.username,
+      };
+
+      // setLoad(true);
+      let res = await axios.post(
+        "http://127.0.0.1:4000/patient/register",
+        postData
+      );
+      console.log("RESSSSSULTT : ", res);
+      // setLoad(false);
+      setData({
+        name: "",
+        email: "",
+        password: "",
+        phoneNumber: "",
+        confirmPassword: "",
+        age: "",
+        gender: "",
+        username: "",
+      });
+
+      if (res.data.status === "success") {
+        Swal.fire({
+          icon: "success",
+          title: res.data.message,
+        });
+        navigate("/login");
+      }
+    } catch (err) {
+      // setLoad(false);
+      console.log("err : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  };
+
+  const check = (event) => {
+    const { name, checked } = event.target;
+    console.log("check : ", checked);
+    setData((prevData) => {
+      return { ...prevData, [name]: checked };
+    });
+  };
+
+  const updateInfo = (event) => {
+    const { name, value } = event.target;
+    //setting the data
+    setData((prevData) => {
+      return { ...prevData, [name]: value };
+    });
+  };
+
   return (
     <>
       {/* main container */}
-      <div className="bg-dark-100  w-full  h-screen">
+      <div className="bg-dark-100  w-full  h-full">
         <div className="flex p-5 space-x-5 h-full text-white">
           {/* leftsidebar */}
-          <div className="flex flex-col w-1/3 bg-blue-600  rounded-lg px-14 py-8 justify-between ">
+          <div className="flex flex-col w-1/3 bg-blue-600  rounded-lg px-14 py-8 justify-between">
             {/* heading */}
             <div className="flex-col space-y-0 text-center">
               <div className="font-black text-4xl">WellCare</div>
@@ -48,171 +152,229 @@ const Signup = () => {
             </div>
 
             {/* form */}
-            <div className=" py-8 px-6 shadow rounded-lg sm:px-10">
-              <form className="mb-0 space-y-6" action="#" method="POST">
-                {/*  */}
-                {/*  */}
-                <div className="flex flex-row justify-between space-x-2">
-                  {/* FirstName */}
-                  <div className="w-1/2">
-                    <label
-                      for="text"
-                      className="block text-sm font-medium text-gray-200"
-                    >
-                      First Name
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        id="text"
-                        name="text"
-                        type="text"
-                        autocomplete="text"
-                        required
-                        className="w-full rounded p-2 text-lg"
-                      />
-                    </div>
-                  </div>
-                  {/* Last Name */}
-                  <div className="w-1/2">
-                    <label
-                      for="text"
-                      className="block text-sm font-medium text-gray-200"
-                    >
-                      Last Name
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        id="text"
-                        name="text"
-                        type="text"
-                        autocomplete="text"
-                        required
-                        className="w-full rounded p-2 text-lg"
-                      />
-                    </div>
-                  </div>
-                </div>
+            <div className=" py-8 px-6 shadow rounded-lg sm:px-10 flex flex-col space-y-6">
+              {/* Redirect To Doctor Login */}
+              <div className="text-blue-600 ">
+                <a
+                  href="/doctorRegistration"
+                  className="hover:underline-offset-8"
+                >
+                  Register as Doctor on WellCare!
+                </a>
+              </div>
 
-                {/* email */}
-                <div>
-                  <label
-                    for="email"
-                    className="block text-sm font-medium text-gray-200"
-                  >
-                    Email address
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autocomplete="email"
-                      required
-                      className="w-full rounded p-2 text-lg"
-                    />
-                  </div>
-                </div>
-
-                {/* password */}
-                <div>
-                  <label
-                    for="password"
-                    className="block text-sm font-medium text-gray-200"
-                  >
-                    Password
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      id="password"
-                      name="password"
-                      type="password"
-                      autocomplete="current-password"
-                      required
-                      className="w-full rounded p-2 text-lg"
-                    />
-                  </div>
-                </div>
-
-                {/* confirm password */}
-                <div>
-                  <label
-                    for="password"
-                    className="block text-sm font-medium text-gray-200"
-                  >
-                    Confirm Password
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      id="cpassword"
-                      name="cpassword"
-                      type="password"
-                      autocomplete="current-password"
-                      required
-                      className="w-full rounded p-2 text-lg"
-                    />
-                  </div>
-                </div>
-
-                {/* company size */}
-                <div>
-                  <label
-                    for="company-size"
-                    className="block text-sm font-medium text-gray-200"
-                  >
-                    Purpose
-                  </label>
-                  <div className="mt-1">
-                    <select
-                      name="company-size"
-                      id="company-size"
-                      className="rounded p-2"
-                    >
-                      <option value="">Please select</option>
-                      <option value="small">Yoga Training</option>
-                      <option value="medium">Physio Consulting</option>
-                      <option value="large">Nutritionist Consulting</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* t&c */}
-                <div className="flex items-center">
+              {/* Full Name */}
+              <div className="">
+                <label
+                  htmlFor="fullName"
+                  className="block text-base font-medium text-gray-200"
+                >
+                  Full Name<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1">
                   <input
-                    id="terms-and-privacy"
-                    name="terms-and-privacy"
-                    type="checkbox"
-                    className=""
+                    id="fullName"
+                    name="name"
+                    type="text"
+                    autoComplete="text"
+                    required
+                    className="w-full rounded p-2 text-lg"
+                    onChange={updateInfo}
                   />
-                  <label
-                    for="terms-and-privacy"
-                    className="ml-2 block text-sm text-gray-200"
-                  >
-                    I agree to the
-                    <a
-                      href="/"
-                      className="text-indigo-600 hover:text-indigo-500 px-1"
-                    >
-                      Terms
-                    </a>
-                    and
-                    <a
-                      href="/"
-                      className="text-indigo-600 hover:text-indigo-500 px-1"
-                    >
-                      Privacy Policy
-                    </a>
-                  </label>
                 </div>
-                {/* Sign in Button */}
-                <div>
-                  <button
-                    type="submit"
-                    className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-blue-700 hover:bg-blue-800"
-                  >
-                    Sign up
-                  </button>
+              </div>
+
+              {/* email */}
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-base font-medium text-gray-200"
+                >
+                  Email address<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    className="w-full rounded p-2 text-lg"
+                    onChange={updateInfo}
+                  />
                 </div>
-              </form>
+              </div>
+
+              {/* userName */}
+              <div>
+                <label
+                  htmlFor="userName"
+                  className="block text-base font-medium text-gray-200"
+                >
+                  UserName<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="userName"
+                    name="username"
+                    type="text"
+                    required
+                    className="w-full rounded p-2 text-lg"
+                    onChange={updateInfo}
+                  />
+                </div>
+              </div>
+
+              {/* password */}
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-base font-medium text-gray-200"
+                >
+                  Password<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    className="w-full rounded p-2 text-lg"
+                    onChange={updateInfo}
+                  />
+                </div>
+              </div>
+
+              {/* confirm password */}
+              <div>
+                <label
+                  htmlFor="password"
+                  className="block text-base font-medium text-gray-200"
+                >
+                  Confirm Password<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="cpassword"
+                    name="confirmPassword"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    className="w-full rounded p-2 text-lg"
+                    onChange={updateInfo}
+                  />
+                </div>
+              </div>
+
+              {/* age */}
+              <div>
+                <label
+                  htmlFor="age"
+                  className="block text-base font-medium text-gray-200"
+                >
+                  Age<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="age"
+                    name="age"
+                    type="number"
+                    required
+                    className="rounded p-2 text-lg w-1/3"
+                    onChange={updateInfo}
+                  />
+                </div>
+              </div>
+
+              {/* Gender */}
+              <div>
+                <label
+                  htmlFor="gender"
+                  className="block text-base font-medium text-gray-200"
+                >
+                  Gender<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1 ">
+                  <select
+                    name="gender"
+                    id="company-size"
+                    className="rounded p-2 w-1/3 text-lg font-bold"
+                    onChange={updateInfo}
+                  >
+                    <option value="">Please select</option>
+                    <option value="small">Male</option>
+                    <option value="medium">Female</option>
+                    <option value="large">Prefer not to say</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Phone Number */}
+              <div>
+                <label
+                  htmlFor="phoneNumber"
+                  className="block text-base font-medium text-gray-200"
+                  onChange={updateInfo}
+                >
+                  Phone Number<sup className="text-red-600">*</sup>
+                </label>
+                <div className="mt-1 flex flex-row space-x-2">
+                  <div className="text-white my-auto font-bold text-lg">
+                    +91
+                  </div>
+                  <input
+                    id="phoneNumber"
+                    name="phoneNumber"
+                    type="number"
+                    display="none"
+                    autoComplete="current-password"
+                    required
+                    className="w-full rounded p-2 text-lg"
+                    onChange={updateInfo}
+                  />
+                </div>
+              </div>
+
+              {/* t&c */}
+              <div className="flex items-center">
+                <input
+                  id="terms-and-privacy"
+                  name="checked"
+                  type="checkbox"
+                  className=""
+                  required
+                  onChange={check}
+                />
+                <label
+                  htmlFor="terms-and-privacy"
+                  className="ml-2 block text-base text-gray-200"
+                >
+                  I agree to the
+                  <a
+                    href="/"
+                    className="text-blue-600 hover:text-blue-800 px-1"
+                  >
+                    Terms
+                  </a>
+                  and
+                  <a
+                    href="/"
+                    className="text-blue-600 hover:text-blue-800 px-1"
+                  >
+                    Privacy Policy
+                  </a>
+                </label>
+              </div>
+              {/* Sign in Button */}
+              <div>
+                <button
+                  type="submit"
+                  className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-blue-700 hover:bg-blue-800"
+                  onClick={submit}
+                >
+                  Sign up
+                </button>
+              </div>
             </div>
           </div>
         </div>

@@ -33,6 +33,9 @@ function App() {
           <Route exact path="/forgotPassword" element={<ForgotPassword />} />
           {/* reset password page */}
           <Route exact path="/resetPassword" element={<ResetPassword />} />
+
+          {/* Redirect to home page if some unknown route is used */}
+          {/* <Navigate to="/" /> */}
         </Routes>
       </Router>
     </>

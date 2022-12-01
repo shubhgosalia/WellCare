@@ -4,13 +4,13 @@ import NavbarHome from "components/Utils/Navbar";
 
 const Home = () => {
   return (
-    <>
+    <div className="h-screen">
       <NavbarHome />
-      <div className="w-full h-full">
+      <div className="w-full ">
         <div className="bg-white h-px mx-10"></div>
         <Search />
       </div>
-    </>
+    </div>
   );
 };
 

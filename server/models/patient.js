@@ -1,64 +1,65 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //patient model
 const patientSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: [true, "User should have a name"]
+  name: {
+    type: String,
+    required: [true, "User should have a name"],
+  },
+  email: {
+    type: String,
+    required: [true, "User should have a Email"],
+    unique: true,
+  },
+  phoneNumber: {
+    type: String,
+    required: [true, "User should have a Phone Number"],
+  },
+  username: {
+    type: String,
+    required: [true, "User should have a username"],
+    unique: true,
+  },
+  password: {
+    type: String,
+    required: [true, "User should have a password"],
+  },
+  gender: {
+    type: String,
+    required: [true, "User should have a Gender"],
+  },
+  age: {
+    type: Number,
+    required: [true, "User should have a Age"],
+  },
+  profile_pic: {
+    image_url: {
+      type: String,
+      // required:[true, "User should have a  image url"],
+      default:
+        "https://res.cloudinary.com/dprscch9k/image/upload/v1669703344/default_pic1_gnjm3i.png",
     },
-    email: {
-        type: String,
-        required: [true, "User should have a Email"],
-        unique: true
+    file_name: {
+      type: String,
+      // required: [true, "User should have a  image file_name"]
     },
-    phoneNumber: {
-        type: String,
-        required: [true, "User should have a Phone Number"]
-    },
-    username: {
-        type: String,
-        required: [true, "User should have a username"],
-        unique: true
-    },
-    password: {
-        type: String,
-        required: [true, "User should have a password"]
-    },
-    gender: {
-        type: String,
-        required: [true, "User should have a Gender"]
-    },
-    age: {
-        type: Number,
-        required: [true, "User should have a Age"]
-    },
-    profile_pic: {
-        image_url: {
-            type: String,
-            // required:[true, "User should have a  image url"],
-            default: "https://res.cloudinary.com/dprscch9k/image/upload/v1669703344/default_pic1_gnjm3i.png"
-        },
-        file_name: {
-            type: String,
-            // required: [true, "User should have a  image file_name"]
-        }
-    },
-    time_registered: {
-        type: Date,
-        default: Date.now
-    },
-    mailVerified: {
-        type: Boolean,
-        default: false
-    },
-    verifyToken: {
-        type: String,
-        default: null
-    },
-    verifyTokenExpiry: {
-        type: Date,
-        default: null
-    }
+  },
+  time_registered: {
+    type: Date,
+    default: Date.now,
+  },
+  mailVerified: {
+    type: Boolean,
+    default: false,
+  },
+  verifyToken: {
+    type: String,
+    default: null,
+  },
+  verifyTokenExpiry: {
+    type: Date,
+    default: null,
+  },
 });
 
 const Patient = mongoose.model("Patient", patientSchema);

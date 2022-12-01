@@ -1,6 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  let [data, setData] = useState({
+    username: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+
+  const submit_form = async (event) => {
+    //send the data to the backend
+    try {
+      event.preventDefault();
+      let postData = {
+        username: data.email,
+        password: data.password,
+      };
+
+      // setLoad(true);
+      let res = await axios.post("http://127.0.0.1:4000/auth/login", postData);
+      if (res.data.status === "success") {
+        Swal.fire({
+          icon: "success",
+          title: res.data.message,
+        });
+        navigate("/landing");
+      }
+      // setLoad(false);
+    } catch (err) {
+      // setLoad(false);
+      console.log("error in login : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  };
+
+  const login = (event) => {
+    const { name, value } = event.target;
+    setData((prevData) => {
+      return { ...prevData, [name]: value };
+    });
+  };
+
   return (
     <>
       {/* main container */}
@@ -58,16 +104,17 @@ const Login = () => {
                     for="email"
                     className="block text-sm font-medium text-gray-200"
                   >
-                    Email address
+                    Username/Email ID
                   </label>
                   <div className="mt-1">
                     <input
                       id="email"
-                      name="email"
+                      name="username"
                       type="email"
                       autocomplete="email"
                       required
                       className="w-full rounded p-2 text-lg"
+                      onClick={login}
                     />
                   </div>
                 </div>
@@ -88,43 +135,16 @@ const Login = () => {
                       autocomplete="current-password"
                       required
                       className="w-full rounded p-2 text-lg"
+                      onClick={login}
                     />
                   </div>
-                </div>
-
-                {/* t&c */}
-                <div className="flex items-center">
-                  <input
-                    id="terms-and-privacy"
-                    name="terms-and-privacy"
-                    type="checkbox"
-                    className=""
-                  />
-                  <label
-                    for="terms-and-privacy"
-                    className="ml-2 block text-sm text-gray-200"
-                  >
-                    I agree to the
-                    <a
-                      href="/"
-                      className="text-indigo-600 hover:text-indigo-500 px-1"
-                    >
-                      Terms
-                    </a>
-                    and
-                    <a
-                      href="/"
-                      className="text-indigo-600 hover:text-indigo-500 px-1"
-                    >
-                      Privacy Policy
-                    </a>
-                  </label>
                 </div>
                 {/* Sign in Button */}
                 <div>
                   <button
                     type="submit"
                     className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-blue-700 hover:bg-blue-800"
+                    onClick={submit_form}
                   >
                     Login
                   </button>
