@@ -47,6 +47,13 @@ const Signup = () => {
               <div className="text-xs text-white">Must for HealthCare</div>
             </div>
 
+            <p className="mt-1 px-9" style={{ color: "white" }}>
+              Are you a doctor/Expert?{" "}
+              <a style={{ color: "blue" }} href="/doctorRegistration">
+                Signup Here
+              </a>{" "}
+            </p>
+
             {/* form */}
             <div className=" py-8 px-6 shadow rounded-lg sm:px-10">
               <form className="mb-0 space-y-6" action="#" method="POST">
@@ -213,6 +220,12 @@ const Signup = () => {
                   </button>
                 </div>
               </form>
+              <p className="mt-3" style={{ color: "white" }}>
+                Already have an account?{" "}
+                <a style={{ color: "blue" }} href="/login">
+                  Login
+                </a>{" "}
+              </p>
             </div>
           </div>
         </div>

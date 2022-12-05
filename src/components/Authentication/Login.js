@@ -130,6 +130,12 @@ const Login = () => {
                   </button>
                 </div>
               </form>
+              <p className="mt-3" style={{ color: "white" }}>
+                Don't have an account?{" "}
+                <a style={{ color: "blue" }} href="/signup">
+                  Signup
+                </a>{" "}
+              </p>
             </div>
           </div>
         </div>

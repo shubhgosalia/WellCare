@@ -6,12 +6,15 @@ import { UseContextProvider } from "components/DoctorRegistration/contexts/Stepp
 import Step1 from "components/DoctorRegistration/Step1";
 import Step2 from "components/DoctorRegistration/Step2";
 import Step3 from "components/DoctorRegistration/Step3";
+import Step4 from "components/DoctorRegistration/Step4";
+import Step5 from "components/DoctorRegistration/Step5";
 import Final from "components/DoctorRegistration/Final";
+import NavbarHome from "components/Utils/Navbar";
 
 const DoctorRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
 
-  const steps = ["Step 1", "Step 2", "Step 3", "Complete"];
+  const steps = ["Step 1", "Step 2", "Step 3", "Step 4", "Step 5", "Complete"];
 
   const displayStep = (step) => {
     switch (step) {
@@ -22,6 +25,10 @@ const DoctorRegistration = () => {
       case 3:
         return <Step3 />;
       case 4:
+        return <Step4 />;
+      case 5:
+        return <Step5 />;
+      case 6:
         return <Final />;
       default:
     }
@@ -37,7 +44,9 @@ const DoctorRegistration = () => {
 
   return (
     <>
-      <div className="mx-auto mt-8 rounded-2xl bg-white pb-2 shadow-xl md:w-1/2">
+      <NavbarHome />
+
+      <div className="mx-auto mt-6 rounded-2xl bg-white pb-2 shadow-xl md:w-1/2">
         {/* Stepper */}
         <h2 class="pt-5 pl-8 text-xl font-bold leading-tight tracking-tight text-blue-600 md:text-2xl dark:text-white">
           Expert Registration

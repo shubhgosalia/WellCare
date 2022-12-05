@@ -1,4 +1,5 @@
 import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
+import React, { useState } from "react";
 
 export default function Step3() {
   const { userData, setUserData } = useStepperContext();
@@ -7,85 +8,88 @@ export default function Step3() {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
   };
+
+  const [showhide, setShowhide] = useState("");
+
+  const handleshow = (e) => {
+    const getshow = e.target.value;
+    setShowhide(getshow);
+  };
+
   return (
     <div className="flex flex-col ">
-      <div className="mt-3 w-full mx-2 flex-1">
-        <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-          Fee per appointment/session
-        </label>
-        <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
-          <input
-            onChange={handleChange}
-            value={userData["fee"] || ""}
-            name="fee"
-            placeholder="₹ 00.00"
-            type="number"
-            required
-            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-          />
-        </div>
-      </div>
-
-      <div className="mt-3 w-full mx-2 flex-1">
-        <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-          Experience (in yrs)
-        </label>
-        <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
-          <input
-            onChange={handleChange}
-            value={userData["exp"] || ""}
-            name="exp"
-            placeholder="0"
-            type="number"
-            required
-            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-          />
-        </div>
-      </div>
-
       <div className="mt-3 mx-2 w-full flex-1">
-        <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
-          Upload Profile Pic
+        <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
+          Do you have a clinic?
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+        <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
           <input
-            onChange={handleChange}
-            value={userData["prof_pic"] || ""}
-            name="prof_pic"
-            type="file"
+            id="yesCheck"
+            type="radio"
+            value="yes"
+            name="bordered-radio"
+            onClick={handleshow}
             required
-            className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
+            className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
           />
+          <label
+            for="yesCheck"
+            className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"
+          >
+            Yes
+          </label>
+        </div>
+        <div className="flex items-center mt-3 pl-4 rounded border border-gray-200 dark:border-gray-700">
+          <input
+            id="noCheck"
+            type="radio"
+            value="no"
+            name="bordered-radio"
+            onClick={handleshow}
+            required
+            className="w-4 h-4 text-blue-600 bg-gray-100 "
+          />
+          <label
+            for="noCheck"
+            className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-300"
+          >
+            No
+          </label>
         </div>
       </div>
-      {/* <div className="mt-3 mx-2 w-full flex-1">
-        <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
-          Create Username
+
+      {showhide === "yes" && (
+        <div className="mt-3 w-full mx-2 flex-1">
+          <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
+            Address
+          </label>
+          <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
+            <input
+              onChange={handleChange}
+              value={userData["clinic_address"] || ""}
+              name="clinic_address"
+              placeholder="Clinic address"
+              type="text"
+              required
+              className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            />
+          </div>
+        </div>
+      )}
+
+      <div className="mt-3 w-full mx-2 flex-1">
+        <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
+          City
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+        <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["create_username"] || ""}
-            name="create_username"
-            placeholder="username"
+            value={userData["city"] || ""}
+            name="city"
+            placeholder="City"
             type="text"
-            className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
-          />
-        </div>
-      </div> */}
-      <div className="mt-3 mx-2 w-full flex-1">
-        <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
-          Create Password
-        </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
-          <input
-            onChange={handleChange}
-            value={userData["create_password"] || ""}
-            name="create_password"
-            placeholder="••••••••"
-            type="password"
             required
-            className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
+            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />
         </div>
       </div>
