@@ -9,6 +9,7 @@ import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration
 // import PasswordSetup from "components/PasswordSetup/ForgotPassword";
 import ResetPassword from "components/PasswordSetup/ResetPassword";
 import ForgotPassword from "./components/PasswordSetup/ForgotPassword";
+import Profile from "components/Profile/Profile";
 
 function App() {
   return (
@@ -36,6 +37,9 @@ function App() {
 
           {/* Redirect to home page if some unknown route is used */}
           {/* <Navigate to="/" /> */}
+
+          {/* Profile page */}
+          <Route exact path="/profile" element={<Profile/> } />
         </Routes>
       </Router>
     </>
