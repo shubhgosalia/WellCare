@@ -14,7 +14,7 @@ const Part1 = () => {
       <div className="flex flex-row space-x-3 text-white text-4xl font-semibold">
         <span className="my-auto">Good Morning,</span>
         <br />
-        <span className="font-bold text-blue-700">Krish</span>
+        <span className="font-bold text-primary-blue">Krish</span>
       </div>
 
       {/* Description */}

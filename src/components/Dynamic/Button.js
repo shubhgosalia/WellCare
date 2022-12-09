@@ -5,7 +5,7 @@ export default function Button({
   text = "Button", // or any color of your choice
 }) {
   return (
-    <div className="w-1/3 mx-auto text-center p-2 bg-blue-700 hover:bg-blue-800 rounded-full font-bold text-xl text-white cursor-pointer">
+    <div className="w-1/3 mx-auto text-center p-2 bg-primary-blue hover:bg-blue-800 rounded-full font-bold text-xl text-white cursor-pointer">
       {text}
     </div>
   );

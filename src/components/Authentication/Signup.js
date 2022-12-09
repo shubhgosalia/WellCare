@@ -130,7 +130,7 @@ const Signup = () => {
             </div>
 
             {/* Container 3 */}
-            <div className="flex flex-col rounded-lg bg-blue-700 p-5">
+            <div className="flex flex-col rounded-lg bg-primary-blue p-5">
               {/* Message */}
               <div className="">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
@@ -147,7 +147,9 @@ const Signup = () => {
           <div className="w-2/3 h-full text-black p-5">
             {/* logo */}
             <div className="flex-col space-y-0 text-center ">
-              <div className="font-black text-4xl text-blue-700">WellCare</div>
+              <div className="font-black text-4xl text-primary-blue">
+                WellCare
+              </div>
               <div className="text-xs text-white">Must for HealthCare</div>
             </div>
 
@@ -369,7 +371,7 @@ const Signup = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-blue-700 hover:bg-blue-800"
+                  className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-primary-blue hover:bg-blue-800"
                   onClick={submit}
                 >
                   Sign up
