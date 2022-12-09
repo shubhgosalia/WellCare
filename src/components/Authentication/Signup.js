@@ -17,6 +17,7 @@ const Signup = () => {
     age: "",
     checked: false,
   });
+  const [load, setLoad] = useState(false);
 
   const submit = async (event) => {
     //send the data to the backend
@@ -53,13 +54,13 @@ const Signup = () => {
         username: data.username,
       };
 
-      // setLoad(true);
+      setLoad(true);
       let res = await axios.post(
         "http://127.0.0.1:4000/patient/register",
         postData
       );
       console.log("RESSSSSULTT : ", res);
-      // setLoad(false);
+      setLoad(false);
       setData({
         name: "",
         email: "",
@@ -79,12 +80,12 @@ const Signup = () => {
         navigate("/login");
       }
     } catch (err) {
-      // setLoad(false);
+      setLoad(false);
       console.log("err : ", err);
       Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: err.response.data.error,
+        text: err.response.data.error ? err.response.data.error : "Something went wrong!",
       });
     }
   };
@@ -124,8 +125,7 @@ const Signup = () => {
                 Start your journey with us.
               </div>
               <div className="text-base leading-7 font-thin">
-                Discover the world's best community of freelancers and business
-                owners
+                Discover the health portal full of of doctors and trainers who are waiting to help you on making your health journey easier.
               </div>
             </div>
 
@@ -133,9 +133,10 @@ const Signup = () => {
             <div className="flex flex-col rounded-lg bg-blue-700 p-5">
               {/* Message */}
               <div className="">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-                eveniet nihil ipsum, minus saepe et in consequuntur ab unde illo
-                error est molestiae
+                <b>
+                  Being healthy has countless benefits. So what is stopping you? Just connect with us and take a step towards improving your health...
+                </b>
+
               </div>
 
               {/*  */}
@@ -370,10 +371,22 @@ const Signup = () => {
                 <button
                   type="submit"
                   className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-blue-700 hover:bg-blue-800"
+                  disabled={load ? true : false}
                   onClick={submit}
                 >
-                  Sign up
+                  {
+                    load ? "Loading..." : "Register"
+                  }
                 </button>
+              </div>
+              <div className="text-white">
+                Already registered??
+                <a
+                  href="/login"
+                  className="hover:underline-offset-8 text-blue-600 mx-2"
+                >
+                  Login
+                </a>
               </div>
             </div>
           </div>

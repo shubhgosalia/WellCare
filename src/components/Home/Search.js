@@ -16,9 +16,9 @@ const Search = () => {
   const getData = async () => {
     try {
       let newObj;
-      if (filter.gender !== "") newObj["gender"] = filter.gender;
-      if (filter.city !== "") newObj["city"] = filter.city;
-      if (filter.specialization !== "")
+      if (filter.gender !== "None") newObj["gender"] = filter.gender;
+      if (filter.city !== "None") newObj["city"] = filter.city;
+      if (filter.specialization !== "None")
         newObj["specialization"] = filter.specialization;
 
       let res = await axios.get("127.0.0.1:4000/doctor", {
@@ -106,7 +106,7 @@ const Search = () => {
                 className="rounded p-2"
                 onChange={updateFilters}
               >
-                <option value="">Please select</option>
+                <option value="None">None</option>
                 <option value="small">Yoga Training</option>
                 <option value="medium">Gym Training</option>
                 <option value="large">Nutritionist Consulting</option>
@@ -124,7 +124,7 @@ const Search = () => {
                 className="rounded p-2 w-full"
                 onChange={updateFilters}
               >
-                <option value="">Please select</option>
+                <option value="None">None</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
               </select>
@@ -141,7 +141,7 @@ const Search = () => {
                 className="rounded p-2"
                 onChange={updateFilters}
               >
-                <option value="">Please select</option>
+                <option value="None">None</option>
                 <option value="mumbai">Mumbai</option>
                 <option value="pune">Pune</option>
               </select>

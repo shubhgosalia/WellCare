@@ -8,6 +8,7 @@ const Login = () => {
     username: "",
     password: "",
   });
+  const [load, setLoad] = useState(false);
   const navigate = useNavigate();
 
   const submit_form = async (event) => {
@@ -19,7 +20,7 @@ const Login = () => {
         password: data.password,
       };
 
-      // setLoad(true);
+      setLoad(true);
       let res = await axios.post("http://127.0.0.1:4000/auth/login", postData);
       if (res.data.status === "success") {
         Swal.fire({
@@ -28,9 +29,9 @@ const Login = () => {
         });
         navigate("/landing");
       }
-      // setLoad(false);
+      setLoad(false);
     } catch (err) {
-      // setLoad(false);
+      setLoad(false);
       console.log("error in login : ", err);
       Swal.fire({
         icon: "error",
@@ -66,8 +67,8 @@ const Login = () => {
                 Start your journey with us.
               </div>
               <div className="text-base leading-7 font-thin">
-                Discover the world's best community of freelancers and business
-                owners
+                Discover the health portal full of of doctors and trainers who are waiting to help you on making your health journey easier.
+
               </div>
             </div>
 
@@ -75,9 +76,9 @@ const Login = () => {
             <div className="flex flex-col rounded-lg bg-blue-700 p-5">
               {/* Message */}
               <div className="">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo
-                eveniet nihil ipsum, minus saepe et in consequuntur ab unde illo
-                error est molestiae
+                <b>
+                  Being healthy has countless benefits. So what is stopping you? Just connect with us and take a step towards improving your health...
+                </b>
               </div>
 
               {/*  */}
@@ -146,8 +147,19 @@ const Login = () => {
                     className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-blue-700 hover:bg-blue-800"
                     onClick={submit_form}
                   >
-                    Login
+                    {
+                      load ? "Loading..." : "Login"
+                    }
                   </button>
+                  <div className="text-white my-3">
+                    Don't have an account??
+                    <a
+                      href="/signup"
+                      className="hover:underline-offset-8 text-blue-600 mx-2"
+                    >
+                      Register
+                    </a>
+                  </div>
                 </div>
               </form>
             </div>
