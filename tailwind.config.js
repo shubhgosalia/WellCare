@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Configure your color palette here
+        // Background colors
         "dark-900": "#e5e5e5",
         "dark-800": "#cccccc",
         "dark-700": "#b2b2b2",
@@ -12,11 +12,19 @@ module.exports = {
         "dark-500": "#7f7f7f",
         "dark-400": "#666666",
         "dark-300": "#4c4c4c",
-        "dark-200": "#323232",
-        "dark-100": "#100C08",
+        "dark-200": "#1E293B",
+        "dark-100": "#111827",
         // text color
+        "neon-orange": "#FF6700",
+        "neon-purple": "#b026ff",
+        "neon-green": "#39ff14",
+        "neon-yellow": "#ffff00",
+        "neon-blue": "#04d9ff",
+        // primary
+        "primary-blue": "#1D4ED8",
       },
       fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
         body: [
           "Inter",
           "ui-sans-serif",
