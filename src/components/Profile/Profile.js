@@ -3,10 +3,12 @@ import VerifiedIcon from "components/Icons/solid/verified";
 import EmailIcon from "components/Icons/solid/envelope";
 import LocationIcon from "components/Icons/solid/location";
 import Review from "components/Review/Review";
+import { useState } from "react";
 
 const Profile = () => {
+  const [reviews,setReviews]=useState([]);
   return (
-    <div className=" w-full h-screen bg-black text-white pt-28">
+    <div className=" w-full h-screen bg-dark-100 text-white pt-28 font-poppins">
       <div className="flex-col mx-24 border-[1px] border-white drop-shadow-2xl h-[90%] w-[80%] tracking-wide">
         <div className="p-4  bg-blue-900 h-[40%]">
           {/* Profile image */}
@@ -81,11 +83,11 @@ const Profile = () => {
           </div>
           <div className="w-[75%] border-l-[1px] h-full overflow-auto pt-2 ">
             <div className="font-black text-3xl text-center ">Reviews</div>
-            <Review/>
-            <Review/>
-            <Review/>
-            <Review/>
-            <Review/>
+            { 
+              reviews.map((review)=>{
+                return <Review key="review._id" review={review}/>
+              })
+            }
           </div>
         </div>
       </div>
