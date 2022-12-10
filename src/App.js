@@ -32,7 +32,7 @@ function App() {
           {/* forgot password page */}
           <Route exact path="/forgotPassword" element={<ForgotPassword />} />
           {/* reset password page */}
-          <Route exact path="/resetPassword" element={<ResetPassword />} />
+          <Route exact path="/resetPassword/:token" element={<ResetPassword />} />
 
           {/* Redirect to home page if some unknown route is used */}
           {/* <Navigate to="/" /> */}

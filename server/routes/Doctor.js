@@ -4,10 +4,10 @@ const { Register, getDoctors, getDoctor ,createReviews} = require("../controller
 const Auth=require('../Middleware/Auth')
 const multer=require('multer')
 const {storage} = require('../Utils/cloudinary')
-const upload=multer({storage})
+const upload = multer({ storage });
 
 //register route
-router.post('/register',upload.single('image'),Register);
+router.post('/register', upload.single('profile_pic'), Register);
 // get all Doctors route
 router.get('/',getDoctors);
 

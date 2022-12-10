@@ -1,4 +1,65 @@
+import React, { useState, useEffect } from "react";
+import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
+import axios from "axios";
+import Swal from "sweetalert2";
+
 export default function Final() {
+
+  const [load, setLoad] = useState(false);
+  const { userData } = useStepperContext();
+
+  useEffect(() => {
+    registerDoctor();
+  }, []);
+
+  const registerDoctor = async () => {
+    //send the data to the backend
+    try {
+
+      let postData = {
+        name: userData.name,
+        email: userData.email,
+        username: userData.username,
+        password: userData.password,
+        have_clinic: userData.have_clinic,
+        clinic_address: userData.clinic_address,
+        specialization: userData.specialization,
+        category: userData.category,
+        age: userData.age,
+        gender: userData.gender,
+        licenseNumber: userData.licenseNumber,
+        city: userData.city,
+        years_Of_Experience: userData.years_Of_Experience,
+        fees: userData.fees,
+        phoneNumber: userData.phoneNumber,
+        profile_pic: userData.profile_pic
+      };
+
+      setLoad(true);
+      let res = await axios.post("http://127.0.0.1:4000/doctor/register", postData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
+      if (res.data.status === "success") {
+        Swal.fire({
+          icon: "success",
+          title: res.data.message,
+        });
+      }
+      setLoad(false);
+    } catch (err) {
+      setLoad(false);
+      console.log("error in login : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  }
+
+
   return (
     <div className="container md:mt-10">
       <div className="flex flex-col items-center">
@@ -29,9 +90,11 @@ export default function Final() {
         <div className="text-lg font-semibold text-gray-500">
           You have successfully registered.
         </div>
-        <a className="mt-10" href="/user/dashboard">
-          <button className="h-10 px-5 bg-blue-600 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-blue-900">
-            Close
+        <a className="mt-10" href="/login">
+          <button className="h-10 px-5 bg-blue-600 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-blue-900" disabled={load ? true : false} >
+            {
+              load ? "Registering..." : "Login"
+            }
           </button>
         </a>
       </div>

@@ -14,9 +14,13 @@ exports.RegisterDoctorJoi = async (body)=>{
      gender: joi.string().required(),
      licenseNumber: joi.string().required(),
      city : joi.string().required(),
-     specialization: joi.string().required(),
+      specialization: joi.string(),
      years_Of_Experience: joi.number().required(),
      fees: joi.number().required(),
+      bio: joi.string().required(),
+      clinic_address: joi.string(),
+      have_clinic: joi.boolean(),
+      category: joi.string().required(),
     });
 
    try{

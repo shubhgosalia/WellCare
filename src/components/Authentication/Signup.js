@@ -72,7 +72,7 @@ const Signup = () => {
         username: "",
       });
 
-      if (res.data.status === "success") {
+      if (res.data.status === true) {
         Swal.fire({
           icon: "success",
           title: res.data.message,
@@ -152,17 +152,16 @@ const Signup = () => {
               <div className="text-xs text-white">Must for HealthCare</div>
             </div>
 
+            {/* Redirect To Doctor register */}
+            <p className="mt-1 px-9" style={{ color: "white" }}>
+              Are you a doctor/Expert?{" "}
+              <a style={{ color: "blue" }} href="/doctorRegistration">
+                Signup Here
+              </a>{" "}
+            </p>
+
             {/* form */}
             <div className=" py-8 px-6 shadow rounded-lg sm:px-10 flex flex-col space-y-6">
-              {/* Redirect To Doctor Login */}
-              <div className="text-blue-600 ">
-                <a
-                  href="/doctorRegistration"
-                  className="hover:underline-offset-8"
-                >
-                  Register as Doctor on WellCare!
-                </a>
-              </div>
 
               {/* Full Name */}
               <div className="">

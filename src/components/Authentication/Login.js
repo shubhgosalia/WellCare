@@ -7,6 +7,7 @@ const Login = () => {
   let [data, setData] = useState({
     username: "",
     password: "",
+    type: "Patient"
   });
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
@@ -16,13 +17,14 @@ const Login = () => {
     try {
       event.preventDefault();
       let postData = {
-        username: data.email,
+        username: data.username,
         password: data.password,
+        type: data.type
       };
 
       setLoad(true);
       let res = await axios.post("http://127.0.0.1:4000/auth/login", postData);
-      if (res.data.status === "success") {
+      if (res.data.success === true) {
         Swal.fire({
           icon: "success",
           title: res.data.message,
@@ -96,7 +98,7 @@ const Login = () => {
 
             {/* form */}
             <div className=" py-8 px-6 shadow rounded-lg sm:px-10">
-              <form className="mb-0 space-y-6" action="#" method="POST">
+              <div className="mb-0 space-y-6">
                 {/*  */}
 
                 {/* email */}
@@ -111,11 +113,10 @@ const Login = () => {
                     <input
                       id="email"
                       name="username"
-                      type="email"
-                      autocomplete="email"
+                      type="text"
                       required
                       className="w-full rounded p-2 text-lg"
-                      onClick={login}
+                      onChange={login}
                     />
                   </div>
                 </div>
@@ -136,10 +137,51 @@ const Login = () => {
                       autocomplete="current-password"
                       required
                       className="w-full rounded p-2 text-lg"
-                      onClick={login}
+                      onChange={login}
                     />
                   </div>
                 </div>
+
+                {/* radio button */}
+                <label className="my-1 text-xs font-bold uppercase leading-8 text-gray-200">
+                  Gender
+                </label>
+                <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                  <input
+                    id="bordered-radio-1"
+                    type="radio"
+                    value="Doctor"
+                    name="type"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                    checked={data.type === "Doctor" ? true : false}
+                    onChange={login}
+                  />
+                  <label
+                    for="bordered-radio-1"
+                    className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
+                  >
+                    Doctor
+                  </label>
+                </div>
+
+                <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                  <input
+                    id="bordered-radio-1"
+                    type="radio"
+                    value="Patient"
+                    name="type"
+                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                    checked={data.type === "Patient" ? true : false}
+                    onChange={login}
+                  />
+                  <label
+                    for="bordered-radio-1"
+                    className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
+                  >
+                    Patient
+                  </label>
+                </div>
+
                 {/* Sign in Button */}
                 <div>
                   <button
@@ -151,6 +193,14 @@ const Login = () => {
                       load ? "Loading..." : "Login"
                     }
                   </button>
+                  <div className="my-3">
+                    <a
+                      href="/forgotpassword"
+                      className="hover:underline-offset-8 text-blue-600 mx-2"
+                    >
+                      Forgot Password?
+                    </a>
+                  </div>
                   <div className="text-white my-3">
                     Don't have an account??
                     <a
@@ -161,7 +211,7 @@ const Login = () => {
                     </a>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
         </div>
