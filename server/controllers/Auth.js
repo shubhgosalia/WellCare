@@ -87,6 +87,9 @@ exports.Login = async (req, res, next) => {
     try {
         let user_name = String(req.body.username);
         let pass_word = String(req.body.password);
+        console.log(user_name);
+        console.log(pass_word);
+        console.log(req.body.type);
         //type can either patient or doctor
         let user;
         if (req.body.type === "Patient") {
@@ -138,7 +141,7 @@ exports.Login = async (req, res, next) => {
             expires: new Date(Date.now() + 8 * 3600000),
             samesite: true
         });
-
+        console.log("hello");
         return res.status(200).json({
             message: "You have logged in successfully",
             success: true
@@ -176,7 +179,7 @@ exports.GeneratePasswordLink = async (req, res, next) => {
 
         //generating the link
         let { token } = TokenGenerator();
-        let link = `http://localhost:4000/auth/setpassword/${token}${req.body.type === "Patient" ? '@' : '#'}`;
+        let link = `http://localhost:3000/resetpassword/${token}${req.body.type === "Patient" ? '@' : '#'}`;
 
         if (req.body.type === "Patient") {
             await Patient.findByIdAndUpdate(user[0].id, { verifyToken: token, verifyTokenExpiry: Date.now() + 60 * 60 * 1000 * 24 });

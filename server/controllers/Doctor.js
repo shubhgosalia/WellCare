@@ -37,7 +37,7 @@ exports.Register = async (req, res, next) => {
       bio: user.bio,
       category: user.category,
       have_clinic: user.have_clinic,
-      clinic_address: user.clinic_address
+      clinic_address: user.have_clinic ? user.clinic_address : ""
     });
 
     //generating the link
@@ -86,7 +86,7 @@ exports.getDoctors = async (req, res, next) => {
     //filtering the doctors based on the category
     let doctors = await Doctor.find(req.query);
     res.status(200).json({
-      status: "Success",
+      success: true,
       data: {
         doctors
       }
@@ -103,7 +103,7 @@ exports.getDoctor = async (req, res, next) => {
   try {
     const doctor = await Doctor.findById(req.params.id).populate('review');
     res.status(200).json({
-      status: "Success",
+      success: true,
       data: doctor
     })
   }

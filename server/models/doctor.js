@@ -23,7 +23,7 @@ const doctorSchema = new mongoose.Schema({
     },
     specialization: {
         type: String,
-        required: [true, "User should have a specialization"]
+        // required: [true, "User should have a specialization"]
     },
     years_Of_Experience: {
         type: Number,
