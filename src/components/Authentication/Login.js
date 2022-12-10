@@ -53,7 +53,7 @@ const Login = () => {
       <div className="bg-dark-100  w-full  h-screen">
         <div className="flex p-5 space-x-5 h-full text-white">
           {/* leftsidebar */}
-          <div className="flex flex-col w-1/3 bg-blue-600  rounded-lg px-14 py-8 justify-between ">
+          <div className="flex flex-col w-1/3 bg-primary-blue  rounded-lg px-14 py-8 justify-between ">
             {/* heading */}
             <div className="flex-col space-y-0 text-center">
               <div className="font-black text-4xl">WellCare</div>
@@ -145,7 +145,7 @@ const Login = () => {
                 <div>
                   <button
                     type="submit"
-                    className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-primary-blue hover:bg-blue-800"
+                    className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-primary-blue hover:bg-secondary-blue"
                     onClick={submit_form}
                   >
                     Login

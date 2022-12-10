@@ -23,14 +23,14 @@ export default function Final() {
           </svg>
         </div>
 
-        <div className="mt-3 text-xl font-semibold uppercase text-blue-600">
+        <div className="mt-3 text-xl font-semibold uppercase text-primary-blue">
           Congratulations!
         </div>
         <div className="text-lg font-semibold text-gray-500">
           You have successfully registered.
         </div>
         <a className="mt-10" href="/user/dashboard">
-          <button className="h-10 px-5 bg-blue-600 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-blue-900">
+          <button className="h-10 px-5 bg-primary-blue transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-blue-900">
             Close
           </button>
         </a>

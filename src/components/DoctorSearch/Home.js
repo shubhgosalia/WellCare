@@ -1,27 +1,19 @@
-// Modules
 import React from "react";
-
-// Components
+import Search from "components/DoctorSearch/Search";
 import Navbar from "components/Home/Navbar";
-import HomePart1 from "components/Home/Part1";
-import HomePart2 from "components/Home/Part2";
 
 const Home = () => {
   return (
     <div className="w-full flex flex-row bg-dark-100 font-poppins">
-      {/* 1.Navbar */}
+      {/* 1. Navbar */}
       <Navbar />
 
       {/* 2. hr */}
       <div className="w-px my-20 bg-dark-700"></div>
 
-      {/* 3.Home Page */}
-      <div className="bg-dark-100 w-[84%] flex px-10 space-x-10">
-        {/* 3a */}
-        <HomePart1 />
-
-        {/* 3b */}
-        <HomePart2 />
+      {/*  */}
+      <div className="w-[84%]">
+        <Search />
       </div>
     </div>
   );

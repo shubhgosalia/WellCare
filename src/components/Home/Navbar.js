@@ -14,7 +14,7 @@ const Navbar = () => {
       {/* Main Container */}
       <div className="px-2 flex flex-col justify-between h-screen py-5">
         {/* Logo */}
-        <div className="text-4xl font-black text-blue-600 text-center ">
+        <div className="text-4xl font-black text-primary-blue text-center ">
           <a href="/">WELLCARE</a>
         </div>
 

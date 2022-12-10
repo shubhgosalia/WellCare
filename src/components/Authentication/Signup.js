@@ -111,7 +111,7 @@ const Signup = () => {
       <div className="bg-dark-100  w-full  h-full">
         <div className="flex p-5 space-x-5 h-full text-white">
           {/* leftsidebar */}
-          <div className="flex flex-col w-1/3 bg-blue-600  rounded-lg px-14 py-8 justify-between">
+          <div className="flex flex-col w-1/3 bg-primary-blue  rounded-lg px-14 py-8 justify-between">
             {/* heading */}
             <div className="flex-col space-y-0 text-center">
               <div className="font-black text-4xl">WellCare</div>
@@ -156,7 +156,7 @@ const Signup = () => {
             {/* form */}
             <div className=" py-8 px-6 shadow rounded-lg sm:px-10 flex flex-col space-y-6">
               {/* Redirect To Doctor Login */}
-              <div className="text-blue-600 ">
+              <div className="text-primary-blue ">
                 <a
                   href="/doctorRegistration"
                   className="hover:underline-offset-8"
@@ -354,14 +354,14 @@ const Signup = () => {
                   I agree to the
                   <a
                     href="/"
-                    className="text-blue-600 hover:text-blue-800 px-1"
+                    className="text-primary-blue hover:text-secondary-blue px-1"
                   >
                     Terms
                   </a>
                   and
                   <a
                     href="/"
-                    className="text-blue-600 hover:text-blue-800 px-1"
+                    className="text-primary-blue hover:text-secondary-blue px-1"
                   >
                     Privacy Policy
                   </a>
@@ -371,7 +371,7 @@ const Signup = () => {
               <div>
                 <button
                   type="submit"
-                  className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-primary-blue hover:bg-blue-800"
+                  className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-primary-blue hover:bg-secondary-blue"
                   onClick={submit}
                 >
                   Sign up

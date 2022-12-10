@@ -39,7 +39,7 @@ const DoctorRegistration = () => {
     <>
       <div className="mx-auto mt-8 rounded-2xl bg-white pb-2 shadow-xl md:w-1/2">
         {/* Stepper */}
-        <h2 class="pt-5 pl-8 text-xl font-bold leading-tight tracking-tight text-blue-600 md:text-2xl dark:text-white">
+        <h2 class="pt-5 pl-8 text-xl font-bold leading-tight tracking-tight text-primary-blue md:text-2xl dark:text-white">
           Expert Registration
         </h2>
         <div className="horizontal container mt-5 ">

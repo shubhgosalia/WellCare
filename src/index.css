@@ -8,7 +8,7 @@
   }
 
   button {
-    @apply text-white bg-primary-blue hover:bg-blue-800 rounded;
+    @apply text-white bg-primary-blue hover:bg-secondary-blue rounded;
   }
 
   ::-webkit-scrollbar {

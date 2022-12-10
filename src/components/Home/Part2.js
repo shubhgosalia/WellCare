@@ -1,4 +1,5 @@
 import React from "react";
+import UpcomingAppointment from "components/Home/upcomingAppointment";
 
 const Part2 = () => {
   return (
@@ -11,13 +12,10 @@ const Part2 = () => {
 
         {/* Containers */}
         <div className="flex flex-col space-y-5">
-          <div className="bg-primary-blue w-full p-3 rounded-lg">
-            Appointment1
-          </div>
-          <div className="bg-primary-blue w-full p-3 rounded-lg">
-            Appointment2
-          </div>
-          <div></div>
+          {/*  */}
+          <UpcomingAppointment />
+          <UpcomingAppointment />
+          <UpcomingAppointment />
         </div>
       </div>
 

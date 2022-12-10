@@ -21,7 +21,8 @@ module.exports = {
         "neon-yellow": "#ffff00",
         "neon-blue": "#04d9ff",
         // primary
-        "primary-blue": "#1D4ED8",
+        "primary-blue": "#0284C7",
+        "secondary-blue": "#0369A1",
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],

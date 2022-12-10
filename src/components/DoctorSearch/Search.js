@@ -70,16 +70,16 @@ const Search = () => {
         {/* form and results */}
         <div className="flex flex-row px-20">
           {/* form */}
-          <div className="w-1/3 bg-blue-600 p-4 text-dark-100 rounded flex flex-col space-y-5">
+          <div className="w-full bg-primary-blue p-4 text-dark-100 rounded flex justify-between">
             {/* Search Doctors */}
-            <div>
+            <div className="w-[30%]">
               <label
                 for="doctorSearch"
                 className="block text-base font-medium "
               >
                 Search Doctor:
               </label>
-              <div className="mt-1">
+              <div className="">
                 <input
                   id="doctorSearch"
                   name="text"
@@ -93,7 +93,7 @@ const Search = () => {
             </div>
 
             {/* Speciality */}
-            <div>
+            <div className="">
               <label
                 for="specialization"
                 className="block text-base font-medium "
@@ -147,9 +147,6 @@ const Search = () => {
               </select>
             </div>
           </div>
-
-          {/* results */}
-          <div className="w-2/3"></div>
         </div>
       </div>
     </>

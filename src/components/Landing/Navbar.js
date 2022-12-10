@@ -12,7 +12,7 @@ const Navbar = () => {
       <div className="px-28 flex justify-between items-center w-full h-full">
         <div className="flex items-center">
           {/* Logo */}
-          <h1 className="text-4xl font-black mr-4 sm:text-4xl text-blue-600">
+          <h1 className="text-4xl font-black mr-4 sm:text-4xl text-primary-blue">
             WellCare
           </h1>
 
@@ -124,7 +124,7 @@ const Navbar = () => {
         <div className="flex flex-col my-4">
           {/*  */}
           {/* Login */}
-          <button className="bg-transparent text-blue-600 px-8 py-3 mb-4">
+          <button className="bg-transparent text-primary-blue px-8 py-3 mb-4">
             <a href="/login">Login</a>
           </button>
 

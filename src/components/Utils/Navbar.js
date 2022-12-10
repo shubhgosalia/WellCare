@@ -7,7 +7,7 @@ const Navbar = () => {
       {/* Main container */}
       <div className="flex flex-row justify-between px-36 py-3 bg-dark-100">
         {/* Logo */}
-        <div className="text-4xl font-black  text-blue-600">WELLCARE</div>
+        <div className="text-4xl font-black  text-primary-blue">WELLCARE</div>
 
         {/* Routes and My Account Button */}
         <div className="flex flex-row w-1/2 justify-between text-white text-xl">
@@ -29,7 +29,7 @@ const Navbar = () => {
           </div>
 
           {/* My account Button */}
-          <div className="font-medium text-white bg-blue-600 p-2 rounded flex flex-row">
+          <div className="font-medium text-white bg-primary-blue p-2 rounded flex flex-row">
             <div>My Account</div>
             <LightRightArrowIcon size={20} color="#000000" />
           </div>

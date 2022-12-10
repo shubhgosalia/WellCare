@@ -53,7 +53,7 @@ export default function Step1() {
             value={userData["male"] || ""}
             name="bordered-radio"
             required
-            class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+            class="w-4 h-4 text-primary-blue bg-gray-100 border-gray-300"
           />
           <label
             for="bordered-radio-1"
@@ -70,7 +70,7 @@ export default function Step1() {
             value={userData["female"] || ""}
             name="bordered-radio"
             required
-            class="w-4 h-4 text-blue-600 bg-gray-100 "
+            class="w-4 h-4 text-primary-blue bg-gray-100 "
           />
           <label
             for="bordered-radio-2"
