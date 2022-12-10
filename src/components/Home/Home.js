@@ -2,7 +2,7 @@
 import React from "react";
 
 // Components
-import Navbar from "components/Home/Navbar";
+import Navbar from "components/Utils/Navbar";
 import HomePart1 from "components/Home/Part1";
 import HomePart2 from "components/Home/Part2";
 

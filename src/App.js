@@ -1,8 +1,9 @@
 import "./App.css";
-import Login from "components/Authentication/Login";
-import Home from "components/Home/Home";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+//
+import Login from "components/Authentication/Login";
+import Home from "components/Home/Home";
 import Signup from "components/Authentication/Signup";
 import Landing from "components/Landing/Landing";
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
