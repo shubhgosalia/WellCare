@@ -27,7 +27,7 @@ const Step2 = forwardRef((props, ref) => {
         return false;
       }
       return true;
-    }
+    },
   }));
 
   return (
@@ -39,12 +39,26 @@ const Step2 = forwardRef((props, ref) => {
         <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
           <select
             aria-label="Default select example required"
-            onChange={(e) => handleChange(e)
-            }
+            onChange={(e) => handleshow(e)}
           >
-            <option value="Physiotherapist" selected={userData.category === "Physiotherapist" ? true : false}>Physiotherapist</option>
-            <option value="Nutritionist" selected={userData.category === "Nutritionist" ? true : false}>Nutritionist</option>
-            <option value="Yoga Trainer" selected={userData.category === "Yoga Trainer" ? true : false}>Yoga Trainer</option>
+            <option
+              value="Physiotherapist"
+              selected={userData.category === "Physiotherapist" ? true : false}
+            >
+              Physiotherapist
+            </option>
+            <option
+              value="Nutritionist"
+              selected={userData.category === "Nutritionist" ? true : false}
+            >
+              Nutritionist
+            </option>
+            <option
+              value="Yoga Trainer"
+              selected={userData.category === "Yoga Trainer" ? true : false}
+            >
+              Yoga Trainer
+            </option>
           </select>
         </div>
       </div>

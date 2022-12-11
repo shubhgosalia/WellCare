@@ -9,7 +9,7 @@ import Step3 from "components/DoctorRegistration/Step3";
 import Step4 from "components/DoctorRegistration/Step4";
 import Step5 from "components/DoctorRegistration/Step5";
 import Final from "components/DoctorRegistration/Final";
-import NavbarHome from "components/Utils/Navbar";
+import NavbarHome from "components/Utils/LoginNavbar";
 import Swal from "sweetalert2";
 
 const DoctorRegistration = () => {
