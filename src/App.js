@@ -2,9 +2,9 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 //
-import Login from "components/Authentication/Login";
+import Login from "components/Authentication/Login/Login";
 import Home from "components/Home/Home";
-import Signup from "components/Authentication/Signup";
+import Signup from "components/Authentication/Signup/Signup";
 import Landing from "components/Landing/Landing";
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 import ResetPassword from "components/PasswordSetup/ResetPassword";
@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Routes>
           {/* Home */}
-          <Route exact path="/" element={<Home />} />
+          <Route exact path="/home" element={<Home />} />
 
           {/* Login */}
           <Route exact path="/login" element={<Login />} />
@@ -42,7 +42,11 @@ function App() {
           <Route exact path="/forgotPassword" element={<ForgotPassword />} />
 
           {/* reset password page */}
-          <Route exact path="/resetPassword/:token" element={<ResetPassword />} />
+          <Route
+            exact
+            path="/resetPassword/:token"
+            element={<ResetPassword />}
+          />
 
           {/* Redirect to home page if some unknown route is used */}
           {/* <Navigate to="/" /> */}

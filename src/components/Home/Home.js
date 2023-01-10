@@ -8,20 +8,23 @@ import HomePart2 from "components/Home/Part2";
 
 const Home = () => {
   return (
-    <div className="w-full flex flex-row bg-dark-100 font-poppins">
+    <div className="w-full flex flex-row bg-dark-100 font-body-primary">
       {/* 1.Navbar */}
-      <Navbar />
-
-      {/* 2. hr */}
-      <div className="w-px my-20 bg-dark-700"></div>
+      <div className="w-[16%] h-screen">
+        <Navbar />
+      </div>
 
       {/* 3.Home Page */}
-      <div className="bg-dark-100 w-[84%] flex px-10 space-x-10">
+      <div className="bg-dark-100 w-[84%] flex px-6 space-x-5">
         {/* 3a */}
-        <HomePart1 />
+        <div className="w-[75%]">
+          <HomePart1 />
+        </div>
 
         {/* 3b */}
-        <HomePart2 />
+        <div className="w-[25%] h-screen">
+          <HomePart2 />
+        </div>
       </div>
     </div>
   );

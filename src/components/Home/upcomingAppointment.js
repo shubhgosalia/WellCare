@@ -2,7 +2,7 @@ import React from "react";
 
 export default function upcomingAppointment({ text = "" }) {
   return (
-    <div className="bg-primary-blue w-full p-3 rounded-lg">
+    <div className="bg-dark-100 w-full p-3 rounded-lg text-white shadow-md shadow-white/50">
       <div className="flex flex-row space-x-5">
         {/* image */}
         <img

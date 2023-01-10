@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import LeftLogin from "./LeftLogin";
 
 const Login = () => {
   let [data, setData] = useState({
     username: "",
     password: "",
-    type: "Patient"
+    type: "Patient",
   });
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Login = () => {
       let postData = {
         username: data.username,
         password: data.password,
-        type: data.type
+        type: data.type,
       };
 
       setLoad(true);
@@ -53,53 +54,23 @@ const Login = () => {
   return (
     <>
       {/* main container */}
-      <div className="bg-dark-100  w-full  h-screen">
+      <div className="bg-dark-100 w-full h-screen font-body-primary">
         <div className="flex p-5 space-x-5 h-full text-white">
           {/* leftsidebar */}
-          <div className="flex flex-col w-1/3 bg-primary-blue  rounded-lg px-14 py-8 justify-between ">
-            {/* heading */}
-            <div className="flex-col space-y-0 text-center">
-              <div className="font-black text-4xl">WellCare</div>
-              <div className="text-xs">Must for HealthCare</div>
-            </div>
-
-            {/* Center Tagline */}
-            <div className="flex flex-col space-y-5">
-              <div className="font-bold text-5xl leading-10">
-                Start your journey with us.
-              </div>
-              <div className="text-base leading-7 font-thin">
-                Discover the health portal full of of doctors and trainers who are waiting to help you on making your health journey easier.
-
-              </div>
-            </div>
-
-            {/* Container 3 */}
-            <div className="flex flex-col rounded-lg bg-primary-blue p-5">
-              {/* Message */}
-              <div className="">
-                <b>
-                  Being healthy has countless benefits. So what is stopping you? Just connect with us and take a step towards improving your health...
-                </b>
-              </div>
-
-              {/*  */}
-              <div></div>
-            </div>
-          </div>
+          <LeftLogin />
 
           {/* right sidebar */}
           <div className="w-2/3 h-full text-black p-5">
             {/* logo */}
             <div className="flex-col space-y-0 text-center ">
-              <div className="font-black text-4xl text-primary-blue">
+              <div className="font-black text-4xl text-primary-blue font-head-primary">
                 WellCare
               </div>
               <div className="text-xs text-white">Must for HealthCare</div>
             </div>
 
             {/* form */}
-            <div className=" py-8 px-6 shadow rounded-lg sm:px-10">
+            <div className="py-8 px-6 shadow rounded-lg sm:px-10">
               <div className="mb-0 space-y-6">
                 {/*  */}
 
@@ -145,9 +116,6 @@ const Login = () => {
                 </div>
 
                 {/* radio button */}
-                <label className="my-1 text-xs font-bold uppercase leading-8 text-gray-200">
-                  Gender
-                </label>
                 <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
                   <input
                     id="bordered-radio-1"
@@ -191,20 +159,18 @@ const Login = () => {
                     className="w-1/3 flex justify-center py-3 rounded-md text-md font-medium text-white bg-primary-blue hover:bg-secondary-blue"
                     onClick={submit_form}
                   >
-                    {
-                      load ? "Loading..." : "Login"
-                    }
+                    {load ? "Loading..." : "Login"}
                   </button>
                   <div className="my-3">
                     <a
                       href="/forgotpassword"
-                      className="hover:underline-offset-8 text-blue-600 mx-2"
+                      className="hover:underline-offset-8 text-blue-600"
                     >
                       Forgot Password?
                     </a>
                   </div>
                   <div className="text-white my-3">
-                    Don't have an account??
+                    Don't have an account?
                     <a
                       href="/signup"
                       className="hover:underline-offset-8 text-blue-600 mx-2"

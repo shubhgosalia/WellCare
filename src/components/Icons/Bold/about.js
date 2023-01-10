@@ -8,16 +8,15 @@ export default function HomeLine({
     <svg
       width={size}
       height={size}
-      fill="none"
-      stroke={color}
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="2"
+      fill={color}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"></path>
-      <path d="m9.879 9.88 6.364-2.122-2.122 6.364-6.364 2.122L9.88 9.88h-.001Z"></path>
+      <path
+        fill-rule="evenodd"
+        d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm14.243-4.243L9.879 9.88l-2.122 6.364 6.364-2.122 2.122-6.364Z"
+        clip-rule="evenodd"
+      ></path>
     </svg>
   );
 }
