@@ -62,7 +62,7 @@ app.use((error, _req, res, _) => {
   let err = { ...error };
 
   err.statusCode = err.statusCode || 500;
-  err.msg = err.statusCode == 500 ? "Sorry,something went wrong!" : err.msg;
+  err.msg = err.statusCode === 500 ? "Sorry,something went wrong!" : err.msg;
 
   console.log("Error : ", err);
   //sending the error response
