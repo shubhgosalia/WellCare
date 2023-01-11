@@ -7,10 +7,6 @@
     @apply p-4;
   }
 
-  .button {
-    @apply text-white text-xl font-bold p-2 rounded-full text-center bg-primary-blue hover:bg-secondary-blue shadow-md shadow-primary-blue/50 cursor-pointer;
-  }
-
   ::-webkit-scrollbar {
     width: 7px;
   }
@@ -31,10 +27,14 @@
   }
 
   .active-route {
-    @apply flex flex-row space-x-2 text-white font-bold bg-dark-100 p-2 rounded-xl shadow-md shadow-white/30;
+    @apply flex flex-row space-x-2 text-white font-bold bg-dark-100 p-2 rounded-xl border border-white;
   }
 
   .inactive-route {
     @apply flex flex-row space-x-2 text-white font-bold p-2 rounded-xl;
+  }
+
+  .button {
+    @apply text-white text-xl font-bold p-2 rounded-full text-center bg-primary-blue hover:bg-secondary-blue shadow-md shadow-primary-blue/50 cursor-pointer;
   }
 }

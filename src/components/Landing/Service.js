@@ -3,6 +3,9 @@ import service from "assets/Services.avif";
 import physio from "assets/physiotherapy.png";
 import nutrition from "assets/nutrition.jpg";
 import yoga from "assets/yoga.png";
+import BoldPhysioIcon from "components/Icons/Bold/physio";
+import BoldNutritionistIcon from "components/Icons/Bold/nutritionist";
+import BoldYogaIcon from "components/Icons/Bold/yoga";
 
 const Service = () => {
   return (
@@ -12,14 +15,14 @@ const Service = () => {
         <img
           className="w-full h-full object-cover mix-blend-overlay"
           src={service}
-          alt="/"
+          alt="/home"
         />
       </div>
 
       <div className="max-w-[1240px] mx-auto text-white relative">
         <div className="px-4 py-12">
           <h2 className="text-3xl pt-8 text-slate-300 uppercase text-center">
-            Service
+            Services
           </h2>
           <h3 className="text-5xl font-bold py-6 text-center">
             Find the right expert for you!
@@ -33,13 +36,16 @@ const Service = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 relative gap-x-8 gap-y-16 px-4 pt-12 sm:pt-20 text-black">
+          {/* Physio */}
           <div className="bg-white rounded-xl shadow-2xl">
             <div className="p-8">
-              <img
-                src={physio}
-                alt="/"
-                className="w-16 p-4 bg-indigo-600 text-white rounded-lg mt-[-4rem]"
-              />
+              <div
+                className="w-16 p-4 bg-primary-blue text-white rounded-lg
+              mt-[-4rem] shadow-xl"
+              >
+                <BoldPhysioIcon size="35" color="#ffffff" />
+              </div>
+
               <h3 className="font-bold text-2xl my-6">Physiotherapists</h3>
               <p className="text-gray-600 text-xl">
                 Having a back pain, joint pain or knee pain? Well, specialized
@@ -49,13 +55,16 @@ const Service = () => {
               </p>
             </div>
           </div>
+
+          {/* Nutritionist */}
           <div className="bg-white rounded-xl shadow-2xl">
             <div className="p-8">
-              <img
-                src={nutrition}
-                alt="/"
-                className="w-16 p-4 bg-indigo-600 text-white rounded-lg mt-[-4rem]"
-              />
+              <div
+                className="w-16 p-4 bg-primary-blue text-white rounded-lg
+              mt-[-4rem] shadow-xl"
+              >
+                <BoldNutritionistIcon size="35" color="#ffffff" />
+              </div>
               <h3 className="font-bold text-2xl my-6">Nutritionists</h3>
               <p className="text-gray-600 text-xl">
                 Having difficulty losing weight? Well, nutritionists are here to
@@ -64,13 +73,16 @@ const Service = () => {
               </p>
             </div>
           </div>
+
+          {/* Yoga Trainers */}
           <div className="bg-white rounded-xl shadow-2xl">
             <div className="p-8">
-              <img
-                src={yoga}
-                alt="/"
-                className="w-16 p-4 bg-indigo-600 text-white rounded-lg mt-[-4rem]"
-              />
+              <div
+                className="w-16 p-4 bg-primary-blue text-white rounded-lg
+              mt-[-4rem] shadow-xl"
+              >
+                <BoldYogaIcon size="35" color="#ffffff" />
+              </div>
               <h3 className="font-bold text-2xl my-6">Yoga Trainers</h3>
               <p className="text-gray-600 text-xl">
                 Want to maintain overall fitness? Well, yoga instructors are

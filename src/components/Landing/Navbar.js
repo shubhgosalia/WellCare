@@ -8,11 +8,11 @@ const Navbar = () => {
 
   const handleClose = () => setNav(!nav);
   return (
-    <div className="w-screen h-[80px] z-10 bg-dark-100 fixed drop-shadow-lg">
+    <div className="w-screen h-[80px] z-10 bg-dark-100 fixed drop-shadow-lg font-body-primary">
       <div className="px-28 flex justify-between items-center w-full h-full">
         <div className="flex items-center">
           {/* Logo */}
-          <h1 className="text-4xl font-black mr-4 sm:text-4xl text-primary-blue">
+          <h1 className="text-4xl font-black mr-4 sm:text-4xl text-primary-blue font-head-primary">
             WellCare
           </h1>
 
@@ -20,7 +20,6 @@ const Navbar = () => {
           <ul className="hidden md:flex md:font-bold md:text-lg text-white">
             {/* Home */}
             <li>
-              {" "}
               <Link
                 to="home"
                 smooth={true}
@@ -33,7 +32,6 @@ const Navbar = () => {
 
             {/* About */}
             <li>
-              {" "}
               <Link
                 to="about"
                 smooth={true}
@@ -47,7 +45,6 @@ const Navbar = () => {
 
             {/* Services */}
             <li>
-              {" "}
               <Link
                 to="service"
                 smooth={true}
@@ -62,14 +59,14 @@ const Navbar = () => {
         </div>
 
         {/* Login Signup */}
-        <div className="hidden md:flex  text-white font-medium md:space-x-4">
+        <div className="hidden md:flex text-xl text-white md:space-x-4">
           {/* Login */}
           <button className="px-8 py-3">
             <a href="/login">Login</a>
           </button>
 
           {/* Sign up */}
-          <button className="px-8 py-3 ">
+          <button className="px-8 py-3">
             <a href="/signup">Signup</a>
           </button>
         </div>
@@ -87,7 +84,6 @@ const Navbar = () => {
       <ul className={!nav ? "hidden" : "absolute bg-zinc-200 w-full px-8"}>
         {/* Home */}
         <li className="border-b-2 border-zinc-300 w-full">
-          {" "}
           <Link onClick={handleClose} to="home" smooth={true} duration={500}>
             Home
           </Link>
@@ -95,7 +91,6 @@ const Navbar = () => {
 
         {/* Link */}
         <li className="border-b-2 border-zinc-300 w-full">
-          {" "}
           <Link
             onClick={handleClose}
             to="about"
@@ -109,7 +104,6 @@ const Navbar = () => {
 
         {/* Service */}
         <li className="border-b-2 border-zinc-300 w-full">
-          {" "}
           <Link
             onClick={handleClose}
             to="service"

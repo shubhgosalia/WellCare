@@ -327,14 +327,14 @@ const Signup = () => {
                 >
                   I agree to the
                   <a
-                    href="/"
+                    href="/home"
                     className="text-primary-blue hover:text-secondary-blue px-1"
                   >
                     Terms
                   </a>
                   and
                   <a
-                    href="/"
+                    href="/home"
                     className="text-primary-blue hover:text-secondary-blue px-1"
                   >
                     Privacy Policy

@@ -49,7 +49,7 @@ function App() {
           />
 
           {/* Redirect to home page if some unknown route is used */}
-          {/* <Navigate to="/" /> */}
+          {/* <Navigate to="/home" /> */}
         </Routes>
       </Router>
     </>

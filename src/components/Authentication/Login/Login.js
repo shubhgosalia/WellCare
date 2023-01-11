@@ -57,13 +57,15 @@ const Login = () => {
       <div className="bg-dark-100 w-full h-screen font-body-primary">
         <div className="flex p-5 space-x-5 h-full text-white">
           {/* leftsidebar */}
-          <LeftLogin />
+          <div className="w-1/3">
+            <LeftLogin />
+          </div>
 
           {/* right sidebar */}
           <div className="w-2/3 h-full text-black p-5">
             {/* logo */}
             <div className="flex-col space-y-0 text-center ">
-              <div className="font-black text-4xl text-primary-blue font-head-primary">
+              <div className="font-black text-5xl text-primary-blue font-head-primary">
                 WellCare
               </div>
               <div className="text-xs text-white">Must for HealthCare</div>

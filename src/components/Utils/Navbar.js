@@ -23,7 +23,7 @@ const Navbar = () => {
       <div className="px-2 flex flex-col justify-between h-screen py-5">
         {/* Logo */}
         <div className="text-4xl font-black text-white text-center font-head-primary">
-          <a href="/">WELLCARE</a>
+          <a href="/home">WELLCARE</a>
         </div>
 
         {/* Routes */}
@@ -38,7 +38,7 @@ const Navbar = () => {
                 <div className="text-xl">Home</div>
               </div>
             ) : (
-              <div className="active-route">
+              <div className="inactive-route">
                 <div className="my-auto">
                   <LightHomeIcon color="#94A3B8" size="27" />
                 </div>
