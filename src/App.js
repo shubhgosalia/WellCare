@@ -10,6 +10,7 @@ import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration
 import ResetPassword from "components/PasswordSetup/ResetPassword";
 import ForgotPassword from "components/PasswordSetup/ForgotPassword";
 import DoctorSearch from "components/DoctorSearch/Home";
+import MyAccount from "components/MyAccount/MyAccount";
 
 function App() {
   return (
@@ -40,6 +41,9 @@ function App() {
 
           {/* forgot password page */}
           <Route exact path="/forgotPassword" element={<ForgotPassword />} />
+
+          {/* my account page */}
+          <Route exact path="/myAccount" element={<MyAccount />} />
 
           {/* reset password page */}
           <Route

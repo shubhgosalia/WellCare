@@ -14,9 +14,9 @@ export default function HomeLine({
     >
       <path d="M20 19v-8.5a1 1 0 0 0-.4-.8l-7-5.25a1 1 0 0 0-1.2 0l-7 5.25a1 1 0 0 0-.4.8V19a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1Z"></path>
       <path
-        fill-rule="evenodd"
+        fillRule="evenodd"
         d="M10.8 3.65a2 2 0 0 1 2.4 0l7 5.25-.6.8.6-.8a2 2 0 0 1 .8 1.6V19a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-3h-2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-8.5a2 2 0 0 1 .8-1.6l7-5.25Zm1.2 1.6L5 10.5V19h4v-3a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3h4v-8.5l-7-5.25Z"
-        clip-rule="evenodd"
+        clipRule="evenodd"
       ></path>
     </svg>
   );
