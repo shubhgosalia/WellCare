@@ -72,8 +72,7 @@ const Signup = () => {
         gender: "",
         username: "",
       });
-
-      if (res.data.status === true) {
+      if (res.data.success === true) {
         Swal.fire({
           icon: "success",
           title: res.data.message,
@@ -112,15 +111,15 @@ const Signup = () => {
   return (
     <>
       {/* main container */}
-      <div className="bg-dark-100 w-full h-full font-body-primary">
-        <div className="flex p-5 space-x-5 h-full text-white">
+      <div className="bg-dark-100 w-full h-[100vh] font-body-primary">
+        <div className="flex p-5 space-x-5 h-[100%] text-white">
           {/* leftsidebar */}
           <div className="w-1/3">
             <LeftSignup />
           </div>
 
           {/* right sidebar */}
-          <div className="w-2/3 h-full text-black p-5">
+          <div className="w-2/3 h-[100%] text-black p-5 overflow-y-scroll">
             {/* logo */}
             <div className="flex-col space-y-0 text-center ">
               <div className="font-black text-5xl text-primary-blue font-head-primary">

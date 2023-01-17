@@ -79,7 +79,7 @@ const Login = () => {
                 {/* email */}
                 <div>
                   <label
-                    for="email"
+                    htmlFor="email"
                     className="block text-sm font-medium text-gray-200"
                   >
                     Username/Email ID
@@ -99,7 +99,7 @@ const Login = () => {
                 {/* password */}
                 <div>
                   <label
-                    for="password"
+                    htmlFor="password"
                     className="block text-sm font-medium text-gray-200"
                   >
                     Password
@@ -109,7 +109,7 @@ const Login = () => {
                       id="password"
                       name="password"
                       type="password"
-                      autocomplete="current-password"
+                      autoComplete="current-password"
                       required
                       className="w-full rounded p-2 text-lg"
                       onChange={login}
@@ -129,7 +129,7 @@ const Login = () => {
                     onChange={login}
                   />
                   <label
-                    for="bordered-radio-1"
+                    htmlFor="bordered-radio-1"
                     className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
                   >
                     Doctor
@@ -147,7 +147,7 @@ const Login = () => {
                     onChange={login}
                   />
                   <label
-                    for="bordered-radio-1"
+                    htmlFor="bordered-radio-1"
                     className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
                   >
                     Patient
