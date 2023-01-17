@@ -37,4 +37,8 @@
   .button {
     @apply text-white text-xl font-bold p-2 rounded-full text-center bg-primary-blue hover:bg-secondary-blue shadow-md shadow-primary-blue/50 cursor-pointer;
   }
+
+  .form-property {
+    @apply flex w-1/2 justify-between bg-gradient-to-r from-dark-100 to-dark-200 rounded-lg p-5;
+  }
 }
