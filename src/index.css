@@ -27,11 +27,11 @@
   }
 
   .active-route {
-    @apply flex flex-row space-x-2 text-white font-medium bg-dark-100 py-2 px-3 rounded-xl border border-white;
+    @apply flex flex-row space-x-2 text-white font-medium bg-gradient-to-r from-dark-100 to-dark-200 py-2 px-3 rounded-xl border border-dark-100;
   }
 
   .inactive-route {
-    @apply flex flex-row space-x-2 text-white font-medium py-2 px-3 rounded-xl;
+    @apply flex flex-row space-x-2 text-white font-medium py-2 px-3 rounded-xl border border-dark-100;
   }
 
   .button {
@@ -39,6 +39,6 @@
   }
 
   .form-property {
-    @apply flex w-1/2 justify-between bg-gradient-to-r from-dark-100 to-dark-200 rounded-lg p-5;
+    @apply flex w-1/2 justify-between bg-gradient-to-r from-dark-100 to-dark-200 rounded-lg  p-5 border border-dark-200;
   }
 }

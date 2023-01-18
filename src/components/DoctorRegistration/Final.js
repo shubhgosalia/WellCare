@@ -93,7 +93,7 @@ export default function Final() {
         </div>
         <a className="mt-10" href="/login">
           <button
-            className="h-10 px-5 bg-blue-600 transition-colors duration-150 border border-gray-300 rounded-lg focus:shadow-outline hover:bg-blue-900"
+            className="h-10 px-5 bg-blue-600 transition-colors duration-150 border border-gray-300 rounded-lg  focus:shadow-outline hover:bg-blue-900"
             disabled={load ? true : false}
           >
             {load ? "Registering..." : "Login"}

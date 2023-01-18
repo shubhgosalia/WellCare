@@ -16,7 +16,7 @@ const Categories = () => {
       {/* Physio and Yoga */}
       <div className="flex flex-row justify-center space-x-8">
         {/* Yoga */}
-        <div className=" flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg p-5 cursor-pointer">
+        <div className=" flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg  p-5 cursor-pointer">
           {/* Icon */}
           <div className="mx-auto">
             <BoldYogaIcon size="86" color="#ffffff" />
@@ -27,7 +27,7 @@ const Categories = () => {
         </div>
 
         {/* Gym Trainers */}
-        <div className="flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg p-5 cursor-pointer">
+        <div className="flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg  p-5 cursor-pointer">
           <div className="mx-auto">
             <BoldGymIcon size="86" color="#ffffff" />
           </div>
@@ -37,7 +37,7 @@ const Categories = () => {
         </div>
 
         {/* Nutritionist */}
-        <div className="flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg p-5 cursor-pointer">
+        <div className="flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg  p-5 cursor-pointer">
           <div className="mx-auto">
             <BoldNutritionistIcon size="86" color="#ffffff" />
           </div>
@@ -47,7 +47,7 @@ const Categories = () => {
         </div>
 
         {/* Physio */}
-        <div className="flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg p-5 cursor-pointer">
+        <div className="flex flex-col space-y-3 w-[40%] bg-primary-blue shadow-md shadow-primary-blue/70 rounded-lg  p-5 cursor-pointer">
           <div className="mx-auto">
             <BoldPhysioIcon size="86" color="#ffffff" />
           </div>

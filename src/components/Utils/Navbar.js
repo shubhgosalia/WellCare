@@ -48,8 +48,8 @@ const Navbar = () => {
           </Link>
 
           {/* Search */}
-          <Link to="/search">
-            {location.pathname === "/search" ? (
+          <Link to="/doctorSearch">
+            {location.pathname === "/doctorSearch" ? (
               <div className="active-route">
                 <div className="my-auto">
                   <BoldSearchIcon color="#ffffff" size="27" />

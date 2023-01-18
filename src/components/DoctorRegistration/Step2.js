@@ -36,7 +36,7 @@ const Step2 = forwardRef((props, ref) => {
         <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Category
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
+        <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1 ">
           <select
             aria-label="Default select example required"
             onChange={(e) => handleshow(e)}
@@ -67,7 +67,7 @@ const Step2 = forwardRef((props, ref) => {
           <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
             Specialization
           </label>
-          <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
+          <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1 ">
             <select aria-label="Default select example required">
               <option selected>Which Physiotherapist?</option>
               <option value="1">Orthopedic</option>

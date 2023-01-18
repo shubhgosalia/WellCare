@@ -2,7 +2,7 @@ import React from "react";
 
 const LeftSignup = () => {
   return (
-    <div className="flex flex-col bg-primary-blue rounded-lg px-14 py-10 justify-between fixed w-1/3 h-[95%]">
+    <div className="flex flex-col bg-primary-blue rounded-lg  px-14 py-10 justify-between fixed w-1/3 h-[95%]">
       {/* heading */}
       <div className="flex-col space-y-0 text-center">
         <div className="font-black text-5xl font-head-primary text-dark-100">

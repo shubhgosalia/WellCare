@@ -64,7 +64,7 @@ const ForgotPassword = () => {
 
       <section class="bg-dark-100 dark:bg-gray-900">
         <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-          <div class="w-full p-6 bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
+          <div class="w-full p-6 bg-white rounded-lg  shadow dark:border md:mt-0 sm:max-w-md dark:bg-gray-800 dark:border-gray-700 sm:p-8">
             <h2 class="mb-3 text-xl font-bold leading-tight tracking-tight text-blue-600 md:text-2xl dark:text-white">
               Password Reset
             </h2>
@@ -84,7 +84,7 @@ const ForgotPassword = () => {
                   type="email"
                   name="email"
                   id="email"
-                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg  focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="e-mail"
                   required
                   onChange={handleMail}
@@ -95,7 +95,7 @@ const ForgotPassword = () => {
               <label className="my-1 text-xs font-bold uppercase leading-8 text-gray-200">
                 Gender
               </label>
-              <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <input
                   id="bordered-radio-1"
                   type="radio"
@@ -113,7 +113,7 @@ const ForgotPassword = () => {
                 </label>
               </div>
 
-              <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <input
                   id="bordered-radio-1"
                   type="radio"
@@ -132,7 +132,7 @@ const ForgotPassword = () => {
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-600 hover:bg-700 focus:ring-4 focus:outline-none focus:ring-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-600 dark:hover:bg-700 dark:focus:ring-800"
+                className="w-full text-white bg-600 hover:bg-700 focus:ring-4 focus:outline-none focus:ring-300 font-medium rounded-lg  text-sm px-5 py-2.5 text-center dark:bg-600 dark:hover:bg-700 dark:focus:ring-800"
                 disabled={load ? true : false}
                 onClick={submit_form}
               >

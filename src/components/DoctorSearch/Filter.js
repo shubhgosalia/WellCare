@@ -52,7 +52,7 @@ const Filter = () => {
   return (
     <div className="flex flex-row px-20">
       {/* form */}
-      <div className="w-full bg-primary-blue p-4 text-dark-100 rounded flex justify-between">
+      <div className="w-full bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">
         {/* Search Doctors */}
         <div className="w-[30%]">
           <label for="doctorSearch" className="block text-lg font-semibold">
@@ -65,7 +65,7 @@ const Filter = () => {
               type="text"
               autocomplete="text"
               required
-              className="w-full rounded p-2 text-lg"
+              className="w-full rounded-lg p-2 text-lg"
               placeholder="Search"
             />
           </div>
@@ -79,7 +79,7 @@ const Filter = () => {
           <select
             name="specialization"
             id="state"
-            className="rounded p-2"
+            className="rounded-lg p-2"
             onChange={updateFilters}
           >
             <option value="None">None</option>
@@ -99,7 +99,7 @@ const Filter = () => {
           <select
             name="gender"
             id="state"
-            className="rounded p-2 w-full"
+            className="rounded-lg p-2 w-full"
             onChange={updateFilters}
           >
             <option value="None">None</option>
@@ -116,7 +116,7 @@ const Filter = () => {
           <select
             name="city"
             id="state"
-            className="rounded p-2"
+            className="rounded-lg p-2"
             onChange={updateFilters}
           >
             <option value="None">None</option>

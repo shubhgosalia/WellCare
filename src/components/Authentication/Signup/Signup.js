@@ -138,7 +138,7 @@ const Signup = () => {
             </p>
 
             {/* form */}
-            <div className=" py-8 px-6 shadow rounded-lg sm:px-10 flex flex-col space-y-6">
+            <div className=" py-8 px-6 shadow rounded-lg  sm:px-10 flex flex-col space-y-6">
               {/* Full Name */}
               <div className="">
                 <label
@@ -154,7 +154,7 @@ const Signup = () => {
                     type="text"
                     autoComplete="text"
                     required
-                    className="w-full rounded p-2 text-lg"
+                    className="w-full rounded-lg p-2 text-lg"
                     onChange={updateInfo}
                   />
                 </div>
@@ -174,7 +174,7 @@ const Signup = () => {
                     name="email"
                     type="email"
                     required
-                    className="w-full rounded p-2 text-lg"
+                    className="w-full rounded-lg p-2 text-lg"
                     onChange={updateInfo}
                   />
                 </div>
@@ -194,7 +194,7 @@ const Signup = () => {
                     name="username"
                     type="text"
                     required
-                    className="w-full rounded p-2 text-lg"
+                    className="w-full rounded-lg p-2 text-lg"
                     onChange={updateInfo}
                   />
                 </div>
@@ -215,7 +215,7 @@ const Signup = () => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="w-full rounded p-2 text-lg"
+                    className="w-full rounded-lg p-2 text-lg"
                     onChange={updateInfo}
                   />
                 </div>
@@ -236,7 +236,7 @@ const Signup = () => {
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="w-full rounded p-2 text-lg"
+                    className="w-full rounded-lg p-2 text-lg"
                     onChange={updateInfo}
                   />
                 </div>
@@ -256,7 +256,7 @@ const Signup = () => {
                     name="age"
                     type="number"
                     required
-                    className="rounded p-2 text-lg w-1/3"
+                    className="rounded-lg p-2 text-lg w-1/3"
                     onChange={updateInfo}
                   />
                 </div>
@@ -274,7 +274,7 @@ const Signup = () => {
                   <select
                     name="gender"
                     id="company-size"
-                    className="rounded p-2 w-1/3 text-lg font-bold"
+                    className="rounded-lg p-2 w-1/3 text-lg font-bold"
                     onChange={updateInfo}
                   >
                     <option value="">Please select</option>
@@ -305,7 +305,7 @@ const Signup = () => {
                     display="none"
                     autoComplete="current-password"
                     required
-                    className="w-full rounded p-2 text-lg"
+                    className="w-full rounded-lg p-2 text-lg"
                     onChange={updateInfo}
                   />
                 </div>

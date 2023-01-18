@@ -22,7 +22,7 @@ const Step3 = forwardRef((props, ref) => {
         return false;
       }
       return true;
-    }
+    },
   }));
 
   return (
@@ -31,7 +31,7 @@ const Step3 = forwardRef((props, ref) => {
         <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Do you have a clinic?
         </label>
-        <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+        <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <input
             id="yesCheck"
             type="radio"
@@ -50,7 +50,7 @@ const Step3 = forwardRef((props, ref) => {
             Yes
           </label>
         </div>
-        <div className="flex items-center mt-3 pl-4 rounded border border-gray-200 dark:border-gray-700">
+        <div className="flex items-center mt-3 pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <input
             id="noCheck"
             type="radio"
@@ -111,4 +111,3 @@ const Step3 = forwardRef((props, ref) => {
 });
 
 export default Step3;
-

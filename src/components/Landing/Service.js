@@ -40,7 +40,7 @@ const Service = () => {
           <div className="bg-white rounded-xl shadow-2xl">
             <div className="p-8">
               <div
-                className="w-16 p-4 bg-primary-blue text-white rounded-lg
+                className="w-16 p-4 bg-primary-blue text-white rounded-lg 
               mt-[-4rem] shadow-xl"
               >
                 <BoldPhysioIcon size="35" color="#ffffff" />
@@ -60,7 +60,7 @@ const Service = () => {
           <div className="bg-white rounded-xl shadow-2xl">
             <div className="p-8">
               <div
-                className="w-16 p-4 bg-primary-blue text-white rounded-lg
+                className="w-16 p-4 bg-primary-blue text-white rounded-lg 
               mt-[-4rem] shadow-xl"
               >
                 <BoldNutritionistIcon size="35" color="#ffffff" />
@@ -78,7 +78,7 @@ const Service = () => {
           <div className="bg-white rounded-xl shadow-2xl">
             <div className="p-8">
               <div
-                className="w-16 p-4 bg-primary-blue text-white rounded-lg
+                className="w-16 p-4 bg-primary-blue text-white rounded-lg 
               mt-[-4rem] shadow-xl"
               >
                 <BoldYogaIcon size="35" color="#ffffff" />
