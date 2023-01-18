@@ -95,7 +95,7 @@ const ForgotPassword = () => {
               <label className="my-1 text-xs font-bold uppercase leading-8 text-gray-200">
                 Gender
               </label>
-              <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <input
                   id="bordered-radio-1"
                   type="radio"
@@ -113,7 +113,7 @@ const ForgotPassword = () => {
                 </label>
               </div>
 
-              <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+              <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <input
                   id="bordered-radio-1"
                   type="radio"

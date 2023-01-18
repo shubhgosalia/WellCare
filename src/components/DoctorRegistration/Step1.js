@@ -34,7 +34,7 @@ const Step1 = forwardRef((props, ref) => {
         <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Full Name
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+        <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1">
           <input
             onChange={handleChange}
             value={userData["name"] || ""}
@@ -51,7 +51,7 @@ const Step1 = forwardRef((props, ref) => {
         <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Gender
         </label>
-        <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+        <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <input
             id="bordered-radio-1"
             type="radio"
@@ -68,7 +68,7 @@ const Step1 = forwardRef((props, ref) => {
             Male
           </label>
         </div>
-        <div className="flex items-center mt-2 pl-4 rounded border border-gray-200 dark:border-gray-700">
+        <div className="flex items-center mt-2 pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <input
             id="bordered-radio-2"
             type="radio"
@@ -90,7 +90,7 @@ const Step1 = forwardRef((props, ref) => {
           <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
             Age
           </label>
-          <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+          <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1">
             <input
               onChange={handleChange}
               value={userData["age"] || ""}

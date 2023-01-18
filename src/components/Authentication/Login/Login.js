@@ -72,7 +72,7 @@ const Login = () => {
             </div>
 
             {/* form */}
-            <div className="py-8 px-6 shadow rounded-lg sm:px-10">
+            <div className="py-8 px-6 shadow rounded-lg  sm:px-10">
               <div className="mb-0 space-y-6">
                 {/*  */}
 
@@ -90,7 +90,7 @@ const Login = () => {
                       name="username"
                       type="text"
                       required
-                      className="w-full rounded p-2 text-lg"
+                      className="w-full rounded-lg p-2 text-lg"
                       onChange={login}
                     />
                   </div>
@@ -111,14 +111,14 @@ const Login = () => {
                       type="password"
                       autoComplete="current-password"
                       required
-                      className="w-full rounded p-2 text-lg"
+                      className="w-full rounded-lg p-2 text-lg"
                       onChange={login}
                     />
                   </div>
                 </div>
 
                 {/* radio button */}
-                <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
                   <input
                     id="bordered-radio-1"
                     type="radio"
@@ -136,7 +136,7 @@ const Login = () => {
                   </label>
                 </div>
 
-                <div className="flex items-center pl-4 rounded border border-gray-200 dark:border-gray-700">
+                <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
                   <input
                     id="bordered-radio-1"
                     type="radio"

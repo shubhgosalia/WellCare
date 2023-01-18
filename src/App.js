@@ -51,9 +51,6 @@ function App() {
             path="/resetPassword/:token"
             element={<ResetPassword />}
           />
-
-          {/* Redirect to home page if some unknown route is used */}
-          {/* <Navigate to="/home" /> */}
         </Routes>
       </Router>
     </>

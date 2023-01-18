@@ -1,7 +1,6 @@
 import React, { forwardRef, useImperativeHandle } from "react";
 import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
 
-
 const Step5 = forwardRef((props, ref) => {
   const { userData, setUserData } = useStepperContext();
 
@@ -31,7 +30,7 @@ const Step5 = forwardRef((props, ref) => {
         return false;
       }
       return true;
-    }
+    },
   }));
 
   return (
@@ -55,7 +54,7 @@ const Step5 = forwardRef((props, ref) => {
         <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Your Bio(Include Experience)
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+        <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1">
           <textarea
             onChange={handleChange}
             value={userData.bio}
@@ -71,7 +70,7 @@ const Step5 = forwardRef((props, ref) => {
         <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Create Username
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+        <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1">
           <input
             onChange={handleChange}
             value={userData.username}
@@ -86,7 +85,7 @@ const Step5 = forwardRef((props, ref) => {
         <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Create Password
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+        <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1">
           <input
             onChange={handleChange}
             value={userData.password}
@@ -103,4 +102,3 @@ const Step5 = forwardRef((props, ref) => {
 });
 
 export default Step5;
-

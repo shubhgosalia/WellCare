@@ -2,8 +2,7 @@ import React from "react";
 
 export default function HomeLine({
   size = 18, // or any default size of your choice
-  // or any color of your choice
-  color = "#ffffff",
+  color = "black", // or any color of your choice
 }) {
   return (
     <svg
@@ -15,7 +14,7 @@ export default function HomeLine({
     >
       <path
         fill-rule="evenodd"
-        d="M5 11a6 6 0 1 1 12 0 6 6 0 0 1-12 0Zm6-8a8 8 0 1 0 4.906 14.32l3.387 3.387a1 1 0 0 0 1.414-1.414l-3.387-3.387A8 8 0 0 0 11 3Zm0 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"
+        d="M5 20a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3H5ZM7.625 8.22a1 1 0 1 0-1.25 1.56l3.75 3.001a3 3 0 0 0 3.75 0l3.75-3a1 1 0 1 0-1.25-1.562l-3.75 3a1 1 0 0 1-1.25 0l-3.75-3Z"
         clip-rule="evenodd"
       ></path>
     </svg>
