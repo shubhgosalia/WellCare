@@ -1,21 +1,12 @@
 import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 
 const Step2 = forwardRef((props, ref) => {
   const { userData, setUserData } = useStepperContext();
 
   const handleChange = (e) => {
-    console.log("val : ", e.target);
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-  };
-
-  const [showhide, setShowhide] = useState("");
-
-  const handleshow = (e) => {
-    const getshow = e.target.value;
-    setShowhide(getshow);
-    handleChange(e);
   };
 
   useImperativeHandle(ref, () => ({
@@ -24,6 +15,9 @@ const Step2 = forwardRef((props, ref) => {
         return false;
       }
       if (!userData.phoneNumber) {
+        return false;
+      }
+      if (!userData.category) {
         return false;
       }
       return true;
@@ -39,7 +33,8 @@ const Step2 = forwardRef((props, ref) => {
         <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
           <select
             aria-label="Default select example required"
-            onChange={(e) => handleshow(e)}
+            onChange={handleChange}
+            name="category"
           >
             <option
               value="Physiotherapist"
@@ -62,19 +57,28 @@ const Step2 = forwardRef((props, ref) => {
           </select>
         </div>
       </div>
-      {showhide === "Physiotherapist" && (
+      {userData.category === "Physiotherapist" && (
         <div className="mt-5 w-full flex-1">
           <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
             Specialization
           </label>
           <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
-            <select aria-label="Default select example required">
-              <option selected>Which Physiotherapist?</option>
-              <option value="1">Orthopedic</option>
-              <option value="2">Pediatric</option>
-              <option value="3">Sports</option>
-              <option value="4">Women</option>
-              <option value="5">Vestibular</option>
+            <select aria-label="Default select example required" name="specialization" onChange={handleChange}>
+              <option value="Orthopedic"
+                selected={userData.specialization === "Orthopedic" ? true : false}
+              >Orthopedic</option>
+              <option value="Pediatric"
+                selected={userData.specialization === "Pediatric" ? true : false}
+              >Pediatric</option>
+              <option value="Sports"
+                selected={userData.specialization === "Sports" ? true : false}
+              >Sports</option>
+              <option value="Women"
+                selected={userData.specialization === "Women" ? true : false}
+              >Women</option>
+              <option value="Vestibular"
+                selected={userData.specialization === "Vestibular" ? true : false}
+              >Vestibular</option>
             </select>
           </div>
         </div>

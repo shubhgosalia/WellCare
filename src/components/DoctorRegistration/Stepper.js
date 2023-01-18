@@ -54,6 +54,7 @@ const Stepper = ({ steps, currentStep }) => {
           completed: false,
           highlighted: index === 0 ? true : false,
           selected: index === 0 ? true : false,
+          key: { index }
         }
       )
     );

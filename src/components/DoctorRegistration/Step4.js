@@ -14,7 +14,7 @@ const Step4 = forwardRef((props, ref) => {
       if (!userData.licenseNumber) {
         return false;
       }
-      if (!userData.years_Of_Experience) {
+      if (!userData.years_Of_Experience || (Number(userData.age) < Number(userData.years_Of_Experience))) {
         return false;
       }
       if (!userData.fees) {
@@ -57,6 +57,7 @@ const Step4 = forwardRef((props, ref) => {
             className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />
         </div>
+        {(Number(userData.age) < Number(userData.years_Of_Experience)) && <p className="text-red-500 text-xs">Experience cannot be greater than age!</p>}
       </div>
 
       <div className="mt-3 w-full mx-2 flex-1">

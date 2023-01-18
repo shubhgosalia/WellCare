@@ -1,5 +1,5 @@
 import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
-import React, { useState, forwardRef, useImperativeHandle } from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 
 const Step3 = forwardRef((props, ref) => {
   const { userData, setUserData } = useStepperContext();
@@ -9,16 +9,12 @@ const Step3 = forwardRef((props, ref) => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const [showhide, setShowhide] = useState("");
-
-  const handleshow = (e) => {
-    const getshow = e.target.value;
-    setShowhide(getshow);
-  };
-
   useImperativeHandle(ref, () => ({
     checkFields() {
       if (!userData.city) {
+        return false;
+      }
+      if (userData.have_clinic === "true" && !userData.clinic_address) {
         return false;
       }
       return true;
@@ -35,16 +31,15 @@ const Step3 = forwardRef((props, ref) => {
           <input
             id="yesCheck"
             type="radio"
-            value="true"
+            value={"true"}
             name="have_clinic"
-            onClick={handleshow}
             required
             className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
             onChange={handleChange}
             checked={userData.have_clinic === "true" ? true : false}
           />
           <label
-            for="yesCheck"
+            htmlFor="yesCheck"
             className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-500"
           >
             Yes
@@ -54,16 +49,15 @@ const Step3 = forwardRef((props, ref) => {
           <input
             id="noCheck"
             type="radio"
-            value="false"
+            value={"false"}
             name="have_clinic"
-            onClick={handleshow}
             required
             className="w-4 h-4 text-blue-600 bg-gray-100 "
             onChange={handleChange}
             checked={userData.have_clinic === "false" ? true : false}
           />
           <label
-            for="noCheck"
+            htmlFor="noCheck"
             className="py-4 ml-2 w-full text-sm font-medium text-gray-900 dark:text-gray-500"
           >
             No
@@ -71,7 +65,7 @@ const Step3 = forwardRef((props, ref) => {
         </div>
       </div>
 
-      {showhide === "yes" && (
+      {userData.have_clinic === "true" && (
         <div className="mt-3 w-full mx-2 flex-1">
           <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
             Address

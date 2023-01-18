@@ -55,7 +55,7 @@ const DoctorRegistration = () => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Incomplete field(s)...",
+          text: "Incomplete/Invalid field(s)...",
         });
     } else {
       newStep--;

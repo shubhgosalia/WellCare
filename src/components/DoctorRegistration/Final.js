@@ -31,6 +31,7 @@ export default function Final() {
         fees: userData.fees,
         phoneNumber: userData.phoneNumber,
         profile_pic: userData.profile_pic,
+        bio: userData.bio
       };
 
       setLoad(true);
@@ -43,7 +44,7 @@ export default function Final() {
           },
         }
       );
-      if (res.data.status === "success") {
+      if (res.data.success === true) {
         Swal.fire({
           icon: "success",
           title: res.data.message,
@@ -83,13 +84,6 @@ export default function Final() {
               d="M14.1 27.2l7.1 7.2 16.7-16.8"
             />
           </svg>
-        </div>
-
-        <div className="mt-3 text-xl font-semibold uppercase text-primary-blue">
-          Congratulations!
-        </div>
-        <div className="text-lg font-semibold text-gray-500">
-          You have successfully registered.
         </div>
         <a className="mt-10" href="/login">
           <button
