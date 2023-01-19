@@ -7,7 +7,7 @@ const Search = () => {
   return (
     <>
       {/* Main Container */}
-      <div className="bg-dark-100 text-white py-6 flex flex-col space-y-6">
+      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">
         {/* Title */}
         <Heading />
 

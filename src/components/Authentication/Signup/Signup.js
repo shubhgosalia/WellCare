@@ -112,7 +112,7 @@ const Signup = () => {
   return (
     <>
       {/* main container */}
-      <div className="bg-dark-100 w-full h-full font-body-primary">
+      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 w-full h-full font-body-primary">
         <div className="flex p-5 space-x-5 h-full text-white">
           {/* leftsidebar */}
           <div className="w-1/3">

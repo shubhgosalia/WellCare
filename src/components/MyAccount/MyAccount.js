@@ -5,20 +5,20 @@ import Form from "components/MyAccount/Form";
 
 const MyAccount = () => {
   return (
-    <div className="w-full flex flex-row bg-dark-100 font-body-primary">
+    <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* Navbar */}
       <div className="w-[16%] h-screen">
         <Navbar />
       </div>
 
-      <div className="bg-dark-100 w-[84%]">
+      <div className="w-[84%] flex flex-col space-y-10">
         {/* Header */}
         <div className="h-[30%]">
           <Header />
         </div>
 
         {/* Form */}
-        <div className="mt-10">
+        <div className="">
           <Form />
         </div>
       </div>
