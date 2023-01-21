@@ -1,12 +1,28 @@
 import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
+import React, { forwardRef, useImperativeHandle } from "react";
 
-export default function Step3() {
+const Step4 = forwardRef((props, ref) => {
   const { userData, setUserData } = useStepperContext();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
   };
+
+  useImperativeHandle(ref, () => ({
+    checkFields() {
+      if (!userData.licenseNumber) {
+        return false;
+      }
+      if (!userData.years_Of_Experience || (Number(userData.age) < Number(userData.years_Of_Experience))) {
+        return false;
+      }
+      if (!userData.fees) {
+        return false;
+      }
+      return true;
+    }
+  }));
   return (
     <div className="flex flex-col ">
       <div className="mt-3 w-full mx-2 flex-1">
@@ -16,8 +32,8 @@ export default function Step3() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["license_no"] || ""}
-            name="license_no"
+            value={userData["licenseNumber"] || ""}
+            name="licenseNumber"
             placeholder="License No."
             type="text"
             required
@@ -33,14 +49,15 @@ export default function Step3() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["exp"] || ""}
-            name="exp"
+            value={userData["years_Of_Experience"] || ""}
+            name="years_Of_Experience"
             placeholder="0"
             type="number"
             required
             className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
           />
         </div>
+        {(Number(userData.age) < Number(userData.years_Of_Experience)) && <p className="text-red-500 text-xs">Experience cannot be greater than age!</p>}
       </div>
 
       <div className="mt-3 w-full mx-2 flex-1">
@@ -50,8 +67,8 @@ export default function Step3() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["fee"] || ""}
-            name="fee"
+            value={userData["fees"] || ""}
+            name="fees"
             placeholder="₹ 00.00"
             type="number"
             required
@@ -61,4 +78,6 @@ export default function Step3() {
       </div>
     </div>
   );
-}
+});
+
+export default Step4;

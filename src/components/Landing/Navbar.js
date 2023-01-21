@@ -8,53 +8,89 @@ const Navbar = () => {
 
   const handleClose = () => setNav(!nav);
   return (
-    <div className="w-screen h-[80px] z-10 bg-zinc-100 fixed drop-shadow-lg">
-      <div className="px-2 flex justify-between items-center w-full h-full">
+    <div className="w-screen h-[80px] z-10 bg-dark-100 fixed drop-shadow-lg font-body-primary">
+      <div className="px-28 flex justify-between items-center w-full h-full">
         <div className="flex items-center">
-          <h1 className="text-3xl font-bold mr-4 sm:text-4xl">WellCare</h1>
-          <ul className="hidden md:flex">
+          {/* Logo */}
+          <h1 className="text-4xl font-black mr-4 sm:text-4xl text-primary-blue font-head-primary">
+            WellCare
+          </h1>
+
+          {/* Routes */}
+          <ul className="hidden md:flex md:font-bold md:text-lg text-white">
+            {/* Home */}
             <li>
-              {" "}
-              <Link to="home" smooth={true} duration={500}>
+              <Link
+                to="home"
+                smooth={true}
+                duration={500}
+                className="cursor-pointer"
+              >
                 Home
               </Link>
             </li>
+
+            {/* About */}
             <li>
-              {" "}
-              <Link to="about" smooth={true} offset={-200} duration={500}>
+              <Link
+                to="about"
+                smooth={true}
+                offset={-200}
+                duration={500}
+                className="cursor-pointer"
+              >
                 About
               </Link>
             </li>
+
+            {/* Services */}
             <li>
-              {" "}
-              <Link to="service" smooth={true} offset={-50} duration={500}>
+              <Link
+                to="service"
+                smooth={true}
+                offset={-50}
+                duration={500}
+                className="cursor-pointer"
+              >
                 Service
               </Link>
             </li>
           </ul>
         </div>
-        <div className="hidden md:flex pr-4">
-          <button className="border-none bg-transparent text-black mr-4">
+
+        {/* Login Signup */}
+        <div className="hidden md:flex text-xl text-white md:space-x-4">
+          {/* Login */}
+          <button className="px-8 py-3">
             <a href="/login">Login</a>
           </button>
+
+          {/* Sign up */}
           <button className="px-8 py-3">
             <a href="/signup">Signup</a>
           </button>
         </div>
+
+        {/* Responsive  */}
         <div className="md:hidden" onclick={handleClick}>
           {!nav ? <MenuIcon className="w-5" /> : <XIcon className="w-5" />}
         </div>
       </div>
 
+      {/* line */}
+      <div className="bg-white h-0.5 mx-28"></div>
+
+      {/* Responsive */}
       <ul className={!nav ? "hidden" : "absolute bg-zinc-200 w-full px-8"}>
+        {/* Home */}
         <li className="border-b-2 border-zinc-300 w-full">
-          {" "}
           <Link onClick={handleClose} to="home" smooth={true} duration={500}>
             Home
           </Link>
         </li>
+
+        {/* Link */}
         <li className="border-b-2 border-zinc-300 w-full">
-          {" "}
           <Link
             onClick={handleClose}
             to="about"
@@ -65,8 +101,9 @@ const Navbar = () => {
             About
           </Link>
         </li>
+
+        {/* Service */}
         <li className="border-b-2 border-zinc-300 w-full">
-          {" "}
           <Link
             onClick={handleClose}
             to="service"
@@ -79,10 +116,14 @@ const Navbar = () => {
         </li>
 
         <div className="flex flex-col my-4">
-          <button className="bg-transparent text-blue-600 px-8 py-3 mb-4">
+          {/*  */}
+          {/* Login */}
+          <button className="bg-transparent text-primary-blue px-8 py-3 mb-4">
             <a href="/login">Login</a>
           </button>
-          <button className="px-8 py-3">
+
+          {/* Signup */}
+          <button className="px-8 py-3 ">
             <a href="/signup">Signup</a>
           </button>
         </div>

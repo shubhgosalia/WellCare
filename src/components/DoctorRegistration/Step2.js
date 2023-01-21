@@ -1,7 +1,7 @@
 import { useStepperContext } from "components/DoctorRegistration/contexts/StepperContext";
-import React, { useState } from "react";
+import React, { forwardRef, useImperativeHandle } from "react";
 
-export default function Step2() {
+const Step2 = forwardRef((props, ref) => {
   const { userData, setUserData } = useStepperContext();
 
   const handleChange = (e) => {
@@ -9,12 +9,20 @@ export default function Step2() {
     setUserData({ ...userData, [name]: value });
   };
 
-  const [showhide, setShowhide] = useState("");
-
-  const handleshow = (e) => {
-    const getshow = e.target.value;
-    setShowhide(getshow);
-  };
+  useImperativeHandle(ref, () => ({
+    checkFields() {
+      if (!userData.email) {
+        return false;
+      }
+      if (!userData.phoneNumber) {
+        return false;
+      }
+      if (!userData.category) {
+        return false;
+      }
+      return true;
+    },
+  }));
 
   return (
     <div className="flex flex-col ">
@@ -22,31 +30,55 @@ export default function Step2() {
         <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Category
         </label>
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
+        <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1 ">
           <select
             aria-label="Default select example required"
-            onChange={(e) => handleshow(e)}
+            onChange={handleChange}
+            name="category"
           >
-            <option selected>Choose</option>
-            <option value="1">Physiotherapist</option>
-            <option value="2">Nutritionist</option>
-            <option value="3">Yoga Trainer</option>
+            <option
+              value="Physiotherapist"
+              selected={userData.category === "Physiotherapist" ? true : false}
+            >
+              Physiotherapist
+            </option>
+            <option
+              value="Nutritionist"
+              selected={userData.category === "Nutritionist" ? true : false}
+            >
+              Nutritionist
+            </option>
+            <option
+              value="Yoga Trainer"
+              selected={userData.category === "Yoga Trainer" ? true : false}
+            >
+              Yoga Trainer
+            </option>
           </select>
         </div>
       </div>
-      {showhide === "1" && (
+      {userData.category === "Physiotherapist" && (
         <div className="mt-5 w-full flex-1">
           <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
             Specialization
           </label>
           <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
-            <select aria-label="Default select example required">
-              <option selected>Which Physiotherapist?</option>
-              <option value="1">Orthopedic</option>
-              <option value="2">Pediatric</option>
-              <option value="3">Sports</option>
-              <option value="4">Women</option>
-              <option value="5">Vestibular</option>
+            <select aria-label="Default select example required" name="specialization" onChange={handleChange}>
+              <option value="Orthopedic"
+                selected={userData.specialization === "Orthopedic" ? true : false}
+              >Orthopedic</option>
+              <option value="Pediatric"
+                selected={userData.specialization === "Pediatric" ? true : false}
+              >Pediatric</option>
+              <option value="Sports"
+                selected={userData.specialization === "Sports" ? true : false}
+              >Sports</option>
+              <option value="Women"
+                selected={userData.specialization === "Women" ? true : false}
+              >Women</option>
+              <option value="Vestibular"
+                selected={userData.specialization === "Vestibular" ? true : false}
+              >Vestibular</option>
             </select>
           </div>
         </div>
@@ -75,8 +107,8 @@ export default function Step2() {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <input
             onChange={handleChange}
-            value={userData["phone_no"] || ""}
-            name="phone_no"
+            value={userData["phoneNumber"] || ""}
+            name="phoneNumber"
             placeholder="Phone No."
             type="text"
             pattern="[0-9]*"
@@ -87,4 +119,6 @@ export default function Step2() {
       </div>
     </div>
   );
-}
+});
+
+export default Step2;
