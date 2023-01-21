@@ -23,7 +23,7 @@ const Form = () => {
               placeholder="Yash"
               minLength={1}
               autoComplete="do-not-autofill"
-              className="py-1 bg-gradient-to-r from-dark-100 to-dark-200  outline-none text-xl"
+              className="py-1 bg-dark-100  outline-none text-xl"
             ></input>
           </div>
 
@@ -47,7 +47,7 @@ const Form = () => {
               placeholder="Sharma"
               minLength={1}
               autoComplete="do-not-autofill"
-              className="py-1 bg-gradient-to-r from-dark-100 to-dark-200 outline-none text-xl"
+              className="py-1 bg-dark-100 outline-none text-xl"
             ></input>
           </div>
 
@@ -75,7 +75,7 @@ const Form = () => {
               placeholder="yashsharma7@gmail.com"
               minLength={1}
               autoComplete="do-not-autofill"
-              className="py-1 bg-gradient-to-r from-dark-100 to-dark-200  outline-none text-xl"
+              className="py-1 bg-dark-100  outline-none text-xl"
             ></input>
           </div>
 
@@ -100,7 +100,7 @@ const Form = () => {
               placeholder="yashsharma7@gmail.com"
               minLength={1}
               autoComplete="do-not-autofill"
-              className="py-1 bg-gradient-to-r from-dark-100 to-dark-200  outline-none text-xl"
+              className="py-1 bg-dark-100  outline-none text-xl"
             ></input>
           </div>
 

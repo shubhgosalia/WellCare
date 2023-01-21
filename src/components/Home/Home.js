@@ -8,16 +8,16 @@ import HomePart2 from "components/Home/Part2";
 
 const Home = () => {
   return (
-    <div className="w-full flex flex-row bg-dark-100 font-body-primary">
+    <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* 1.Navbar */}
       <div className="w-[16%] h-screen">
         <Navbar />
       </div>
 
       {/* 3.Home Page */}
-      <div className="bg-dark-100 w-[84%] flex px-6 space-x-5">
+      <div className="w-[84%] flex">
         {/* 3a */}
-        <div className="w-[75%]">
+        <div className="w-[75%] bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 px-6">
           <HomePart1 />
         </div>
 

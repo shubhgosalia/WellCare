@@ -11,7 +11,7 @@ const Home = () => {
       </div>
 
       {/*  */}
-      <div className="w-[84%] bg-gradient-to-r from-dark-100 to-dark-200">
+      <div className="w-[84%] ">
         <Search />
       </div>
     </div>
