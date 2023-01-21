@@ -28,6 +28,7 @@ const ForgotPassword = () => {
           title: "Oops...",
           text: "Please put correct mail...",
         });
+        return;
       }
 
       let postData = {

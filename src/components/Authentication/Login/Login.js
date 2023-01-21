@@ -30,7 +30,7 @@ const Login = () => {
           icon: "success",
           title: res.data.message,
         });
-        navigate("/landing");
+        navigate("/home");
       }
       setLoad(false);
     } catch (err) {

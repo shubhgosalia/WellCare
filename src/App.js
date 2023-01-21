@@ -17,6 +17,9 @@ function App() {
     <>
       <Router>
         <Routes>
+          {/* Landing Page */}
+          <Route exact path="/" element={<Landing />} />
+
           {/* Home */}
           <Route exact path="/home" element={<Home />} />
 
@@ -25,9 +28,6 @@ function App() {
 
           {/* Sign up */}
           <Route exact path="/signup" element={<Signup />} />
-
-          {/* Landing Page */}
-          <Route exact path="/landing" element={<Landing />} />
 
           {/* Doctor Search Page */}
           <Route exact path="/doctorSearch" element={<DoctorSearch />} />
