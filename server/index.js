@@ -3,7 +3,7 @@ const { NotFoundError } = require("./Utils/Errors");
 const app = express();
 const helmet = require("helmet");
 const cors = require("cors");
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 //middlewares
 app.use(helmet());
@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use((_req, _res, next) => {
   if (process.env.ENV === "development") {
     console.log("in the development mode....");

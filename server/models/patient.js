@@ -60,6 +60,10 @@ const patientSchema = new mongoose.Schema({
     type: Date,
     default: null,
   },
+  type: {
+    type: String,
+    default: "Patient"
+  }
 });
 
 const Patient = mongoose.model("Patient", patientSchema);

@@ -1,5 +1,7 @@
 //joi validations
 const joi = require('joi');
+joi.objectId = require('joi-objectid')(joi);
+
 const {ClientError} = require("../Utils/Errors");
 
 //using joi for validating the user entered fields
@@ -26,4 +28,24 @@ exports.RegisterJoi = async (body)=>{
       throw new ClientError(err.details[0].message.replace(/"/g,""));
     }
    }
+}
+
+//using joi for validating the book appointment fields
+exports.BookAppointmentJoi = async (body) => {
+  const schema = joi.object({
+    startTime: joi.number().required(),
+    endTime: joi.number().required(),
+    isOnline: joi.boolean().required(),
+    reason: joi.string().required(),
+    isBookedByDoc: joi.boolean(),
+    date: joi.date().required(),
+    doctor_id: joi.objectId().required(),
+  });
+
+  try {
+    return await schema.validateAsync(body);
+  } catch (err) {
+    console.log("book appointment joi : ", err);
+    throw new ClientError(err.details[0].message.replace(/"/g, ""));
+  }
 }

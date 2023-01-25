@@ -12,6 +12,12 @@ process.on("unhandledRejection", (reason) => {
   console.log("in the handler");
 });
 
+function runFuncContinuous() {
+  console.log("continuous running script!");
+}
+
+setInterval(runFuncContinuous, 1000 * 60);
+
 //listening to the server
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);

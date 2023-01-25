@@ -1,7 +1,7 @@
 const Patient = require("../models/patient");
 const Doctor = require("../models/doctor");
 const { AuthenticationError, ClientError } = require("../Utils/Errors");
-const SendEmail = require("../Utils/Email");
+const SendEmail = require("../utils/Email");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
 const bcrypt = require("bcrypt");

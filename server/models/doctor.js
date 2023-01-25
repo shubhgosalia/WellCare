@@ -92,6 +92,10 @@ const doctorSchema = new mongoose.Schema({
     verifyTokenExpiry: {
         type: Date,
         default: null
+    },
+    type: {
+        type: String,
+        default: "Doctor"
     }
 },
     {
