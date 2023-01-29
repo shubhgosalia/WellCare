@@ -11,8 +11,11 @@ import ResetPassword from "components/PasswordSetup/ResetPassword";
 import ForgotPassword from "components/PasswordSetup/ForgotPassword";
 import DoctorSearch from "components/DoctorSearch/Home";
 import MyAccount from "components/MyAccount/MyAccount";
+import SlotBooking from "components/SlotBooking/SlotBooking";
+import { useState } from "react";
 
 function App() {
+  // const [data, setData] = useState({});
   return (
     <>
       <Router>
@@ -31,6 +34,9 @@ function App() {
 
           {/* Doctor Search Page */}
           <Route exact path="/doctorSearch" element={<DoctorSearch />} />
+
+          {/* SlotBooking Page */}
+          <Route exact path="/slotBook" element={<SlotBooking />} />
 
           {/*Doctor registration page*/}
           <Route

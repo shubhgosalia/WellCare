@@ -40,7 +40,7 @@ const Filter = () => {
     getData();
   }, []);
 
-  //updating thr filters
+  //updating the filters
   const updateFilters = (e) => {
     console.log("e : ", e.target.name);
     console.log("e : ", e.target.value);
