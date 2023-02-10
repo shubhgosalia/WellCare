@@ -7,11 +7,6 @@ const connectToMongo = require("./db");
 connectToMongo();
 const port = process.env.PORT || 3001;
 
-process.on("unhandledRejection", (reason) => {
-  console.log("error : ", reason.message);
-  console.log("in the handler");
-});
-
 function runFuncContinuous() {
   console.log("continuous running script!");
 }

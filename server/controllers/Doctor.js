@@ -4,12 +4,14 @@ const SendEmail = require("../utils/Email");
 const bcrypt = require('bcrypt');
 const TokenGenerator = require("../Utils/TokenGenerator");
 const { cloudinary } = require('../Utils/cloudinary')
-const Review = require('../models/review')
+const Review = require('../models/review');
+const { ClientError } = require('../Utils/Errors');
 //registering the doctor
 exports.Register = async (req, res, next) => {
   try {
     console.log("abcde");
-    const { path, filename } = req.file
+    // const { path, filename } = req.file
+    console.log("yes");
     //validating the fields
     let user = await RegisterDoctorJoi(req.body);
     console.log("user : ", user);
@@ -30,10 +32,10 @@ exports.Register = async (req, res, next) => {
       specialization: user.specialization,
       years_Of_Experience: user.years_Of_Experience,
       fees: user.fees,
-      profile_pic: {
-        image_url: path,
-        file_name: filename
-      },
+      // profile_pic: {
+      //   image_url: path,
+      //   file_name: filename
+      // },
       bio: user.bio,
       category: user.category,
       have_clinic: user.have_clinic,
@@ -59,7 +61,7 @@ exports.Register = async (req, res, next) => {
     };
 
     try {
-      await SendEmail(mailoptions, next);
+      // await SendEmail(mailoptions, next);
       return res.status(201).json({
         message: "Verification link has been sent on your registered Email ID",
         success: true
@@ -71,25 +73,39 @@ exports.Register = async (req, res, next) => {
     }
 
   } catch (err) {
-    // Deleting the file in cloudinary as there is some Error 
-    const { filename } = req.file
-    cloudinary.uploader.destroy(filename)
     console.log("Error in the register doctor route : ", err);
+    // if (!req.file) {
+    //   return next(new ClientError("Please upload your profile picture"));
+    // }
+    // Deleting the file in cloudinary as there is some Error 
+    // const { filename } = req.file
+    // cloudinary.uploader.destroy(filename)
     return next(err);
   }
 }
 // NOTE: ADD PAGINATION
+//please add the filters to remove the doctors who have not verified their mails
 // This is the controller to get all doctors 
 exports.getDoctors = async (req, res, next) => {
   try {
-    console.log(req.user);
+    //right now setting the limit to 5
+    let limit = 5;
+    let start = (req.query.page-1) * limit + 1;
     //filtering the doctors based on the category
-    let doctors = await Doctor.find(req.query);
+    let doctors = await Doctor.find(req.query).select('name age gender city specialization years_Of_Experience fees profile_pic').sort({age:1}).skip(start-1).limit(limit+1);
+    //fetching limit+1 records in order to make sure there are more records to fetch for the user. If the records length is not same as limit+1 then we will know that there are no more records to fetch
+    let moreRecords = false;
+    if(doctors.length === (limit+1)){
+        moreRecords = true;
+        //since fetched extra one record to popping it off
+        doctors.pop();
+    }
     res.status(200).json({
       success: true,
       data: {
         doctors
-      }
+      },
+      more: moreRecords
     })
   }
   catch (err) {
@@ -101,7 +117,7 @@ exports.getDoctors = async (req, res, next) => {
 // This is controller for to get a particular doctor
 exports.getDoctor = async (req, res, next) => {
   try {
-    const doctor = await Doctor.findById(req.params.id).populate('review');
+    const doctor = await Doctor.findById(req.params.id).select("-type -verifyTokenExpiry -verifyToken -mailVerified -time_registered").populate('review');
     res.status(200).json({
       success: true,
       data: doctor

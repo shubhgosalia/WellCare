@@ -8,6 +8,10 @@ const TokenGenerator = require("../Utils/TokenGenerator");
 const { ClientError } = require("../Utils/Errors");
 const mongoose = require('mongoose');
 
+//POINTS TO BE DISCUSSED
+//1. HOW MANY DAYS AHEAD A DOCTOR SHOULD GET THE ACCESS TO THE SCHEDULE
+//2. TWO MAILS ARE TIME CONSUMING, WHAT TO DO??
+
 
 //registering the patient
 exports.Register = async (req, res, next) => {
@@ -72,6 +76,10 @@ function calculateDiff(qDate) {
   // console.log("sysdate1 : ", date - sysDate);
   let diffDays = Math.floor((date - sysDate) / (1000 * 60 * 60 * 24));
   console.log("diff: ", diffDays);
+  //checking for invalid dates
+  if (diffDays !== diffDays) {
+    throw new ClientError("Invalid Date");
+  }
   //if the patient selects past date
   if (diffDays < 0) {
     throw new ClientError("Invalid Date");
