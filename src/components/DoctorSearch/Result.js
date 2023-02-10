@@ -3,7 +3,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Result = () => {
-  const [date, SetDate] = useState("TODAY");
+  const current = new Date();
+  const curr_date = `${current.getFullYear()}-${
+    current.getMonth() + 1
+  }-${current.getDate()}`;
+
+  const [date, SetDate] = useState(curr_date);
   const navigate = useNavigate();
   const clickHandler = (e) => {
     navigate("/slotBook", {
@@ -27,7 +32,7 @@ const Result = () => {
         {/* Credentials */}
         <div className="flex flex-col space-y-0">
           {/* Name */}
-          <div className="font-semibold text-2xl">Deepti Sharma</div>
+          <div className="font-semibold text-2xl">Dr. Deepti Sharma</div>
 
           {/* Speciality */}
           <div className="text-sm text-dark-900">Lung Physiotherapist</div>
@@ -49,7 +54,7 @@ const Result = () => {
         {/* book appointment*/}
         <button
           onClick={clickHandler}
-          className="float-right bg-dark-100 hover:bg-gray-700 text-white text-sm font-bold rounded px-2 py-2"
+          className="float-right bg-dark-100 hover:bg-gray-800 text-white text-sm font-bold rounded px-2 py-2"
         >
           Book Appointment
         </button>

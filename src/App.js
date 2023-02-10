@@ -12,10 +12,10 @@ import ForgotPassword from "components/PasswordSetup/ForgotPassword";
 import DoctorSearch from "components/DoctorSearch/Home";
 import MyAccount from "components/MyAccount/MyAccount";
 import SlotBooking from "components/SlotBooking/SlotBooking";
-import { useState } from "react";
+import Checkout from "components/PaymentCheckout/Checkout";
+import Gateway from "components/PaymentGateway/Gateway";
 
 function App() {
-  // const [data, setData] = useState({});
   return (
     <>
       <Router>
@@ -37,6 +37,10 @@ function App() {
 
           {/* SlotBooking Page */}
           <Route exact path="/slotBook" element={<SlotBooking />} />
+
+          <Route exact path="/checkoutPayment" element={<Checkout />} />
+
+          <Route exact path="/paymentGateway" element={<Gateway />} />
 
           {/*Doctor registration page*/}
           <Route

@@ -2,9 +2,23 @@ import React from "react";
 import Navbar from "components/Utils/Navbar";
 import Title from "components/SlotBooking/Title";
 import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SlotBooking = () => {
   const location = useLocation();
+  const [time, SetTime] = useState();
+  const [findate, SetFindate] = useState(location.state.date);
+  const navigate = useNavigate();
+  const clickHandler = (e) => {
+    navigate("/checkoutPayment", {
+      state: {
+        time: `${time}`,
+        findate: `${findate}`,
+      },
+    });
+  };
+
   return (
     <div className="w-full flex flex-row font-body-primary">
       {/* 1. Navbar */}
@@ -27,10 +41,16 @@ const SlotBooking = () => {
               alt=""
               className=" rounded-lg mt-2 ml-10"
             />
-            <div className=" ml-20 mt-5 font-semibold text-3xl">
-              Deepti Sharma
+            <div
+              className="mt-5 font-semibold text-2xl"
+              style={{ marginLeft: 90 }}
+            >
+              Dr. Deepti Sharma
             </div>
-            <div className="ml-20 text-md text-dark-900">
+            <div
+              className="ml-20 text-md text-dark-900"
+              style={{ marginLeft: 90 }}
+            >
               Lung Physiotherapist
             </div>
           </div>
@@ -61,7 +81,11 @@ const SlotBooking = () => {
                   <tbody>
                     <tr>
                       <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          class=" bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           10 AM
                         </button>
                       </td>
@@ -71,12 +95,20 @@ const SlotBooking = () => {
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           4.00 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           8.00 PM
                         </button>
                       </td>
@@ -90,17 +122,29 @@ const SlotBooking = () => {
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           1.30 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           5.00 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           8.30 PM
                         </button>
                       </td>
@@ -109,22 +153,34 @@ const SlotBooking = () => {
 
                     <tr>
                       <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           11 AM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           2.30 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button className="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           6.00 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           9.00 PM
                         </button>
                       </td>
@@ -133,22 +189,34 @@ const SlotBooking = () => {
 
                     <tr>
                       <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           11.30 AM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           3.30 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        <button
+                          onClick={clickHandler}
+                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                        >
                           7.00 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button class="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button className="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           9.30 PM
                         </button>
                       </td>
