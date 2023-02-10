@@ -13,7 +13,7 @@ const LeftLogin = () => {
 
       {/* Center Tagline */}
       <div className="flex flex-col lg:space-y-2 space-y-6">
-        <div className="font-extrabold text-4xl lg:text-5xl text-dark-100 text-center leading-10">
+        <div className="font-extrabold text-4xl lg:text-5xl text-dark-100 text-center leading-10 lg:leading-normal">
           Start your journey with us
           <span className="text-white">.</span>
         </div>
