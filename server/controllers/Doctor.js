@@ -83,16 +83,17 @@ exports.Register = async (req, res, next) => {
     return next(err);
   }
 }
-// NOTE: ADD PAGINATION
-//please add the filters to remove the doctors who have not verified their mails
+
 // This is the controller to get all doctors 
 exports.getDoctors = async (req, res, next) => {
   try {
     //right now setting the limit to 5
     let limit = 5;
     let start = (req.query.page-1) * limit + 1;
+    let query = { ...req.query };
+    query.mailVerified = true;
     //filtering the doctors based on the category
-    let doctors = await Doctor.find(req.query).select('name age gender city specialization years_Of_Experience fees profile_pic').sort({age:1}).skip(start-1).limit(limit+1);
+    let doctors = await Doctor.find(query).select('name age gender city specialization years_Of_Experience fees profile_pic').sort({ age: 1 }).skip(start - 1).limit(limit + 1);
     //fetching limit+1 records in order to make sure there are more records to fetch for the user. If the records length is not same as limit+1 then we will know that there are no more records to fetch
     let moreRecords = false;
     if(doctors.length === (limit+1)){
