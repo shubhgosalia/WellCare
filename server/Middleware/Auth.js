@@ -7,6 +7,7 @@ const Doctor = require("../models/doctor");
 //it will be executed on every request.If the token is not found then the user will need to login into the system.
 const Auth = async (req, _res, next) => {
     try {
+        console.log(req.body);
         let token = req.cookies.s_Id;
         if (!token) {
             throw new AuthenticationError("Please login!");
@@ -15,6 +16,9 @@ const Auth = async (req, _res, next) => {
         let user = await Patient.findById(decoder.id);
         if (!user) {
             user = await Doctor.findById(decoder.id);
+            if (!user) {
+                throw new AuthenticationError("Something went wrong...!!");
+            }
         }
         req.user = user;
         next();

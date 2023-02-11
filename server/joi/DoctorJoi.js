@@ -12,11 +12,15 @@ exports.RegisterDoctorJoi = async (body)=>{
      phoneNumber: joi.string().length(10).pattern(/^[0-9]+$/).required(),
      age: joi.number().required(),
      gender: joi.string().required(),
-     licenseNumber: joi.string().required(),
+      licenseNumber: joi.string().length(10).required(),
      city : joi.string().required(),
-     specialization: joi.string().required(),
+      specialization: joi.string(),
      years_Of_Experience: joi.number().required(),
      fees: joi.number().required(),
+      bio: joi.string().required(),
+      clinic_address: joi.string(),
+      have_clinic: joi.boolean(),
+      category: joi.string().required(),
     });
 
    try{
@@ -27,7 +31,10 @@ exports.RegisterDoctorJoi = async (body)=>{
       throw new ClientError("Invalid Email ID");
     }else if(err.details[0].message.includes('password')){
       throw new ClientError("Please enter the password as mentioned");
-    }else{
+    } else if (err.details[0].message.includes('licenseNumber' && '10')) {
+      throw new ClientError("Invalid License Number");
+    }
+    else {
       throw new ClientError(err.details[0].message.replace(/"/g,""));
     }
    }

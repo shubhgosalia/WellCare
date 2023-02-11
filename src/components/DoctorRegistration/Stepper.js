@@ -54,6 +54,7 @@ const Stepper = ({ steps, currentStep }) => {
           completed: false,
           highlighted: index === 0 ? true : false,
           selected: index === 0 ? true : false,
+          key: { index }
         }
       )
     );
@@ -75,12 +76,12 @@ const Stepper = ({ steps, currentStep }) => {
               : "flex items-center"
           }
         >
-          <div className="relative flex flex-col items-center text-blue-600">
+          <div className="relative flex flex-col items-center text-primary-blue">
             <div
               className={`rounded-full transition duration-500 ease-in-out border-2 border-gray-300 h-10 w-10 flex items-center justify-center py-3  
             ${
               step.selected
-                ? "bg-blue-600 text-white font-bold border border-blue-600 "
+                ? "bg-primary-blue text-white font-bold border border-primary-blue "
                 : ""
             }`}
             >
@@ -100,7 +101,7 @@ const Stepper = ({ steps, currentStep }) => {
           </div>
           <div
             className={`flex-auto border-t-2 transition duration-500 ease-in-out  ${
-              step.completed ? "border-blue-600" : "border-gray-300 "
+              step.completed ? "border-primary-blue" : "border-gray-300 "
             }  `}
           ></div>
         </div>

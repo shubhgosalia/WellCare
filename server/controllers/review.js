@@ -7,7 +7,8 @@ module.exports.createReview = async (req, res, next) => {
             status: "success",
             data: {
                 review
-            }
+            },
+            msg: "Your review has been added successfully!"
         });
     }
     catch (err) {

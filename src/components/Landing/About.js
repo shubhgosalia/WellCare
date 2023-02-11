@@ -6,7 +6,7 @@ const About = () => {
       <div className="max-w-[1240px] mx-auto">
         <div className="text-center">
           {/* Slogan */}
-          <h2 className="text-5xl font-bold text-blue-700">
+          <h2 className="text-5xl font-bold text-primary-blue">
             Trusted By users across the world
           </h2>
 
@@ -21,17 +21,17 @@ const About = () => {
         {/* Analysis Containers */}
         <div className="grid md:grid-cols-3 gap-5 px-20 text-center mt-2">
           <div className="border py-8 rounded-xl shadow-xl">
-            <p className="text-6xl font-bold text-blue-700">25k</p>
+            <p className="text-6xl font-bold text-primary-blue">25k</p>
             <p className="text-dark-800 font-medium text-lg">Active Users</p>
           </div>
           <div className="border py-8 rounded-xl shadow-xl">
-            <p className="text-6xl font-bold text-blue-700">5k</p>
+            <p className="text-6xl font-bold text-primary-blue">5k</p>
             <p className="text-dark-800 font-medium text-lg">
               Experts Registered
             </p>
           </div>
           <div className="border py-8 rounded-xl shadow-xl">
-            <p className="text-6xl font-bold text-blue-700">100k</p>
+            <p className="text-6xl font-bold text-primary-blue">100k</p>
             <p className="text-dark-800 font-medium text-lg">
               Total Impressions
             </p>

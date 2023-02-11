@@ -7,10 +7,6 @@
     @apply p-4;
   }
 
-  button {
-    @apply text-white bg-blue-700 hover:bg-blue-800 rounded;
-  }
-
   ::-webkit-scrollbar {
     width: 7px;
   }
@@ -28,5 +24,21 @@
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #555;
+  }
+
+  .active-route {
+    @apply flex flex-row space-x-2 text-white font-medium bg-dark-100 py-2 px-3 rounded-xl border border-dark-100;
+  }
+
+  .inactive-route {
+    @apply flex flex-row space-x-2 text-white font-medium py-2 px-3 rounded-xl border border-dark-100;
+  }
+
+  .button {
+    @apply text-white text-xl font-bold p-2 rounded-full text-center bg-primary-blue hover:bg-secondary-blue shadow-md shadow-primary-blue/50 cursor-pointer;
+  }
+
+  .form-property {
+    @apply flex w-1/2 justify-between bg-dark-100 rounded-lg  p-5 border border-dark-200;
   }
 }

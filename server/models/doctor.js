@@ -23,7 +23,8 @@ const doctorSchema = new mongoose.Schema({
     },
     specialization: {
         type: String,
-        required: [true, "User should have a specialization"]
+        default: " "
+        // required: [true, "User should have a specialization"]
     },
     years_Of_Experience: {
         type: Number,
@@ -37,16 +38,16 @@ const doctorSchema = new mongoose.Schema({
         type: Number,
         required: [true, "User should have a Fees"]
     },
-    profile_pic: {
-        image_url: {
-            type: String,
-            required: [true, "User should have a  image url"]
-        },
-        file_name: {
-            type: String,
-            required: [true, "User should have a  image file_name"]
-        }
-    },
+    // profile_pic: {
+    //     image_url: {
+    //         type: String,
+    //         required: [true, "User should have a  image url"]
+    //     },
+    //     file_name: {
+    //         type: String,
+    //         required: [true, "User should have a  image file_name"]
+    //     }
+    // },
     email: {
         type: String,
         required: [true, "User should have a Email"],
@@ -91,6 +92,10 @@ const doctorSchema = new mongoose.Schema({
     verifyTokenExpiry: {
         type: Date,
         default: null
+    },
+    type: {
+        type: String,
+        default: "Doctor"
     }
 },
     {
