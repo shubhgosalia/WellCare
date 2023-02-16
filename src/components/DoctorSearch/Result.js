@@ -2,7 +2,7 @@ import React from "react";
 
 const Result = () => {
   return (
-    <div className="flex flex-col w-[30%] bg-primary-blue p-5 rounded-lg space-y-5 text-dark-100">
+    <div className="flex flex-col bg-gradient-to-tr from-dark-100 to-blue-900  p-5 rounded-lg space-y-5 border border-blue-900 text-dark-700 cursor-pointer">
       {/* img */}
       <div>
         <img
@@ -15,14 +15,14 @@ const Result = () => {
       {/* Credentials */}
       <div className="flex flex-col space-y-0">
         {/* Name */}
-        <div className="font-semibold text-2xl">Deepti Sharma</div>
+        <div className="font-semibold text-2xl ">Deepti Sharma</div>
 
         {/* Speciality */}
-        <div className="text-sm text-dark-900">Lung Physiotherapist</div>
+        <div className="text-base">Lung Physiotherapist</div>
       </div>
 
       {/* Address */}
-      <div className=" font-semibold">
+      <div className="font-semibold">
         Gymkhana, Rahul building, 1/b, Marve Rd, opp. Malad, Malad, Navy Colony,
         Liberty Garden, Malad West, Mumbai, Maharashtra 400064
       </div>

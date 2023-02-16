@@ -50,80 +50,77 @@ const Filter = () => {
   };
 
   return (
-    <div className="flex flex-row px-20">
-      {/* form */}
-      <div className="w-full bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">
-        {/* Search Doctors */}
-        <div className="w-[30%]">
-          <label for="doctorSearch" className="block text-lg font-semibold">
-            Search Doctor:
-          </label>
-          <div className="">
-            <input
-              id="doctorSearch"
-              name="text"
-              type="text"
-              autocomplete="text"
-              required
-              className="w-full rounded-lg p-2 text-lg"
-              placeholder="Search"
-            />
-          </div>
-        </div>
-
-        {/* Speciality */}
+    <div className="w-[85%] mx-auto bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">
+      {/* Search Doctors */}
+      <div className="w-[30%]">
+        <label for="doctorSearch" className="block text-lg font-semibold">
+          Search Doctor:
+        </label>
         <div className="">
-          <label for="specialization" className="block text-lg font-semibold">
-            Speciality:
-          </label>
-          <select
-            name="specialization"
-            id="state"
-            className="rounded-lg p-2"
-            onChange={updateFilters}
-          >
-            <option value="None">None</option>
-            <option value="Orthopedic">Orthopedic</option>
-            <option value="Pediatric">Pediatric</option>
-            <option value="Sports">Sports</option>
-            <option value="Women">Women</option>
-            <option value="Vestibular">Vestibular</option>
-          </select>
+          <input
+            id="doctorSearch"
+            name="text"
+            type="text"
+            autocomplete="text"
+            required
+            className="w-full rounded-lg p-2 text-lg"
+            placeholder="Search"
+          />
         </div>
+      </div>
 
-        {/* Gender */}
-        <div>
-          <label for="state" className="block text-lg font-semibold">
-            Select Gender:
-          </label>
-          <select
-            name="gender"
-            id="state"
-            className="rounded-lg p-2 w-full"
-            onChange={updateFilters}
-          >
-            <option value="None">None</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
+      {/* Speciality */}
+      <div className="">
+        <label for="specialization" className="block text-lg font-semibold">
+          Speciality:
+        </label>
+        <select
+          name="specialization"
+          id="state"
+          className="rounded-lg p-2"
+          onChange={updateFilters}
+        >
+          <option value="None">None</option>
+          <option value="Orthopedic">Orthopedic</option>
+          <option value="Pediatric">Pediatric</option>
+          <option value="Sports">Sports</option>
+          <option value="Women">Women</option>
+          <option value="Vestibular">Vestibular</option>
+        </select>
+      </div>
 
-        {/* City */}
-        <div>
-          <label for="city" className="block text-lg font-semibold">
-            Search City:
-          </label>
-          <select
-            name="city"
-            id="state"
-            className="rounded-lg p-2"
-            onChange={updateFilters}
-          >
-            <option value="None">None</option>
-            <option value="mumbai">Mumbai</option>
-            <option value="pune">Pune</option>
-          </select>
-        </div>
+      {/* Gender */}
+      <div>
+        <label for="state" className="block text-lg font-semibold">
+          Select Gender:
+        </label>
+        <select
+          name="gender"
+          id="state"
+          className="rounded-lg p-2 w-full"
+          onChange={updateFilters}
+        >
+          <option value="None">None</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+
+      {/* City */}
+      <div>
+        <label for="city" className="block text-lg font-semibold">
+          Search City:
+        </label>
+        <select
+          name="city"
+          id="state"
+          className="rounded-lg p-2"
+          onChange={updateFilters}
+        >
+          <option value="None">None</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="pune">Pune</option>
+        </select>
       </div>
     </div>
   );
