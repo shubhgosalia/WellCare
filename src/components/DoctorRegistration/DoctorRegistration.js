@@ -11,6 +11,7 @@ import Step5 from "components/DoctorRegistration/Step5";
 import Final from "components/DoctorRegistration/Final";
 import NavbarHome from "components/Utils/LoginNavbar";
 import Swal from "sweetalert2";
+import NavigateBack from "components/Utils/NavigateBack";
 
 const DoctorRegistration = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -21,6 +22,7 @@ const DoctorRegistration = () => {
   const ref3 = useRef(null);
   const ref4 = useRef(null);
   const ref5 = useRef(null);
+  const Navigate = NavigateBack();
 
   const refArray = [ref1, ref2, ref3, ref4, ref5];
 
@@ -53,7 +55,7 @@ const DoctorRegistration = () => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Incomplete field(s)...",
+          text: "Incomplete/Invalid field(s)...",
         });
     } else {
       newStep--;
@@ -65,7 +67,7 @@ const DoctorRegistration = () => {
   return (
     <>
       <NavbarHome />
-
+      <div className="w-full h-[100%] flex flex-col justify-center items-center">
       <div className="mx-auto mt-6 rounded-2xl bg-white pb-2 shadow-xl md:w-1/2">
         {/* Stepper */}
         <h2 class="pt-5 pl-8 text-xl font-bold leading-tight tracking-tight text-primary-blue md:text-2xl dark:text-white">
@@ -87,6 +89,13 @@ const DoctorRegistration = () => {
             steps={steps}
           />
         )}
+      </div>
+        <button
+          className="mx-auto w-full sm:max-w-md text-white bg-dark-400 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center hover:bg-dark-300 my-3"
+          onClick={() => Navigate("/signup")}
+        >
+          Back
+        </button>
       </div>
     </>
   );

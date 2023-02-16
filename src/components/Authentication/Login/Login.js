@@ -30,7 +30,7 @@ const Login = () => {
           icon: "success",
           title: res.data.message,
         });
-        navigate("/landing");
+        navigate("/home");
       }
       setLoad(false);
     } catch (err) {
@@ -77,8 +77,8 @@ const Login = () => {
                 {/* email */}
                 <div>
                   <label
-                    for="email"
-                    className="block text-base font-medium text-gray-200"
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-200"
                   >
                     Username/Email ID
                   </label>
@@ -97,8 +97,8 @@ const Login = () => {
                 {/* password */}
                 <div>
                   <label
-                    for="password"
-                    className="block text-base font-medium text-gray-200"
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-200"
                   >
                     Password
                   </label>
@@ -107,7 +107,7 @@ const Login = () => {
                       id="password"
                       name="password"
                       type="password"
-                      autocomplete="current-password"
+                      autoComplete="current-password"
                       required
                       className="w-full rounded-lg p-2 text-lg"
                       onChange={login}
@@ -127,8 +127,8 @@ const Login = () => {
                     onChange={login}
                   />
                   <label
-                    for="bordered-radio-1"
-                    className="py-4 ml-2 w-full text-base font-medium text-gray-200 dark:text-gray-500"
+                    htmlFor="bordered-radio-1"
+                    className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
                   >
                     Doctor
                   </label>
@@ -145,8 +145,8 @@ const Login = () => {
                     onChange={login}
                   />
                   <label
-                    for="bordered-radio-1"
-                    className="py-4 ml-2 w-full text-base font-medium text-gray-200 dark:text-gray-500"
+                    htmlFor="bordered-radio-1"
+                    className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
                   >
                     Patient
                   </label>

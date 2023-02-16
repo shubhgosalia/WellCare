@@ -72,8 +72,7 @@ const Signup = () => {
         gender: "",
         username: "",
       });
-
-      if (res.data.status === true) {
+      if (res.data.success === true) {
         Swal.fire({
           icon: "success",
           title: res.data.message,
