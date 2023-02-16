@@ -3,8 +3,8 @@ import React from "react";
 
 // Components
 import Navbar from "components/Utils/Navbar";
-import Home1 from "components/Home/Part1";
-import HomeRightSidebar from "components/Home/Part2";
+import Home1 from "components/Home/Center";
+import HomeRightSidebar from "components/Home/RightSidebar";
 
 const Home = () => {
   return (
