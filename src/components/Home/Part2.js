@@ -1,5 +1,5 @@
 import React from "react";
-import UpcomingAppointment from "components/Home/upcomingAppointment";
+import UpcomingAppointment from "components/Home/UpcomingAppointment";
 
 const Part2 = () => {
   return (
