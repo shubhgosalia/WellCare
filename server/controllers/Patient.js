@@ -8,6 +8,11 @@ const TokenGenerator = require("../Utils/TokenGenerator");
 const { ClientError } = require("../Utils/Errors");
 const mongoose = require('mongoose');
 
+const dotenv = require('dotenv');
+dotenv.config({path:"./config.env"});
+const stripe=require('stripe')(process.env.STRIPE_SECRET_KEY);
+
+
 //POINTS TO BE DISCUSSED
 //1. HOW MANY DAYS AHEAD A DOCTOR SHOULD GET THE ACCESS TO THE SCHEDULE
 //2. TWO MAILS ARE TIME CONSUMING, WHAT TO DO??
@@ -189,3 +194,52 @@ exports.BookAppointment = async (req, res, next) => {
     return next(err);
   }
 };
+
+// Payments
+exports.getCheckoutSession = async (req, res, next) => {
+  console.log("Entering checkout.................")
+  try {
+    // Get the doctor which patient is trying to book
+    const doctor= await Doctor.findById(req.params.doc_id);
+    console.log(doctor)
+    // Create checkout session
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      // payment_method_types:['card'],
+
+      // Add a success page
+      // HOME PAGE
+      success_url: `${req.protocol}://${req.get('host')}`,
+
+      // NEED TO CHECK 
+      // CANCEL PAGE
+      cancel_url: `${req.protocol}://${req.get('host')}`,
+      customer_email:req.user.email,
+      submit_type:'book',
+      line_items: [
+        {
+          // THE INFO ABOUT THE DOCTOR THAT PATIENT IS TRYING TO BOOK
+          price_data:{
+            currency:'inr',
+            product_data:{
+              name:`${doctor.name}`,
+              description:`${doctor.bio}`,
+              // images:`${doctor.profile_pic.image_url}`
+            },
+            unit_amount:`${doctor.fees}`
+            
+          },
+          quantity:1,
+        },
+      ],  
+      
+    });
+    res.status(200).json({
+      status:"success",
+      session
+    })
+  } catch (err) {
+    console.log("err in payment checkout session : ", err);
+    return next(err);
+  }
+}
