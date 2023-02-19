@@ -2,9 +2,9 @@ const mongoose = require("mongoose");
 const mongoURI = process.env.MONGODB_URL;
 // const mongoURI = process.env.MONGODB_ATLAS_URL;
 //connecting to the database
-const connectToMongo = async () => {
+const connectToMongo = () => {
   try {
-    await mongoose.connect(mongoURI, {
+    mongoose.connect(mongoURI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

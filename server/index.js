@@ -1,9 +1,9 @@
 const express = require("express");
-const { NotFoundError } = require("./Utils/Errors");
+const { NotFoundError, ClientError } = require("./Utils/Errors");
 const app = express();
 const helmet = require("helmet");
 const cors = require("cors");
-// const cookieParser = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 
 //middlewares
 app.use(helmet());
@@ -15,7 +15,7 @@ app.use(
   })
 );
 
-// app.use(cookieParser());
+app.use(cookieParser());
 app.use((_req, _res, next) => {
   if (process.env.ENV === "development") {
     console.log("in the development mode....");
@@ -27,11 +27,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 //API
-app.use((_req, _res, next) => {
-  console.log("heyyy");
-  next();
-});
-
 //for login,forgot passwords,verifying the accounts,passwords etc - common for both doctor and patient
 app.use("/auth", require("./routes/Auth"));
 
@@ -49,6 +44,7 @@ app.get("/favicon.ico", (_req, res) => {
   return res.sendStatus(204);
 });
 
+
 //any unknown route will be executed here throwing not found error
 app.all("*", (req, _res, next) => {
   console.log("path : ", req.originalUrl);
@@ -56,13 +52,24 @@ app.all("*", (req, _res, next) => {
   return next(new NotFoundError("Sorry,this page does not exists"));
 });
 
+
+//handling mongoserver errors
+const handleDuplicateError = (error) => {
+  let errStr = Object.keys(error.keyPattern).join(",").concat(" already exists!");
+  return new ClientError(errStr);
+}
+
 //global error middleware
 app.use((error, _req, res, _) => {
   console.log("entered the global error middleware...");
   let err = { ...error };
 
-  err.statusCode = err.statusCode || 500;
-  err.msg = err.statusCode === 500 ? "Sorry,something went wrong!" : err.msg;
+  if (err.code === 11000) {
+    err = handleDuplicateError(err);
+  } else {
+    err.statusCode = err.statusCode || 500;
+    err.msg = err.statusCode === 500 ? "Sorry,something went wrong!" : err.msg;
+  }
 
   console.log("Error : ", err);
   //sending the error response

@@ -12,16 +12,19 @@
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cloudinary": "^1.32.0",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "helmet": "^6.0.0",
     "joi": "^17.7.0",
+    "joi-objectid": "^4.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.2",
     "multer": "^1.4.5-lts.1",
     "multer-storage-cloudinary": "^4.0.0",
     "nodemailer": "^6.8.0",
-    "nodemon": "^2.0.20"
+    "nodemon": "^2.0.20",
+    "stripe": "^11.10.0"
   }
 }
