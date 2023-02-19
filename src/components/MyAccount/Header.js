@@ -1,10 +1,17 @@
 import React from "react";
+import UserImage from "../../assets/Krish.png";
 
 const Header = () => {
   return (
     <div className="bg-gradient-to-tr from-dark-100 to-dark-200 h-full flex space-x-6 text-white">
       {/* Image */}
-      <div className="w-48 h-48 bg-dark-600 rounded-full my-auto ml-10"></div>
+      <div className=""></div>
+
+      <img
+        src={UserImage}
+        alt=""
+        className="w-48 h-48 rounded-full my-auto ml-10"
+      />
 
       {/* Name */}
       <div className="mt-auto mb-6 flex flex-col space-y-1">

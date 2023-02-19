@@ -112,14 +112,14 @@ const Signup = () => {
     <>
       {/* main container */}
       <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 w-full h-full font-body-primary">
-        <div className="flex p-5 space-x-5 h-full text-white">
+        <div className="flex flex-col lg:flex-row p-5 lg:space-x-5 h-full text-white">
           {/* leftsidebar */}
-          <div className="w-1/3">
+          <div className="w-full lg:w-1/3">
             <LeftSignup />
           </div>
 
           {/* right sidebar */}
-          <div className="w-2/3 h-[100%] text-black p-5 overflow-y-scroll">
+          <div className="w-full lg:w-2/3 h-full text-black lg:p-5">
             {/* logo */}
             <div className="flex-col space-y-0 text-center ">
               <div className="font-black text-5xl text-primary-blue font-head-primary">
@@ -137,7 +137,7 @@ const Signup = () => {
             </p>
 
             {/* form */}
-            <div className=" py-8 px-6 shadow rounded-lg  sm:px-10 flex flex-col space-y-6">
+            <div className="lg:py-8 lg:px-6 p-4 shadow rounded-lg sm:px-10 flex flex-col space-y-6">
               {/* Full Name */}
               <div className="">
                 <label
@@ -269,11 +269,11 @@ const Signup = () => {
                 >
                   Gender<sup className="text-red-600">*</sup>
                 </label>
-                <div className="mt-1 ">
+                <div className="mt-1">
                   <select
                     name="gender"
                     id="company-size"
-                    className="rounded-lg p-2 w-1/3 text-lg font-bold"
+                    className="rounded-lg p-2 w-2/3 lg:w-1/3 text-lg font-bold"
                     onChange={updateInfo}
                   >
                     <option value="">Please select</option>

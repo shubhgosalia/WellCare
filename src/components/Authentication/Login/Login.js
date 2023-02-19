@@ -54,15 +54,15 @@ const Login = () => {
   return (
     <>
       {/* main container */}
-      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 w-full h-screen font-body-primary">
-        <div className="flex p-5 space-x-5 h-full text-white">
+      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 w-full min-h-screen font-body-primary">
+        <div className="flex flex-col lg:flex-row p-4 lg:space-x-5 h-full text-white">
           {/* leftsidebar */}
-          <div className="w-1/3">
+          <div className="w-full lg:w-1/3">
             <LeftLogin />
           </div>
 
           {/* right sidebar */}
-          <div className="w-2/3 h-full text-black p-5">
+          <div className="w-[95%] mx-auto lg:w-2/3 h-full text-black flex flex-col space-y-4 lg:space-y-6">
             {/* logo */}
             <div className="flex-col space-y-0 text-center ">
               <div className="font-black text-5xl text-primary-blue font-head-primary">
@@ -72,10 +72,8 @@ const Login = () => {
             </div>
 
             {/* form */}
-            <div className="py-8 px-6 shadow rounded-lg  sm:px-10">
-              <div className="mb-0 space-y-6">
-                {/*  */}
-
+            <div className="lg:py-8 lg:px-6 lg:rounded-lg rounded shadow">
+              <div className="space-y-6">
                 {/* email */}
                 <div>
                   <label

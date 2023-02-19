@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -15,13 +14,6 @@ module.exports = {
         "dark-200": "#0F172A",
         "dark-100": "#0d1117",
 
-        // text color
-        "neon-orange": "#FF6700",
-        "neon-purple": "#b026ff",
-        "neon-green": "#39ff14",
-        "neon-yellow": "#ffff00",
-        "neon-blue": "#04d9ff",
-
         // primary
         "primary-blue": "#0284C7",
         "secondary-blue": "#0369A1",
@@ -30,7 +22,15 @@ module.exports = {
         "head-primary": ["Knewave"],
         "body-primary": ["Ubuntu"],
       },
-
+      fontSize: {
+        sm: "0.8rem",
+        base: "1rem",
+        xl: "1.25rem",
+        "2xl": "1.563rem",
+        "3xl": "1.953rem",
+        "4xl": "2.441rem",
+        "5xl": "3.052rem",
+      },
       screens: {
         sm: "640px",
         md: "768px",
