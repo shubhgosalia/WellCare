@@ -97,9 +97,7 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="inactive-route">
-                <div className="my-auto">
-                  <LightServiceIcon color="#94A3B8" size="27" />
-                </div>
+                <LightServiceIcon color="#94A3B8" size="27" />
                 <div className="text-xl text-dark-600">Services</div>
               </div>
             )}

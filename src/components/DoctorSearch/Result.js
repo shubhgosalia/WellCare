@@ -1,16 +1,19 @@
-import { setDate } from "date-fns";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+// import moment from "react-moment";
+// import format from "date-fns/format";
 
 const Result = () => {
-  const current = new Date();
-  const curr_date = `${current.getFullYear()}-${
-    current.getMonth() + 1
-  }-${current.getDate()}`;
+  // const current = new Date();
+  // const curr_date = `${current.getFullYear()}-${
+  //   current.getMonth() + 1
+  // }-${current.getDate()}`;
 
-  const [date, SetDate] = useState(curr_date);
+  const [date, SetDate] = useState(new Date());
   const navigate = useNavigate();
-  const clickHandler = (e) => {
+  const clickHandler = () => {
     navigate("/slotBook", {
       state: {
         date: `${date}`,
@@ -43,14 +46,27 @@ const Result = () => {
           Colony, Liberty Garden, Malad West, Mumbai, Maharashtra 400064
         </div>
 
-        <input
+        <div>
+          <DatePicker
+            className="p-2 rounded-md"
+            minDate={new Date(new Date().toISOString().split("T")[0])}
+            onChange={(app_date) => SetDate(app_date)}
+            selected={date}
+            isClearable
+            placeholderText="select appointment date"
+            dateFormat="dd/MM/yyyy"
+          />
+        </div>
+
+        {/* <input
           type="date"
           style={{ height: 40, width: 200, padding: 10 }}
           min={new Date().toISOString().split("T")[0]}
           defaultValue={new Date().toISOString().substring(0, 10)}
           onChange={(e) => SetDate(e.target.value)}
           required
-        />
+        /> */}
+
         {/* book appointment*/}
         <button
           onClick={clickHandler}
