@@ -11,6 +11,10 @@ import ResetPassword from "components/PasswordSetup/ResetPassword";
 import ForgotPassword from "components/PasswordSetup/ForgotPassword";
 import DoctorSearch from "components/DoctorSearch/Home";
 import MyAccount from "components/MyAccount/MyAccount";
+import SlotBooking from "components/SlotBooking/SlotBooking";
+import Checkout from "components/PaymentCheckout/Checkout";
+import Gateway from "components/PaymentGateway/Gateway";
+import Success from "components/PaymentSuccess/Success";
 
 function App() {
   return (
@@ -31,6 +35,18 @@ function App() {
 
           {/* Doctor Search Page */}
           <Route exact path="/doctorSearch" element={<DoctorSearch />} />
+
+          {/* SlotBooking Page */}
+          <Route exact path="/slotBook" element={<SlotBooking />} />
+
+          {/* Appointment Summary Page */}
+          <Route exact path="/checkoutPayment" element={<Checkout />} />
+
+          {/* Payment Gateway  Page */}
+          <Route exact path="/paymentGateway" element={<Gateway />} />
+
+          {/* Payment Success Page */}
+          <Route exact path="/paymentSuccess" element={<Success />} />
 
           {/*Doctor registration page*/}
           <Route

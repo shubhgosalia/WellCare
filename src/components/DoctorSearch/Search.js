@@ -8,14 +8,27 @@ const Search = () => {
     <>
       {/* Main Container */}
       <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">
-        {/* Title */}
-        <Heading />
+        <div className="fixed top-0 w-[84%] backdrop-blur-2xl z-50 py-4">
+          {/* Title */}
+          <Heading />
 
-        {/* form and results */}
-        <Filter />
+          {/* form and results */}
+          <Filter />
+        </div>
 
         {/* Results */}
-        <div className="px-20">
+        <div className="w-[85%] h-full mx-auto grid grid-cols-3 gap-6 z-40 relative top-44 bottom-0">
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
+          <DoctorResult />
           <DoctorResult />
         </div>
       </div>

@@ -3,8 +3,8 @@ import React from "react";
 
 // Components
 import Navbar from "components/Utils/Navbar";
-import HomePart1 from "components/Home/Part1";
-import HomePart2 from "components/Home/Part2";
+import Home1 from "components/Home/Center";
+import HomeRightSidebar from "components/Home/RightSidebar";
 
 const Home = () => {
   return (
@@ -15,16 +15,14 @@ const Home = () => {
       </div>
 
       {/* 3.Home Page */}
-      <div className="w-[84%] flex">
-        {/* 3a */}
-        <div className="w-[75%] bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 px-6">
-          <HomePart1 />
-        </div>
+      {/* 3a */}
+      <div className="w-[64%] px-6 bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100">
+        <Home1 />
+      </div>
 
-        {/* 3b */}
-        <div className="w-[25%] h-screen">
-          <HomePart2 />
-        </div>
+      {/* 3b */}
+      <div className="w-[20%] h-screen">
+        <HomeRightSidebar />
       </div>
     </div>
   );

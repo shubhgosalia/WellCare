@@ -1,6 +1,7 @@
 // import files
 import React from "react";
 import { useLocation, Link } from "react-router-dom";
+import UserImage from "../../assets/Krish.png";
 // Light Icons
 import LightHomeIcon from "components/Icons/Light/home";
 import LightSearchIcon from "components/Icons/Light/search";
@@ -96,9 +97,7 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="inactive-route">
-                <div className="my-auto">
-                  <LightServiceIcon color="#94A3B8" size="27" />
-                </div>
+                <LightServiceIcon color="#94A3B8" size="27" />
                 <div className="text-xl text-dark-600">Services</div>
               </div>
             )}
@@ -126,11 +125,14 @@ const Navbar = () => {
         {/* Profile Picture */}
         <div className="flex flex-col text-center space-y-3">
           {/* Picture */}
-          <img
-            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-            alt=""
-            className="rounded-full w-24 h-24 bg-dark-800 mx-auto border-dark-800 border-4"
-          />
+          <div className="border-primary-blue border-2 mx-auto overflow-hidden rounded-full">
+            <img
+              src={UserImage}
+              alt=""
+              className="rounded-full m-2 w-24 h-24"
+            />
+          </div>
+
           {/* Name */}
           <div className="text-dark-900 font-bold text-xl">Krish Vadhani</div>
         </div>

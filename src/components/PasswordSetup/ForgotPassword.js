@@ -70,8 +70,8 @@ const ForgotPassword = () => {
               Password Reset
             </h2>
             <p className="text-white mb-2">
-              Please enter your e-mail address and we will send you a link to
-              reset your password!
+              Don't worry, please enter your e-mail address and we will send you
+              a link to reset your password!
             </p>
             <div className="mt-4 space-y-4 lg:mt-5 md:space-y-5">
               <div>

@@ -8,7 +8,7 @@
   }
 
   ::-webkit-scrollbar {
-    width: 7px;
+    display: none;
   }
 
   /* Track */
@@ -27,15 +27,15 @@
   }
 
   .active-route {
-    @apply flex flex-row space-x-2 text-white font-medium bg-dark-100 py-2 px-3 rounded-xl border border-dark-100;
+    @apply flex flex-row space-x-2 text-white font-medium bg-dark-100 py-2 px-3 rounded-xl;
   }
 
   .inactive-route {
-    @apply flex flex-row space-x-2 text-white font-medium py-2 px-3 rounded-xl border border-dark-100;
+    @apply flex flex-row space-x-2 text-white font-medium py-2 px-3 rounded-xl;
   }
 
   .button {
-    @apply text-white text-xl font-bold p-2 rounded-full text-center bg-primary-blue hover:bg-secondary-blue shadow-md shadow-primary-blue/50 cursor-pointer;
+    @apply text-white text-xl font-bold p-2 rounded-full text-center bg-primary-blue hover:bg-secondary-blue shadow-lg cursor-pointer;
   }
 
   .form-property {
