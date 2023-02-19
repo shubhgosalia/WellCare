@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 // import moment from "react-moment";
-import format from "date-fns/format";
+// import format from "date-fns/format";
 
 const Result = () => {
   // const current = new Date();
@@ -53,7 +53,7 @@ const Result = () => {
             onChange={(app_date) => SetDate(app_date)}
             selected={date}
             isClearable
-            placeholderText="Select appointment date"
+            placeholderText="select appointment date"
             dateFormat="dd/MM/yyyy"
           />
         </div>
