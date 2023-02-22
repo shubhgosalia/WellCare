@@ -177,12 +177,12 @@ exports.BookAppointment = async (req, res, next) => {
       </div>`,
     };
 
-    try {
-      await SendEmail(mail1, next);
-      await SendEmail(mail2, next);
-    } catch (err) {
-      throw err;
-    }
+    // try {
+    //   await SendEmail(mail1, next);
+    //   await SendEmail(mail2, next);
+    // } catch (err) {
+    //   throw err;
+    // }
 
     return res.status(200).json({
       success: true,
@@ -235,7 +235,7 @@ exports.getCheckoutSession = async (req, res, next) => {
       
     });
     res.status(200).json({
-      status:"success",
+      success: true,
       session
     })
   } catch (err) {

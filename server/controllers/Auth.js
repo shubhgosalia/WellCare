@@ -91,6 +91,16 @@ const signJWT = async (user_id) => {
   return await promisify(jwt.sign)({ id: user_id }, process.env.JWT_SECRET);
 };
 
+//password match
+const isPasswordMatch = async (pass_word, ogpass) => {
+  console.log("heyy");
+  // let resp = await bcrypt.compare(pass_word, ogpass);
+  console.log("ehhehehe : ", pass_word);
+  console.log("jj : ", ogpass);
+  return false;
+}
+
+
 //Login route
 exports.Login = async (req, res, next) => {
   try {
@@ -133,9 +143,7 @@ exports.Login = async (req, res, next) => {
       throw new ClientError("Email not verified. Please verify your email!");
     }
 
-    const isPasswordMatch = await bcrypt.compare(pass_word, user.password);
-
-    if (!isPasswordMatch) {
+    if (! await isPasswordMatch(pass_word, user.password)) {
       throw new ClientError("Invalid credentials!");
     }
 
@@ -299,3 +307,91 @@ exports.SetPassword = async (req, res, next) => {
     return next(err);
   }
 };
+
+//getting the profile of the user - doctor/patient
+exports.GetUser = async (req, res, next) => {
+  try {
+    let user = req.user;
+    let newUser;
+    if (user.type === 'Doctor') {
+      // Sending doctor related information
+      // name,age,gender,licenseNumber,city,specialization,years_Of_Experience,phoneNumber,fees,email,clinic_address,have_clinic,username,category,bio,profile_pic
+      newUser = {
+        name: user.name,
+        age: user.age,
+        licenseNumber: user.licenseNumber,
+        city: user.city,
+        specialization: user.specialization,
+        years_Of_Experience: user.years_Of_Experience,
+        phoneNumber: user.phoneNumber,
+        fees: user.fees,
+        email: user.email,
+        clinic_address: user.clinic_address,
+        username: user.username,
+        category: user.category,
+        bio: user.bio,
+        profile_pic: user.profile_pic
+      }
+    }
+    else {
+      // Sending patient related information
+      // name,email,phoneNumber,username,gender,age,profile_pic
+      newUser = {
+        name: user.name,
+        email: user.email,
+        phoneNumber: user.phoneNumber,
+        username: user.username,
+        gender: user.gender,
+        age: user.age,
+        profile_pic: user.profile_pic
+      }
+    }
+    return res.status(200).json({
+      data: {
+        newUser
+      },
+      success: true,
+    });
+  } catch (err) {
+    console.log("err in the user profile : ", err);
+    return next(err);
+  }
+}
+
+//reset password
+exports.ResetPassword = async (req, res, next) => {
+  try {
+    //checking the original password
+    if (! await isPasswordMatch(String(req.body.password), req.user.password)) {
+      throw new ClientError("Invalid password....");
+    }
+
+    //checking the regex of the password
+    let pattern = /^[a-zA-Z]+[a-zA-Z\d]*[@$#]+[a-zA-Z@$#\d]*\d+$/;
+    let newPassword = String(req.body.newPassword);
+    if ((newPassword.length < 8 || newPassword.length > 25) || !pattern.test(newPassword)) {
+      throw new ClientError("Please enter the password as mentioned..");
+    }
+
+    //hashing the password
+    const salt = await bcrypt.genSalt(10);
+    newPassword = await bcrypt.hash(newPassword, salt);
+
+    //updating the password
+    if (req.user.type === 'Doctor') {
+      await Doctor.findByIdAndUpdate(req.user.id, { password: newPassword });
+    } else {
+      await Patient.findByIdAndUpdate(req.user.id, { password: newPassword });
+    }
+
+    //sending the response
+    return res.status(200).json({
+      success: true,
+      message: "Password updated successfully....."
+    })
+
+  } catch (err) {
+    console.log("err in the reset password : ", err);
+    return next(err);
+  }
+}

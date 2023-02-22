@@ -38,16 +38,16 @@ const doctorSchema = new mongoose.Schema({
         type: Number,
         required: [true, "User should have a Fees"]
     },
-    // profile_pic: {
-    //     image_url: {
-    //         type: String,
-    //         required: [true, "User should have a  image url"]
-    //     },
-    //     file_name: {
-    //         type: String,
-    //         required: [true, "User should have a  image file_name"]
-    //     }
-    // },
+    profile_pic: {
+        image_url: {
+            type: String,
+            required: [true, "User should have a  image url"]
+        },
+        file_name: {
+            type: String,
+            required: [true, "User should have a  image file_name"]
+        }
+    },
     email: {
         type: String,
         required: [true, "User should have a Email"],

@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Auth = require('../Middleware/Auth');
-const { Register, GetAppointments, BookAppointment ,getCheckoutSession } = require("../controllers/Patient");
+const { Register, GetAppointments, BookAppointment, getCheckoutSession } = require("../controllers/Patient");
 
 //register route
 router.post('/register', Register);
