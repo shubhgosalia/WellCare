@@ -94,10 +94,7 @@ const signJWT = async (user_id) => {
 //password match
 const isPasswordMatch = async (pass_word, ogpass) => {
   console.log("heyy");
-  // let resp = await bcrypt.compare(pass_word, ogpass);
-  console.log("ehhehehe : ", pass_word);
-  console.log("jj : ", ogpass);
-  return false;
+  return await bcrypt.compare(pass_word, ogpass);
 }
 
 
