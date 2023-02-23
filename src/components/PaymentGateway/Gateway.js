@@ -5,10 +5,10 @@ import Heading from "components/PaymentGateway/Heading";
 // import Swal from "sweetalert2";
 // import axios from "axios";
 // import { useNavigate } from "react-router-dom";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { Alert } from "@material-tailwind/react";
-// import { faCreditCard } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-// import { faLock } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import { faCreditCard } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import { faLock } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 
 const Gateway = () => {
   // const navigate = useNavigate();
@@ -98,7 +98,7 @@ const Gateway = () => {
           >
             <div className="w-full pt-1 pb-5">
               <div className="bg-indigo-500 text-white overflow-hidden rounded-full w-20 h-20 -mt-16 mx-auto shadow-lg flex justify-center items-center">
-                {/* <FontAwesomeIcon icon={faCreditCard} /> */}
+                <FontAwesomeIcon icon={faCreditCard} />
               </div>
             </div>
             <div className="mb-5">
@@ -209,8 +209,7 @@ const Gateway = () => {
                 // onClick={submit}
               >
                 <a href="/paymentSuccess">
-                  {" "}
-                  {/* <FontAwesomeIcon icon={faLock} /> PAY NOW */}
+                  <FontAwesomeIcon icon={faLock} /> PAY NOW
                 </a>
               </button>
             </div>

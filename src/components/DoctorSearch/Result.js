@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+// import DatePicker from "react-datepicker";
+// import "react-datepicker/dist/react-datepicker.css";
 // import moment from "react-moment";
 // import format from "date-fns/format";
 
@@ -46,7 +46,8 @@ const Result = () => {
           Colony, Liberty Garden, Malad West, Mumbai, Maharashtra 400064
         </div>
 
-        <div>
+        {/* Datepicker for appointment date selection */}
+        {/* <div>
           <DatePicker
             className="p-2 rounded-md"
             minDate={new Date(new Date().toISOString().split("T")[0])}
@@ -56,7 +57,7 @@ const Result = () => {
             placeholderText="select appointment date"
             dateFormat="dd/MM/yyyy"
           />
-        </div>
+        </div> */}
 
         {/* <input
           type="date"
@@ -69,10 +70,10 @@ const Result = () => {
 
         {/* book appointment*/}
         <button
-          onClick={clickHandler}
+          // onClick={clickHandler}
           className="float-right bg-dark-100 hover:bg-gray-800 text-white text-sm font-bold rounded px-2 py-2"
         >
-          Book Appointment
+          <a href="/doctorProfile"> View More</a>
         </button>
       </div>
     </>
