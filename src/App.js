@@ -1,7 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-//
 import Login from "components/Authentication/Login/Login";
 import Home from "components/Home/Home";
 import Signup from "components/Authentication/Signup/Signup";
@@ -15,6 +14,7 @@ import SlotBooking from "components/SlotBooking/SlotBooking";
 import Checkout from "components/PaymentCheckout/Checkout";
 import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
+import Profile from "components/Profile/Profile";
 
 function App() {
   return (
@@ -35,6 +35,9 @@ function App() {
 
           {/* Doctor Search Page */}
           <Route exact path="/doctorSearch" element={<DoctorSearch />} />
+
+          {/* Doctor Profile Page */}
+          <Route exact path="/doctorProfile" element={<Profile />} />
 
           {/* SlotBooking Page */}
           <Route exact path="/slotBook" element={<SlotBooking />} />

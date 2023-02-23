@@ -4,12 +4,25 @@ import EmailIcon from "components/Icons/solid/envelope";
 import LocationIcon from "components/Icons/solid/location";
 import Review from "components/Review/Review";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const Profile = () => {
-  const [reviews,setReviews]=useState([]);
+  const [date, SetDate] = useState(new Date());
+  const navigate = useNavigate();
+  const clickHandler = () => {
+    navigate("/slotBook", {
+      state: {
+        date: `${date}`,
+      },
+    });
+  };
+
+  const [reviews, setReviews] = useState([]);
   return (
-    <div className=" w-full h-screen bg-dark-100 text-white pt-28 font-poppins">
-      <div className="flex-col mx-24 border-[1px] border-white drop-shadow-2xl h-[90%] w-[80%] tracking-wide">
+    <div className=" w-full h-screen bg-dark-100 text-white pt-20 font-poppins">
+      <div className="flex-col mx-24 border-[1px] border-white drop-shadow-2xl h-[92%] w-[80%] tracking-wide">
         <div className="p-4  bg-blue-900 h-[40%]">
           {/* Profile image */}
           <div className="flex space-x-10 ">
@@ -57,7 +70,9 @@ const Profile = () => {
             {/* profile email */}
             <div className="flex ">
               <EmailIcon size={22} color="#0047AB" />
-              <div className="font-normal text-base pl-2">ishitfariya@gmail.com</div>
+              <div className="font-normal text-base pl-2">
+                ishitfariya@gmail.com
+              </div>
             </div>
 
             {/* clinic address */}
@@ -70,10 +85,25 @@ const Profile = () => {
 
             {/* fees */}
             <div className="text-xl font-bold">Rs 2000</div>
+
+            {/* Datepicker for appointment date selection */}
+            <div>
+              <div className="mb-1">Select Appointment Date :</div>
+              <DatePicker
+                className="p-2 rounded-md text-black"
+                minDate={new Date(new Date().toISOString().split("T")[0])}
+                onChange={(app_date) => SetDate(app_date)}
+                selected={date}
+                placeholderText="select appointment date"
+                dateFormat="dd/MM/yyyy"
+              />
+            </div>
+
             {/* Book Appointment Button */}
-            <div className="flex justify-center">
+            <div>
               <button
                 type="submit"
+                onClick={clickHandler}
                 className="py-3 px-3
                  rounded-md text-base font-medium text-white bg-blue-700 hover:bg-blue-800  "
               >
@@ -83,11 +113,9 @@ const Profile = () => {
           </div>
           <div className="w-[75%] border-l-[1px] h-full overflow-auto pt-2 ">
             <div className="font-black text-3xl text-center ">Reviews</div>
-            { 
-              reviews.map((review)=>{
-                return <Review key="review._id" review={review}/>
-              })
-            }
+            {reviews.map((review) => {
+              return <Review key="review._id" review={review} />;
+            })}
           </div>
         </div>
       </div>
