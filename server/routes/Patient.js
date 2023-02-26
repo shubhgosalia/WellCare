@@ -7,6 +7,7 @@ const { Register, GetAppointments, BookAppointment, getCheckoutSession } = requi
 router.post('/register', Register);
 
 //get appointments
+//please shift to the doctor side
 router.get('/getAppointments/:doc_id', Auth, GetAppointments);
 
 //book an appointment

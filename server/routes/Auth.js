@@ -15,9 +15,6 @@ router.post('/forgotpassword', GeneratePasswordLink);
 //setting the password
 router.post('/setpassword/:token', SetPassword);
 
-//profile route
-router.get('/profile', Auth, GetUser);
-
 //reset password
 router.post('/resetpassword', Auth, ResetPassword);
 

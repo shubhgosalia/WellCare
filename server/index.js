@@ -10,7 +10,7 @@ app.use(helmet());
 //cors used to prevent requests from unknown origins
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: 'http://localhost:3000',
     credentials: true,
   })
 );
@@ -39,10 +39,14 @@ app.use("/doctor", require("./routes/Doctor"));
 //requests related to reviews will be redirected here
 app.use("/review", require("./routes/Review"));
 
+// requests that common for both doctor and patient
+app.use("/common", require("./routes/Common"));
+
 //request for serving the favicon
 app.get("/favicon.ico", (_req, res) => {
   return res.sendStatus(204);
 });
+
 
 
 //any unknown route will be executed here throwing not found error

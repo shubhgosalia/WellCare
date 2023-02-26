@@ -1,4 +1,4 @@
-const Doctor = require('../models/doctor')
+const Doctor = require('../models/Doctor');
 const { RegisterDoctorJoi } = require('../joi/DoctorJoi');
 const SendEmail = require("../utils/Email");
 const bcrypt = require('bcrypt');

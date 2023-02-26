@@ -24,7 +24,9 @@ const Login = () => {
       };
 
       setLoad(true);
-      let res = await axios.post("http://127.0.0.1:4000/auth/login", postData);
+      let res = await axios.post("http://localhost:4000/auth/login", postData, {
+        withCredentials: true
+      });
       if (res.data.success === true) {
         Swal.fire({
           icon: "success",
