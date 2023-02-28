@@ -88,7 +88,7 @@ const Navbar = () => {
           </Link>
 
           {/* Services */}
-          <Link to="/services">
+          <Link to="/chat">
             {location.pathname === "/services" ? (
               <div className="active-route">
                 <div className="my-auto">

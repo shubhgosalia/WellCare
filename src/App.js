@@ -21,7 +21,6 @@ import ContactsProvider from "context/ContactsContext";
 function App() {
   return (
     <>
-      {/* <ContactsProvider>    */}
       <Router>
         <Routes>
           {/* Landing Page */}
@@ -78,11 +77,14 @@ function App() {
           <Route
             exact
             path="/chat"
-            element={<Chat />}
+            element={
+              <ContactsProvider>
+                <Chat />
+              </ContactsProvider>
+            }
           />
         </Routes>
       </Router>
-      {/* </ContactsProvider> */}
     </>
   );
 }
