@@ -15,6 +15,7 @@ import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldAboutIcon from "components/Icons/Bold/about";
 import BoldServiceIcon from "components/Icons/Bold/service";
 
+
 const Navbar = () => {
   const location = useLocation();
 
@@ -24,7 +25,7 @@ const Navbar = () => {
       <div className="px-2 flex flex-col justify-between h-screen py-5">
         {/* Logo */}
         <div className="text-4xl font-black text-white text-center font-head-primary">
-          <a href="/home">WELLCARE</a>
+          <Link to="/home">WELLCARE</Link>
         </div>
 
         {/* Routes */}

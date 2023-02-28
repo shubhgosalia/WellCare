@@ -15,10 +15,13 @@ import Checkout from "components/PaymentCheckout/Checkout";
 import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
 import Profile from "components/Profile/Profile";
+import Chat from "components/Chat/Chat";
+import ContactsProvider from "context/ContactsContext";
 
 function App() {
   return (
     <>
+      {/* <ContactsProvider>    */}
       <Router>
         <Routes>
           {/* Landing Page */}
@@ -70,8 +73,16 @@ function App() {
             path="/resetPassword/:token"
             element={<ResetPassword />}
           />
+
+          {/* chat  */}
+          <Route
+            exact
+            path="/chat"
+            element={<Chat />}
+          />
         </Routes>
       </Router>
+      {/* </ContactsProvider> */}
     </>
   );
 }

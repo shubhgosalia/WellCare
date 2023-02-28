@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LeftSignup from "components/Authentication/Signup/LeftSignup";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -131,9 +132,13 @@ const Signup = () => {
             {/* Redirect To Doctor register */}
             <p className="mt-1 px-9" style={{ color: "white" }}>
               Are you a doctor/Expert?{" "}
-              <a style={{ color: "blue" }} href="/doctorRegistration">
+              <div style={{ color: "blue" }}>
+                <Link to="/doctorRegistration">
                 Signup Here
-              </a>{" "}
+                </Link>{" "}
+              </div>
+
+
             </p>
 
             {/* form */}
@@ -325,19 +330,24 @@ const Signup = () => {
                   className="ml-2 block text-base text-gray-200"
                 >
                   I agree to the
-                  <a
-                    href="/home"
-                    className="text-primary-blue hover:text-secondary-blue px-1"
+                  <div className="text-primary-blue hover:text-secondary-blue px-1">
+                    <Link
+                      to="/home" 
                   >
                     Terms
-                  </a>
+                    </Link>
+                  </div>
+
                   and
-                  <a
-                    href="/home"
-                    className="text-primary-blue hover:text-secondary-blue px-1"
+                  <div className="text-primary-blue hover:text-secondary-blue px-1">
+                    <Link
+                      to="/home"
+
                   >
                     Privacy Policy
-                  </a>
+                    </Link>
+                  </div>
+
                 </label>
               </div>
 
@@ -354,12 +364,13 @@ const Signup = () => {
               </div>
               <div className="text-white">
                 Already registered?
-                <a
-                  href="/login"
-                  className="hover:underline-offset-8 text-blue-600 mx-2"
+                <div className="hover:underline-offset-8 text-blue-600 mx-2">
+                  <Link
+                    to="/login"
                 >
                   Login
-                </a>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>

@@ -3,6 +3,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import LeftLogin from "./LeftLogin";
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   let [data, setData] = useState({
@@ -164,21 +165,25 @@ const Login = () => {
                     {load ? "Loading..." : "Login"}
                   </button>
                   <div className="my-3">
-                    <a
-                      href="/forgotpassword"
-                      className="hover:underline-offset-8 text-blue-600"
+                    <div className="hover:underline-offset-8 text-blue-600">
+                      <Link
+                        to="/forgotpassword"
+
                     >
                       Forgot Password?
-                    </a>
+                      </Link>
+                    </div>
+
                   </div>
                   <div className="text-white my-3">
                     Don't have an account?
-                    <a
-                      href="/signup"
-                      className="hover:underline-offset-8 text-blue-600 mx-2"
+                    <div className="hover:underline-offset-8 text-blue-600 mx-2">
+                      <Link
+                        to="/signup"
                     >
                       Register
-                    </a>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
