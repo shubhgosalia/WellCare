@@ -15,6 +15,10 @@ import Checkout from "components/PaymentCheckout/Checkout";
 import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
 import Profile from "components/Profile/Profile";
+import Chat from "components/Chat/Chat";
+import PhysioSearch from "components/PhysioSearch/Home";
+import NutriSearch from "components/NutriSearch/Home";
+import GymSearch from "components/GymSearch/Home";
 
 function App() {
   return (
@@ -70,6 +74,21 @@ function App() {
             path="/resetPassword/:token"
             element={<ResetPassword />}
           />
+
+          {/* Chat Page */}
+          <Route exact path="/doctorChat" element={<Chat />} />
+
+          {/* Category Specific Search */}
+          {/* Physio Search */}
+          <Route
+            exact
+            path="/searchPhysiotherapists"
+            element={<PhysioSearch />}
+          />
+
+          <Route exact path="/searchNutritionists" element={<NutriSearch />} />
+
+          <Route exact path="/searchGymtrainers" element={<GymSearch />} />
         </Routes>
       </Router>
     </>

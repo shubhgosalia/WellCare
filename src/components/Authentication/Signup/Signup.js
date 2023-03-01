@@ -130,7 +130,7 @@ const Signup = () => {
 
             {/* Redirect To Doctor register */}
             <p className="mt-1 px-9" style={{ color: "white" }}>
-              Are you a doctor/Expert?{" "}
+              Are you a Doctor/Expert?{" "}
               <a style={{ color: "blue" }} href="/doctorRegistration">
                 Signup Here
               </a>{" "}
@@ -273,7 +273,7 @@ const Signup = () => {
                   <select
                     name="gender"
                     id="company-size"
-                    className="rounded-lg p-2 w-2/3 lg:w-1/3 text-lg font-bold"
+                    className="rounded-lg p-2 w-2/3 lg:w-1/3 text-lg font-medium"
                     onChange={updateInfo}
                   >
                     <option value="">Please select</option>

@@ -10,7 +10,6 @@ const Filter = () => {
     gender: "",
     specialization: "",
     locality: "",
-    category: "",
   });
 
   //getting the data from the server
@@ -28,11 +27,6 @@ const Filter = () => {
       console.log("res : ", res);
     } catch (err) {
       console.log("error aa gya search mein : ", err);
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Something went wrong! ):'
-      // });
     }
   };
 
@@ -59,7 +53,7 @@ const Filter = () => {
       {/* Search Doctors/Experts */}
       <div className="w-[30%]">
         <label for="doctorSearch" className="block text-lg font-semibold">
-          Search Doctor/Experts:
+          Search Physiotherapists:
         </label>
         <div className="">
           <input
@@ -74,46 +68,26 @@ const Filter = () => {
         </div>
       </div>
 
-      {/* Category */}
+      {/* Specialization */}
       <div className="">
-        <label for="category" className="block text-lg font-semibold">
-          Category:
+        <label for="specialization" className="block text-lg font-semibold">
+          Speciality:
         </label>
         <select
           aria-label="Default select example required"
-          name="category"
+          name="specialization"
           id="state"
           className="rounded-lg p-2"
           onChange={updateFilters}
         >
           <option value="None">None</option>
-          <option value="Physiotherapist">Physiotherapist</option>
-          <option value="Nutritionist">Nutritionist</option>
-          <option value="Gym Trainer">Gym Trainer</option>
+          <option value="Orthopedic">Orthopedic</option>
+          <option value="Pediatric">Pediatric</option>
+          <option value="Sports">Sports</option>
+          <option value="Women">Women</option>
+          <option value="Vestibular">Vestibular</option>
         </select>
       </div>
-
-      {showhide === "Physiotherapist" && (
-        <div className="">
-          <label for="specialization" className="block text-lg font-semibold">
-            Speciality:
-          </label>
-          <select
-            aria-label="Default select example required"
-            name="specialization"
-            id="state"
-            className="rounded-lg p-2"
-            onChange={updateFilters}
-          >
-            <option value="None">None</option>
-            <option value="Orthopedic">Orthopedic</option>
-            <option value="Pediatric">Pediatric</option>
-            <option value="Sports">Sports</option>
-            <option value="Women">Women</option>
-            <option value="Vestibular">Vestibular</option>
-          </select>
-        </div>
-      )}
 
       {/* Gender */}
       <div>
@@ -131,7 +105,6 @@ const Filter = () => {
           <option value="female">Female</option>
         </select>
       </div>
-
       {/* Locality */}
       <div>
         <label for="locality" className="block text-lg font-semibold">

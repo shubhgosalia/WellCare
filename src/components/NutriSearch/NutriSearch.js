@@ -1,9 +1,9 @@
 import React from "react";
-import Heading from "components/DoctorSearch/Heading";
-import Filter from "components/DoctorSearch/Filter";
-import DoctorResult from "components/DoctorSearch/Result";
+import Heading from "components/NutriSearch/Heading";
+import Filter from "components/NutriSearch/Filter";
+import DoctorResult from "components/NutriSearch/Result";
 
-const Search = () => {
+const NutriSearch = () => {
   return (
     <>
       {/* Main Container */}
@@ -27,4 +27,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default NutriSearch;

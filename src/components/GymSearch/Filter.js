@@ -8,9 +8,7 @@ const Filter = () => {
   //filters
   let [filter, setFilter] = useState({
     gender: "",
-    specialization: "",
     locality: "",
-    category: "",
   });
 
   //getting the data from the server
@@ -19,8 +17,6 @@ const Filter = () => {
       let newObj;
       if (filter.gender !== "None") newObj["gender"] = filter.gender;
       if (filter.locality !== "None") newObj["locality"] = filter.locality;
-      if (filter.specialization !== "None")
-        newObj["specialization"] = filter.specialization;
 
       let res = await axios.get("127.0.0.1:4000/doctor", {
         params: { newObj },
@@ -28,11 +24,6 @@ const Filter = () => {
       console.log("res : ", res);
     } catch (err) {
       console.log("error aa gya search mein : ", err);
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Something went wrong! ):'
-      // });
     }
   };
 
@@ -56,10 +47,10 @@ const Filter = () => {
 
   return (
     <div className="w-[85%] mt-5 mx-auto bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">
-      {/* Search Doctors/Experts */}
+      {/* Search Gym Trainers */}
       <div className="w-[30%]">
         <label for="doctorSearch" className="block text-lg font-semibold">
-          Search Doctor/Experts:
+          Search Gym Trainers:
         </label>
         <div className="">
           <input
@@ -73,47 +64,6 @@ const Filter = () => {
           />
         </div>
       </div>
-
-      {/* Category */}
-      <div className="">
-        <label for="category" className="block text-lg font-semibold">
-          Category:
-        </label>
-        <select
-          aria-label="Default select example required"
-          name="category"
-          id="state"
-          className="rounded-lg p-2"
-          onChange={updateFilters}
-        >
-          <option value="None">None</option>
-          <option value="Physiotherapist">Physiotherapist</option>
-          <option value="Nutritionist">Nutritionist</option>
-          <option value="Gym Trainer">Gym Trainer</option>
-        </select>
-      </div>
-
-      {showhide === "Physiotherapist" && (
-        <div className="">
-          <label for="specialization" className="block text-lg font-semibold">
-            Speciality:
-          </label>
-          <select
-            aria-label="Default select example required"
-            name="specialization"
-            id="state"
-            className="rounded-lg p-2"
-            onChange={updateFilters}
-          >
-            <option value="None">None</option>
-            <option value="Orthopedic">Orthopedic</option>
-            <option value="Pediatric">Pediatric</option>
-            <option value="Sports">Sports</option>
-            <option value="Women">Women</option>
-            <option value="Vestibular">Vestibular</option>
-          </select>
-        </div>
-      )}
 
       {/* Gender */}
       <div>
