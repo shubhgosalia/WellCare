@@ -16,7 +16,10 @@ import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
 import Profile from "components/Profile/Profile";
 import Chat from "components/Chat/Chat";
-import ContactsProvider from "context/ContactsContext";
+// import ContactsProvider from "context/ContactsContext";
+import PhysioSearch from "components/PhysioSearch/Home";
+import NutriSearch from "components/NutriSearch/Home";
+import GymSearch from "components/GymSearch/Home";
 
 function App() {
   return (
@@ -74,15 +77,19 @@ function App() {
           />
 
           {/* chat  */}
+          <Route exact path="/chat" element={<Chat />} />
+
+          {/* Category Specific Search */}
+          {/* Physio Search */}
           <Route
             exact
-            path="/chat"
-            element={
-              <ContactsProvider>
-                <Chat />
-              </ContactsProvider>
-            }
+            path="/searchPhysiotherapists"
+            element={<PhysioSearch />}
           />
+
+          <Route exact path="/searchNutritionists" element={<NutriSearch />} />
+
+          <Route exact path="/searchGymtrainers" element={<GymSearch />} />
         </Routes>
       </Router>
     </>

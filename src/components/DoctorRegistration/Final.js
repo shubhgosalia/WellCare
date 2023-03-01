@@ -21,8 +21,10 @@ export default function Final() {
         password: userData.password,
         have_clinic: userData.have_clinic,
         clinic_address: userData.clinic_address,
+        hospital_address: userData.hospital_address,
         specialization: userData.specialization,
         category: userData.category,
+        locality: userData.locality,
         age: userData.age,
         gender: userData.gender,
         licenseNumber: userData.licenseNumber,
@@ -31,7 +33,7 @@ export default function Final() {
         fees: userData.fees,
         phoneNumber: userData.phoneNumber,
         profile_pic: userData.profile_pic,
-        bio: userData.bio
+        bio: userData.bio,
       };
 
       setLoad(true);

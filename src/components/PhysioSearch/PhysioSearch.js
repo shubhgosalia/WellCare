@@ -1,9 +1,9 @@
 import React from "react";
-import Heading from "components/DoctorSearch/Heading";
-import Filter from "components/DoctorSearch/Filter";
-import DoctorResult from "components/DoctorSearch/Result";
+import Heading from "components/PhysioSearch/Heading";
+import Filter from "components/PhysioSearch/Filter";
+import DoctorResult from "components/PhysioSearch/Result";
 
-const Search = () => {
+const PhysioSearch = () => {
   return (
     <>
       {/* Main Container */}
@@ -27,4 +27,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export default PhysioSearch;

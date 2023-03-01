@@ -10,17 +10,18 @@ export function UseContextProvider({ children }) {
     password: "",
     have_clinic: "false",
     clinic_address: "",
+    hospital_address: "",
     specialization: " ",
-    category: "Yoga Trainer",
+    category: "Gym Trainer",
     age: 0,
     gender: "male",
     licenseNumber: "",
-    city: "",
+    locality: "",
     years_Of_Experience: 0,
     fees: 0,
     phoneNumber: "",
     profile_pic: "",
-    bio: ""
+    bio: "",
   });
 
   return (

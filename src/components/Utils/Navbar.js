@@ -5,14 +5,14 @@ import UserImage from "../../assets/Krish.png";
 // Light Icons
 import LightHomeIcon from "components/Icons/Light/home";
 import LightSearchIcon from "components/Icons/Light/search";
-import LightAboutIcon from "components/Icons/Light/about";
+import LightChatIcon from "components/Icons/Light/chat";
 import LightMyAccountIcon from "components/Icons/Light/myAccount";
 import LightServiceIcon from "components/Icons/Light/service";
 // Bold Icons
 import BoldHomeIcon from "components/Icons/Bold/home";
 import BoldSearchIcon from "components/Icons/Bold/search";
 import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
-import BoldAboutIcon from "components/Icons/Bold/about";
+import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldServiceIcon from "components/Icons/Bold/service";
 
 
@@ -68,21 +68,21 @@ const Navbar = () => {
             )}
           </Link>
 
-          {/* About */}
-          <Link to="/about">
-            {location.pathname === "/about" ? (
+          {/* Chat */}
+          <Link to="/chat">
+            {location.pathname === "/chat" ? (
               <div className="active-route">
                 <div className="my-auto">
-                  <BoldAboutIcon color="#ffffff" size="27" />
+                  <BoldChatIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-xl">About</div>
+                <div className="text-xl">Chats</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
-                  <LightAboutIcon color="#94A3B8" size="27" />
+                  <LightChatIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-xl text-dark-600">About</div>
+                <div className="text-xl text-dark-600">Chats</div>
               </div>
             )}
           </Link>

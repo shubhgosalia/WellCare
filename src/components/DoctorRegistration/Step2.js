@@ -49,10 +49,10 @@ const Step2 = forwardRef((props, ref) => {
               Nutritionist
             </option>
             <option
-              value="Yoga Trainer"
-              selected={userData.category === "Yoga Trainer" ? true : false}
+              value="Gym Trainer"
+              selected={userData.category === "Gym Trainer" ? true : false}
             >
-              Yoga Trainer
+              Gym Trainer
             </option>
           </select>
         </div>
@@ -63,22 +63,47 @@ const Step2 = forwardRef((props, ref) => {
             Specialization
           </label>
           <div className="my-2 flex rounded border border-gray-200 bg-white p-1 ">
-            <select aria-label="Default select example required" name="specialization" onChange={handleChange}>
-              <option value="Orthopedic"
-                selected={userData.specialization === "Orthopedic" ? true : false}
-              >Orthopedic</option>
-              <option value="Pediatric"
-                selected={userData.specialization === "Pediatric" ? true : false}
-              >Pediatric</option>
-              <option value="Sports"
+            <select
+              aria-label="Default select example required"
+              name="specialization"
+              onChange={handleChange}
+            >
+              <option
+                value="Orthopedic"
+                selected={
+                  userData.specialization === "Orthopedic" ? true : false
+                }
+              >
+                Orthopedic
+              </option>
+              <option
+                value="Pediatric"
+                selected={
+                  userData.specialization === "Pediatric" ? true : false
+                }
+              >
+                Pediatric
+              </option>
+              <option
+                value="Sports"
                 selected={userData.specialization === "Sports" ? true : false}
-              >Sports</option>
-              <option value="Women"
+              >
+                Sports
+              </option>
+              <option
+                value="Women"
                 selected={userData.specialization === "Women" ? true : false}
-              >Women</option>
-              <option value="Vestibular"
-                selected={userData.specialization === "Vestibular" ? true : false}
-              >Vestibular</option>
+              >
+                Women
+              </option>
+              <option
+                value="Vestibular"
+                selected={
+                  userData.specialization === "Vestibular" ? true : false
+                }
+              >
+                Vestibular
+              </option>
             </select>
           </div>
         </div>

@@ -67,14 +67,6 @@ exports.GetContacts = async (req, res, next) => {
             })
         }
         else {
-            console.log("hhhhh : ",
-                Schedule.find({ slot_blocked_by: req.user.id }).populate('doctor_id', {
-                    name: 1,
-                    email: 1,
-                    profile_pic: 1,
-                    id: 1
-                })
-            )
             contacts = await Schedule.find({ slot_blocked_by: req.user.id }).populate('doctor_id', {
                 name: 1,
                 email: 1,
