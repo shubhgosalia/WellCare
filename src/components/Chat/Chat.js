@@ -1,113 +1,13 @@
 import React from "react";
-import Navbar from "components/Utils/Navbar";
-import BoldSearchIcon from "components/Icons/Bold/search";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisV } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 import { faPaperPlane } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 import { faPaperclip } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
 import { faFaceSmile } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-
 const Chat = () => {
   return (
     <div className="w-full flex flex-row font-body-primary">
-      <div className="w-[16%] ">
-        <Navbar />
-      </div>
-
-      <div className=" h-screen  bg-gray-800 text-white">
-        <div className="text-xl p-3">Chats</div>
-        <div className="p-3 flex">
-          <input
-            className="p-2 w-10/12 bg-gray-200 text-sm focus:outline-none rounded-tl-md rounded-bl-md"
-            type="text"
-            placeholder="Search for messages or doctor/experts..."
-          />
-          <div className="w-2/12 flex justify-center items-center bg-gray-200 rounded-tr-md rounded-br-md">
-            <BoldSearchIcon size="20" color="black" />
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-2">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-
-            <div className="flex-grow p-3">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you..
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-2">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-
-            <div className="flex-grow p-3">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-2">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-
-            <div className="flex-grow p-3">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-3">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-
-            <div className="flex-grow p-2">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div className="flex-grow h-screen flex flex-col">
         <div className="w-full h-14 flex justify-between bg-gray-800">
           <div className="flex items-center">

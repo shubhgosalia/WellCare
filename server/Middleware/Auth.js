@@ -7,7 +7,9 @@ const Doctor = require("../models/Doctor");
 //it will be executed on every request.If the token is not found then the user will need to login into the system.
 const Auth = async (req, _res, next) => {
     try {
+
         let token = req.cookies.s_Id;
+        console.log("token : ", token);
         if (!token) {
             throw new AuthenticationError("Please login!");
         }

@@ -57,6 +57,7 @@ const Signup = () => {
       };
 
       setLoad(true);
+      console.log("posting...");
       let res = await axios.post(
         "http://127.0.0.1:4000/patient/register",
         postData
@@ -131,15 +132,13 @@ const Signup = () => {
 
             {/* Redirect To Doctor register */}
             <p className="mt-1 px-9" style={{ color: "white" }}>
-              Are you a doctor/Expert?{" "}
+              Are you a doctor/Expert?
+            </p>
               <div style={{ color: "blue" }}>
                 <Link to="/doctorRegistration">
                 Signup Here
                 </Link>{" "}
               </div>
-
-
-            </p>
 
             {/* form */}
             <div className="lg:py-8 lg:px-6 p-4 shadow rounded-lg sm:px-10 flex flex-col space-y-6">

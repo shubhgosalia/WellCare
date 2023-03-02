@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // importing Files
 import Categories from "components/Home/Categories";
 
-const Part1 = () => {
+const Part1 = ({ profile }) => {
   // const [hour,setHour] = useState();
 
   return (
@@ -14,7 +14,7 @@ const Part1 = () => {
         <div className="flex flex-row space-x-3 text-white text-4xl">
           <span className="my-auto">Good Morning,</span>
           <br />
-          <span className="font-bold text-primary-blue">Krish</span>
+          <span className="font-bold text-primary-blue">{profile.name}</span>
         </div>
 
         {/* Description */}

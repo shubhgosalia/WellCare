@@ -1,5 +1,5 @@
 // import files
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import UserImage from "../../assets/Krish.png";
 // Light Icons
@@ -15,9 +15,21 @@ import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldServiceIcon from "components/Icons/Bold/service";
 
+// importing context 
+import { UserContext } from "context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  // using the context for getting the current logged in user
+  const { isLoggedIn, profile } = useContext(UserContext);
+  //checking if the user is logged in or not
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate('/login');
+    }
+  }, []);
 
   return (
     <div className="w-[16%] bg-dark-200 font-body-primary fixed">
@@ -128,14 +140,14 @@ const Navbar = () => {
           {/* Picture */}
           <div className="border-primary-blue border-2 mx-auto overflow-hidden rounded-full">
             <img
-              src={UserImage}
-              alt=""
+              src={profile.profile_pic.image_url}
+              alt="DP"
               className="rounded-full m-2 w-24 h-24"
             />
           </div>
 
           {/* Name */}
-          <div className="text-dark-900 font-bold text-xl">Krish Vadhani</div>
+          <div className="text-dark-900 font-bold text-xl">{profile.name}</div>
         </div>
       </div>
     </div>

@@ -11,7 +11,7 @@ router.post('/register', Register);
 router.get('/getAppointments/:doc_id', Auth, GetAppointments);
 
 //book an appointment
-router.post('/bookAppointment/:doc_id', Auth, BookAppointment);
+router.post('/bookAppointment/', Auth, BookAppointment);
 
 // Payments : checkout session
 router.get('/checkoutSession/:doc_id', Auth, getCheckoutSession);

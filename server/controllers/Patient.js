@@ -21,7 +21,6 @@ const stripe=require('stripe')(process.env.STRIPE_SECRET_KEY);
 //registering the patient
 exports.Register = async (req, res, next) => {
   try {
-    console.log("abcde");
     //validating the fields
     let user = await RegisterJoi(req.body);
     console.log("user : ", user);
@@ -38,7 +37,6 @@ exports.Register = async (req, res, next) => {
       age: user.age,
       gender: user.gender,
     });
-    console.log("888888888888888888888888");
     //generating the link
     let { token } = TokenGenerator();
     patient.verifyToken = token;
@@ -46,10 +44,8 @@ exports.Register = async (req, res, next) => {
 
     //link will expire after one day
     patient.verifyTokenExpiry = Date.now() + 60 * 60 * 1000 * 24;
-    console.log("bbb");
     //storing in the database
     await patient.save();
-    console.log("aaaa");
     //sending the mail for enail verification
     let mailoptions = {
       to: req.body.email,
@@ -58,7 +54,7 @@ exports.Register = async (req, res, next) => {
     };
 
     try {
-      await SendEmail(mailoptions, next);
+      // await SendEmail(mailoptions, next);
       return res.status(201).json({
         message: "Verification link has been sent on your registered Email ID",
         success: true,

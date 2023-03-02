@@ -10,11 +10,9 @@ const { ClientError } = require('../Utils/Errors');
 exports.Register = async (req, res, next) => {
   try {
     console.log("abcde");
-    // const { path, filename } = req.file
-    console.log("yes");
+    const { path, filename } = req.file
     //validating the fields
     let user = await RegisterDoctorJoi(req.body);
-    console.log("user : ", user);
     //hashing the password
     const salt = await bcrypt.genSalt(10);
     newpassword = await bcrypt.hash(user.password, salt);
@@ -28,18 +26,18 @@ exports.Register = async (req, res, next) => {
       age: user.age,
       gender: user.gender,
       licenseNumber: user.licenseNumber,
-      city: user.city,
+      locality: user.locality,
       specialization: user.specialization,
       years_Of_Experience: user.years_Of_Experience,
       fees: user.fees,
-      // profile_pic: {
-      //   image_url: path,
-      //   file_name: filename
-      // },
+      profile_pic: {
+        image_url: path,
+        file_name: filename
+      },
       bio: user.bio,
       category: user.category,
       have_clinic: user.have_clinic,
-      clinic_address: user.have_clinic ? user.clinic_address : ""
+      address: user.address
     });
 
     //generating the link
@@ -49,9 +47,10 @@ exports.Register = async (req, res, next) => {
 
     //link will expire after one day
     doctor.verifyTokenExpiry = Date.now() + (60 * 60 * 1000 * 24);
-
+    console.log("doctor 123....");
     //storing in the database
     await doctor.save();
+    console.log("doctor 456....");
 
     //sending the mail for enail verification
     let mailoptions = {

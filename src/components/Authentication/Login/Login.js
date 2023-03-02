@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LeftLogin from "./LeftLogin";
-import { Link } from 'react-router-dom';
+import { UserContext } from "context/UserContext";
 
 const Login = () => {
   let [data, setData] = useState({
@@ -12,6 +12,7 @@ const Login = () => {
     type: "Patient",
   });
   const [load, setLoad] = useState(false);
+  const { setLoginStatus } = useContext(UserContext);
   const navigate = useNavigate();
 
   const submit_form = async (event) => {
@@ -29,6 +30,7 @@ const Login = () => {
         withCredentials: true
       });
       if (res.data.success === true) {
+        setLoginStatus(true);
         Swal.fire({
           icon: "success",
           title: res.data.message,
@@ -39,6 +41,7 @@ const Login = () => {
     } catch (err) {
       setLoad(false);
       console.log("error in login : ", err);
+      setLoginStatus(false);
       Swal.fire({
         icon: "error",
         title: "Oops...",

@@ -15,16 +15,17 @@ import Checkout from "components/PaymentCheckout/Checkout";
 import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
 import Profile from "components/Profile/Profile";
-import Chat from "components/Chat/Chat";
+import ChatHome from "components/Chat/ChatHome";
 // import ContactsProvider from "context/ContactsContext";
 import PhysioSearch from "components/PhysioSearch/Home";
 import NutriSearch from "components/NutriSearch/Home";
 import GymSearch from "components/GymSearch/Home";
-
+import UserProvider from 'context/UserContext';
 function App() {
   return (
     <>
       <Router>
+        <UserProvider>
         <Routes>
           {/* Landing Page */}
           <Route exact path="/" element={<Landing />} />
@@ -77,7 +78,7 @@ function App() {
           />
 
           {/* chat  */}
-          <Route exact path="/chat" element={<Chat />} />
+            <Route exact path="/chat" element={<ChatHome />} />
 
           {/* Category Specific Search */}
           {/* Physio Search */}
@@ -91,7 +92,9 @@ function App() {
 
           <Route exact path="/searchGymtrainers" element={<GymSearch />} />
         </Routes>
+        </UserProvider>
       </Router>
+
     </>
   );
 }

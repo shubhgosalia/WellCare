@@ -103,8 +103,7 @@ exports.Login = async (req, res, next) => {
   try {
     let user_name = String(req.body.username);
     let pass_word = String(req.body.password);
-    console.log(user_name);
-    console.log(pass_word);
+    console.log("logiiiiiiinnnnnnnnnn");
     console.log(req.body.type);
     //type can either patient or doctor
     let user;
@@ -151,8 +150,8 @@ exports.Login = async (req, res, next) => {
     res.cookie("s_Id", token, {
       httpOnly: true,
       expires: new Date(Date.now() + 8 * 3600000),
-      sameSite: 'none',
-      secure: true
+      // sameSite: 'none',
+      // secure: true
     });
     console.log("hello");
     return res.status(200).json({

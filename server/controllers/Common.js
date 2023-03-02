@@ -9,6 +9,7 @@ const { promisify } = require("util");
 exports.GetUser = async (req, res, next) => {
     try {
         let user = req.user;
+        console.log("User", user);
         let newUser;
         if (user.type === 'Doctor') {
             // Sending doctor related information
@@ -27,7 +28,9 @@ exports.GetUser = async (req, res, next) => {
                 username: user.username,
                 category: user.category,
                 bio: user.bio,
-                profile_pic: user.profile_pic
+                profile_pic: user.profile_pic,
+                id: user.id,
+                type: user.type
             }
         }
         else {
@@ -40,7 +43,9 @@ exports.GetUser = async (req, res, next) => {
                 username: user.username,
                 gender: user.gender,
                 age: user.age,
-                profile_pic: user.profile_pic
+                profile_pic: user.profile_pic,
+                id: user.id,
+                type: user.type
             }
         }
         return res.status(200).json({
@@ -74,6 +79,7 @@ exports.GetContacts = async (req, res, next) => {
                 id: 1
             })
         }
+
         return res.status(200).json({
             data: contacts,
             success: true,
