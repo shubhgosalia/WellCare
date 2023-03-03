@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 // add loader 
 //add sweet alert if error
 
-const Contacts = () => {
+const Contacts = ({ currentChatContact }) => {
 
     const { isLoggedIn, profile } = useContext(UserContext);
     const navigate = useNavigate();
@@ -20,6 +20,10 @@ const Contacts = () => {
             navigate('/login');
         }
     }, []);
+
+    useEffect(() => {
+        console.log("contact mounted...");
+    });
 
     const [contacts, setContacts] = useState([]);
     const [load, setLoad] = useState(false);
@@ -81,6 +85,12 @@ const Contacts = () => {
                                                 :
                                                 contact.doctor_id.profile_pic.image_url
                                         }
+                                        id={
+                                            contact.id
+                                        }
+                                        currentChatContact={
+                                            currentChatContact
+                                        }
                                     />
                                 })
                                 :
@@ -92,4 +102,4 @@ const Contacts = () => {
     )
 }
 
-export default Contacts
+export default React.memo(Contacts);

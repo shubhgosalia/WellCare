@@ -8,11 +8,13 @@ import { UserContext } from "context/UserContext";
 const Login = () => {
   //if the user is already logged in don't allow it to Login again
   const { isLoggedIn } = useContext(UserContext);
+  const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
       navigate('/home');
     }
   }, []);
+
   let [data, setData] = useState({
     username: "",
     password: "",
@@ -20,7 +22,6 @@ const Login = () => {
   });
   const [load, setLoad] = useState(false);
   const { setLoginStatus } = useContext(UserContext);
-  const navigate = useNavigate();
 
   const submit_form = async (event) => {
     //send the data to the backend
