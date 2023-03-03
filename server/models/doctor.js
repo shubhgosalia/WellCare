@@ -42,7 +42,7 @@ const doctorSchema = new mongoose.Schema({
         image_url: {
             type: String,
             required: [true, "User should have a  image url"],
-            default: "https://res.cloudinary.com/dprscch9k/image/upload/v1669703344/default_pic1_gnjm3i.png",
+            default: "https://res.cloudinary.com/dprscch9k/image/upload/v1677739579/Well%20Care/k6njbwcuucgeqkmv9sft.png",
         },
         file_name: {
             type: String,

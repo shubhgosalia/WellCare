@@ -344,3 +344,14 @@ exports.ResetPassword = async (req, res, next) => {
     return next(err);
   }
 }
+
+// Logout controller
+
+exports.Logout = async (req, res) => {
+  try {
+
+  }
+  catch (err) {
+    return next(err);
+  }
+}

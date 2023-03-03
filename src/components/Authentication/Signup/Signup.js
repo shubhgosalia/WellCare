@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LeftSignup from "components/Authentication/Signup/LeftSignup";
 import { Link } from "react-router-dom";
+import { UserContext } from "context/UserContext";
+
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -20,6 +22,14 @@ const Signup = () => {
     checked: false,
   });
   const [load, setLoad] = useState(false);
+  const { isLoggedIn } = useContext(UserContext);
+
+  //if the user is already logged in don't allow it to register
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/home');
+    }
+  }, []);
 
   const submit = async (event) => {
     //send the data to the backend

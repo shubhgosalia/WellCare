@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useNavigate, Link } from "react-router-dom";
@@ -6,6 +6,13 @@ import LeftLogin from "./LeftLogin";
 import { UserContext } from "context/UserContext";
 
 const Login = () => {
+  //if the user is already logged in don't allow it to Login again
+  const { isLoggedIn } = useContext(UserContext);
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/home');
+    }
+  }, []);
   let [data, setData] = useState({
     username: "",
     password: "",

@@ -17,8 +17,9 @@ exports.GetUser = async (req, res, next) => {
             newUser = {
                 name: user.name,
                 age: user.age,
+                gender: user.gender,
                 licenseNumber: user.licenseNumber,
-                city: user.city,
+                locality: user.locality,
                 specialization: user.specialization,
                 years_Of_Experience: user.years_Of_Experience,
                 phoneNumber: user.phoneNumber,

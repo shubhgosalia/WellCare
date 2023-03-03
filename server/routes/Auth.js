@@ -1,7 +1,7 @@
 const express = require('express');
 const Auth = require('../Middleware/Auth');
 const router = express.Router();
-const { VerifyAccount, Login, GeneratePasswordLink, SetPassword, GetUser, ResetPassword } = require("../controllers/Auth");
+const { VerifyAccount, Login, GeneratePasswordLink, SetPassword, Logout, ResetPassword } = require("../controllers/Auth");
 
 //email verify route - This is common for both patient as well as doctor
 router.get('/verifyAccount/:token', VerifyAccount);
@@ -18,5 +18,7 @@ router.post('/setpassword/:token', SetPassword);
 //reset password
 router.post('/resetpassword', Auth, ResetPassword);
 
+//logout route
+router.post('/logout', Auth, Logout);
 
 module.exports = router;

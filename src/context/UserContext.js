@@ -23,8 +23,28 @@ const UserProvider = ({ children }) => {
         setLogin(val);
     }
 
+    //setting up the login status
     const [isLoggedIn, setLogin] = useState(getLoginStatus());
-    const [profile, setProfile] = useState();
+    //porfile of the current user
+    const [profile, setProfile] = useState({
+        name: "",
+        email: "",
+        phoneNumber: "",
+        username: "",
+        gender: "",
+        age: "",
+        profile_pic: "",
+        id: "",
+        type: "",
+        licenseNumber: "",
+        locality: "",
+        specialization: "",
+        years_Of_Experience: "",
+        fees: "",
+        clinic_address: "",
+        category: "",
+        bio: "",
+    });
     let navigate = useNavigate();
 
     //getting profile if the user is logged in
@@ -44,7 +64,7 @@ const UserProvider = ({ children }) => {
         catch (err) {
             console.log("error in fetching profile : ", err);
             //if error occurs navigate to home page
-            navigate('/home')
+            navigate('/login')
             return;
         }
     }
