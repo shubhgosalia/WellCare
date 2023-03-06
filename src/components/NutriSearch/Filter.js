@@ -9,6 +9,8 @@ const Filter = () => {
   let [filter, setFilter] = useState({
     gender: "",
     locality: "",
+    fee: "",
+    experience: "",
   });
 
   //getting the data from the server
@@ -17,6 +19,9 @@ const Filter = () => {
       let newObj;
       if (filter.gender !== "None") newObj["gender"] = filter.gender;
       if (filter.locality !== "None") newObj["locality"] = filter.locality;
+      if (filter.fee !== "None") newObj["fee"] = filter.fee;
+      if (filter.experience !== "None")
+        newObj["experience"] = filter.experience;
 
       let res = await axios.get("127.0.0.1:4000/doctor", {
         params: { newObj },
@@ -48,7 +53,7 @@ const Filter = () => {
   return (
     <div className="w-[85%] mt-5 mx-auto bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">
       {/* Search Nutritionists */}
-      <div className="w-[30%]">
+      <div className="w-[25%]">
         <label for="doctorSearch" className="block text-lg font-semibold">
           Search Nutritionists:
         </label>
@@ -63,6 +68,42 @@ const Filter = () => {
             placeholder="Search"
           />
         </div>
+      </div>
+
+      {/* Fee */}
+      <div className="">
+        <label for="fee" className="block text-lg font-semibold">
+          Fee:
+        </label>
+        <select
+          aria-label="Default select example required"
+          name="fee"
+          id="state"
+          className="rounded-lg p-2"
+          onChange={updateFilters}
+        >
+          <option value="None">None</option>
+          <option value="hightolow">High to Low</option>
+          <option value="lowtohigh">Low to High</option>
+        </select>
+      </div>
+
+      {/* Experience (in yrs) */}
+      <div className="">
+        <label for="experience" className="block text-lg font-semibold">
+          Exp (in yrs):
+        </label>
+        <select
+          aria-label="Default select example required"
+          name="experience"
+          id="state"
+          className="rounded-lg p-2"
+          onChange={updateFilters}
+        >
+          <option value="None">None</option>
+          <option value="hightolow">High to Low</option>
+          <option value="lowtohigh">Low to High</option>
+        </select>
       </div>
 
       {/* Gender */}

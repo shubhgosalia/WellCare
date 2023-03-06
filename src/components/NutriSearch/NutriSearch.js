@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "components/NutriSearch/Heading";
 import Filter from "components/NutriSearch/Filter";
 import DoctorResult from "components/NutriSearch/Result";
+import Pagination from "components/PhysioSearch/Pagination";
 
 const NutriSearch = () => {
   return (
@@ -21,6 +22,7 @@ const NutriSearch = () => {
           <DoctorResult />
           <DoctorResult />
           <DoctorResult />
+          <Pagination />
         </div>
       </div>
     </>

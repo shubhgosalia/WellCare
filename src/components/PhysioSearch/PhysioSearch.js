@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "components/PhysioSearch/Heading";
 import Filter from "components/PhysioSearch/Filter";
 import DoctorResult from "components/PhysioSearch/Result";
+import Pagination from "components/PhysioSearch/Pagination";
 
 const PhysioSearch = () => {
   return (
@@ -17,10 +18,11 @@ const PhysioSearch = () => {
         </div>
 
         {/* Results */}
-        <div className="w-[85%] h-full mx-auto grid grid-cols-3 gap-6 z-40 relative top-44 bottom-0">
+        <div className="w-[85%] h-full mx-auto grid grid-cols-3 gap-6 z-40 relative top-44 bottom-0 ">
           <DoctorResult />
           <DoctorResult />
           <DoctorResult />
+          <Pagination />
         </div>
       </div>
     </>

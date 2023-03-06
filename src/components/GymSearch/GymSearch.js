@@ -2,6 +2,7 @@ import React from "react";
 import Heading from "components/GymSearch/Heading";
 import Filter from "components/GymSearch/Filter";
 import DoctorResult from "components/GymSearch/Result";
+import Pagination from "components/PhysioSearch/Pagination";
 
 const GymSearch = () => {
   return (
@@ -21,6 +22,7 @@ const GymSearch = () => {
           <DoctorResult />
           <DoctorResult />
           <DoctorResult />
+          <Pagination />
         </div>
       </div>
     </>
