@@ -9,7 +9,7 @@ const { promisify } = require("util");
 exports.GetUser = async (req, res, next) => {
     try {
         let user = req.user;
-        console.log("User", user);
+        // console.log("User", user);
         let newUser;
         if (user.type === 'Doctor') {
             // Sending doctor related information

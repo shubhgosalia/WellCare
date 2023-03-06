@@ -63,6 +63,11 @@ const UserProvider = ({ children }) => {
         }
         catch (err) {
             console.log("error in fetching profile : ", err);
+            //if the cookie is expired but isLoggedin is true in the localstorage so we need to change that as well
+            if (err.response.data.name === 'AuthenticationError') {
+                window.localStorage.setItem("isLoggedIn", false);
+                setLogin(false);
+            }
             //if error occurs navigate to home page
             navigate('/login')
             return;

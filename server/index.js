@@ -43,6 +43,9 @@ app.use("/review", require("./routes/Review"));
 // requests that common for both doctor and patient
 app.use("/common", require("./routes/Common"));
 
+// requests related to  chat
+app.use("/chat", require("./routes/Chat"));
+
 //request for serving the favicon
 app.get("/favicon.ico", (_req, res) => {
   return res.sendStatus(204);
@@ -52,8 +55,8 @@ app.get("/favicon.ico", (_req, res) => {
 
 //any unknown route will be executed here throwing not found error
 app.all("*", (req, _res, next) => {
-  console.log("path : ", req.originalUrl);
-  console.log(new NotFoundError("Sorry,this page does not exists").stack);
+  // console.log("path : ", req.originalUrl);
+  // console.log(new NotFoundError("Sorry,this page does not exists").stack);
   return next(new NotFoundError("Sorry,this page does not exists"));
 });
 

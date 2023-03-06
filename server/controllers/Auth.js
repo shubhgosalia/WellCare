@@ -346,7 +346,6 @@ exports.ResetPassword = async (req, res, next) => {
 }
 
 // Logout controller
-
 exports.Logout = async (req, res) => {
   try {
 

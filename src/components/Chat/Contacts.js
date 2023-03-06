@@ -72,6 +72,7 @@ const Contacts = ({ currentChatContact }) => {
                         (
                             contacts.length !== 0 ?
                                 contacts.map((contact) => {
+                                    // console.log("contacts : ",contact);
                                     return <DocChat
                                         name={
                                             profile.type === 'Doctor' ?
@@ -86,7 +87,10 @@ const Contacts = ({ currentChatContact }) => {
                                                 contact.doctor_id.profile_pic.image_url
                                         }
                                         id={
-                                            contact.id
+                                            profile.type === 'Doctor' ?
+                                                contact.slot_blocked_by._id
+                                                :
+                                                contact.doctor_id._id
                                         }
                                         currentChatContact={
                                             currentChatContact

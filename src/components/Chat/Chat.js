@@ -1,18 +1,116 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
+import { UserContext } from "context/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-import { faPaperPlane } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-import { faPaperclip } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-import { faFaceSmile } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/index";
+import ChatInput from "./ChatInput";
+import ChatMessage from "./ChatMessage";
+import Swal from "sweetalert2";
+import axios from "axios";
 
-const Chat = ({ contact }) => {
+const Chat = ({ contact, socket }) => {
+
 
   useEffect(() => {
-    console.log("chat mounted...");
-  });
+    console.log("Chat component is runningg,,,,,,,,")
+  })
+  // using the context for getting the current logged in user
+  const { profile } = useContext(UserContext);
+  const [messages, setMessages] = useState([]);
+
+  // for getting all messages from server
+  const getMsg = async () => {
+    try {
+      const resp = await axios.post('http://localhost:4000/chat/getMessage', {
+        from: profile.id,
+        to: contact.id
+      }, {
+        withCredentials: true
+      })
+      // console.log("response from chat.... : ", resp);
+      setMessages(resp.data.data);
+      // Array : [createdAt,message,updatedAt, patientSender/ doctorSender]
+    }
+    catch (err) {
+      console.log("error in getting the chat message : ", err);
+      Swal.fire({
+        icon: "error",
+        text: "Sorry, something went wrong!",
+      });
+    }
+  }
+
+  useEffect(() => {
+    //getting the messages from the server
+    if (contact !== null) {
+      getMsg();
+    }
+  }, [contact]);
+
+  //for sending the message to the server
+  const sendMsg = async (message) => {
+    try {
+      console.log("msg : ", message);
+      if (message.length === 0) {
+        Swal.fire({
+          icon: "error",
+          text: "cannot send empty messages!",
+        });
+        return;
+      }
+
+      //api request to send the message
+      await axios.post('http://localhost:4000/chat/sendMessage', {
+        message: message,
+        from: profile.id,
+        to: contact.id
+      }, {
+        withCredentials: true
+      });
+
+      //emitting the send message event to the server
+      socket.current.emit("send-msg", {
+        from: profile.id,
+        to: contact.id,
+        message: message
+      })
+
+      //append the new messages into the message state
+      let msgs = [...messages];
+      let sendmsg = {};
+      sendmsg["message"] = message;
+      if (profile.type === "Doctor")
+        sendmsg["doctorSender"] = profile.id;
+      else
+        sendmsg["patientSender"] = profile.id;
+      msgs.push(sendmsg);
+      setMessages(msgs);
+
+    } catch (err) {
+      console.log("error in sending the chat message : ", err);
+      Swal.fire({
+        icon: "error",
+        text: "Sorry, something went wrong!",
+      });
+    }
+  }
+
+  // useffect for listening the any recieved messages from the server
+  useEffect(() => {
+    if (socket.current) {
+      console.log("socket current is working")
+      socket.current.on("msg-receive", (msg) => {
+        setMessages((messages) => {
+          return [...messages, {
+            doctorSender: null,
+            patientSender: null,
+            message: msg
+          }]
+        })
+      })
+    }
+  }, [contact]);
 
   return (
-
 
     <div className="w-full flex flex-row font-body-primary">
       <div className="flex-grow h-screen flex flex-col bg-black">
@@ -28,79 +126,66 @@ const Chat = ({ contact }) => {
             <>
               {/* if the contact is selected, render the chats  */}
               {/* chat navbar  */}
-        <div className="w-full h-14 flex justify-between bg-gray-800">
-          <div className="flex items-center">
+              <div className="w-full h-14 flex justify-between bg-gray-800">
+                <div className="flex items-center">
                   {/* profile pic */}
-            <div className="p-2 mt-2">
-              <img
-                className="w-10 h-10 rounded-full"
+                  <div className="p-2 mt-2">
+                    <img
+                      className="w-10 h-10 rounded-full"
                       src={contact.image}
-              />
-              <div className="flex justify-center items-center w-3 h-3 relative left-6 bottom-3 bg-white rounded-full">
-                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-              </div>
-            </div>
+                    />
+                    <div className="flex justify-center items-center w-3 h-3 relative left-6 bottom-3 bg-white rounded-full">
+                      <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                    </div>
+                  </div>
                   <div className="p-3 text-white">
                     {/* name */}
                     <div className="text-md">{contact.name}</div>
-            </div>
-          </div>
-          <div className="flex items-center mr-10">
-            <FontAwesomeIcon icon={faEllipsisV} color="gray" />
-          </div>
-        </div>
+                  </div>
+                </div>
+                <div className="flex items-center mr-10">
+                  <FontAwesomeIcon icon={faEllipsisV} color="gray" />
+                </div>
+              </div>
 
               {/* chat body and messages  */}
-        <div className="w-full flex-grow bg-gray-600">
-          <div className="flex items-end w-3/6 bg-gray-100 m-8 rounded-tl-lg rounded-tr-lg rounded-br-lg">
-            <img
-              className="w-10 h-10 rounded-full m-3"
-              src="https://www.svgrepo.com/show/61986/avatar.svg"
-            />
-            <div className="p-3">
-                    <div className="text-md"></div>
-              <div className="text-md text-gray-500">
-                Do 3 sets of shoulder exercises that I showed you a day before.
+              <div className="w-full flex-grow bg-gray-600">
+                {
+                  messages.length === 0 ?
+                    <div className="text-gray-200 text-center my-4">Please start the conversation....</div>
+                    :
+                    <>
+                      {
+                        messages.map((msg) => {
+                          // console.log(msg);
+                          if (profile.type === "Doctor" && profile.id === msg.doctorSender) {
+                            {/* Left side */ }
+                            return <div className="flex justify-end">
+                              <ChatMessage msg={msg.message} />
+
+                            </div>
+                          } else if (profile.type === "Patient" && profile.id === msg.patientSender) {
+                            {/* Left side */ }
+                            return <div className="flex justify-end">
+                              <ChatMessage msg={msg.message} />
+                            </div>
+                          } else {
+                            {/* right side */ }
+                            return <ChatMessage msg={msg.message} />
+                          }
+                        }
+                        )
+                      }
+                    </>
+                }
               </div>
-              <div className="text-sm text-gray-600">8 minutes ago</div>
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <div className="flex items-end w-2/6 bg-gray-800 m-8 rounded-tl-lg rounded-tr-lg rounded-br-lg">
-              <div className="p-3">
-                <div className="text-md text-white">
-                  Okay, I will surely do it as per your instructions.
-                </div>
-                <div className="text-sm text-gray-200">8 minutes ago</div>
-              </div>
-              <img
-                className="w-10 h-10 rounded-full m-3"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-          </div>
-        </div>
 
               {/* input, attachments etc  */}
-        <div className="w-full h-14 flex px-3 bg-gray-800">
-          <input
-            type="text"
-            placeholder="Type your message..."
-            className="flex-grow focus:outline-none bg-gray-800"
-          />
-          <div className="w-5 m-3 mt-4">
-            <FontAwesomeIcon icon={faFaceSmile} color="white" />
-          </div>
-
-          <div className="w-5 m-3 mt-4">
-            <FontAwesomeIcon icon={faPaperclip} color="white" />
-          </div>
-          <div className="rounded-full w-5 m-3 h-5 mt-4 mr-5">
-            <FontAwesomeIcon icon={faPaperPlane} color="white" />
-          </div>
-        </div>
+              <div className="w-full h-14 flex px-3 bg-gray-800">
+                <ChatInput sendMsg={sendMsg} />
+              </div>
             </>
-        }  
+        }
       </div>
     </div>
   );
