@@ -161,17 +161,17 @@ const Chat = ({ contact, socket }) => {
                           if (profile.type === "Doctor" && profile.id === msg.doctorSender) {
                             {/* Left side */ }
                             return <div className="flex justify-end">
-                              <ChatMessage msg={msg.message} />
+                              <ChatMessage msg={msg.message} time={msg.updatedAt} />
 
                             </div>
                           } else if (profile.type === "Patient" && profile.id === msg.patientSender) {
                             {/* Left side */ }
                             return <div className="flex justify-end">
-                              <ChatMessage msg={msg.message} />
+                              <ChatMessage msg={msg.message} time={msg.updatedAt} />
                             </div>
                           } else {
                             {/* right side */ }
-                            return <ChatMessage msg={msg.message} />
+                            return <ChatMessage msg={msg.message} time={msg.updatedAt} />
                           }
                         }
                         )
