@@ -53,6 +53,7 @@ app.get("/favicon.ico", (_req, res) => {
 
 
 
+
 //any unknown route will be executed here throwing not found error
 app.all("*", (req, _res, next) => {
   // console.log("path : ", req.originalUrl);

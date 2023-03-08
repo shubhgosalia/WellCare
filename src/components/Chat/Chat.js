@@ -78,6 +78,7 @@ const Chat = ({ contact, socket }) => {
       let msgs = [...messages];
       let sendmsg = {};
       sendmsg["message"] = message;
+      sendmsg["updatedAt"] = new Date();
       if (profile.type === "Doctor")
         sendmsg["doctorSender"] = profile.id;
       else
@@ -157,21 +158,20 @@ const Chat = ({ contact, socket }) => {
                     <>
                       {
                         messages.map((msg) => {
-                          // console.log(msg);
                           if (profile.type === "Doctor" && profile.id === msg.doctorSender) {
-                            {/* Left side */ }
+                            {/* right side */ }
                             return <div className="flex justify-end">
-                              <ChatMessage msg={msg.message} time={msg.updatedAt} />
+                              <ChatMessage msg={msg.message} time={msg.updatedAt} self={true} />
 
                             </div>
                           } else if (profile.type === "Patient" && profile.id === msg.patientSender) {
-                            {/* Left side */ }
+                            {/* right side */ }
                             return <div className="flex justify-end">
-                              <ChatMessage msg={msg.message} time={msg.updatedAt} />
+                              <ChatMessage msg={msg.message} time={msg.updatedAt} self={true} />
                             </div>
                           } else {
-                            {/* right side */ }
-                            return <ChatMessage msg={msg.message} time={msg.updatedAt} />
+                            {/* left side */ }
+                            return <ChatMessage msg={msg.message} time={msg.updatedAt} self={false} />
                           }
                         }
                         )

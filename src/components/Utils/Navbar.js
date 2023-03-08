@@ -18,18 +18,42 @@ import BoldServiceIcon from "components/Icons/Bold/service";
 // importing context 
 import { UserContext } from "context/UserContext";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import Swal from "sweetalert2";
+
 
 const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   // using the context for getting the current logged in user
-  const { isLoggedIn, profile } = useContext(UserContext);
+  const { isLoggedIn, profile, setLoginStatus } = useContext(UserContext);
   //checking if the user is logged in or not
   useEffect(() => {
     if (!isLoggedIn) {
       navigate('/login');
     }
   }, []);
+
+  const logout = async () => {
+    try {
+      let resp = await axios.get("http://localhost:4000/auth/logout", { withCredentials: true });
+      if (resp.data.success) {
+        setLoginStatus(false);
+        Swal.fire({
+          icon: "success",
+          title: resp.data.message,
+        });
+        navigate("/login");
+      }
+    } catch (err) {
+      console.log("error while logging out : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  }
 
   return (
     <div className="w-[16%] bg-dark-200 font-body-primary fixed">
@@ -134,6 +158,13 @@ const Navbar = () => {
               </div>
             )}
           </Link>
+          {/* logout  */}
+          <div className="flex flex-row items-center mx-4 hover:cursor-pointer" onClick={logout}>
+            <div className="my-auto">
+              <LightServiceIcon color="#94A3B8" size="27" />
+            </div>
+            <div className="text-xl mx-2 text-dark-600">Logout</div>
+          </div>
         </div>
         {/* Profile Picture */}
         <div className="flex flex-col text-center space-y-3">

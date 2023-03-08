@@ -346,9 +346,13 @@ exports.ResetPassword = async (req, res, next) => {
 }
 
 // Logout controller
-exports.Logout = async (req, res) => {
+exports.Logout = async (req, res, next) => {
   try {
-
+    res.clearCookie('s_Id');
+    res.status(200).json({
+      success: true,
+      message: 'You are logged out successfully!'
+    })
   }
   catch (err) {
     return next(err);
