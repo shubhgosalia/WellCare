@@ -8,7 +8,7 @@ import Landing from "components/Landing/Landing";
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 import ResetPassword from "components/PasswordSetup/ResetPassword";
 import ForgotPassword from "components/PasswordSetup/ForgotPassword";
-import DoctorSearch from "components/DoctorSearch/Home";
+// import DoctorSearch from "components/DoctorSearch/Home";
 import MyAccount from "components/MyAccount/MyAccount";
 import SlotBooking from "components/SlotBooking/SlotBooking";
 import Checkout from "components/PaymentCheckout/Checkout";
@@ -19,6 +19,7 @@ import Chat from "components/Chat/Chat";
 import PhysioSearch from "components/PhysioSearch/Home";
 import NutriSearch from "components/NutriSearch/Home";
 import GymSearch from "components/GymSearch/Home";
+import TopRated from "components/TopRated/TopRated";
 
 function App() {
   return (
@@ -37,8 +38,8 @@ function App() {
           {/* Sign up */}
           <Route exact path="/signup" element={<Signup />} />
 
-          {/* Doctor Search Page */}
-          <Route exact path="/doctorSearch" element={<DoctorSearch />} />
+          {/* Top Rated Page */}
+          <Route exact path="/topRated" element={<TopRated />} />
 
           {/* Doctor Profile Page */}
           <Route exact path="/doctorProfile" element={<Profile />} />
@@ -86,8 +87,10 @@ function App() {
             element={<PhysioSearch />}
           />
 
+          {/* Nutritonist Search */}
           <Route exact path="/searchNutritionists" element={<NutriSearch />} />
 
+          {/* Gym Trainer Search */}
           <Route exact path="/searchGymtrainers" element={<GymSearch />} />
         </Routes>
       </Router>

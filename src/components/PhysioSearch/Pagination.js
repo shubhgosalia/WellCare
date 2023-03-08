@@ -21,7 +21,7 @@ const Pagination = () => {
   }
 
   return (
-    <div className="flex bg-white rounded-lg p-3 text-blue-800 mt-5">
+    <div className="flex bg-white rounded-lg p-3 text-blue-800 mt-3">
       <button
         onClick={Prev}
         className="h-9 border-2 border-primary-blue px-4 rounded-r-lg hover:bg-primary-blue hover:text-white ml-1 mr-3"

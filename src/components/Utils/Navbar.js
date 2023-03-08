@@ -49,20 +49,20 @@ const Navbar = () => {
           </Link>
 
           {/* Search */}
-          <Link to="/doctorSearch">
-            {location.pathname === "/doctorSearch" ? (
+          <Link to="/topRated">
+            {location.pathname === "/topRated" ? (
               <div className="active-route">
                 <div className="my-auto">
                   <BoldSearchIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-xl">Search</div>
+                <div className="text-xl">Top Rated</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightSearchIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-xl text-dark-600">Search</div>
+                <div className="text-xl text-dark-600">Top Rated</div>
               </div>
             )}
           </Link>
