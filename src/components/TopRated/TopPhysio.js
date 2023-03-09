@@ -19,12 +19,18 @@ const TopPhysio = () => {
 
           {/* Speciality */}
           <div className="text-sm text-dark-900">Lung Physiotherapist</div>
+
+          {/* Experience */}
+          {/* <div className="text-sm text-dark-900">
+            15 years experience overall
+          </div> */}
         </div>
         {/* Address */}
         <div className=" font-semibold">
           Gymkhana, Rahul building, 1/b, Marve Rd, opp. Malad, Malad, Navy
-          Colony, Liberty Garden, Malad West, Mumbai, Maharashtra 400064
+          Colony, Liberty Garden, Malad West, Mumbai, Maharashtra 400064.
         </div>
+        {/* <div className="text-sm text-white">₹2000 session fee</div> */}
 
         {/* book appointment*/}
         <button

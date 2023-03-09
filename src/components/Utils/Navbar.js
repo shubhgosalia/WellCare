@@ -23,12 +23,15 @@ const Navbar = () => {
       {/* Main Container */}
       <div className="px-2 flex flex-col justify-between h-screen py-5">
         {/* Logo */}
-        <div className="text-4xl font-black text-white text-center font-head-primary">
+        <div className="text-5xl font-black text-white text-center font-head-primary">
           <a href="/home">WELLCARE</a>
         </div>
 
         {/* Routes */}
-        <div className="text-dark-700 flex flex-col space-y-5 text-xl mx-auto">
+        <div
+          className="text-dark-700 flex flex-col space-y-6 text-2xl mx-auto"
+          style={{ marginTop: -30 }}
+        >
           {/* Home */}
           <Link to="/home">
             {location.pathname === "/home" ? (
@@ -36,14 +39,14 @@ const Navbar = () => {
                 <div className="my-auto">
                   <BoldHomeIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-xl">Home</div>
+                <div>Home</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightHomeIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-xl text-dark-600">Home</div>
+                <div className="text-dark-600">Home</div>
               </div>
             )}
           </Link>
@@ -55,14 +58,14 @@ const Navbar = () => {
                 <div className="my-auto">
                   <BoldSearchIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-xl">Top Rated</div>
+                <div>Top Rated</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightSearchIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-xl text-dark-600">Top Rated</div>
+                <div className=" text-dark-600">Top Rated</div>
               </div>
             )}
           </Link>
@@ -74,14 +77,14 @@ const Navbar = () => {
                 <div className="my-auto">
                   <BoldChatIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-xl">Chats</div>
+                <div>Chats</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightChatIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-xl text-dark-600">Chats</div>
+                <div className="text-2xl text-dark-600">Chats</div>
               </div>
             )}
           </Link>
@@ -93,12 +96,14 @@ const Navbar = () => {
                 <div className="my-auto">
                   <BoldServiceIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-xl">Services</div>
+                <div style={{ marginTop: -6 }}>T.A.C</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <LightServiceIcon color="#94A3B8" size="27" />
-                <div className="text-xl text-dark-600">Services</div>
+                <div className=" text-dark-600" style={{ marginTop: -6 }}>
+                  T.A.C
+                </div>
               </div>
             )}
           </Link>
@@ -110,14 +115,14 @@ const Navbar = () => {
                 <div className="my-auto">
                   <BoldMyAccountIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-xl">My Account</div>
+                <div>My Account</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightMyAccountIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-xl text-dark-600">My Account</div>
+                <div className=" text-dark-600">My Account</div>
               </div>
             )}
           </Link>
