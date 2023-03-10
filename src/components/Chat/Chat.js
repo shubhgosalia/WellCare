@@ -63,7 +63,7 @@ const Chat = ({ contact, socket }) => {
   const sendMsg = async (message) => {
     try {
       console.log("msg : ", message);
-      if (message.length === 0) {
+      if (message.trim().length === 0) {
         Swal.fire({
           icon: "error",
           text: "cannot send empty messages!",
