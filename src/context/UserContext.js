@@ -80,7 +80,7 @@ const UserProvider = ({ children }) => {
     }, [isLoggedIn]);
 
     return (
-        <UserContext.Provider value={{ isLoggedIn, getLoginStatus, setLoginStatus, profile }}>
+        <UserContext.Provider value={{ isLoggedIn, setLoginStatus, profile }}>
             {children}
         </UserContext.Provider>
     )

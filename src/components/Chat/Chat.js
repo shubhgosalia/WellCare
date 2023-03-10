@@ -6,6 +6,8 @@ import ChatInput from "./ChatInput";
 import ChatMessage from "./ChatMessage";
 import Swal from "sweetalert2";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 const Chat = ({ contact, socket }) => {
 
@@ -14,8 +16,22 @@ const Chat = ({ contact, socket }) => {
     console.log("Chat component is runningg,,,,,,,,")
   })
   // using the context for getting the current logged in user
-  const { profile } = useContext(UserContext);
+  const { profile, setLoginStatus } = useContext(UserContext);
   const [messages, setMessages] = useState([]);
+  const navigate = useNavigate();
+
+  //function for handling errors
+  const handleErrors = (err) => {
+    Swal.fire({
+      icon: "error",
+      text: err.response.data.error,
+    });
+
+    if (err.response.data.name === "AuthenticationError") {
+      setLoginStatus(false);
+      navigate("/login");
+    }
+  }
 
   // for getting all messages from server
   const getMsg = async () => {
@@ -32,10 +48,7 @@ const Chat = ({ contact, socket }) => {
     }
     catch (err) {
       console.log("error in getting the chat message : ", err);
-      Swal.fire({
-        icon: "error",
-        text: "Sorry, something went wrong!",
-      });
+      handleErrors(err);
     }
   }
 
@@ -88,10 +101,7 @@ const Chat = ({ contact, socket }) => {
 
     } catch (err) {
       console.log("error in sending the chat message : ", err);
-      Swal.fire({
-        icon: "error",
-        text: "Sorry, something went wrong!",
-      });
+      handleErrors(err);
     }
   }
 

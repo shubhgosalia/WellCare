@@ -4,6 +4,8 @@ import BoldSearchIcon from "components/Icons/Bold/search";
 import DocChat from './DocChat';
 import { UserContext } from "context/UserContext";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+
 
 
 // add loader 
@@ -11,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 const Contacts = ({ currentChatContact }) => {
 
-    const { isLoggedIn, profile } = useContext(UserContext);
+    const { isLoggedIn, profile, setLoginStatus } = useContext(UserContext);
     const navigate = useNavigate();
     //checking if the user is logged in or not
     useEffect(() => {
@@ -40,7 +42,17 @@ const Contacts = ({ currentChatContact }) => {
             }
         } catch (err) {
             console.log("err in fetching contacts : ", err);
-            setLoad(false)
+            setLoad(false);
+            Swal.fire({
+                icon: "error",
+                text: err.response.data.error,
+            });
+            //if the user is not logged or by any chances the cookie expires then it will take care of it
+            if (err.response.data.name === 'AuthenticationError') {
+                setLoginStatus(false);
+                navigate("/login");
+            }
+
         }
     }
     //making an api request for fetching contacts
