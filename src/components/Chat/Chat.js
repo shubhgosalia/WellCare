@@ -91,7 +91,7 @@ const Chat = ({ contact, socket }) => {
       let msgs = [...messages];
       let sendmsg = {};
       sendmsg["message"] = message;
-      sendmsg["updatedAt"] = new Date();
+      sendmsg["updatedAt"] = null;
       if (profile.type === "Doctor")
         sendmsg["doctorSender"] = profile.id;
       else

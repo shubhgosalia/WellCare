@@ -35,7 +35,7 @@ const Home = () => {
 
       {/* 3b */}
       <div className="w-[20%] h-screen">
-        <HomeRightSidebar />
+        <HomeRightSidebar appointments={profile.appointments} type={profile.type} />
       </div>
     </div>
   );

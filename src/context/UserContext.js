@@ -44,6 +44,8 @@ const UserProvider = ({ children }) => {
         clinic_address: "",
         category: "",
         bio: "",
+        // upcoming appointments 
+        appointments: []
     });
     let navigate = useNavigate();
 
@@ -72,6 +74,16 @@ const UserProvider = ({ children }) => {
             navigate('/login')
             return;
         }
+    }
+
+    //function for updating the upcoming appointments array if the user has booked a new appointment
+    const updateAppointments = (apt) => {
+        setProfile((prevState) => {
+            return {
+                ...prevState,
+                appointments: [...prevState.appointments, apt]
+            }
+        });
     }
 
     useEffect(() => {

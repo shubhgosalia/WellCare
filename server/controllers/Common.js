@@ -1,17 +1,22 @@
-const Patient = require("../models/Patient");
-const Doctor = require("../models/Doctor");
 const Schedule = require("../models/Schedule");
-const { AuthenticationError, ClientError } = require("../Utils/Errors");
-const { promisify } = require("util");
 
 
 //getting the profile of the user - doctor/patient
 exports.GetUser = async (req, res, next) => {
     try {
         let user = req.user;
-        // console.log("User", user);
+        //getting the upcoming appointments for the user
+
         let newUser;
         if (user.type === 'Doctor') {
+            let appointments = await Schedule.find({ doctor_id: user.id, status: false }, {
+                reason: 1,
+                date: 1,
+                startTime: 1,
+                endTime: 1,
+                isOnline: 1,
+                isBookedByDoc: 1
+            }).populate({ path: "slot_blocked_by", select: "profile_pic name type" });
             // Sending doctor related information
             // name,age,gender,licenseNumber,city,specialization,years_Of_Experience,phoneNumber,fees,email,clinic_address,have_clinic,username,category,bio,profile_pic
             newUser = {
@@ -31,12 +36,21 @@ exports.GetUser = async (req, res, next) => {
                 bio: user.bio,
                 profile_pic: user.profile_pic,
                 id: user.id,
-                type: user.type
+                type: user.type,
+                appointments
             }
         }
         else {
             // Sending patient related information
             // name,email,phoneNumber,username,gender,age,profile_pic
+            let appointments = await Schedule.find({ slot_blocked_by: user.id, status: false }, {
+                reason: 1,
+                date: 1,
+                startTime: 1,
+                endTime: 1,
+                isOnline: 1,
+                isBookedByDoc: 1
+            }).populate({ path: "doctor_id", select: "profile_pic name specialization category" });
             newUser = {
                 name: user.name,
                 email: user.email,
@@ -46,7 +60,8 @@ exports.GetUser = async (req, res, next) => {
                 age: user.age,
                 profile_pic: user.profile_pic,
                 id: user.id,
-                type: user.type
+                type: user.type,
+                appointments
             }
         }
         return res.status(200).json({
@@ -65,7 +80,7 @@ exports.GetContacts = async (req, res, next) => {
     try {
         let contacts;
         if (req.user.type === 'Doctor') {
-            contacts = await Schedule.find({ doctor_id: req.user.id }).populate('slot_blocked_by', {
+            contacts = await Schedule.find({ doctor_id: req.user.id, isBookedByDoc: false }).populate('slot_blocked_by', {
                 name: 1,
                 email: 1,
                 profile_pic: 1,
