@@ -23,7 +23,7 @@ const TopRated = () => {
           </div>
 
           <div
-            className="w-[25%] mx-auto border border-solid border-blueGray-100 py-3 pl-6 border-l-0 border-r-0"
+            className="w-[25%] mx-auto border border-solid border-blueGray-100 py-3 pl-10 border-l-0 border-r-0"
             style={{ marginTop: 40, fontSize: 22 }}
           >
             Top Rated Physiotherapists
@@ -43,7 +43,7 @@ const TopRated = () => {
           </div>
 
           <div
-            className="w-[25%] mx-auto border border-solid border-blueGray-100 py-3 pl-12 border-l-0 border-r-0"
+            className="w-[25%] mx-auto border border-solid border-blueGray-100 py-3 pl-16 border-l-0 border-r-0"
             style={{ marginTop: 75, fontSize: 22 }}
           >
             Top Rated Nutritionists
@@ -66,7 +66,7 @@ const TopRated = () => {
           </div>
 
           <div
-            className="w-[25%] mx-auto border border-solid border-blueGray-100 py-3 pl-11 border-l-0 border-r-0"
+            className="w-[25%] mx-auto border border-solid border-blueGray-100 py-3 pl-16 border-l-0 border-r-0"
             style={{ marginTop: 75, fontSize: 22 }}
           >
             Top Rated Gym Trainers
