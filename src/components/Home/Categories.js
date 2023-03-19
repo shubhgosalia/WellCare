@@ -22,8 +22,11 @@ const Categories = () => {
   };
 
   return (
-    <div className="w-full flex flex-col space-y-8 text-white">
-      <div className="text-3xl text-center text-dark-700 font-semibold">
+    <div
+      className="w-full flex flex-col space-y-5 text-white"
+      style={{ marginBottom: 40 }}
+    >
+      <div className="text-4xl text-center text-dark-700 font-semibold">
         Categories
       </div>
 

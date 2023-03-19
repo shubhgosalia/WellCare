@@ -6,7 +6,6 @@ import LeftSignup from "components/Authentication/Signup/LeftSignup";
 import { Link } from "react-router-dom";
 import { UserContext } from "context/UserContext";
 
-
 const Signup = () => {
   const navigate = useNavigate();
   //patient data
@@ -27,7 +26,7 @@ const Signup = () => {
   //if the user is already logged in don't allow it to register
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/home');
+      navigate("/home");
     }
   }, []);
 
@@ -144,11 +143,9 @@ const Signup = () => {
             <p className="mt-1 px-9" style={{ color: "white" }}>
               Are you a doctor/Expert?
             </p>
-              <div style={{ color: "blue" }}>
-                <Link to="/doctorRegistration">
-                Signup Here
-                </Link>{" "}
-              </div>
+            <div style={{ color: "blue" }}>
+              <Link to="/doctorRegistration">Signup Here</Link>{" "}
+            </div>
 
             {/* form */}
             <div className="lg:py-8 lg:px-6 p-4 shadow rounded-lg sm:px-10 flex flex-col space-y-6">
@@ -340,23 +337,12 @@ const Signup = () => {
                 >
                   I agree to the
                   <div className="text-primary-blue hover:text-secondary-blue px-1">
-                    <Link
-                      to="/home" 
-                  >
-                    Terms
-                    </Link>
+                    <Link to="/home">Terms</Link>
                   </div>
-
                   and
                   <div className="text-primary-blue hover:text-secondary-blue px-1">
-                    <Link
-                      to="/home"
-
-                  >
-                    Privacy Policy
-                    </Link>
+                    <Link to="/home">Privacy Policy</Link>
                   </div>
-
                 </label>
               </div>
 
@@ -374,11 +360,7 @@ const Signup = () => {
               <div className="text-white">
                 Already registered?
                 <div className="hover:underline-offset-8 text-blue-600 mx-2">
-                  <Link
-                    to="/login"
-                >
-                  Login
-                  </Link>
+                  <Link to="/login">Login</Link>
                 </div>
               </div>
             </div>
