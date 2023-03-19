@@ -10,7 +10,6 @@ export function UseContextProvider({ children }) {
     password: "",
     have_clinic: "false",
     address: "",
-    hospital_address: "",
     specialization: " ",
     category: "Gym Trainer",
     age: 0,
