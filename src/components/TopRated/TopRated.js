@@ -5,6 +5,7 @@ import TopPhysio from "components/TopRated/TopPhysio";
 import TopNutri from "components/TopRated/TopNutri";
 import TopGym from "components/TopRated/TopGym";
 import Pagination from "components/PhysioSearch/Pagination";
+import { Scrollbars } from "react-custom-scrollbars-2";
 
 const TopRated = () => {
   return (
@@ -13,7 +14,6 @@ const TopRated = () => {
       <div className="w-[16%] min-h-screen">
         <Navbar />
       </div>
-
       <div className="w-[84%]">
         {/* Main Container */}
         <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">

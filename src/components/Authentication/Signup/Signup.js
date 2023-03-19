@@ -129,7 +129,7 @@ const Signup = () => {
             </div>
 
             {/* Redirect To Doctor register */}
-            <p className="mt-1 px-9" style={{ color: "white" }}>
+            <p className="mt-1 px-6" style={{ color: "white" }}>
               Are you a Doctor/Expert?{" "}
               <a style={{ color: "blue" }} href="/doctorRegistration">
                 Signup Here
