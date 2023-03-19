@@ -26,7 +26,7 @@ export default function Final() {
         fees: userData.fees,
         profile_pic: userData.profile_pic,
         email: userData.email,
-        address: userData.clinic_address,
+        address: userData.address,
         have_clinic: userData.have_clinic,
         username: userData.username,
         password: userData.password,

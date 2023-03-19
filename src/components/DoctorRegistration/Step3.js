@@ -15,7 +15,10 @@ const Step3 = forwardRef((props, ref) => {
       if (!userData.locality) {
         return false;
       }
-      if (userData.have_clinic === "true" && !userData.clinic_address) {
+      if (userData.have_clinic === "true" && !userData.address) {
+        return false;
+      }
+      if (userData.have_clinic === "false" && !userData.address) {
         return false;
       }
 
