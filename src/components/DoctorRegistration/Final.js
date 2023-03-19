@@ -16,29 +16,28 @@ export default function Final() {
     try {
       let postData = {
         name: userData.name,
-        email: userData.email,
-        username: userData.username,
-        password: userData.password,
-        have_clinic: userData.have_clinic,
-        clinic_address: userData.clinic_address,
-        hospital_address: userData.hospital_address,
-        specialization: userData.specialization,
-        category: userData.category,
-        locality: userData.locality,
         age: userData.age,
         gender: userData.gender,
         licenseNumber: userData.licenseNumber,
-        city: userData.city,
+        locality: userData.locality,
+        specialization: userData.specialization,
         years_Of_Experience: userData.years_Of_Experience,
-        fees: userData.fees,
         phoneNumber: userData.phoneNumber,
+        fees: userData.fees,
         profile_pic: userData.profile_pic,
+        email: userData.email,
+        address: userData.clinic_address,
+        have_clinic: userData.have_clinic,
+        username: userData.username,
+        password: userData.password,
+        category: userData.category,
         bio: userData.bio,
       };
 
       setLoad(true);
+      console.log("postinggg...");
       let res = await axios.post(
-        "http://127.0.0.1:4000/doctor/register",
+        "http://localhost:4000/doctor/register",
         postData,
         {
           headers: {

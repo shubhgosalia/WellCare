@@ -1,13 +1,12 @@
 const jwt = require("jsonwebtoken");
 const { AuthenticationError } = require("../Utils/Errors");
 const { promisify } = require('util');
-const Patient = require('../models/patient');
-const Doctor = require("../models/doctor");
+const Patient = require('../models/Patient');
+const Doctor = require("../models/Doctor");
 
 //it will be executed on every request.If the token is not found then the user will need to login into the system.
 const Auth = async (req, _res, next) => {
     try {
-        console.log(req.body);
         let token = req.cookies.s_Id;
         if (!token) {
             throw new AuthenticationError("Please login!");
@@ -22,6 +21,7 @@ const Auth = async (req, _res, next) => {
         }
         req.user = user;
         next();
+
     } catch (err) {
         console.log("error auth middleware : ", err);
         return next(err);

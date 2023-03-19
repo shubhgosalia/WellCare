@@ -1,5 +1,5 @@
-const Patient = require("../models/patient");
-const Doctor = require('../models/doctor');
+const Patient = require("../models/Patient");
+const Doctor = require('../models/Doctor');
 const Schedule = require('./../models/Schedule');
 const { RegisterJoi, BookAppointmentJoi } = require("../joi/PatientJoi");
 const SendEmail = require("../utils/Email");
@@ -21,7 +21,6 @@ const stripe=require('stripe')(process.env.STRIPE_SECRET_KEY);
 //registering the patient
 exports.Register = async (req, res, next) => {
   try {
-    console.log("abcde");
     //validating the fields
     let user = await RegisterJoi(req.body);
     console.log("user : ", user);
@@ -38,7 +37,6 @@ exports.Register = async (req, res, next) => {
       age: user.age,
       gender: user.gender,
     });
-    console.log("888888888888888888888888");
     //generating the link
     let { token } = TokenGenerator();
     patient.verifyToken = token;
@@ -46,10 +44,8 @@ exports.Register = async (req, res, next) => {
 
     //link will expire after one day
     patient.verifyTokenExpiry = Date.now() + 60 * 60 * 1000 * 24;
-    console.log("bbb");
     //storing in the database
     await patient.save();
-    console.log("aaaa");
     //sending the mail for enail verification
     let mailoptions = {
       to: req.body.email,
@@ -58,7 +54,7 @@ exports.Register = async (req, res, next) => {
     };
 
     try {
-      await SendEmail(mailoptions, next);
+      // await SendEmail(mailoptions, next);
       return res.status(201).json({
         message: "Verification link has been sent on your registered Email ID",
         success: true,
@@ -177,12 +173,12 @@ exports.BookAppointment = async (req, res, next) => {
       </div>`,
     };
 
-    try {
-      await SendEmail(mail1, next);
-      await SendEmail(mail2, next);
-    } catch (err) {
-      throw err;
-    }
+    // try {
+    //   await SendEmail(mail1, next);
+    //   await SendEmail(mail2, next);
+    // } catch (err) {
+    //   throw err;
+    // }
 
     return res.status(200).json({
       success: true,
@@ -235,7 +231,7 @@ exports.getCheckoutSession = async (req, res, next) => {
       
     });
     res.status(200).json({
-      status:"success",
+      success: true,
       session
     })
   } catch (err) {

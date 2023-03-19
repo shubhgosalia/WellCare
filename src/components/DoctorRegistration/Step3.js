@@ -11,6 +11,7 @@ const Step3 = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     checkFields() {
+      console.log("fields : ", userData);
       if (!userData.locality) {
         return false;
       }
@@ -73,8 +74,8 @@ const Step3 = forwardRef((props, ref) => {
           <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
             <input
               onChange={handleChange}
-              value={userData["clinic_address"] || ""}
-              name="clinic_address"
+              value={userData["address"] || ""}
+              name="address"
               placeholder="Clinic address"
               type="text"
               required
@@ -91,8 +92,8 @@ const Step3 = forwardRef((props, ref) => {
           <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
             <input
               onChange={handleChange}
-              value={userData["hospital_address"] || ""}
-              name="hospital_address"
+              value={userData["address"] || ""}
+              name="address"
               placeholder="Hospital address"
               type="text"
               required
@@ -109,7 +110,7 @@ const Step3 = forwardRef((props, ref) => {
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
           <select
             aria-label="Default select example required"
-            onchange={handleChange}
+            onChange={handleChange}
             name="locality"
           >
             <option

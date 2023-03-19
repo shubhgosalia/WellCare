@@ -8,7 +8,7 @@ const upload = multer({ storage });
 
 //register route
 // router.post('/register', upload.single('profile_pic'), Register);
-router.post('/register', Register);
+router.post('/register', upload.single('profile_pic'), Register);
 
 // get all Doctors route
 router.get('/', Auth, getDoctors);

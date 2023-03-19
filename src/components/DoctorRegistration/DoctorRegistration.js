@@ -38,9 +38,8 @@ const DoctorRegistration = () => {
         return <Step4 ref={refArray[3]} />;
       case 5:
         return <Step5 ref={refArray[4]} />;
-      case 6:
-        return <Final />;
       default:
+        return;
     }
   };
 
@@ -50,14 +49,16 @@ const DoctorRegistration = () => {
     if (direction === "next") {
       let resp = refArray[currentStep - 1].current.checkFields();
       //if true then move onto the next step else stop
-      if (resp) newStep++;
+      if (resp)
+        newStep++;
       else
         Swal.fire({
           icon: "error",
           title: "Oops...",
           text: "Incomplete/Invalid field(s)...",
         });
-    } else {
+    }
+    else {
       newStep--;
     }
     //check if steps are within bounds
@@ -70,14 +71,19 @@ const DoctorRegistration = () => {
       <div className="w-full h-[100%] flex flex-col justify-center items-center">
       <div className="mx-auto mt-6 rounded-2xl bg-white pb-2 shadow-xl md:w-1/2">
         {/* Stepper */}
-        <h2 class="pt-5 pl-8 text-xl font-bold leading-tight tracking-tight text-primary-blue md:text-2xl dark:text-white">
+          <h2 className="pt-5 pl-8 text-xl font-bold leading-tight tracking-tight text-primary-blue md:text-2xl dark:text-white">
           Expert Registration
         </h2>
         <div className="horizontal container mt-5 ">
           <Stepper steps={steps} currentStep={currentStep} />
 
           <div className="my-5 pl-10 pr-10 pt-3 pb-0 ">
-            <UseContextProvider>{displayStep(currentStep)}</UseContextProvider>
+              <UseContextProvider>{
+                currentStep <= 5 ?
+                  displayStep(currentStep)
+                  :
+                  <Final />
+              }</UseContextProvider>
           </div>
         </div>
 

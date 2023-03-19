@@ -8,9 +8,12 @@ export default function HomeLine({
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
+      stroke={color}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
       viewBox="0 0 24 24"
       stroke-width="1.5"
-      stroke="currentColor"
       class="w-6 h-6"
     >
       <path

@@ -4,7 +4,7 @@ import React from "react";
 import LightContactIcon from "components/Icons/Light/contact";
 import BoldMailIcon from "components/Icons/Bold/mail";
 
-const Form = () => {
+const Form = ({ profile }) => {
   return (
     <div className="flex flex-col space-y-3 text-white mx-10 w-2/3 font-body-primary">
       {/* Name */}

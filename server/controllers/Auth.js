@@ -1,5 +1,5 @@
-const Patient = require("../models/patient");
-const Doctor = require("../models/doctor");
+const Patient = require("../models/Patient");
+const Doctor = require("../models/Doctor");
 const { AuthenticationError, ClientError } = require("../Utils/Errors");
 const SendEmail = require("../utils/Email");
 const jwt = require("jsonwebtoken");
@@ -91,13 +91,19 @@ const signJWT = async (user_id) => {
   return await promisify(jwt.sign)({ id: user_id }, process.env.JWT_SECRET);
 };
 
+//password match
+const isPasswordMatch = async (pass_word, ogpass) => {
+  console.log("heyy");
+  return await bcrypt.compare(pass_word, ogpass);
+}
+
+
 //Login route
 exports.Login = async (req, res, next) => {
   try {
     let user_name = String(req.body.username);
     let pass_word = String(req.body.password);
-    console.log(user_name);
-    console.log(pass_word);
+    console.log("logiiiiiiinnnnnnnnnn");
     console.log(req.body.type);
     //type can either patient or doctor
     let user;
@@ -133,19 +139,19 @@ exports.Login = async (req, res, next) => {
       throw new ClientError("Email not verified. Please verify your email!");
     }
 
-    const isPasswordMatch = await bcrypt.compare(pass_word, user.password);
-
-    if (!isPasswordMatch) {
+    if (! await isPasswordMatch(pass_word, user.password)) {
       throw new ClientError("Invalid credentials!");
     }
 
     const token = await signJWT(user.id);
+    console.log("token : ", token);
 
     //it will set the cookie in the browser
     res.cookie("s_Id", token, {
       httpOnly: true,
       expires: new Date(Date.now() + 8 * 3600000),
-      samesite: true,
+      // sameSite: 'none',
+      // secure: true
     });
     console.log("hello");
     return res.status(200).json({
@@ -298,4 +304,57 @@ exports.SetPassword = async (req, res, next) => {
     console.log("err in the set password : ", err);
     return next(err);
   }
-};
+}
+
+
+//reset password
+exports.ResetPassword = async (req, res, next) => {
+  try {
+    //checking the original password
+    if (! await isPasswordMatch(String(req.body.password), req.user.password)) {
+      throw new ClientError("Invalid password....");
+    }
+
+    //checking the regex of the password
+    let pattern = /^[a-zA-Z]+[a-zA-Z\d]*[@$#]+[a-zA-Z@$#\d]*\d+$/;
+    let newPassword = String(req.body.newPassword);
+    if ((newPassword.length < 8 || newPassword.length > 25) || !pattern.test(newPassword)) {
+      throw new ClientError("Please enter the password as mentioned..");
+    }
+
+    //hashing the password
+    const salt = await bcrypt.genSalt(10);
+    newPassword = await bcrypt.hash(newPassword, salt);
+
+    //updating the password
+    if (req.user.type === 'Doctor') {
+      await Doctor.findByIdAndUpdate(req.user.id, { password: newPassword });
+    } else {
+      await Patient.findByIdAndUpdate(req.user.id, { password: newPassword });
+    }
+
+    //sending the response
+    return res.status(200).json({
+      success: true,
+      message: "Password updated successfully....."
+    })
+
+  } catch (err) {
+    console.log("err in the reset password : ", err);
+    return next(err);
+  }
+}
+
+// Logout controller
+exports.Logout = async (req, res, next) => {
+  try {
+    res.clearCookie('s_Id');
+    res.status(200).json({
+      success: true,
+      message: 'You are logged out successfully!'
+    })
+  }
+  catch (err) {
+    return next(err);
+  }
+}

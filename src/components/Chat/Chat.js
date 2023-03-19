@@ -1,180 +1,201 @@
-import React from "react";
-import Navbar from "components/Utils/Navbar";
-import BoldSearchIcon from "components/Icons/Bold/search";
+import React, { useEffect, useContext, useState } from "react";
+import { UserContext } from "context/UserContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-import { faPaperPlane } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-import { faPaperclip } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-import { faFaceSmile } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/index";
+import ChatInput from "./ChatInput";
+import ChatMessage from "./ChatMessage";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-const Chat = () => {
+
+const Chat = ({ contact, socket }) => {
+
+
+  useEffect(() => {
+    console.log("Chat component is runningg,,,,,,,,")
+  })
+  // using the context for getting the current logged in user
+  const { profile, setLoginStatus } = useContext(UserContext);
+  const [messages, setMessages] = useState([]);
+  const navigate = useNavigate();
+
+  //function for handling errors
+  const handleErrors = (err) => {
+    Swal.fire({
+      icon: "error",
+      text: err.response.data.error,
+    });
+
+    if (err.response.data.name === "AuthenticationError") {
+      setLoginStatus(false);
+      navigate("/login");
+    }
+  }
+
+  // for getting all messages from server
+  const getMsg = async () => {
+    try {
+      const resp = await axios.post('http://localhost:4000/chat/getMessage', {
+        from: profile.id,
+        to: contact.id
+      }, {
+        withCredentials: true
+      })
+      // console.log("response from chat.... : ", resp);
+      setMessages(resp.data.data);
+      // Array : [createdAt,message,updatedAt, patientSender/ doctorSender]
+    }
+    catch (err) {
+      console.log("error in getting the chat message : ", err);
+      handleErrors(err);
+    }
+  }
+
+  useEffect(() => {
+    //getting the messages from the server
+    if (contact !== null) {
+      getMsg();
+    }
+  }, [contact]);
+
+  //for sending the message to the server
+  const sendMsg = async (message) => {
+    try {
+      console.log("msg : ", message);
+      if (message.trim().length === 0) {
+        Swal.fire({
+          icon: "error",
+          text: "cannot send empty messages!",
+        });
+        return;
+      }
+
+      //api request to send the message
+      await axios.post('http://localhost:4000/chat/sendMessage', {
+        message: message,
+        from: profile.id,
+        to: contact.id
+      }, {
+        withCredentials: true
+      });
+
+      //emitting the send message event to the server
+      socket.current.emit("send-msg", {
+        from: profile.id,
+        to: contact.id,
+        message: message
+      })
+
+      //append the new messages into the message state
+      let msgs = [...messages];
+      let sendmsg = {};
+      sendmsg["message"] = message;
+      sendmsg["updatedAt"] = null;
+      if (profile.type === "Doctor")
+        sendmsg["doctorSender"] = profile.id;
+      else
+        sendmsg["patientSender"] = profile.id;
+      msgs.push(sendmsg);
+      setMessages(msgs);
+
+    } catch (err) {
+      console.log("error in sending the chat message : ", err);
+      handleErrors(err);
+    }
+  }
+
+  // useffect for listening the any recieved messages from the server
+  useEffect(() => {
+    if (socket.current) {
+      console.log("socket current is working")
+      socket.current.on("msg-receive", (msg) => {
+        setMessages((messages) => {
+          return [...messages, {
+            doctorSender: null,
+            patientSender: null,
+            message: msg
+          }]
+        })
+      })
+    }
+  }, [contact]);
+
   return (
+
     <div className="w-full flex flex-row font-body-primary">
-      <div className="w-[16%] ">
-        <Navbar />
-      </div>
+      <div className="flex-grow h-screen flex flex-col bg-black">
 
-      <div className=" h-screen  bg-gray-800 text-white">
-        <div className="text-xl p-3">Chats</div>
-        <div className="p-3 flex">
-          <input
-            className="p-2 w-10/12 bg-gray-200 text-sm focus:outline-none rounded-tl-md rounded-bl-md"
-            type="text"
-            placeholder="Search for messages or doctor/experts..."
-          />
-          <div className="w-2/12 flex justify-center items-center bg-gray-200 rounded-tr-md rounded-br-md">
-            <BoldSearchIcon size="20" color="black" />
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-2">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
+        {/* if no contact is selected render a different div  */}
+        {
+          contact === null ?
+            <div className="h-[100%] w-[100%] flex justify-center items-center">
+              <div className="text-white">Please select one contact for viewing the chats...</div>
             </div>
 
-            <div className="flex-grow p-3">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you..
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-2">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-
-            <div className="flex-grow p-3">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-2">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-
-            <div className="flex-grow p-3">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="flex m-3 bg-gray-600 rounded-lg p-3">
-            <div>
-              <img
-                className="w-14 h-14 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-
-            <div className="flex-grow p-2">
-              <div className="flex text-md justify-between">
-                <div>Dr. Sehgal</div>
-                <div className="text-white">12:00 AM</div>
-              </div>
-              <div className="text-md text-white">
-                Just do the exercises told to you
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="flex-grow h-screen flex flex-col">
-        <div className="w-full h-14 flex justify-between bg-gray-800">
-          <div className="flex items-center">
-            <div className="p-2 mt-2">
-              <img
-                className="w-10 h-10 rounded-full"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-              <div className="flex justify-center items-center w-3 h-3 relative left-6 bottom-3 bg-white rounded-full">
-                <div className="w-2 h-2 bg-green-600 rounded-full"></div>
-              </div>
-            </div>
-            <div className="p-3 text-white">
-              <div className="text-sm">Dr. Sehgal</div>
-              <div className="text-xs">Online</div>
-            </div>
-          </div>
-          <div className="flex items-center mr-10">
-            <FontAwesomeIcon icon={faEllipsisV} color="gray" />
-          </div>
-        </div>
-        <div className="w-full flex-grow bg-gray-600">
-          <div className="flex items-end w-3/6 bg-gray-100 m-8 rounded-tl-lg rounded-tr-lg rounded-br-lg">
-            <img
-              className="w-10 h-10 rounded-full m-3"
-              src="https://www.svgrepo.com/show/61986/avatar.svg"
-            />
-            <div className="p-3">
-              <div className="text-md">Dr. Sehgal</div>
-              <div className="text-md text-gray-500">
-                Do 3 sets of shoulder exercises that I showed you a day before.
-              </div>
-              <div className="text-sm text-gray-600">8 minutes ago</div>
-            </div>
-          </div>
-          <div className="flex justify-end">
-            <div className="flex items-end w-2/6 bg-gray-800 m-8 rounded-tl-lg rounded-tr-lg rounded-br-lg">
-              <div className="p-3">
-                <div className="text-md text-white">
-                  Okay, I will surely do it as per your instructions.
+            :
+            <>
+              {/* if the contact is selected, render the chats  */}
+              {/* chat navbar  */}
+              <div className="w-full h-14 flex justify-between bg-gray-800">
+                <div className="flex items-center">
+                  {/* profile pic */}
+                  <div className="p-2 mt-2">
+                    <img
+                      className="w-10 h-10 rounded-full"
+                      src={contact.image}
+                    />
+                    <div className="flex justify-center items-center w-3 h-3 relative left-6 bottom-3 bg-white rounded-full">
+                      <div className="w-2 h-2 bg-green-600 rounded-full"></div>
+                    </div>
+                  </div>
+                  <div className="p-3 text-white">
+                    {/* name */}
+                    <div className="text-md">{contact.name}</div>
+                  </div>
                 </div>
-                <div className="text-sm text-gray-200">8 minutes ago</div>
+                <div className="flex items-center mr-10">
+                  <FontAwesomeIcon icon={faEllipsisV} color="gray" />
+                </div>
               </div>
-              <img
-                className="w-10 h-10 rounded-full m-3"
-                src="https://www.svgrepo.com/show/61986/avatar.svg"
-              />
-            </div>
-          </div>
-        </div>
-        <div className="w-full h-14 flex px-3 bg-gray-800">
-          <input
-            type="text"
-            placeholder="Type your message..."
-            className="flex-grow focus:outline-none bg-gray-800"
-          />
-          <div className="w-5 m-3 mt-4">
-            <FontAwesomeIcon icon={faFaceSmile} color="white" />
-          </div>
 
-          <div className="w-5 m-3 mt-4">
-            <FontAwesomeIcon icon={faPaperclip} color="white" />
-          </div>
-          <div className="rounded-full w-5 m-3 h-5 mt-4 mr-5">
-            <FontAwesomeIcon icon={faPaperPlane} color="white" />
-          </div>
-        </div>
+              {/* chat body and messages  */}
+              <div className="w-full flex-grow bg-gray-600">
+                {
+                  messages.length === 0 ?
+                    <div className="text-gray-200 text-center my-4">Please start the conversation....</div>
+                    :
+                    <>
+                      {
+                        messages.map((msg) => {
+                          if (profile.type === "Doctor" && profile.id === msg.doctorSender) {
+                            {/* right side */ }
+                            return <div className="flex justify-end">
+                              <ChatMessage msg={msg.message} time={msg.updatedAt} self={true} />
+
+                            </div>
+                          } else if (profile.type === "Patient" && profile.id === msg.patientSender) {
+                            {/* right side */ }
+                            return <div className="flex justify-end">
+                              <ChatMessage msg={msg.message} time={msg.updatedAt} self={true} />
+                            </div>
+                          } else {
+                            {/* left side */ }
+                            return <ChatMessage msg={msg.message} time={msg.updatedAt} self={false} />
+                          }
+                        }
+                        )
+                      }
+                    </>
+                }
+              </div>
+
+              {/* input, attachments etc  */}
+              <div className="w-full h-14 flex px-3 bg-gray-800">
+                <ChatInput sendMsg={sendMsg} />
+              </div>
+            </>
+        }
       </div>
     </div>
   );

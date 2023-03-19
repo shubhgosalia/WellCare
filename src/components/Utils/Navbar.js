@@ -1,5 +1,5 @@
 // import files
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import UserImage from "../../assets/Krish.png";
 // Light Icons
@@ -15,16 +15,54 @@ import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldServiceIcon from "components/Icons/Bold/service";
 
+// importing context
+import { UserContext } from "context/UserContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+
 const Navbar = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+  // using the context for getting the current logged in user
+  const { isLoggedIn, profile, setLoginStatus } = useContext(UserContext);
+  //checking if the user is logged in or not
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, []);
+
+  const logout = async () => {
+    try {
+      let resp = await axios.get("http://localhost:4000/auth/logout", {
+        withCredentials: true,
+      });
+      if (resp.data.success) {
+        setLoginStatus(false);
+        Swal.fire({
+          icon: "success",
+          title: resp.data.message,
+        });
+        navigate("/login");
+      }
+    } catch (err) {
+      console.log("error while logging out : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  };
 
   return (
     <div className="w-[16%] bg-dark-200 font-body-primary fixed">
       {/* Main Container */}
       <div className="px-2 flex flex-col justify-between h-screen py-5">
         {/* Logo */}
-        <div className="text-5xl font-black text-white text-center font-head-primary">
-          <a href="/home">WELLCARE</a>
+        <div className="text-4xl font-black text-white text-center font-head-primary">
+          <Link to="/home">WELLCARE</Link>
         </div>
 
         {/* Routes */}
@@ -71,8 +109,8 @@ const Navbar = () => {
           </Link>
 
           {/* Chat */}
-          <Link to="/doctorChat">
-            {location.pathname === "/doctorChat" ? (
+          <Link to="/chat">
+            {location.pathname === "/chat" ? (
               <div className="active-route">
                 <div className="my-auto">
                   <BoldChatIcon color="#ffffff" size="27" />
@@ -90,7 +128,7 @@ const Navbar = () => {
           </Link>
 
           {/* Services */}
-          <Link to="/services">
+          <Link to="/chat">
             {location.pathname === "/services" ? (
               <div className="active-route">
                 <div className="my-auto">
@@ -126,20 +164,30 @@ const Navbar = () => {
               </div>
             )}
           </Link>
+          {/* logout  */}
+          <div
+            className="flex flex-row items-center mx-4 hover:cursor-pointer"
+            onClick={logout}
+          >
+            <div className="my-auto">
+              <LightServiceIcon color="#94A3B8" size="27" />
+            </div>
+            <div className="text-xl mx-2 text-dark-600">Logout</div>
+          </div>
         </div>
         {/* Profile Picture */}
         <div className="flex flex-col text-center space-y-3">
           {/* Picture */}
           <div className="border-primary-blue border-2 mx-auto overflow-hidden rounded-full">
             <img
-              src={UserImage}
-              alt=""
+              src={profile.profile_pic.image_url}
+              alt="DP"
               className="rounded-full m-2 w-24 h-24"
             />
           </div>
 
           {/* Name */}
-          <div className="text-dark-900 font-bold text-xl">Krish Vadhani</div>
+          <div className="text-dark-900 font-bold text-xl">{profile.name}</div>
         </div>
       </div>
     </div>
