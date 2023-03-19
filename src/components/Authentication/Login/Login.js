@@ -11,7 +11,7 @@ const Login = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
-      navigate('/home');
+      navigate("/home");
     }
   }, []);
 
@@ -35,7 +35,7 @@ const Login = () => {
 
       setLoad(true);
       let res = await axios.post("http://localhost:4000/auth/login", postData, {
-        withCredentials: true
+        withCredentials: true,
       });
       if (res.data.success === true) {
         setLoginStatus(true);
@@ -177,24 +177,17 @@ const Login = () => {
                   </button>
                   <div className="my-3">
                     <div className="hover:underline-offset-8 text-blue-600">
-                      <Link
-                        to="/forgotpassword"
-
-                    >
-                      Forgot Password?
-                      </Link>
+                      <Link to="/forgotpassword">Forgot Password?</Link>
                     </div>
-
                   </div>
                   <div className="text-white my-3">
                     Don't have an account?
-                    <div className="hover:underline-offset-8 text-blue-600 mx-2">
-                      <Link
-                        to="/signup"
+                    <Link
+                      className="hover:underline-offset-8 text-blue-600 mx-2"
+                      to="/signup"
                     >
                       Register
-                      </Link>
-                    </div>
+                    </Link>
                   </div>
                 </div>
               </div>

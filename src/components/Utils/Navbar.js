@@ -4,13 +4,14 @@ import { useLocation, Link } from "react-router-dom";
 import UserImage from "../../assets/Krish.png";
 // Light Icons
 import LightHomeIcon from "components/Icons/Light/home";
-import LightSearchIcon from "components/Icons/Light/search";
+import LightStarIcon from "components/Icons/Light/star";
 import LightChatIcon from "components/Icons/Light/chat";
 import LightMyAccountIcon from "components/Icons/Light/myAccount";
 import LightServiceIcon from "components/Icons/Light/service";
+import LightLogoutIcon from "components/Icons/Light/logout";
 // Bold Icons
 import BoldHomeIcon from "components/Icons/Bold/home";
-import BoldSearchIcon from "components/Icons/Bold/search";
+import BoldStarIcon from "components/Icons/Bold/star";
 import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldServiceIcon from "components/Icons/Bold/service";
@@ -94,14 +95,14 @@ const Navbar = () => {
             {location.pathname === "/topRated" ? (
               <div className="active-route">
                 <div className="my-auto">
-                  <BoldSearchIcon color="#ffffff" size="27" />
+                  <BoldStarIcon color="#ffffff" size="27" />
                 </div>
                 <div>Top Rated</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
-                  <LightSearchIcon color="#94A3B8" size="27" />
+                  <LightStarIcon color="#94A3B8" size="27" />
                 </div>
                 <div className=" text-dark-600">Top Rated</div>
               </div>
@@ -128,7 +129,7 @@ const Navbar = () => {
           </Link>
 
           {/* Services */}
-          <Link to="/chat">
+          <Link to="/services">
             {location.pathname === "/services" ? (
               <div className="active-route">
                 <div className="my-auto">
@@ -170,9 +171,9 @@ const Navbar = () => {
             onClick={logout}
           >
             <div className="my-auto">
-              <LightServiceIcon color="#94A3B8" size="27" />
+              <LightLogoutIcon color="#94A3B8" size="27" />
             </div>
-            <div className="text-xl mx-2 text-dark-600">Logout</div>
+            <div className="text-2xl mx-2 text-dark-600">Logout</div>
           </div>
         </div>
         {/* Profile Picture */}
