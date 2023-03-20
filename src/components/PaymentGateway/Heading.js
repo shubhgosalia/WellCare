@@ -7,10 +7,6 @@ const Heading = () => {
         <div className="font-semibold text-5xl text-dark-900 ">
           <span className="text-primary-blue">The Payment Gateway</span>
         </div>
-
-        <div className="text-dark-700 text-lg">
-          Almost there! Make the payment and book your appointment!
-        </div>
       </div>
     </div>
   );

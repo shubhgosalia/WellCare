@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { max } from "date-fns";
 
 const Profile = () => {
   const [date, SetDate] = useState(new Date());
@@ -20,6 +21,11 @@ const Profile = () => {
   };
 
   const [reviews, setReviews] = useState([]);
+
+  const curr_date = new Date();
+  const maxdate = new Date(curr_date);
+  maxdate.setDate(maxdate.getDate() + 2);
+
   return (
     <div className=" w-full h-screen bg-dark-100 text-white pt-20 font-poppins">
       <div className="flex-col mx-24 border-[1px] border-white drop-shadow-2xl h-[92%] w-[80%] tracking-wide">
@@ -86,12 +92,45 @@ const Profile = () => {
             {/* fees */}
             <div className="text-xl font-bold">Rs 2000</div>
 
+            {/* <div className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+              <input
+                id="bordered-radio-1"
+                type="radio"
+                value=""
+                name="bordered-radio"
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 "
+              />
+              <label
+                for="bordered-radio-1"
+                className="w-full py-4 ml-2 text-md font-medium text-white dark:text-gray-300"
+              >
+                In-Clinic
+              </label>
+            </div>
+            <div className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
+              <input
+                checked
+                id="bordered-radio-2"
+                type="radio"
+                value=""
+                name="bordered-radio"
+                class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600"
+              />
+              <label
+                for="bordered-radio-2"
+                class="w-full py-4 ml-2 text-md font-medium text-white dark:text-gray-300"
+              >
+                Virtual Consult
+              </label>
+            </div>
+ */}
             {/* Datepicker for appointment date selection */}
             <div>
               <div className="mb-1">Select Appointment Date :</div>
               <DatePicker
                 className="p-2 rounded-md text-black"
                 minDate={new Date(new Date().toISOString().split("T")[0])}
+                maxDate={new Date(maxdate)}
                 onChange={(app_date) => SetDate(app_date)}
                 selected={date}
                 placeholderText="select appointment date"

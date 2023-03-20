@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import { Link } from "react-scroll";
-
+import { NavLink } from "react-router-dom";
 const Navbar = () => {
-  const [nav, setNav] = useState(false);
+  const [nav, setNav] = useState(false); 
   const handleClick = () => setNav(!nav);
 
   const handleClose = () => setNav(!nav);
@@ -62,17 +62,18 @@ const Navbar = () => {
         <div className="hidden md:flex text-xl text-white md:space-x-4">
           {/* Login */}
           <button className="px-8 py-3">
-            <a href="/login">Login</a>
+
+            <NavLink to="/login">Login</NavLink>
           </button>
 
           {/* Sign up */}
           <button className="px-8 py-3">
-            <a href="/signup">Signup</a>
+            <NavLink to="/signup">Signup</NavLink>
           </button>
         </div>
 
         {/* Responsive  */}
-        <div className="md:hidden" onclick={handleClick}>
+        <div className="md:hidden" onClick={handleClick}>
           {!nav ? <MenuIcon className="w-5" /> : <XIcon className="w-5" />}
         </div>
       </div>
@@ -119,12 +120,12 @@ const Navbar = () => {
           {/*  */}
           {/* Login */}
           <button className="bg-transparent text-primary-blue px-8 py-3 mb-4">
-            <a href="/login">Login</a>
+            <NavLink to="/login">Login</NavLink>
           </button>
 
           {/* Signup */}
           <button className="px-8 py-3 ">
-            <a href="/signup">Signup</a>
+            <NavLink to="/signup">Signup</NavLink>
           </button>
         </div>
       </ul>

@@ -9,7 +9,8 @@ const Filter = () => {
   let [filter, setFilter] = useState({
     gender: "",
     specialization: "",
-    city: "",
+    locality: "",
+    category: "",
   });
 
   //getting the data from the server
@@ -17,7 +18,7 @@ const Filter = () => {
     try {
       let newObj;
       if (filter.gender !== "None") newObj["gender"] = filter.gender;
-      if (filter.city !== "None") newObj["city"] = filter.city;
+      if (filter.locality !== "None") newObj["locality"] = filter.locality;
       if (filter.specialization !== "None")
         newObj["specialization"] = filter.specialization;
 
@@ -40,21 +41,25 @@ const Filter = () => {
     getData();
   }, []);
 
+  const [showhide, setShowhide] = useState("");
+
   //updating the filters
   const updateFilters = (e) => {
     console.log("e : ", e.target.name);
     console.log("e : ", e.target.value);
+    const getshow = e.target.value;
+    setShowhide(getshow);
     setData((prevObj) => {
       return { ...prevObj, [e.target.name]: e.target.value };
     });
   };
 
   return (
-    <div className="w-[85%] mx-auto bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">
-      {/* Search Doctors */}
+    <div className="w-[85%] mt-5 mx-auto bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">
+      {/* Search Doctors/Experts */}
       <div className="w-[30%]">
         <label for="doctorSearch" className="block text-lg font-semibold">
-          Search Doctor:
+          Search Doctor/Experts:
         </label>
         <div className="">
           <input
@@ -69,25 +74,46 @@ const Filter = () => {
         </div>
       </div>
 
-      {/* Speciality */}
+      {/* Category */}
       <div className="">
-        <label for="specialization" className="block text-lg font-semibold">
-          Speciality:
+        <label for="category" className="block text-lg font-semibold">
+          Category:
         </label>
         <select
-          name="specialization"
+          aria-label="Default select example required"
+          name="category"
           id="state"
           className="rounded-lg p-2"
           onChange={updateFilters}
         >
           <option value="None">None</option>
-          <option value="Orthopedic">Orthopedic</option>
-          <option value="Pediatric">Pediatric</option>
-          <option value="Sports">Sports</option>
-          <option value="Women">Women</option>
-          <option value="Vestibular">Vestibular</option>
+          <option value="Physiotherapist">Physiotherapist</option>
+          <option value="Nutritionist">Nutritionist</option>
+          <option value="Gym Trainer">Gym Trainer</option>
         </select>
       </div>
+
+      {showhide === "Physiotherapist" && (
+        <div className="">
+          <label for="specialization" className="block text-lg font-semibold">
+            Speciality:
+          </label>
+          <select
+            aria-label="Default select example required"
+            name="specialization"
+            id="state"
+            className="rounded-lg p-2"
+            onChange={updateFilters}
+          >
+            <option value="None">None</option>
+            <option value="Orthopedic">Orthopedic</option>
+            <option value="Pediatric">Pediatric</option>
+            <option value="Sports">Sports</option>
+            <option value="Women">Women</option>
+            <option value="Vestibular">Vestibular</option>
+          </select>
+        </div>
+      )}
 
       {/* Gender */}
       <div>
@@ -106,20 +132,46 @@ const Filter = () => {
         </select>
       </div>
 
-      {/* City */}
+      {/* Locality */}
       <div>
-        <label for="city" className="block text-lg font-semibold">
-          Search City:
+        <label for="locality" className="block text-lg font-semibold">
+          Search Locality:
         </label>
         <select
-          name="city"
+          name="locality"
           id="state"
           className="rounded-lg p-2"
           onChange={updateFilters}
         >
           <option value="None">None</option>
-          <option value="mumbai">Mumbai</option>
-          <option value="pune">Pune</option>
+          <option value="andheri">Andheri</option>
+          <option value="bandra">Bandra</option>
+          <option value="borivali">Borivali</option>
+          <option value="dahisar">Dahisar</option>
+          <option value="goregaon">Goregaon</option>
+          <option value="jogeshwari">Jogeshwari</option>
+          <option value="kandivali">Kandivali</option>
+          <option value="malad">Malad</option>
+          <option value="mirabhayandar">Mira Bhayandar</option>
+          <option value="santacruz">Santacruz</option>
+          <option value="vileparle">Vile Parle</option>
+          <option value="bhandup">Bhandup</option>
+          <option value="ghatkopar">Ghatkopar</option>
+          <option value="kurla">Kurla</option>
+          <option value="mulund">Mulund</option>
+          <option value="powai">Powai</option>
+          <option value="thane">Thane</option>
+          <option value="chembur">Chembur</option>
+          <option value="matunga">Matunga</option>
+          <option value="dadar">Dadar</option>
+          <option value="kalbadevi">Kalbadevi</option>
+          <option value="marinelines">Marine Lines</option>
+          <option value="parel">Parel</option>
+          <option value="mahalaxmi">Mahalaxmi</option>
+          <option value="sion">Sion</option>
+          <option value="worli">Worli</option>
+          <option value="colaba">Colaba</option>
+          <option value="navimumbai">Navi Mumbai</option>
         </select>
       </div>
     </div>

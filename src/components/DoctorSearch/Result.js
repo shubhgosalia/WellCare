@@ -13,17 +13,17 @@ const Result = () => {
 
   const [date, SetDate] = useState(new Date());
   const navigate = useNavigate();
-  const clickHandler = () => {
-    navigate("/slotBook", {
-      state: {
-        date: `${date}`,
-      },
-    });
-  };
+  // const clickHandler = () => {
+  //   navigate("/slotBook", {
+  //     state: {
+  //       date: `${date}`,
+  //     },
+  //   });
+  // };
 
   return (
     <>
-      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-5 text-dark-100">
+      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-5 mt-12 text-dark-100">
         {/* img */}
         <div>
           <img

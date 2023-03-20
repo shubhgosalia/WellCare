@@ -11,12 +11,17 @@ const Step3 = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     checkFields() {
-      if (!userData.city) {
+      console.log("fields : ", userData);
+      if (!userData.locality) {
         return false;
       }
-      if (userData.have_clinic === "true" && !userData.clinic_address) {
+      if (userData.have_clinic === "true" && !userData.address) {
         return false;
       }
+      if (userData.have_clinic === "false" && !userData.address) {
+        return false;
+      }
+
       return true;
     },
   }));
@@ -64,18 +69,35 @@ const Step3 = forwardRef((props, ref) => {
           </label>
         </div>
       </div>
-
       {userData.have_clinic === "true" && (
         <div className="mt-3 w-full mx-2 flex-1">
           <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-            Address
+            Clinic Address
           </label>
           <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
             <input
               onChange={handleChange}
-              value={userData["clinic_address"] || ""}
-              name="clinic_address"
+              value={userData["address"] || ""}
+              name="address"
               placeholder="Clinic address"
+              type="text"
+              required
+              className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            />
+          </div>
+        </div>
+      )}
+      {userData.have_clinic === "false" && (
+        <div className="mt-3 w-full mx-2 flex-1">
+          <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
+            Hospital/Centre Address
+          </label>
+          <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
+            <input
+              onChange={handleChange}
+              value={userData["address"] || ""}
+              name="address"
+              placeholder="Hospital address"
               type="text"
               required
               className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
@@ -86,18 +108,212 @@ const Step3 = forwardRef((props, ref) => {
 
       <div className="mt-3 w-full mx-2 flex-1">
         <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-          City
+          Locality (In Mumbai)
         </label>
         <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
-          <input
+          <select
+            aria-label="Default select example required"
             onChange={handleChange}
-            value={userData["city"] || ""}
-            name="city"
-            placeholder="City"
-            type="text"
-            required
-            className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-          />
+            name="locality"
+          >
+            <option>Select Locality</option>
+
+            <option
+              value="Andheri"
+              selected={userData.locality === "Andheri" ? true : false}
+            >
+              Andheri
+            </option>
+
+            <option
+              value="Bandra"
+              selected={userData.locality === "Bandra" ? true : false}
+            >
+              Bandra
+            </option>
+
+            <option
+              value="Borivali"
+              selected={userData.locality === "Borivali" ? true : false}
+            >
+              Borivali
+            </option>
+
+            <option
+              value="Dahisar"
+              selected={userData.locality === "Dahisar" ? true : false}
+            >
+              Dahisar
+            </option>
+
+            <option
+              value="Goregaon"
+              selected={userData.locality === "Goregaon" ? true : false}
+            >
+              Goregaon
+            </option>
+
+            <option
+              value="Jogeshwari"
+              selected={userData.locality === "Jogeshwari" ? true : false}
+            >
+              Jogeshwari
+            </option>
+
+            <option
+              value="Kandivali"
+              selected={userData.locality === "Kandivali" ? true : false}
+            >
+              Kandivali
+            </option>
+
+            <option
+              value="Malad"
+              selected={userData.locality === "Malad" ? true : false}
+            >
+              Malad
+            </option>
+
+            <option
+              value="Mira-Bhayandar"
+              selected={userData.locality === "Mira-Bhayandar" ? true : false}
+            >
+              Mira-Bhayandar
+            </option>
+
+            <option
+              value="Santacruz"
+              selected={userData.locality === "Santacruz" ? true : false}
+            >
+              Santacruz
+            </option>
+
+            <option
+              value="Vile Parle"
+              selected={userData.locality === "Vile Parle" ? true : false}
+            >
+              Vile Parle
+            </option>
+
+            <option
+              value="Bhandup"
+              selected={userData.locality === "Bhandup" ? true : false}
+            >
+              Bhandup
+            </option>
+
+            <option
+              value="Ghatkopar"
+              selected={userData.locality === "Ghatkopar" ? true : false}
+            >
+              Ghatkopar
+            </option>
+
+            <option
+              value="Kurla"
+              selected={userData.locality === "Kurla" ? true : false}
+            >
+              Kurla
+            </option>
+
+            <option
+              value="Mulund"
+              selected={userData.locality === "Mulund" ? true : false}
+            >
+              Mulund
+            </option>
+
+            <option
+              value="Powai"
+              selected={userData.locality === "Powai" ? true : false}
+            >
+              Powai
+            </option>
+
+            <option
+              value="Thane"
+              selected={userData.locality === "Thane" ? true : false}
+            >
+              Thane
+            </option>
+
+            <option
+              value="Chembur"
+              selected={userData.locality === "Chembur" ? true : false}
+            >
+              Chembur
+            </option>
+
+            <option
+              value="Matunga"
+              selected={userData.locality === "Matunga" ? true : false}
+            >
+              Matunga
+            </option>
+
+            <option
+              value="Dadar"
+              selected={userData.locality === "Dadar" ? true : false}
+            >
+              Dadar
+            </option>
+
+            <option
+              value="Kalbadevi"
+              selected={userData.locality === "Kalbadevi" ? true : false}
+            >
+              Kalbadevi
+            </option>
+
+            <option
+              value="Marine Lines"
+              selected={userData.locality === "Marine Lines" ? true : false}
+            >
+              Marine Lines
+            </option>
+
+            <option
+              value="Parel"
+              selected={userData.locality === "Parel" ? true : false}
+            >
+              Parel
+            </option>
+
+            <option
+              value="Mahalaxmi"
+              selected={userData.locality === "Mahalaxmi" ? true : false}
+            >
+              Mahalaxmi
+            </option>
+
+            <option
+              value="Sion"
+              selected={userData.locality === "Sion" ? true : false}
+            >
+              Sion
+            </option>
+
+            <option
+              value="Worli"
+              selected={userData.locality === "Worli" ? true : false}
+            >
+              Worli
+            </option>
+
+            <option
+              value="Colaba"
+              selected={userData.locality === "Colaba" ? true : false}
+            >
+              Colaba
+            </option>
+
+            <option
+              value="Navi Mumbai"
+              selected={userData.locality === "Navi Mumbai" ? true : false}
+            >
+              Navi Mumbai
+            </option>
+          </select>
         </div>
       </div>
     </div>

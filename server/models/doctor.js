@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-//patient model
+//doctor model
 const doctorSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -17,9 +17,9 @@ const doctorSchema = new mongoose.Schema({
         type: String,
         required: [true, "User should have a license Number"]
     },
-    city: {
+    locality: {
         type: String,
-        required: [true, "User should have a license Number"]
+        required: [true, "User should have a locality"]
     },
     specialization: {
         type: String,
@@ -41,7 +41,8 @@ const doctorSchema = new mongoose.Schema({
     profile_pic: {
         image_url: {
             type: String,
-            required: [true, "User should have a  image url"]
+            required: [true, "User should have a  image url"],
+            default: "https://res.cloudinary.com/dprscch9k/image/upload/v1677739579/Well%20Care/k6njbwcuucgeqkmv9sft.png",
         },
         file_name: {
             type: String,
@@ -53,7 +54,7 @@ const doctorSchema = new mongoose.Schema({
         required: [true, "User should have a Email"],
         unique: true
     },
-    clinic_address: {
+    address: {
         type: String
     },
     have_clinic: {

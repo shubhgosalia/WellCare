@@ -1,7 +1,7 @@
 import React from "react";
 import UpcomingAppointment from "components/Home/Appointment";
 
-const Part2 = () => {
+const Part2 = ({ appointments, type }) => {
   return (
     <div className="w-[20%] px-5 py-10 fixed h-screen bg-dark-200 rounded-lg">
       {/* UpComing Appointments */}
@@ -10,17 +10,17 @@ const Part2 = () => {
           Upcoming Appointments
         </div>
 
-        {/* Containers */}
+        {/* appointment containers */}
         <div className="flex flex-col space-y-5 overflow-y-scroll">
           {/*  */}
-          <UpcomingAppointment />
-          <UpcomingAppointment />
-          <UpcomingAppointment />
-          <UpcomingAppointment />
-          <UpcomingAppointment />
-          <UpcomingAppointment />
-          <UpcomingAppointment />
-          <UpcomingAppointment />
+          {
+            appointments.length !== 0 ?
+              appointments.map((apt, index) => (
+                <UpcomingAppointment key={index} apt={apt} type={type} />
+              ))
+              :
+              <div className="text-dark-700 text-center text-xs">No upcoming appointments right now!!</div>
+          }
         </div>
       </div>
     </div>

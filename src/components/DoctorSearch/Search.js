@@ -21,15 +21,6 @@ const Search = () => {
           <DoctorResult />
           <DoctorResult />
           <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
-          <DoctorResult />
         </div>
       </div>
     </>

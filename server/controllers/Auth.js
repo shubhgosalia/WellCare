@@ -1,5 +1,5 @@
-const Patient = require("../models/patient");
-const Doctor = require("../models/doctor");
+const Patient = require("../models/Patient");
+const Doctor = require("../models/Doctor");
 const { AuthenticationError, ClientError } = require("../Utils/Errors");
 const SendEmail = require("../utils/Email");
 const jwt = require("jsonwebtoken");
@@ -103,8 +103,7 @@ exports.Login = async (req, res, next) => {
   try {
     let user_name = String(req.body.username);
     let pass_word = String(req.body.password);
-    console.log(user_name);
-    console.log(pass_word);
+    console.log("logiiiiiiinnnnnnnnnn");
     console.log(req.body.type);
     //type can either patient or doctor
     let user;
@@ -145,12 +144,14 @@ exports.Login = async (req, res, next) => {
     }
 
     const token = await signJWT(user.id);
+    console.log("token : ", token);
 
     //it will set the cookie in the browser
     res.cookie("s_Id", token, {
       httpOnly: true,
       expires: new Date(Date.now() + 8 * 3600000),
-      samesite: true,
+      // sameSite: 'none',
+      // secure: true
     });
     console.log("hello");
     return res.status(200).json({
@@ -303,57 +304,8 @@ exports.SetPassword = async (req, res, next) => {
     console.log("err in the set password : ", err);
     return next(err);
   }
-};
-
-//getting the profile of the user - doctor/patient
-exports.GetUser = async (req, res, next) => {
-  try {
-    let user = req.user;
-    let newUser;
-    if (user.type === 'Doctor') {
-      // Sending doctor related information
-      // name,age,gender,licenseNumber,city,specialization,years_Of_Experience,phoneNumber,fees,email,clinic_address,have_clinic,username,category,bio,profile_pic
-      newUser = {
-        name: user.name,
-        age: user.age,
-        licenseNumber: user.licenseNumber,
-        city: user.city,
-        specialization: user.specialization,
-        years_Of_Experience: user.years_Of_Experience,
-        phoneNumber: user.phoneNumber,
-        fees: user.fees,
-        email: user.email,
-        clinic_address: user.clinic_address,
-        username: user.username,
-        category: user.category,
-        bio: user.bio,
-        profile_pic: user.profile_pic
-      }
-    }
-    else {
-      // Sending patient related information
-      // name,email,phoneNumber,username,gender,age,profile_pic
-      newUser = {
-        name: user.name,
-        email: user.email,
-        phoneNumber: user.phoneNumber,
-        username: user.username,
-        gender: user.gender,
-        age: user.age,
-        profile_pic: user.profile_pic
-      }
-    }
-    return res.status(200).json({
-      data: {
-        newUser
-      },
-      success: true,
-    });
-  } catch (err) {
-    console.log("err in the user profile : ", err);
-    return next(err);
-  }
 }
+
 
 //reset password
 exports.ResetPassword = async (req, res, next) => {
@@ -389,6 +341,20 @@ exports.ResetPassword = async (req, res, next) => {
 
   } catch (err) {
     console.log("err in the reset password : ", err);
+    return next(err);
+  }
+}
+
+// Logout controller
+exports.Logout = async (req, res, next) => {
+  try {
+    res.clearCookie('s_Id');
+    res.status(200).json({
+      success: true,
+      message: 'You are logged out successfully!'
+    })
+  }
+  catch (err) {
     return next(err);
   }
 }

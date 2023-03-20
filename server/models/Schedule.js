@@ -40,6 +40,11 @@ const ScheduleSchema = new mongoose.Schema({
     timestamp: {
         type: Date,
         default: new Date()
+    },
+    // initially it will be false when booked but after the session completes it will be set to true and will be considered as a part of history.
+    status: {
+        type: Boolean,
+        default: false
     }
 });
 

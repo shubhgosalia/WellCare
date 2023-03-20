@@ -16,27 +16,28 @@ export default function Final() {
     try {
       let postData = {
         name: userData.name,
-        email: userData.email,
-        username: userData.username,
-        password: userData.password,
-        have_clinic: userData.have_clinic,
-        clinic_address: userData.clinic_address,
-        specialization: userData.specialization,
-        category: userData.category,
         age: userData.age,
         gender: userData.gender,
         licenseNumber: userData.licenseNumber,
-        city: userData.city,
+        locality: userData.locality,
+        specialization: userData.specialization,
         years_Of_Experience: userData.years_Of_Experience,
-        fees: userData.fees,
         phoneNumber: userData.phoneNumber,
+        fees: userData.fees,
         profile_pic: userData.profile_pic,
-        bio: userData.bio
+        email: userData.email,
+        address: userData.address,
+        have_clinic: userData.have_clinic,
+        username: userData.username,
+        password: userData.password,
+        category: userData.category,
+        bio: userData.bio,
       };
 
       setLoad(true);
+      console.log("postinggg...");
       let res = await axios.post(
-        "http://127.0.0.1:4000/doctor/register",
+        "http://localhost:4000/doctor/register",
         postData,
         {
           headers: {
@@ -87,7 +88,7 @@ export default function Final() {
         </div>
         <a className="mt-10" href="/login">
           <button
-            className="h-10 px-5 bg-blue-600 transition-colors duration-150 border border-gray-300 rounded-lg  focus:shadow-outline hover:bg-blue-900"
+            className="h-10 px-5 text-white bg-blue-600 transition-colors duration-150 border border-gray-300 rounded-lg  focus:shadow-outline hover:bg-blue-900"
             disabled={load ? true : false}
           >
             {load ? "Registering..." : "Login"}

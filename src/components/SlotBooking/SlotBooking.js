@@ -22,7 +22,7 @@ const SlotBooking = () => {
   return (
     <div className="w-full flex flex-row font-body-primary">
       {/* 1. Navbar */}
-      <div className="w-[16%] h-screen">
+      <div className="w-[16%] ">
         <Navbar />
       </div>
       <div className="w-[84%] ">
@@ -84,13 +84,13 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          class=" bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className=" bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
-                          10 AM
+                          10.00 AM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button class="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button class="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           12.30 PM
                         </button>
                       </td>
@@ -98,7 +98,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           4.00 PM
                         </button>
@@ -107,7 +107,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           8.00 PM
                         </button>
@@ -117,7 +117,7 @@ const SlotBooking = () => {
 
                     <tr>
                       <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button class="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button class="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           10.30 AM
                         </button>
                       </td>
@@ -125,7 +125,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          class="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 pl-5 pr-6 border border-blue-500 hover:border-transparent rounded"
                         >
                           1.30 PM
                         </button>
@@ -134,7 +134,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           5.00 PM
                         </button>
@@ -143,7 +143,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           8.30 PM
                         </button>
@@ -156,22 +156,22 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
-                          11 AM
+                          11.00 AM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 pl-5 pr-6 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           2.30 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button className="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           6.00 PM
                         </button>
                       </td>
@@ -179,7 +179,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           9.00 PM
                         </button>
@@ -192,7 +192,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           11.30 AM
                         </button>
@@ -201,7 +201,7 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 pl-5 pr-6 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           3.30 PM
                         </button>
@@ -210,13 +210,13 @@ const SlotBooking = () => {
                         <button
                           onClick={clickHandler}
                           onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
                         >
                           7.00 PM
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button className="bg-transparent text-white text-xl font-semibold py-2 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           9.30 PM
                         </button>
                       </td>

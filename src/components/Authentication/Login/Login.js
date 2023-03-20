@@ -1,17 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import LeftLogin from "./LeftLogin";
+import { UserContext } from "context/UserContext";
 
 const Login = () => {
+  //if the user is already logged in don't allow it to Login again
+  const { isLoggedIn } = useContext(UserContext);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, []);
+
   let [data, setData] = useState({
     username: "",
     password: "",
     type: "Patient",
   });
   const [load, setLoad] = useState(false);
-  const navigate = useNavigate();
+  const { setLoginStatus } = useContext(UserContext);
 
   const submit_form = async (event) => {
     //send the data to the backend
@@ -24,8 +34,11 @@ const Login = () => {
       };
 
       setLoad(true);
-      let res = await axios.post("http://127.0.0.1:4000/auth/login", postData);
+      let res = await axios.post("http://localhost:4000/auth/login", postData, {
+        withCredentials: true,
+      });
       if (res.data.success === true) {
+        setLoginStatus(true);
         Swal.fire({
           icon: "success",
           title: res.data.message,
@@ -36,6 +49,7 @@ const Login = () => {
     } catch (err) {
       setLoad(false);
       console.log("error in login : ", err);
+      setLoginStatus(false);
       Swal.fire({
         icon: "error",
         title: "Oops...",
@@ -162,21 +176,18 @@ const Login = () => {
                     {load ? "Loading..." : "Login"}
                   </button>
                   <div className="my-3">
-                    <a
-                      href="/forgotpassword"
-                      className="hover:underline-offset-8 text-blue-600"
-                    >
-                      Forgot Password?
-                    </a>
+                    <div className="hover:underline-offset-8 text-blue-600">
+                      <Link to="/forgotpassword">Forgot Password?</Link>
+                    </div>
                   </div>
                   <div className="text-white my-3">
                     Don't have an account?
-                    <a
-                      href="/signup"
+                    <Link
                       className="hover:underline-offset-8 text-blue-600 mx-2"
+                      to="/signup"
                     >
                       Register
-                    </a>
+                    </Link>
                   </div>
                 </div>
               </div>

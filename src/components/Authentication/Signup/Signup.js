@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Swal from "sweetalert2";
 import LeftSignup from "components/Authentication/Signup/LeftSignup";
+import { Link } from "react-router-dom";
+import { UserContext } from "context/UserContext";
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -19,6 +21,14 @@ const Signup = () => {
     checked: false,
   });
   const [load, setLoad] = useState(false);
+  const { isLoggedIn } = useContext(UserContext);
+
+  //if the user is already logged in don't allow it to register
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/home");
+    }
+  }, []);
 
   const submit = async (event) => {
     //send the data to the backend
@@ -56,6 +66,7 @@ const Signup = () => {
       };
 
       setLoad(true);
+      console.log("posting...");
       let res = await axios.post(
         "http://127.0.0.1:4000/patient/register",
         postData
@@ -127,13 +138,16 @@ const Signup = () => {
               </div>
               <div className="text-xs text-white">Must for HealthCare</div>
             </div>
-
             {/* Redirect To Doctor register */}
-            <p className="mt-1 px-9" style={{ color: "white" }}>
-              Are you a doctor/Expert?{" "}
-              <a style={{ color: "blue" }} href="/doctorRegistration">
+            <p className="mt-1 px-6" style={{ color: "white" }}>
+              Are you a doctor/Expert?
+              <Link
+                className="ml-2"
+                style={{ color: "blue" }}
+                to="/doctorRegistration"
+              >
                 Signup Here
-              </a>{" "}
+              </Link>{" "}
             </p>
 
             {/* form */}
@@ -273,7 +287,7 @@ const Signup = () => {
                   <select
                     name="gender"
                     id="company-size"
-                    className="rounded-lg p-2 w-2/3 lg:w-1/3 text-lg font-bold"
+                    className="rounded-lg p-2 w-2/3 lg:w-1/3 text-lg font-medium"
                     onChange={updateInfo}
                   >
                     <option value="">Please select</option>
@@ -325,19 +339,19 @@ const Signup = () => {
                   className="ml-2 block text-base text-gray-200"
                 >
                   I agree to the
-                  <a
-                    href="/home"
+                  <Link
                     className="text-primary-blue hover:text-secondary-blue px-1"
+                    to="/home"
                   >
                     Terms
-                  </a>
+                  </Link>
                   and
-                  <a
-                    href="/home"
+                  <Link
                     className="text-primary-blue hover:text-secondary-blue px-1"
+                    to="/home"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </label>
               </div>
 
@@ -354,12 +368,12 @@ const Signup = () => {
               </div>
               <div className="text-white">
                 Already registered?
-                <a
-                  href="/login"
+                <Link
                   className="hover:underline-offset-8 text-blue-600 mx-2"
+                  to="/login"
                 >
                   Login
-                </a>
+                </Link>
               </div>
             </div>
           </div>
