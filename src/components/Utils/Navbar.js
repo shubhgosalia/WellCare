@@ -98,7 +98,7 @@ const Navbar = () => {
             ) : (
               <div className="inactive-route">
                 <LightServiceIcon color="#94A3B8" size="27" />
-                <div className="text-xl text-dark-600">Services</div>
+                <div className="text-xl text-dark-600">Service</div>
               </div>
             )}
           </Link>
