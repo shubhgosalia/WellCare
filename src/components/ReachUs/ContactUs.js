@@ -20,51 +20,62 @@ const ContactUs = () => {
 
                 <details className="w-full border rounded-lg" open="">
                   <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-                    Ex orci laoreet egestas sapien magna egestas scelerisque?
+                    Are the doctors/experts on this portal verified?
                   </summary>
                   <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
-                    Lectus iaculis orci metus vitae ligula dictum per. Nisl per
-                    nullam taciti at adipiscing est.{" "}
+                    Yes, our admin team makes sure to verify each of the
+                    doctor/experts before they are registered onto the portal.
+                    The documents provided by the doctor/expert are thoroughly
+                    checked and verified.
                   </p>
                 </details>
 
                 <details className="w-full border rounded-lg mt-5" open="">
                   <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-                    Ex orci laoreet egestas sapien magna egestas scelerisque?
+                    How does WellCare offer one-to-one monitoring?
                   </summary>
                   <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
-                    Lectus iaculis orci metus vitae ligula dictum per. Nisl per
-                    nullam taciti at adipiscing est.{" "}
+                    Features such as end to end encrypted chat, video
+                    consultation, routine progress reports facilitate one-to-one
+                    monitoring between patient/user and doctor/expert here at
+                    Wellcare.
                   </p>
                 </details>
 
                 <details className="w-full border rounded-lg mt-5" open="">
                   <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-                    Ex orci laoreet egestas sapien magna egestas scelerisque?
+                    How many doctors/Experts are a part of the WellCare network?
                   </summary>
                   <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
-                    Lectus iaculis orci metus vitae ligula dictum per. Nisl per
-                    nullam taciti at adipiscing est.{" "}
+                    Around 4000+ doctors/experts are a part of the Practo
+                    network which includes physiotherapists, nutritionists and
+                    gym trainers.
                   </p>
                 </details>
 
                 <details className="w-full border rounded-lg mt-5" open="">
                   <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-                    Ex orci laoreet egestas sapien magna egestas scelerisque?
+                    What measures does WellCare have in place for the protection
+                    of user data security and privacy?
                   </summary>
                   <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
-                    Lectus iaculis orci metus vitae ligula dictum per. Nisl per
-                    nullam taciti at adipiscing est.{" "}
+                    Safety of your data is our top priority. We have multi-level
+                    security checks, multiple data backups, and stringent
+                    policies in place to ensure your data remains safe and
+                    secure.
                   </p>
                 </details>
 
                 <details className="w-full border rounded-lg mt-5" open="">
                   <summary className="px-4 py-6 focus:outline-none focus-visible:ring-violet-400">
-                    Ex orci laoreet egestas sapien magna egestas scelerisque?
+                    Why do you display doctor/expert photos? Isn’t this
+                    advertising?
                   </summary>
                   <p className="px-4 py-6 pt-0 ml-4 -mt-4 dark:text-gray-400">
-                    Lectus iaculis orci metus vitae ligula dictum per. Nisl per
-                    nullam taciti at adipiscing est.{" "}
+                    No. We display doctor photos across all doctor profiles for
+                    patient protection. Their sole purpose is to help patients
+                    make sure that they are being attended to by the same
+                    doctor/expert they booked.
                   </p>
                 </details>
               </div>
