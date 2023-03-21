@@ -22,6 +22,8 @@ import NutriSearch from "components/NutriSearch/Home";
 import GymSearch from "components/GymSearch/Home";
 import TopRated from "components/TopRated/TopRated";
 import UserProvider from "context/UserContext";
+import ContactUs from "components/ReachUs/ContactUs";
+
 function App() {
   return (
     <>
@@ -98,6 +100,9 @@ function App() {
 
             {/* Gym Trainer Search */}
             <Route exact path="/searchGymtrainers" element={<GymSearch />} />
+
+            {/* Contact Us and faq page */}
+            <Route exact path="/contactUs" element={<ContactUs />} />
           </Routes>
         </UserProvider>
       </Router>
