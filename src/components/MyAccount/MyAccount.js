@@ -3,7 +3,7 @@ import Navbar from "components/Utils/Navbar";
 import Header from "components/MyAccount/Header";
 import Form from "components/MyAccount/Form";
 
-// importing context 
+// importing context
 import { UserContext } from "context/UserContext";
 import { useNavigate } from "react-router-dom";
 
@@ -15,7 +15,7 @@ const MyAccount = () => {
   //checking if the user is logged in or not
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate('/login');
+      navigate("/login");
     }
     console.log("profile : ", profile);
   }, []);
@@ -27,14 +27,17 @@ const MyAccount = () => {
         <Navbar />
       </div>
 
-      <div className="w-[84%] flex flex-col space-y-10">
+      <div className="w-[84%] min-h-screen">
         {/* Header */}
-        <div className="h-[30%]">
-          <Header profile_pic={profile?.profile_pic.image_url} name={profile?.name} />
+        <div className="">
+          <Header
+            profile_pic={profile?.profile_pic.image_url}
+            name={profile.name}
+          />
         </div>
 
         {/* Form */}
-        <div className="">
+        <div className="my-20">
           <Form profile={profile} />
         </div>
       </div>
