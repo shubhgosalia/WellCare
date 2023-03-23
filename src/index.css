@@ -35,10 +35,14 @@
   }
 
   .button {
-    @apply text-white text-xl font-bold p-2 rounded-full text-center bg-primary-blue hover:bg-secondary-blue shadow-lg cursor-pointer;
+    @apply text-white text-xl font-bold p-2 rounded-xl text-center bg-primary-blue hover:bg-secondary-blue shadow-lg cursor-pointer;
   }
 
   .form-property {
     @apply flex w-1/2 justify-between bg-dark-100 rounded-lg  p-5 border border-dark-200;
+  }
+
+  .default-bg-class {
+    @apply w-full bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100;
   }
 }
