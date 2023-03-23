@@ -7,18 +7,18 @@ export default function HomeLine({
 }) {
   return (
     <svg
-      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
       fill="none"
+      stroke={color}
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
       viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      class="w-6 h-6"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <path
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15M12 9l-3 3m0 0l3 3m-3-3h12.75"
-      />
+      <path d="M19 12H9m10 0-4-4m4 4-4 4"></path>
+      <path d="M15 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8"></path>
     </svg>
   );
 }

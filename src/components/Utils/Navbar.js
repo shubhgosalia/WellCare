@@ -68,7 +68,7 @@ const Navbar = () => {
 
         {/* Routes */}
         <div
-          className="text-dark-700 flex flex-col space-y-6 text-2xl mx-auto"
+          className="flex flex-col space-y-6 mx-auto w-[80%]"
           style={{ marginTop: -30 }}
         >
           {/* Home */}
@@ -123,12 +123,12 @@ const Navbar = () => {
                 <div className="my-auto">
                   <LightChatIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-2xl text-dark-600">Chats</div>
+                <div className="">Chats</div>
               </div>
             )}
           </Link>
 
-          {/* Services */}
+          {/* TAC */}
           <Link to="/services">
             {location.pathname === "/services" ? (
               <div className="active-route">
@@ -139,10 +139,10 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="inactive-route">
-                <LightServiceIcon color="#94A3B8" size="27" />
-                <div className=" text-dark-600" style={{ marginTop: -6 }}>
-                  T.A.C
+                <div className="my-auto">
+                  <LightServiceIcon color="#94A3B8" size="27" />
                 </div>
+                <div className="">T.A.C</div>
               </div>
             )}
           </Link>
@@ -161,21 +161,25 @@ const Navbar = () => {
                 <div className="my-auto">
                   <LightMyAccountIcon color="#94A3B8" size="27" />
                 </div>
-                <div className=" text-dark-600">My Account</div>
+                <div className="">My Account</div>
               </div>
             )}
           </Link>
+
           {/* logout  */}
           <div
-            className="flex flex-row items-center mx-4 hover:cursor-pointer"
+            className="button flex space-x-2 justify-center"
             onClick={logout}
           >
             <div className="my-auto">
-              <LightLogoutIcon color="#94A3B8" size="27" />
+              <LightLogoutIcon color="#ffffff" size="27" />
             </div>
-            <div className="text-2xl mx-2 text-dark-600">Logout</div>
+
+            {/*  */}
+            <div className="">Logout</div>
           </div>
         </div>
+
         {/* Profile Picture */}
         <div className="flex flex-col text-center space-y-3">
           {/* Picture */}
