@@ -38,15 +38,14 @@ const Step5 = forwardRef((props, ref) => {
       <div className="mt-3 mx-2 w-full flex-1">
         <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Click to upload profile pic
-        <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
-          <input
-            onChange={updateImage}
-            name="profile_pic"
-            type="file"
-            className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
-              style={{ display: 'none' }}
+          <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
+            <input
+              onChange={updateImage}
+              name="profile_pic"
+              type="file"
+              className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
             />
-        </div>
+          </div>
         </label>
       </div>
 

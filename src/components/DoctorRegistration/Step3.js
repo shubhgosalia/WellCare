@@ -116,6 +116,8 @@ const Step3 = forwardRef((props, ref) => {
             onChange={handleChange}
             name="locality"
           >
+            <option>Select Locality</option>
+
             <option
               value="Andheri"
               selected={userData.locality === "Andheri" ? true : false}

@@ -138,14 +138,17 @@ const Signup = () => {
               </div>
               <div className="text-xs text-white">Must for HealthCare</div>
             </div>
-
             {/* Redirect To Doctor register */}
-            <p className="mt-1 px-9" style={{ color: "white" }}>
+            <p className="mt-1 px-6" style={{ color: "white" }}>
               Are you a doctor/Expert?
+              <Link
+                className="ml-2"
+                style={{ color: "blue" }}
+                to="/doctorRegistration"
+              >
+                Signup Here
+              </Link>{" "}
             </p>
-            <div style={{ color: "blue" }}>
-              <Link to="/doctorRegistration">Signup Here</Link>{" "}
-            </div>
 
             {/* form */}
             <div className="lg:py-8 lg:px-6 p-4 shadow rounded-lg sm:px-10 flex flex-col space-y-6">
@@ -336,13 +339,19 @@ const Signup = () => {
                   className="ml-2 block text-base text-gray-200"
                 >
                   I agree to the
-                  <div className="text-primary-blue hover:text-secondary-blue px-1">
-                    <Link to="/home">Terms</Link>
-                  </div>
+                  <Link
+                    className="text-primary-blue hover:text-secondary-blue px-1"
+                    to="/home"
+                  >
+                    Terms
+                  </Link>
                   and
-                  <div className="text-primary-blue hover:text-secondary-blue px-1">
-                    <Link to="/home">Privacy Policy</Link>
-                  </div>
+                  <Link
+                    className="text-primary-blue hover:text-secondary-blue px-1"
+                    to="/home"
+                  >
+                    Privacy Policy
+                  </Link>
                 </label>
               </div>
 
@@ -359,9 +368,12 @@ const Signup = () => {
               </div>
               <div className="text-white">
                 Already registered?
-                <div className="hover:underline-offset-8 text-blue-600 mx-2">
-                  <Link to="/login">Login</Link>
-                </div>
+                <Link
+                  className="hover:underline-offset-8 text-blue-600 mx-2"
+                  to="/login"
+                >
+                  Login
+                </Link>
               </div>
             </div>
           </div>
