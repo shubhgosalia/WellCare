@@ -62,11 +62,11 @@ const Page = () => {
             {/* Icon */}
             {passwordVisiblity ? (
               <div className="my-auto" onClick={handlePassword}>
-                <EyeOffIcon size="30" color="#ffffff" />
+                <EyeOffIcon size="28" color="#ffffff" />
               </div>
             ) : (
               <div className="my-auto" onClick={handlePassword}>
-                <FullEyeIcon size="30" color="#ffffff" />
+                <FullEyeIcon size="28" color="#ffffff" />
               </div>
             )}
           </div>
