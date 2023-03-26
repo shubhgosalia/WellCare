@@ -21,6 +21,8 @@ import PhysioSearch from "components/PhysioSearch/Home";
 import NutriSearch from "components/NutriSearch/Home";
 import GymSearch from "components/GymSearch/Home";
 import TopRated from "components/TopRated/TopRated";
+import UpdatePassword from "components/UpdatePassword/page";
+
 import UserProvider from "context/UserContext";
 function App() {
   return (
@@ -39,6 +41,9 @@ function App() {
 
             {/* Sign up */}
             <Route exact path="/signup" element={<Signup />} />
+
+            {/* update password */}
+            <Route exact path="/updatePassword" element={<UpdatePassword />} />
 
             {/* Top Rated Page */}
             <Route exact path="/topRated" element={<TopRated />} />
