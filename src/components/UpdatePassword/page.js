@@ -77,7 +77,7 @@ const Page = () => {
           {/* confirm new password */}
           <div></div>
 
-          {/* save changes and cancel button */}
+          {/* save changes and cancel*/}
         </div>
       </div>
     </div>
