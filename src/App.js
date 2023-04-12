@@ -23,6 +23,8 @@ import GymSearch from "components/GymSearch/Home";
 import TopRated from "components/TopRated/TopRated";
 import UserProvider from "context/UserContext";
 import ContactUs from "components/ReachUs/ContactUs";
+import Admin from "components/AdminDashboard/Admin";
+import ExpertVerify from "components/AdminDashboard/ExpertVerify";
 
 function App() {
   return (
@@ -103,6 +105,12 @@ function App() {
 
             {/* Contact Us and faq page */}
             <Route exact path="/contactUs" element={<ContactUs />} />
+
+            {/* Admin Dashboard  */}
+            <Route exact path="/adminDashboard" element={<Admin />} />
+
+            {/* Admin Expert Verification */}
+            <Route exact path="/expertVerify" element={<ExpertVerify />} />
           </Routes>
         </UserProvider>
       </Router>

@@ -151,17 +151,19 @@ const Navbar = () => {
 
           {/* Reach Us */}
           <Link to="/contactUs">
-            {location.pathname === "/services" ? (
+            {location.pathname === "/contactUs" ? (
               <div className="active-route">
                 <div className="my-auto">
                   <BoldContactUsIcon color="#ffffff" size="27" />
                 </div>
-                <div style={{ marginTop: -7 }}>Reach Us</div>
+                <div style={{ marginTop: -5 }}>Reach Us</div>
               </div>
             ) : (
               <div className="inactive-route">
-                <LightContactUsIcon color="#94A3B8" size="27" />
-                <div className=" text-dark-600" style={{ marginTop: -7 }}>
+                <div className="my-auto">
+                  <LightContactUsIcon color="#94A3B8" size="27" />
+                </div>
+                <div className=" text-dark-600" style={{ marginTop: -5 }}>
                   Reach Us{" "}
                 </div>
               </div>

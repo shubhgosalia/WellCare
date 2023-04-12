@@ -126,7 +126,7 @@ const Profile = () => {
  */}
             {/* Datepicker for appointment date selection */}
             <div>
-              <div className="mb-1">Select Appointment Date :</div>
+              <div className="mb-1">Select Appointment/Session Date :</div>
               <DatePicker
                 className="p-2 rounded-md text-black"
                 minDate={new Date(new Date().toISOString().split("T")[0])}
@@ -138,7 +138,7 @@ const Profile = () => {
               />
             </div>
 
-            {/* Book Appointment Button */}
+            {/* Book Appointment/Session Button */}
             <div>
               <button
                 type="submit"
@@ -146,7 +146,7 @@ const Profile = () => {
                 className="py-3 px-3
                  rounded-md text-base font-medium text-white bg-blue-700 hover:bg-blue-800  "
               >
-                Book Appointment
+                Book Session/Appointment
               </button>
             </div>
           </div>
