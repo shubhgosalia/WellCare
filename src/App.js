@@ -10,6 +10,7 @@ import Signup from "components/Authentication/Signup/Signup";
 // Password
 import ResetPassword from "components/PasswordSetup/ResetPassword";
 import ForgotPassword from "components/PasswordSetup/ForgotPassword";
+import UpdatePassword from "../src/pages/UpdatePassword";
 
 // Dashboard Pages
 import Home from "components/Home/Home";
@@ -24,12 +25,12 @@ import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
 import Profile from "components/Profile/Profile";
 import ChatHome from "components/Chat/ChatHome";
+
 // import ContactsProvider from "context/ContactsContext";
 import PhysioSearch from "components/PhysioSearch/Home";
 import NutriSearch from "components/NutriSearch/Home";
 import GymSearch from "components/GymSearch/Home";
 import TopRated from "components/TopRated/TopRated";
-import UpdatePassword from "components/UpdatePassword/page";
 
 import UserProvider from "context/UserContext";
 import Admin from "components/AdminDashboard/Admin";

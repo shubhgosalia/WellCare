@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
 import UserImage from "../../assets/Krish.png";
+
 // Light Icons
 import LightHomeIcon from "components/Icons/Light/home";
 import LightStarIcon from "components/Icons/Light/star";
@@ -9,6 +10,7 @@ import LightChatIcon from "components/Icons/Light/chat";
 import LightMyAccountIcon from "components/Icons/Light/myAccount";
 import LightContactUsIcon from "components/Icons/Light/contactUs";
 import LightLogoutIcon from "components/Icons/Light/logout";
+
 // Bold Icons
 import BoldHomeIcon from "components/Icons/Bold/home";
 import BoldStarIcon from "components/Icons/Bold/star";
@@ -16,7 +18,7 @@ import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldContactUsIcon from "components/Icons/Bold/contactUs";
 
-// importing context
+// importing modules
 import { UserContext } from "context/UserContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -131,21 +133,20 @@ const Navbar = () => {
           {/* My Account */}
           <Link to="/myAccount">
             {location.pathname === "/myAccount" ? (
-              <div className="active-route" style={{ marginTop: -5 }}>
+              <div className="active-route">
                 <div className="my-auto">
                   <BoldMyAccountIcon color="#ffffff" size="27" />
                 </div>
                 <div style={{ marginTop: 3 }}>My Account</div>
               </div>
             ) : (
-              <div className="inactive-route" style={{ marginTop: -5 }}>
+              <div className="inactive-route">
                 <div className="my-auto">
                   <LightMyAccountIcon color="#94A3B8" size="27" />
                 </div>
                 <div style={{ marginTop: 3 }} className=" text-dark-600">
                   My Account
                 </div>
-                <div className="">T.A.C</div>
               </div>
             )}
           </Link>
@@ -157,17 +158,14 @@ const Navbar = () => {
                 <div className="my-auto">
                   <BoldContactUsIcon color="#ffffff" size="27" />
                 </div>
-                <div style={{ marginTop: -5 }}>Reach Us</div>
+                <div>Reach Us</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightContactUsIcon color="#94A3B8" size="27" />
                 </div>
-                <div className=" text-dark-600" style={{ marginTop: -5 }}>
-                  Reach Us{" "}
-                </div>
-                <div className="">My Account</div>
+                <div className=" text-dark-600">Reach Us</div>
               </div>
             )}
           </Link>
