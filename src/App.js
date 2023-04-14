@@ -15,10 +15,10 @@ import UpdatePassword from "../src/pages/UpdatePassword";
 // Dashboard Pages
 import Home from "components/Home/Home";
 import ContactUs from "../src/pages/ReachUs";
+import MyAccount from "../src/pages/MyAccount";
 
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 // import DoctorSearch from "components/DoctorSearch/Home";
-import MyAccount from "components/MyAccount/MyAccount";
 import SlotBooking from "components/SlotBooking/SlotBooking";
 import Checkout from "components/PaymentCheckout/Checkout";
 import Gateway from "components/PaymentGateway/Gateway";
