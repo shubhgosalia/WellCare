@@ -1,13 +1,19 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
+
+// Authentication
+import Landing from "../src/pages/Landing";
 import Login from "components/Authentication/Login/Login";
-import Home from "components/Home/Home";
 import Signup from "components/Authentication/Signup/Signup";
-import Landing from "components/Landing/Landing";
-import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
+
+// Password
 import ResetPassword from "components/PasswordSetup/ResetPassword";
 import ForgotPassword from "components/PasswordSetup/ForgotPassword";
+
+// Dashboard Pages
+import Home from "components/Home/Home";
+import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 // import DoctorSearch from "components/DoctorSearch/Home";
 import MyAccount from "components/MyAccount/MyAccount";
 import SlotBooking from "components/SlotBooking/SlotBooking";

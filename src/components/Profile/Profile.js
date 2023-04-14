@@ -4,9 +4,9 @@ import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 
 // icons
-import VerifiedIcon from "components/Icons/solid/verified";
-import EmailIcon from "components/Icons/solid/envelope";
-import LocationIcon from "components/Icons/solid/location";
+// import VerifiedIcon from "components/Icons/solid/verified";
+// import EmailIcon from "components/Icons/solid/envelope";
+// import LocationIcon from "components/Icons/solid/location";
 import Review from "components/Review/Review";
 import DatePicker from "react-datepicker";
 import { max } from "date-fns";
@@ -50,7 +50,7 @@ const Profile = () => {
             {/* profile years of experience */}
             <div className="font-normla text-lg">7 yrs of experience</div>
             <div className="flex">
-              <VerifiedIcon size={25} color="#008000" />
+              {/* <VerifiedIcon size={25} color="#008000" /> */}
               <div className="font-normal text-base pl-1">
                 Medical Registration verified
               </div>
@@ -58,7 +58,7 @@ const Profile = () => {
 
             {/* profile email */}
             <div className="flex ">
-              <EmailIcon size={22} color="#0047AB" />
+              {/* <EmailIcon size={22} color="#0047AB" /> */}
               <div className="font-normal text-base pl-2">
                 ishitfariya@gmail.com
               </div>
@@ -66,7 +66,7 @@ const Profile = () => {
 
             {/* clinic address */}
             <div className="flex">
-              <LocationIcon size={25} color="#0047AB" />
+              {/* <LocationIcon size={25} color="#0047AB" /> */}
               <div className="font-normal text-base pl-1">
                 12/Sundaram apt,Ramchandra lane,Malad west
               </div>
