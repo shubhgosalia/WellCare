@@ -30,7 +30,7 @@ const Step3 = forwardRef((props, ref) => {
     <div className="flex flex-col ">
       <div className="mt-3 mx-2 w-full flex-1">
         <label className="h-6 text-xs font-bold uppercase leading-8 text-gray-500">
-          Do you have a clinic?
+          Do you have a Clinic/Gym?
         </label>
         <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
           <input
@@ -72,14 +72,14 @@ const Step3 = forwardRef((props, ref) => {
       {userData.have_clinic === "true" && (
         <div className="mt-3 w-full mx-2 flex-1">
           <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-            Clinic Address
+            Clinic/Gym Address (Name - GMap Link)
           </label>
           <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
             <input
               onChange={handleChange}
               value={userData["address"] || ""}
               name="address"
-              placeholder="Clinic address"
+              placeholder="Clinic/Gym address"
               type="text"
               required
               className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
@@ -90,14 +90,14 @@ const Step3 = forwardRef((props, ref) => {
       {userData.have_clinic === "false" && (
         <div className="mt-3 w-full mx-2 flex-1">
           <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-            Hospital/Centre Address
+            Hospital/Centre Address (Name - GMap Link)
           </label>
           <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
             <input
               onChange={handleChange}
               value={userData["address"] || ""}
               name="address"
-              placeholder="Hospital address"
+              placeholder="Hospital/Centre address"
               type="text"
               required
               className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
