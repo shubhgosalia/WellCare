@@ -87,23 +87,11 @@ const ContactUs = () => {
                   Contact our team
                 </div>
 
-                <form>
+                <form className="text-dark-100">
                   <div className="form-group mb-6">
                     <input
                       type="email"
-                      className="form-control block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-               focus:bg-white focus:border-blue-600 focus:outline-none"
+                      className="form-control block w-full px-3 py-1.5 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:bg-white focus:border-blue-600 focus:outline-none"
                       id="exampleInput7"
                       placeholder="Email address"
                     />
@@ -113,20 +101,7 @@ const ContactUs = () => {
                     <select
                       aria-label="Default select example required"
                       name="topic"
-                      className="form-control block
-                      w-full
-                      px-3
-                      py-1.5
-                      text-base
-                      font-normal
-                      bg-white bg-clip-padding
-                      border border-solid border-gray-300
-                      rounded
-                      transition
-                      ease-in-out
-                      text-gray-400
-                      m-0
-                       focus:bg-white focus:border-blue-600 focus:outline-none"
+                      className="form-control block w-full px-3 py-1.5 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out text-gray-400 m-0  focus:bg-white focus:border-blue-600 focus:outline-none"
                     >
                       <option>Topic</option>
 
@@ -146,7 +121,6 @@ const ContactUs = () => {
               py-1.5
               text-base
               font-normal
-              
               bg-white bg-clip-padding
               border border-solid border-gray-300
               rounded
@@ -175,7 +149,7 @@ const ContactUs = () => {
               transition
               ease-in-out
               m-0
-               focus:bg-white focus:border-blue-600 focus:outline-none
+               focus:bg-white focus:border-blue-600 focus:outline-none max-h-44
             "
                       id="exampleFormControlTextarea13"
                       rows="3"
@@ -204,7 +178,6 @@ const ContactUs = () => {
             px-6
             py-2.5
             bg-blue-600
-            text-white
             font-medium
             text-xs
             leading-tight

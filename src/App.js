@@ -13,6 +13,8 @@ import ForgotPassword from "components/PasswordSetup/ForgotPassword";
 
 // Dashboard Pages
 import Home from "components/Home/Home";
+import ContactUs from "../src/pages/ReachUs";
+
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 // import DoctorSearch from "components/DoctorSearch/Home";
 import MyAccount from "components/MyAccount/MyAccount";
@@ -30,7 +32,6 @@ import TopRated from "components/TopRated/TopRated";
 import UpdatePassword from "components/UpdatePassword/page";
 
 import UserProvider from "context/UserContext";
-import ContactUs from "components/ReachUs/ContactUs";
 import Admin from "components/AdminDashboard/Admin";
 import ExpertVerify from "components/AdminDashboard/ExpertVerify";
 
