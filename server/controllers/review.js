@@ -33,3 +33,21 @@ module.exports.createReview = async (req, res, next) => {
 //         return next(err);
 //     }
 // }
+
+module.exports.updateReview(async(req,res,next)=>{
+    try{
+        const review= await Review.findByIdAndUpdate(req.params.id,{
+            review:String(req.body.review)
+        });
+        res.status(200).json({
+            status: "success",
+            data: {
+                review
+            },
+            msg: "Your review has been updated successfully!"
+        });
+    }   
+    catch(err){
+        return next(err);
+    }
+})

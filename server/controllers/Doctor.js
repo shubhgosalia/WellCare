@@ -15,7 +15,7 @@ exports.Register = async (req, res, next) => {
     let user = await RegisterDoctorJoi(req.body);
     //hashing the password
     const salt = await bcrypt.genSalt(10);
-    newpassword = await bcrypt.hash(user.password, salt);
+    let newpassword = await bcrypt.hash(user.password, salt);
     //creating new doctor object
     let doctor = new Doctor({
       name: user.name,
@@ -60,7 +60,7 @@ exports.Register = async (req, res, next) => {
     };
 
     try {
-      // await SendEmail(mailoptions, next);
+      await SendEmail(mailoptions, next);
       return res.status(201).json({
         message: "Verification link has been sent on your registered Email ID",
         success: true

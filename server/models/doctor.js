@@ -82,6 +82,10 @@ const doctorSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
+    adminVerified:{
+        type:Boolean,
+        default:false,
+    },
     mailVerified: {
         type: Boolean,
         default: false

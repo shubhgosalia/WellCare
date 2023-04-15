@@ -54,7 +54,7 @@ exports.Register = async (req, res, next) => {
     };
 
     try {
-      // await SendEmail(mailoptions, next);
+      await SendEmail(mailoptions, next);
       return res.status(201).json({
         message: "Verification link has been sent on your registered Email ID",
         success: true,
@@ -173,12 +173,12 @@ exports.BookAppointment = async (req, res, next) => {
       </div>`,
     };
 
-    // try {
-    //   await SendEmail(mail1, next);
-    //   await SendEmail(mail2, next);
-    // } catch (err) {
-    //   throw err;
-    // }
+    try {
+      await SendEmail(mail1, next);
+      await SendEmail(mail2, next);
+    } catch (err) {
+      throw err;
+    }
 
     return res.status(200).json({
       success: true,
