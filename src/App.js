@@ -16,6 +16,7 @@ import UpdatePassword from "../src/pages/UpdatePassword";
 import Home from "components/Home/Home";
 import ContactUs from "../src/pages/ReachUs";
 import MyAccount from "../src/pages/MyAccount";
+import Profile from "../src/pages/ExpertProfile";
 
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 // import DoctorSearch from "components/DoctorSearch/Home";
@@ -23,7 +24,6 @@ import SlotBooking from "components/SlotBooking/SlotBooking";
 import Checkout from "components/PaymentCheckout/Checkout";
 import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
-import Profile from "components/Profile/Profile";
 import ChatHome from "components/Chat/ChatHome";
 
 // import ContactsProvider from "context/ContactsContext";
