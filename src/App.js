@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 // Authentication
 import Landing from "../src/pages/Landing";
 import Login from "../src/pages/Login";
-import Signup from "components/Authentication/Signup/Signup";
+import Signup from "components/Signup/RightSignup";
 
 // Password
 import ResetPassword from "components/PasswordSetup/ResetPassword";
