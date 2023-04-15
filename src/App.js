@@ -8,8 +8,8 @@ import Login from "../src/pages/Login";
 import Signup from "components/Signup/RightSignup";
 
 // Password
-import ResetPassword from "components/PasswordSetup/ResetPassword";
-import ForgotPassword from "components/PasswordSetup/ForgotPassword";
+import ResetPassword from "pages/ResetPassword";
+import ForgotPassword from "pages/ForgotPassword";
 import UpdatePassword from "../src/pages/UpdatePassword";
 
 // Dashboard Pages
