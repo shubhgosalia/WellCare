@@ -6,9 +6,11 @@ import UserImage from "../../assets/Krish.png";
 import LightStatIcon from "components/Icons/Light/stat";
 import LightVerifyIcon from "components/Icons/Light/verify";
 import LightLogoutIcon from "components/Icons/Light/logout";
+import LightQueryIcon from "components/Icons/Light/query";
 // Bold Icons
 import BoldStatIcon from "components/Icons/Bold/stat";
 import BoldVerifyIcon from "components/Icons/Bold/verify";
+import BoldQueryIcon from "components/Icons/Bold/query";
 
 // importing context
 import { UserContext } from "context/UserContext";
@@ -57,7 +59,7 @@ const AdminNav = () => {
       <div className="px-2 flex flex-col justify-between h-screen py-5">
         {/* Logo */}
         <div className="text-4xl font-black text-white text-center font-head-primary">
-          <Link to="/home">ADMIN DASHBOARD</Link>
+          <Link to="/adminDashboard">ADMIN DASHBOARD</Link>
         </div>
 
         {/* Routes */}
@@ -99,6 +101,26 @@ const AdminNav = () => {
                   <LightVerifyIcon color="#94A3B8" size="27" />
                 </div>
                 <div className=" text-dark-600">Verify Experts</div>
+              </div>
+            )}
+          </Link>
+
+          {/* User Query */}
+
+          <Link to="/userQuery">
+            {location.pathname === "/userQuery" ? (
+              <div className="active-route">
+                <div className="my-auto">
+                  <BoldQueryIcon color="#ffffff" size="27" />
+                </div>
+                <div>User Query</div>
+              </div>
+            ) : (
+              <div className="inactive-route">
+                <div className="my-auto">
+                  <LightQueryIcon color="#94A3B8" size="27" />
+                </div>
+                <div className=" text-dark-600">User Query</div>
               </div>
             )}
           </Link>

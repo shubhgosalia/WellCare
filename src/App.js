@@ -25,6 +25,7 @@ import UserProvider from "context/UserContext";
 import ContactUs from "components/ReachUs/ContactUs";
 import Admin from "components/AdminDashboard/Admin";
 import ExpertVerify from "components/AdminDashboard/ExpertVerify";
+import UserQuery from "components/AdminDashboard/GetQuery";
 
 function App() {
   return (
@@ -111,6 +112,9 @@ function App() {
 
             {/* Admin Expert Verification */}
             <Route exact path="/expertVerify" element={<ExpertVerify />} />
+
+            {/* Admin User Query */}
+            <Route exact path="/userQuery" element={<UserQuery />} />
           </Routes>
         </UserProvider>
       </Router>
