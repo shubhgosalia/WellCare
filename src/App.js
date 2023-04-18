@@ -62,7 +62,7 @@ function App() {
             <Route exact path="/topRated" element={<TopRated />} />
 
             {/* Doctor Profile Page */}
-            <Route exact path="/doctorProfile" element={<Profile />} />
+            <Route exact path="/doctorProfile/:id" element={<Profile />} />
 
             {/* SlotBooking Page */}
             <Route exact path="/slotBook" element={<SlotBooking />} />

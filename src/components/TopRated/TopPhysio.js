@@ -14,11 +14,12 @@ const TopPhysio = ({info}) => {
     years_Of_Experience,
     specialization,
     locality,
+    _id
   } = info;
 
   return (
     <>
-      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4  text-dark-100 mx-4">
+      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 text-dark-100 mx-4">
         <div className="flex justify-center space-x-6">
           {/* img */}
           <div>
@@ -65,9 +66,9 @@ const TopPhysio = ({info}) => {
         {/* Locality + Location hyperlink */}
         <div className="font-semibold text-md">
           <Link to={address}>{locality}</Link>
-
-          <a
-            className="hover:underline text-black font-semibold text-md"
+            <span className="ml-2 text-black">•</span>
+            <a
+            className=" hover:underline text-black font-semibold ml-2 text-md"
             href="https://tinyurl.com/3sktjaca"
           >
             {name}
@@ -98,7 +99,7 @@ const TopPhysio = ({info}) => {
 
         {/* book appointment*/}
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
-          <a href="/doctorProfile"> View More</a>
+          <Link to={`/doctorProfile/${_id}`}> View More</Link>
         </button>
       </div>
     </>

@@ -2,10 +2,21 @@ import React from "react";
 
 import BoldFullStarIcon from "components/Icons/Bold/fullStar";
 import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
-import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp"
+import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
+import { Link } from "react-router-dom";
 
-const TopNutri = ({info}) => {
-  const { name, rating, fees, address, profile_pic, experience, category, locality } = info;
+const TopNutri = ({ info }) => {
+  const {
+    name,
+    rating,
+    fees,
+    address,
+    profile_pic,
+    years_Of_Experience,
+    category,
+    locality,
+    _id
+  } = info;
 
   return (
     <>
@@ -18,7 +29,6 @@ const TopNutri = ({info}) => {
             {rating}/5
           </div>
           <div className="flex">
-
             <BoldFullStarIcon color="#ffdf00" size="27" />
             <BoldFullStarIcon color="#ffdf00" size="27" />
             <BoldFullStarIcon color="#ffdf00" size="27" />
@@ -33,7 +43,7 @@ const TopNutri = ({info}) => {
         {/* img */}
         <div style={{ width: 140, marginTop: -105 }}>
           <img
-           src={profile_pic.image_url}
+            src={profile_pic.image_url}
             alt="Profile Pic"
             className="w-32 h-32 rounded-lg  mx-auto"
           />
@@ -56,7 +66,7 @@ const TopNutri = ({info}) => {
 
         {/* Locality + Location hyperlink */}
         <div className="font-semibold text-md" style={{ marginTop: 10 }}>
-          {locality}
+        <Link to={address}>{locality}</Link>
           <span className="ml-2 text-black">•</span>
           <a
             className="hover:underline text-black font-semibold ml-2 text-md"
@@ -65,7 +75,9 @@ const TopNutri = ({info}) => {
             Nutriwealth Healthify Clinic
           </a>
           {/* Per session fee */}
-          <div className="text-md font-semibold text-black  ">Fees : ₹{fees}</div>
+          <div className="text-md font-semibold text-black  ">
+            Fees : ₹{fees}/session
+          </div>
         </div>
 
         {/* % Upvoted */}
@@ -89,7 +101,7 @@ const TopNutri = ({info}) => {
 
         {/* book appointment*/}
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
-          <a href="/doctorProfile"> View More</a>
+          <Link to={`/doctorProfile/${_id}`}> View More</Link>
         </button>
       </div>
     </>

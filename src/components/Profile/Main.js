@@ -6,9 +6,9 @@ import BoldMailIcon from "components/Icons/Bold/mail";
 import BoldLocationIcon from "components/Icons/Bold/location";
 import BoldExpierenceIcon from "components/Icons/Bold/expierence";
 
+
 const Main = () => {
   const handleBookAppointment = () => {};
-
   return (
     <div className="flex text-white p-8">
       <div className="w-[80%] mx-auto flex flex-col space-y-8">

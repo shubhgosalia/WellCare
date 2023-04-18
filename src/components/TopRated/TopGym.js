@@ -5,7 +5,7 @@ import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp"
 import { Link } from "react-router-dom";
 
 const TopGym = ({info}) => {
-  const { name, rating, fees, address, profile_pic, years_Of_Experience, category, locality } = info;
+  const { name, rating, fees, address, profile_pic, years_Of_Experience, category, locality,_id } = info;
   return (
     <>
       <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 mt-12 text-dark-100 mx-4">
@@ -90,7 +90,7 @@ const TopGym = ({info}) => {
 
         {/* book appointment*/}
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
-          <a href="/doctorProfile"> View More</a>
+          <Link to={`/doctorProfile/${_id}`}> View More</Link>
         </button>
       </div>
     </>
