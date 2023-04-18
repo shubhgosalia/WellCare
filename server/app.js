@@ -35,7 +35,7 @@ io.on("connection", (socket) => {
   console.log("new connection : ", socket.id);
   socket.on("add-user", (userId) => {
     onlineusers.set(userId, socket.id);
-  })
+  });
 
   socket.on("send-msg", (data) => {
     // To find receiver users socket
@@ -44,5 +44,5 @@ io.on("connection", (socket) => {
       //emitting the message to a particular client
       socket.to(findSocketUser).emit("msg-receive", data.message);
     }
-  })
+  });
 });

@@ -21,7 +21,6 @@ const LeftSignup = () => {
         </div>
         <div className=" text-lg lg:text-base font-thin leading-6">
           <i>
-            {" "}
             Discover the health portal full of of doctors and trainers who are
             waiting to help you on making your health journey easier.
           </i>
@@ -31,7 +30,6 @@ const LeftSignup = () => {
       {/* Container 3 */}
       <div className="font-bold text-lg lg:text-xl text-dark-100 leading-6">
         <i>
-          {" "}
           Being healthy has countless benefits. So what is stopping you? Just
           connect with us and take a step towards improving your health...
         </i>

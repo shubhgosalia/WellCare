@@ -119,7 +119,7 @@ const Signup = () => {
   };
 
   return (
-    <>
+    <div>
       {/* logo */}
       <div className="flex-col space-y-0 text-center ">
         <div className="font-black text-5xl text-primary-blue font-head-primary">
@@ -363,7 +363,7 @@ const Signup = () => {
           </Link>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
