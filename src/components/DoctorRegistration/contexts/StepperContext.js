@@ -15,6 +15,7 @@ export function UseContextProvider({ children }) {
     age: 0,
     gender: "male",
     licenseNumber: "",
+    certi_proof: "",
     locality: "",
     years_Of_Experience: 0,
     fees: 0,

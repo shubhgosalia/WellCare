@@ -2,6 +2,7 @@ import React from "react";
 import AdminNav from "components/AdminDashboard/AdminNav";
 import VerifyHeading from "components/AdminDashboard/VerifyHeading";
 import Swal from "sweetalert2";
+import "./Modal.css";
 
 import { useState } from "react";
 
@@ -105,6 +106,11 @@ const ExpertVerify = () => {
     });
   }
 
+  const [modal, setModal] = useState(false);
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* Navbar */}
@@ -143,6 +149,8 @@ const ExpertVerify = () => {
                     {" "}
                     Verification status{" "}
                   </th>
+
+                  <th className="font-semibold text-md uppercase px-6 py-4 text-center"></th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
@@ -201,6 +209,30 @@ const ExpertVerify = () => {
                     >
                       {buttonText1}
                     </button>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <button className="text-primary-blue" onClick={toggleModal}>
+                      View Certificate
+                    </button>
+                    {modal && (
+                      <div className="modal">
+                        <div className="overlay">
+                          <div className="modal-content">
+                            <img
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              alt=""
+                              className="w-250 h-200 rounded-lg mx-auto"
+                            />
+                            <button
+                              className="close-modal text-white font-medium rounded-lg bg-green-800"
+                              onClick={toggleModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </td>
                 </tr>
 
@@ -261,6 +293,30 @@ const ExpertVerify = () => {
                       {buttonText2}
                     </button>
                   </td>
+                  <td className="px-6 py-4 text-center">
+                    <button className="text-primary-blue" onClick={toggleModal}>
+                      View Certificate
+                    </button>
+                    {modal && (
+                      <div className="modal">
+                        <div className="overlay">
+                          <div className="modal-content">
+                            <img
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              alt=""
+                              className="w-250 h-200 rounded-lg mx-auto"
+                            />
+                            <button
+                              className="close-modal text-white font-medium rounded-lg bg-green-800"
+                              onClick={toggleModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4">
@@ -318,6 +374,30 @@ const ExpertVerify = () => {
                     >
                       {buttonText3}
                     </button>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <button className="text-primary-blue" onClick={toggleModal}>
+                      View Certificate
+                    </button>
+                    {modal && (
+                      <div className="modal">
+                        <div className="overlay">
+                          <div className="modal-content">
+                            <img
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              alt=""
+                              className="w-250 h-200 rounded-lg mx-auto"
+                            />
+                            <button
+                              className="close-modal text-white font-medium rounded-lg bg-green-800"
+                              onClick={toggleModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </td>
                 </tr>
                 <tr>
@@ -377,6 +457,30 @@ const ExpertVerify = () => {
                       {buttonText4}
                     </button>
                   </td>
+                  <td className="px-6 py-4 text-center">
+                    <button className="text-primary-blue" onClick={toggleModal}>
+                      View Certificate
+                    </button>
+                    {modal && (
+                      <div className="modal">
+                        <div className="overlay">
+                          <div className="modal-content">
+                            <img
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              alt=""
+                              className="w-250 h-200 rounded-lg mx-auto"
+                            />
+                            <button
+                              className="close-modal text-white font-medium rounded-lg bg-green-800"
+                              onClick={toggleModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4">
@@ -435,6 +539,30 @@ const ExpertVerify = () => {
                       {buttonText5}
                     </button>
                   </td>
+                  <td className="px-6 py-4 text-center">
+                    <button className="text-primary-blue" onClick={toggleModal}>
+                      View Certificate
+                    </button>
+                    {modal && (
+                      <div className="modal">
+                        <div className="overlay">
+                          <div className="modal-content">
+                            <img
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              alt=""
+                              className="w-250 h-200 rounded-lg mx-auto"
+                            />
+                            <button
+                              className="close-modal text-white font-medium rounded-lg bg-green-800"
+                              onClick={toggleModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4">
@@ -492,6 +620,30 @@ const ExpertVerify = () => {
                     >
                       {buttonText6}
                     </button>
+                  </td>
+                  <td className="px-6 py-4 text-center">
+                    <button className="text-primary-blue" onClick={toggleModal}>
+                      View Certificate
+                    </button>
+                    {modal && (
+                      <div className="modal">
+                        <div className="overlay">
+                          <div className="modal-content">
+                            <img
+                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              alt=""
+                              className="w-250 h-200 rounded-lg mx-auto"
+                            />
+                            <button
+                              className="close-modal text-white font-medium rounded-lg bg-green-800"
+                              onClick={toggleModal}
+                            >
+                              Close
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                   </td>
                 </tr>
               </tbody>
