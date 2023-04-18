@@ -41,12 +41,12 @@ const doctorSchema = new mongoose.Schema({
     profile_pic: {
         image_url: {
             type: String,
-            required: [true, "User should have a  image url"],
+            // required: [true, "User should have a  image url"],
             default: "https://res.cloudinary.com/dprscch9k/image/upload/v1677739579/Well%20Care/k6njbwcuucgeqkmv9sft.png",
         },
         file_name: {
             type: String,
-            required: [true, "User should have a  image file_name"]
+            // required: [true, "User should have a  image file_name"]
         }
     },
     email: {
@@ -101,12 +101,18 @@ const doctorSchema = new mongoose.Schema({
     type: {
         type: String,
         default: "Doctor"
+    },
+    rating: {
+        type: Number,
+        default: 0
     }
 },
     {
         toJSON: { virtuals: true },
         toObject: { virtuals: true }
     });
+
+doctorSchema.index({category:1});
 
 // Virtual populate
 // To populate all reviews of the doctor

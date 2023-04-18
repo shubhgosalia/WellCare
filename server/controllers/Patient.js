@@ -239,3 +239,25 @@ exports.getCheckoutSession = async (req, res, next) => {
     return next(err);
   }
 }
+
+//fetching highest rated doctors
+exports.getHighestRatedDoctors = async(req,res,next) => {
+  try{
+    let physio = await Doctor.find({category: 'Physiotherapist'}).sort({rating: -1}).limit(3);
+    let nutri = await Doctor.find({category: 'Nutritionist'}).sort({rating: -1}).limit(3);
+    let gym = await Doctor.find({category: 'Gym Trainer'}).sort({rating: -1}).limit(3);
+
+    res.status(200).json({
+      data: {
+        physio,
+        nutri,
+        gym
+      },
+      success: true
+    })
+
+  }catch(err){
+    console.log("error in fetching docs : ",err);
+    return next(err);
+  }
+}

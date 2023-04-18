@@ -10,7 +10,7 @@ const { ClientError } = require('../Utils/Errors');
 exports.Register = async (req, res, next) => {
   try {
     console.log("abcde");
-    const { path, filename } = req.file
+    // const { path, filename } = req.file
     //validating the fields
     let user = await RegisterDoctorJoi(req.body);
     //hashing the password
@@ -30,14 +30,14 @@ exports.Register = async (req, res, next) => {
       specialization: user.specialization,
       years_Of_Experience: user.years_Of_Experience,
       fees: user.fees,
-      profile_pic: {
-        image_url: path,
-        file_name: filename
-      },
+      // profile_pic: {
+      //   image_url: path,
+      //   file_name: filename
+      // },
       bio: user.bio,
       category: user.category,
       have_clinic: user.have_clinic,
-      address: user.address
+      address: user.address,
     });
 
     //generating the link
@@ -60,7 +60,7 @@ exports.Register = async (req, res, next) => {
     };
 
     try {
-      await SendEmail(mailoptions, next);
+      // await SendEmail(mailoptions, next);
       return res.status(201).json({
         message: "Verification link has been sent on your registered Email ID",
         success: true
