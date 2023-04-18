@@ -166,7 +166,7 @@ const ExpertVerify = () => {
                         />
                       </div>
                       <div>
-                        <div classNameName="text-lg">Dr. Neha Dayma</div>
+                        <div className="text-lg">Dr. Neha Dayma</div>
                         <p className="text-gray-600 text-md font-medium tracking-wide">
                           {" "}
                           Female, 27yrs{" "}
@@ -175,7 +175,7 @@ const ExpertVerify = () => {
                     </div>
                   </td>
                   <td className="px-6 py-4">
-                    <div classNameName="text-lg">Nutritionist</div>
+                    <div className="text-lg">Nutritionist</div>
                     <p className="text-gray-500 text-md font-medium tracking-wide">
                       {" "}
                       nehadayma@mail.com{" "}
@@ -219,9 +219,9 @@ const ExpertVerify = () => {
                         <div className="overlay">
                           <div className="modal-content">
                             <img
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              src="https://udemy-certificate.s3.amazonaws.com/image/UC-6A617ZKQ.jpg"
                               alt=""
-                              className="w-250 h-200 rounded-lg mx-auto"
+                              className="rounded-lg mx-auto"
                             />
                             <button
                               className="close-modal text-white font-medium rounded-lg bg-green-800"
@@ -302,7 +302,7 @@ const ExpertVerify = () => {
                         <div className="overlay">
                           <div className="modal-content">
                             <img
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              src="https://udemy-certificate.s3.amazonaws.com/image/UC-6A617ZKQ.jpg"
                               alt=""
                               className="w-250 h-200 rounded-lg mx-auto"
                             />
@@ -384,7 +384,7 @@ const ExpertVerify = () => {
                         <div className="overlay">
                           <div className="modal-content">
                             <img
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              src="https://udemy-certificate.s3.amazonaws.com/image/UC-6A617ZKQ.jpg"
                               alt=""
                               className="w-250 h-200 rounded-lg mx-auto"
                             />
@@ -466,7 +466,7 @@ const ExpertVerify = () => {
                         <div className="overlay">
                           <div className="modal-content">
                             <img
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              src="https://udemy-certificate.s3.amazonaws.com/image/UC-6A617ZKQ.jpg"
                               alt=""
                               className="w-250 h-200 rounded-lg mx-auto"
                             />
@@ -548,7 +548,7 @@ const ExpertVerify = () => {
                         <div className="overlay">
                           <div className="modal-content">
                             <img
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              src="https://udemy-certificate.s3.amazonaws.com/image/UC-6A617ZKQ.jpg"
                               alt=""
                               className="w-250 h-200 rounded-lg mx-auto"
                             />
@@ -630,7 +630,7 @@ const ExpertVerify = () => {
                         <div className="overlay">
                           <div className="modal-content">
                             <img
-                              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrvChauvpn9_bbGIIFcXsvlho-DboGEYIeQjVsBiy5uGMRcl7Gclva3OpiErRpK681h4w&usqp=CAU"
+                              src="https://udemy-certificate.s3.amazonaws.com/image/UC-6A617ZKQ.jpg"
                               alt=""
                               className="w-250 h-200 rounded-lg mx-auto"
                             />
