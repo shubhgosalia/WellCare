@@ -13,7 +13,7 @@ import LightLogoutIcon from "components/Icons/Light/logout";
 
 // Bold Icons
 import BoldHomeIcon from "components/Icons/Bold/home";
-import BoldStarIcon from "components/Icons/Bold/star";
+import BoldStarIcon from "components/Icons/Bold/fullStar";
 import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldContactUsIcon from "components/Icons/Bold/contactUs";

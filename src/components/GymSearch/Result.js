@@ -104,7 +104,7 @@ const Result = () => {
           Jogeshwari West
           <span className="ml-2 text-black">•</span>
           <a
-            className=" hover:underline text-black font-semibold ml-2 text-md"
+            className=" hover:underline font-bold text-yellow-300 ml-2 text-md"
             href="https://tinyurl.com/3sktjaca"
           >
             The Cloud 9 Fitness Club

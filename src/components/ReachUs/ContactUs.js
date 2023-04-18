@@ -81,7 +81,7 @@ const ContactUs = () => {
               </div>
 
               <div className="grow-0 shrink-0 basis-auto w-full md:w-5/12 px-3 lg:px-6">
-                <div class="font-bold mb-6 text-center text-2xl">
+                <div className="font-bold mb-6 text-center text-2xl">
                   Didn't find your answer in the FAQ?
                   <br></br>
                   Contact our team
@@ -115,7 +115,7 @@ const ContactUs = () => {
                   <div className="form-group mb-6">
                     <input
                       type="text"
-                      class="form-control block
+                      className="form-control block
               w-full
               px-3
               py-1.5

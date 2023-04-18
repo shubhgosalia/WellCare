@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const Auth = require('../Middleware/Auth');
-const { Register, GetAppointments, BookAppointment, getCheckoutSession } = require("../controllers/Patient");
+const { Register, GetAppointments, BookAppointment, getCheckoutSession, getHighestRatedDoctors } = require("../controllers/Patient");
+
+//highest rated docs
+router.get('/getTopRatedDocs',Auth,getHighestRatedDoctors);
 
 //register route
 router.post('/register', Register);
@@ -15,6 +18,7 @@ router.post('/bookAppointment/', Auth, BookAppointment);
 
 // Payments : checkout session
 router.get('/checkoutSession/:doc_id', Auth, getCheckoutSession);
+
 
 module.exports = router;
 

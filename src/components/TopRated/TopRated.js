@@ -1,13 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Heading from "components/TopRated/Heading";
 import Navbar from "components/Utils/Navbar";
 import TopPhysio from "components/TopRated/TopPhysio";
 import TopNutri from "components/TopRated/TopNutri";
 import TopGym from "components/TopRated/TopGym";
-import Pagination from "components/PhysioSearch/Pagination";
-import { Scrollbars } from "react-custom-scrollbars-2";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const TopRated = () => {
+  const [docs, setDocs] = useState({
+    physio : [],
+    nutri: [],
+    gym: []
+  });
+  const [load, setLoad] = useState(false);
+
+  const fetchTopRatedDoctors = async () => {
+    try {
+      setLoad(true);
+      let res = await axios.get(
+        "http://localhost:4000/patient/getTopRatedDocs",
+        {
+          withCredentials: true,
+        }
+        );
+      console.log({"response": res});
+      setDocs(res.data.data);
+    } catch (err) {
+      console.log("error : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  };
+
+  useEffect(() => {
+    fetchTopRatedDoctors();
+  }, []);
+
   return (
     <div className="w-full flex flex-row font-body-primary">
       {/* 1. Navbar */}
@@ -31,17 +63,18 @@ const TopRated = () => {
 
           {/* Top Rated Physios */}
           <div className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative">
-            <div>
-              <TopPhysio />
-            </div>
-            <div>
-              <TopPhysio />
-            </div>
-            <div>
-              <TopPhysio />
-            </div>
+            {docs["physio"].length !== 0 ? (
+              docs["physio"].map((item, i) => {
+                return (
+                  <div key={i}>
+                    <TopPhysio />
+                  </div>
+                );
+              })
+            ) : (
+              <p>No doctors available right now!</p>
+            )}
           </div>
-
           <div
             className="w-[25%] mx-auto border border-solid border-blueGray-100 py-3 pl-16 border-l-0 border-r-0"
             style={{ marginTop: 75, fontSize: 22 }}
@@ -54,15 +87,17 @@ const TopRated = () => {
             className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative"
             style={{ marginTop: -22 }}
           >
-            <div>
-              <TopNutri />
-            </div>
-            <div>
-              <TopNutri />
-            </div>
-            <div>
-              <TopNutri />
-            </div>
+            {docs["nutri"].length !== 0 ? (
+              docs["nutri"].map((item, i) => {
+                return (
+                  <div key={i}>
+                    <TopNutri />
+                  </div>
+                );
+              })
+            ) : (
+              <p>No doctors available right now!</p>
+            )}
           </div>
 
           <div
@@ -77,20 +112,24 @@ const TopRated = () => {
             className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative"
             style={{ marginTop: -22 }}
           >
-            <div>
-              <TopGym />
-            </div>
-            <div>
-              <TopGym />
-            </div>
-            <div>
-              <TopGym />
-            </div>
+
+          {docs["gym"].length !== 0 ? (
+              docs["gym"].map((item, i) => {
+                return (
+                  <div key={i}>
+                    <TopGym />
+                  </div>
+                );
+              })
+            ) : (
+              <p>No doctors available right now!</p>
+            )}
+            
           </div>
 
-          <div className="mx-auto flex">
+          {/* <div className="mx-auto flex">
             <Pagination />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

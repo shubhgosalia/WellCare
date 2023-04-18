@@ -413,7 +413,7 @@ const ExpertVerify = () => {
                       </div>
                       <div>
                         <div className="text-lg">Dr. Sakshi Gandhi</div>
-                        <p class="text-gray-600 text-md font-medium tracking-wide">
+                        <p className="text-gray-600 text-md font-medium tracking-wide">
                           {" "}
                           Female, 52 yrs{" "}
                         </p>
@@ -502,7 +502,7 @@ const ExpertVerify = () => {
                       </div>
                     </div>
                   </td>
-                  <td class="px-6 py-4">
+                  <td className="px-6 py-4">
                     <div className="text-lg">Gym Trainer</div>
                     <p className="text-gray-500 text-md font-medium tracking-wide">
                       {" "}
@@ -577,7 +577,7 @@ const ExpertVerify = () => {
                       </div>
                       <div>
                         <div className="text-lg">Dr. Aparna Dixit</div>
-                        <p class="text-gray-600 text-md font-medium tracking-wide">
+                        <p className="text-gray-600 text-md font-medium tracking-wide">
                           {" "}
                           Female, 45yrs{" "}
                         </p>

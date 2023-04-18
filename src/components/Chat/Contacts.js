@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import BoldSearchIcon from "components/Icons/Bold/star";
+import BoldSearchIcon from "components/Icons/Bold/fullStar";
 import DocChat from "./DocChat";
 import { UserContext } from "context/UserContext";
 import { useNavigate } from "react-router-dom";

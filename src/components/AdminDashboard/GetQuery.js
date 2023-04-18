@@ -216,7 +216,7 @@ const GetQuery = () => {
                       </div>
                       <div>
                         <div className="text-lg">Sakshi Gandhi</div>
-                        <p class="text-gray-600 text-md font-medium tracking-wide">
+                        <p className="text-gray-600 text-md font-medium tracking-wide">
                           sakgandhi
                         </p>
                       </div>
