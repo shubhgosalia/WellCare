@@ -14,8 +14,9 @@ const Login = () => {
           </div>
 
           {/* right sidebar */}
-          <div className="w-[95%] mx-auto lg:w-2/3 h-full text-black flex flex-col space-y-4 lg:space-y-6"></div>
-          <RightLogin />
+          <div className="w-[95%] mx-auto lg:w-2/3 h-full text-black flex flex-col space-y-4 lg:space-y-6">
+            <RightLogin />
+          </div>
         </div>
       </div>
     </>

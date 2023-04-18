@@ -136,7 +136,7 @@ const Signup = () => {
           to="/doctorRegistration"
         >
           Signup Here
-        </Link>{" "}
+        </Link>
       </p>
 
       {/* form */}
