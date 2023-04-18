@@ -8,9 +8,7 @@ const LeftSignup = () => {
         <div className="font-black text-6xl font-head-primary text-dark-100">
           WellCare
         </div>
-        <div className="text-lg" style={{ marginTop: 20 }}>
-          Must for HealthCare
-        </div>
+        <div className="text-lg">Must for HealthCare</div>
       </div>
 
       {/* Center Tagline */}
