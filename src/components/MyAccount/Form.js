@@ -1,13 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // icons
 import LightContactIcon from "components/Icons/Light/contact";
 import BoldMailIcon from "components/Icons/Bold/mail";
 import FullEyeIcon from "components/Icons/Bold/fullEye";
+import EyeOffIcon from "components/Icons/Bold/eyeOff";
+import LightUserNameIcon from "components/Icons/Light/userName";
 
 const Form = ({ profile }) => {
+  //
+  const [passwordVisiblity, setPasswordVisiblity] = useState(false);
+
+  const handlePassword = () => {
+    if (passwordVisiblity) {
+      setPasswordVisiblity(false);
+    } else {
+      setPasswordVisiblity(true);
+    }
+  };
+
+  let password = "Krish2001@";
   return (
-    <div className="flex flex-col space-y-3 text-white mx-10 w-2/3 font-body-primary">
+    <div className="flex flex-col space-y-6 text-white mx-10 w-2/3 font-body-primary">
       {/* Name */}
       <div className="flex space-x-3">
         {/* First Name */}
@@ -17,15 +32,7 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">First Name</div>
 
             {/* input */}
-            <input
-              type="text"
-              id="fname"
-              name="fname"
-              placeholder="Yash"
-              minLength={1}
-              autoComplete="do-not-autofill"
-              className="py-1 bg-dark-100  outline-none text-xl"
-            ></input>
+            <div className="py-1 bg-dark-100  outline-none text-xl">Yash</div>
           </div>
 
           {/* Icon */}
@@ -41,15 +48,7 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">Last Name</div>
 
             {/* input */}
-            <input
-              type="text"
-              id="lname"
-              name="lname"
-              placeholder="Sharma"
-              minLength={1}
-              autoComplete="do-not-autofill"
-              className="py-1 bg-dark-100 outline-none text-xl"
-            ></input>
+            <div className="py-1 bg-dark-100 outline-none text-xl">Sharma</div>
           </div>
 
           {/* Icon */}
@@ -67,15 +66,9 @@ const Form = ({ profile }) => {
           <div className="text-base text-dark-600">Email</div>
 
           {/* input */}
-          <input
-            type="email"
-            id="mail"
-            name="mail"
-            placeholder="yashsharma7@gmail.com"
-            minLength={1}
-            autoComplete="do-not-autofill"
-            className="py-1 bg-dark-100  outline-none text-xl"
-          ></input>
+          <div className="py-1 bg-dark-100  outline-none text-xl cursor-pointer">
+            krishvadhani7@gmail.com
+          </div>
         </div>
 
         {/* Icon */}
@@ -92,67 +85,73 @@ const Form = ({ profile }) => {
           <div className="text-base text-dark-600">Username</div>
 
           {/* input */}
-          <input
-            type="text"
-            id="username"
-            name="username"
-            placeholder="yash.sharma"
-            minLength={1}
-            autoComplete="do-not-autofill"
-            className="py-1 bg-dark-100  outline-none text-xl"
-          ></input>
+          <div className="py-1 bg-dark-100  outline-none text-xl">
+            krish.vadhani
+          </div>
         </div>
 
         {/* Icon */}
         <div className="my-auto">
-          <BoldMailIcon size="30" color="#ffffff" />
+          <LightUserNameIcon size="30" color="#ffffff" />
         </div>
       </div>
 
       {/* password */}
-      <div className="flex w-full justify-between bg-dark-100 rounded-lg  p-5 border border-dark-200">
-        {/* Label and Input */}
-        <div className="w-[90%] flex flex-col">
-          {/* label */}
-          <div className="text-base text-dark-600">Password</div>
+      <div className="flex flex-col space-y-2">
+        <div className="flex w-full justify-between bg-dark-100 rounded-lg  p-5 border border-dark-200">
+          {/* Label and Input */}
+          <div className="w-[90%] flex flex-col">
+            {/* label */}
+            <div className="text-base text-dark-600">Password</div>
 
-          {/* input */}
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Enter Password"
-            minLength={1}
-            autoComplete="do-not-autofill"
-            className="py-1 bg-dark-100  outline-none text-xl"
-          ></input>
+            {/* input */}
+            {passwordVisiblity ? (
+              <div className="py-1 bg-dark-100  outline-none text-xl">
+                {password}
+              </div>
+            ) : (
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter Password"
+                value={password}
+                readonly="readonly"
+                minLength={1}
+                autoComplete="do-not-autofill"
+                className="py-1 bg-dark-100  outline-none text-xl"
+              ></input>
+            )}
+          </div>
+
+          {/* Icon */}
+          {passwordVisiblity ? (
+            <div className="my-auto" onClick={handlePassword}>
+              <EyeOffIcon size="30" color="#ffffff" />
+            </div>
+          ) : (
+            <div className="my-auto" onClick={handlePassword}>
+              <FullEyeIcon size="30" color="#ffffff" />
+            </div>
+          )}
         </div>
 
-        {/* Icon */}
-        <div className="my-auto">
-          <FullEyeIcon size="30" color="#ffffff" />
-        </div>
+        {/* update credentials */}
+        <Link className="button w-1/3" to="/updatePassword">
+          Update Password
+        </Link>
       </div>
 
-      {/* gender */}
       {/* age */}
       <div className="flex space-x-3">
         {/* First Name */}
         <div className="form-property">
           <div className="w-[90%] flex flex-col">
             {/* label */}
-            <div className="text-base text-dark-600">Gender</div>
+            <div className="text-base text-dark-600">Age</div>
 
             {/* input */}
-            <input
-              type="text"
-              id="fname"
-              name="fname"
-              placeholder="Yash"
-              minLength={1}
-              autoComplete="do-not-autofill"
-              className="py-1 bg-dark-100  outline-none text-xl"
-            ></input>
+            <div className="py-1 bg-dark-100  outline-none text-xl">21</div>
           </div>
 
           {/* Icon */}
@@ -161,21 +160,14 @@ const Form = ({ profile }) => {
           </div>
         </div>
 
-        {/* Last Name */}
+        {/* Gender */}
         <div className="form-property">
           <div className="w-[90%] flex flex-col">
             {/* label */}
-            <div className="text-base text-dark-600">Age</div>
+            <div className="text-base text-dark-600">Gender</div>
 
             {/* input */}
-            <input
-              type="number"
-              id="age"
-              name="age"
-              placeholder="21"
-              autoComplete="do-not-autofill"
-              className="py-1 bg-dark-100 outline-none text-xl"
-            ></input>
+            <div className="py-1 bg-dark-100 outline-none text-xl">Male</div>
           </div>
 
           {/* Icon */}

@@ -1,27 +1,41 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-import Login from "components/Authentication/Login/Login";
+
+// Authentication
+import Landing from "../src/pages/Landing";
+import Login from "../src/pages/Login";
+import Signup from "components/Signup/RightSignup";
+
+// Password
+import ResetPassword from "pages/ResetPassword";
+import ForgotPassword from "pages/ForgotPassword";
+import UpdatePassword from "../src/pages/UpdatePassword";
+
+// Dashboard Pages
 import Home from "components/Home/Home";
-import Signup from "components/Authentication/Signup/Signup";
-import Landing from "components/Landing/Landing";
+import ContactUs from "../src/pages/ReachUs";
+import MyAccount from "../src/pages/MyAccount";
+import Profile from "../src/pages/ExpertProfile";
+
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
-import ResetPassword from "components/PasswordSetup/ResetPassword";
-import ForgotPassword from "components/PasswordSetup/ForgotPassword";
 // import DoctorSearch from "components/DoctorSearch/Home";
-import MyAccount from "components/MyAccount/MyAccount";
 import SlotBooking from "components/SlotBooking/SlotBooking";
 import Checkout from "components/PaymentCheckout/Checkout";
 import Gateway from "components/PaymentGateway/Gateway";
 import Success from "components/PaymentSuccess/Success";
-import Profile from "components/Profile/Profile";
 import ChatHome from "components/Chat/ChatHome";
+
 // import ContactsProvider from "context/ContactsContext";
 import PhysioSearch from "components/PhysioSearch/Home";
 import NutriSearch from "components/NutriSearch/Home";
 import GymSearch from "components/GymSearch/Home";
 import TopRated from "components/TopRated/TopRated";
+
 import UserProvider from "context/UserContext";
+import Admin from "components/AdminDashboard/Admin";
+import ExpertVerify from "components/AdminDashboard/ExpertVerify";
+
 function App() {
   return (
     <>
@@ -39,6 +53,9 @@ function App() {
 
             {/* Sign up */}
             <Route exact path="/signup" element={<Signup />} />
+
+            {/* update password */}
+            <Route exact path="/updatePassword" element={<UpdatePassword />} />
 
             {/* Top Rated Page */}
             <Route exact path="/topRated" element={<TopRated />} />
@@ -98,6 +115,15 @@ function App() {
 
             {/* Gym Trainer Search */}
             <Route exact path="/searchGymtrainers" element={<GymSearch />} />
+
+            {/* Contact Us and faq page */}
+            <Route exact path="/contactUs" element={<ContactUs />} />
+
+            {/* Admin Dashboard  */}
+            <Route exact path="/adminDashboard" element={<Admin />} />
+
+            {/* Admin Expert Verification */}
+            <Route exact path="/expertVerify" element={<ExpertVerify />} />
           </Routes>
         </UserProvider>
       </Router>

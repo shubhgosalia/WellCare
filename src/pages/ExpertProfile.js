@@ -2,10 +2,10 @@ import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
 
 import Navbar from "components/Utils/Navbar";
-import Header from "./Header";
-import Main from "./Main";
+import Header from "components/Profile/Header";
+import Main from "components/Profile/Main";
 
-const Profile = () => {
+const ExpertProfile = () => {
   // const [date, SetDate] = useState(new Date());
   // const navigate = useNavigate();
   // const clickHandler = () => {
@@ -54,4 +54,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ExpertProfile;

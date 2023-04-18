@@ -80,6 +80,7 @@ const Contacts = ({ currentChatContact }) => {
           <h4 className="text-light text-center">Loading....!!</h4>
         ) : contacts.length !== 0 ? (
           contacts
+            //applying filter to see if the word searched matches or is a subset of any of the doctor names
             .filter((contact) =>
               contact.doctor_id.name?.toLowerCase().includes(searchTerm)
             )

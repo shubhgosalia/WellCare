@@ -95,8 +95,7 @@ const signJWT = async (user_id) => {
 const isPasswordMatch = async (pass_word, ogpass) => {
   console.log("heyy");
   return await bcrypt.compare(pass_word, ogpass);
-}
-
+};
 
 //Login route
 exports.Login = async (req, res, next) => {
@@ -139,7 +138,7 @@ exports.Login = async (req, res, next) => {
       throw new ClientError("Email not verified. Please verify your email!");
     }
 
-    if (! await isPasswordMatch(pass_word, user.password)) {
+    if (!(await isPasswordMatch(pass_word, user.password))) {
       throw new ClientError("Invalid credentials!");
     }
 
@@ -157,6 +156,7 @@ exports.Login = async (req, res, next) => {
     return res.status(200).json({
       message: "You have logged in successfully",
       success: true,
+      token: token,
     });
   } catch (err) {
     console.log("Error in the login patient route : ", err);
@@ -304,21 +304,26 @@ exports.SetPassword = async (req, res, next) => {
     console.log("err in the set password : ", err);
     return next(err);
   }
-}
-
+};
 
 //reset password
 exports.ResetPassword = async (req, res, next) => {
   try {
     //checking the original password
-    if (! await isPasswordMatch(String(req.body.password), req.user.password)) {
+    if (
+      !(await isPasswordMatch(String(req.body.password), req.user.password))
+    ) {
       throw new ClientError("Invalid password....");
     }
 
     //checking the regex of the password
     let pattern = /^[a-zA-Z]+[a-zA-Z\d]*[@$#]+[a-zA-Z@$#\d]*\d+$/;
     let newPassword = String(req.body.newPassword);
-    if ((newPassword.length < 8 || newPassword.length > 25) || !pattern.test(newPassword)) {
+    if (
+      newPassword.length < 8 ||
+      newPassword.length > 25 ||
+      !pattern.test(newPassword)
+    ) {
       throw new ClientError("Please enter the password as mentioned..");
     }
 
@@ -327,7 +332,7 @@ exports.ResetPassword = async (req, res, next) => {
     newPassword = await bcrypt.hash(newPassword, salt);
 
     //updating the password
-    if (req.user.type === 'Doctor') {
+    if (req.user.type === "Doctor") {
       await Doctor.findByIdAndUpdate(req.user.id, { password: newPassword });
     } else {
       await Patient.findByIdAndUpdate(req.user.id, { password: newPassword });
@@ -336,25 +341,23 @@ exports.ResetPassword = async (req, res, next) => {
     //sending the response
     return res.status(200).json({
       success: true,
-      message: "Password updated successfully....."
-    })
-
+      message: "Password updated successfully.....",
+    });
   } catch (err) {
     console.log("err in the reset password : ", err);
     return next(err);
   }
-}
+};
 
 // Logout controller
 exports.Logout = async (req, res, next) => {
   try {
-    res.clearCookie('s_Id');
+    res.clearCookie("s_Id");
     res.status(200).json({
       success: true,
-      message: 'You are logged out successfully!'
-    })
-  }
-  catch (err) {
+      message: "You are logged out successfully!",
+    });
+  } catch (err) {
     return next(err);
   }
-}
+};
