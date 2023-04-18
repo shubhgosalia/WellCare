@@ -243,11 +243,12 @@ exports.getCheckoutSession = async (req, res, next) => {
 //fetching highest rated doctors
 exports.getHighestRatedDoctors = async(req,res,next) => {
   try{
-    let physio = await Doctor.find({category: 'Physiotherapist'}).sort({rating: -1}).limit(3);
-    let nutri = await Doctor.find({category: 'Nutritionist'}).sort({rating: -1}).limit(3);
-    let gym = await Doctor.find({category: 'Gym Trainer'}).sort({rating: -1}).limit(3);
+    let physio = await Doctor.find({category: 'Physiotherapist'}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
+    let nutri = await Doctor.find({category: 'Nutritionist'}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
+    let gym = await Doctor.find({category: 'Gym Trainer'}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
 
     res.status(200).json({
+      // name, avgRating, Location map link, fees, exp, profile pic, specialization
       data: {
         physio,
         nutri,

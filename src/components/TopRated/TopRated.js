@@ -9,9 +9,9 @@ import Swal from "sweetalert2";
 
 const TopRated = () => {
   const [docs, setDocs] = useState({
-    physio : [],
+    physio: [],
     nutri: [],
-    gym: []
+    gym: [],
   });
   const [load, setLoad] = useState(false);
 
@@ -23,8 +23,9 @@ const TopRated = () => {
         {
           withCredentials: true,
         }
-        );
-      console.log({"response": res});
+      );
+      console.log("resp  : ", res.data.data);
+      setLoad(false);
       setDocs(res.data.data);
     } catch (err) {
       console.log("error : ", err);
@@ -63,16 +64,18 @@ const TopRated = () => {
 
           {/* Top Rated Physios */}
           <div className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative">
-            {docs["physio"].length !== 0 ? (
+            {load ? (
+              <p className="text-center">Loading...</p>
+            ) : docs["physio"].length !== 0 ? (
               docs["physio"].map((item, i) => {
                 return (
                   <div key={i}>
-                    <TopPhysio />
+                    <TopPhysio info={item} />
                   </div>
                 );
               })
             ) : (
-              <p>No doctors available right now!</p>
+              <p>No physiotherapists available right now!</p>
             )}
           </div>
           <div
@@ -87,16 +90,18 @@ const TopRated = () => {
             className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative"
             style={{ marginTop: -22 }}
           >
-            {docs["nutri"].length !== 0 ? (
+            {load ? (
+              <p className="text-center">Loading...</p>
+            ) : docs["nutri"].length !== 0 ? (
               docs["nutri"].map((item, i) => {
                 return (
                   <div key={i}>
-                    <TopNutri />
+                    <TopNutri info={item} />
                   </div>
                 );
               })
             ) : (
-              <p>No doctors available right now!</p>
+              <p>No nutritionists available right now!</p>
             )}
           </div>
 
@@ -112,19 +117,19 @@ const TopRated = () => {
             className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative"
             style={{ marginTop: -22 }}
           >
-
-          {docs["gym"].length !== 0 ? (
+            {load ? (
+              <p className="text-center">Loading...</p>
+            ) : docs["gym"].length !== 0 ? (
               docs["gym"].map((item, i) => {
                 return (
                   <div key={i}>
-                    <TopGym />
+                    <TopGym info={item} />
                   </div>
                 );
               })
             ) : (
-              <p>No doctors available right now!</p>
+              <p>No gym trainers available right now!</p>
             )}
-            
           </div>
 
           {/* <div className="mx-auto flex">
