@@ -52,31 +52,25 @@ const TopNutri = ({ info }) => {
         {/* Credentials */}
         <div className="flex flex-col space-y-0">
           {/* Name */}
-          <div className="font-semibold text-2xl" style={{ marginTop: -5 }}>
-            Dr. {name}
-          </div>
+          <div className="font-black text-2xl">{name}</div>
 
-          <div className="text-lg text-dark-900">{category}</div>
+          {/* Speciality */}
+          <div className="text-lg font-semibold text-dark-900">{category}</div>
 
           {/* Experience */}
-          <div className="text-md text-dark-900">
-            <i>15 years experience overall</i>
+          <div className="text-lg text-dark-900">
+            {years_Of_Experience} years experience overall
           </div>
         </div>
 
         {/* Locality + Location hyperlink */}
-        <div className="font-semibold text-md" style={{ marginTop: 10 }}>
-        <Link to={address}>{locality}</Link>
-          <span className="ml-2 text-black">•</span>
-          <a
-            className="hover:underline text-black font-semibold ml-2 text-md"
-            href="https://tinyurl.com/3sktjaca"
-          >
-            Nutriwealth Healthify Clinic
-          </a>
+       {/* Locality + Location hyperlink */}
+       <div className="text-dark-100 text-lg flex flex-col">
+          <Link to={address} className="font-semibold">{locality}</Link>
+  
           {/* Per session fee */}
-          <div className="text-md font-semibold text-black  ">
-            Fees : ₹{fees}/session
+          <div className="font-semibold">
+            ₹{fees} per session
           </div>
         </div>
 

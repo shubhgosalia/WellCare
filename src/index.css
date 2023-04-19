@@ -35,7 +35,7 @@
   }
 
   .button {
-    @apply text-white text-xl font-bold p-2 rounded-xl text-center bg-primary-blue hover:bg-secondary-blue shadow-lg cursor-pointer;
+    @apply text-white text-xl font-bold p-2 rounded-xl text-center bg-primary-blue hover:bg-secondary-blue shadow-lg cursor-pointer transition delay-100 ease-in-out;
   }
 
   .form-property {

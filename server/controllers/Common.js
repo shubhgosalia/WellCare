@@ -37,7 +37,7 @@ exports.GetUser = async (req, res, next) => {
                 profile_pic: user.profile_pic,
                 id: user.id,
                 type: user.type,
-                appointments
+                appointments,
             }
         }
         else {

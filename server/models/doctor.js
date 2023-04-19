@@ -105,8 +105,7 @@ const doctorSchema = new mongoose.Schema({
     rating: {
         type: Number,
         default: 0
-    },
-    5
+    }
 },
     {
         toJSON: { virtuals: true },
