@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // importing Files
 import Categories from "components/Home/Categories";
@@ -25,7 +26,12 @@ const Part1 = ({ profile }) => {
           <i>We, at WellCare are here to help you in your journey! And, we are thrilled to see you take the very first step! But, before you take the next step of exploring what we have at your disposal here at WellCare, do have a thorough look of our terms and conditions by clicking on the button below!</i> 
 </div>
         {/* Button */}
-        <div className="w-1/3 mx-auto button">See Terms and Conditions</div>
+        <div className="w-1/3 mx-auto button">
+          {" "}
+          <Link className="text-white px-1" to="/tac">
+            See Terms and Conditions
+          </Link>
+        </div>
       </div>
 
       {/* Categories */}
