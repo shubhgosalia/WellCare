@@ -34,7 +34,7 @@ module.exports.createReview = async (req, res, next) => {
 //     }
 // }
 
-module.exports.updateReview=async(req,res,next)=>{
+module.exports.updateReview = async(req,res,next)=>{
     try{
         const review= await Review.findByIdAndUpdate(req.params.id,{
             review:String(req.body.review)

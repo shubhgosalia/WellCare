@@ -90,7 +90,7 @@ const SlotBooking = () => {
                         </button>
                       </td>
                       <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button class="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           12.30 PM
                         </button>
                       </td>
@@ -117,7 +117,7 @@ const SlotBooking = () => {
 
                     <tr>
                       <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button class="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
+                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
                           10.30 AM
                         </button>
                       </td>

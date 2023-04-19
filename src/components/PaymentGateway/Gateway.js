@@ -106,22 +106,22 @@ const Gateway = () => {
                 Amount to Pay : ₹500.00
               </h1>
             </div>
-            <div class="mb-3 flex -mx-2">
-              <div class="px-2">
+            <div className="mb-3 flex -mx-2">
+              <div className="px-2">
                 <label
                   for="type1"
-                  class="flex items-center cursor-pointer"
+                  className="flex items-center cursor-pointer"
                 ></label>
                 <input
                   type="radio"
-                  class="form-radio h-5 w-5 text-indigo-500"
+                  className="form-radio h-5 w-5 text-indigo-500"
                   name="type"
                   id="type1"
                   checked
                 />
                 <img
                   src="https://leadershipmemphis.org/wp-content/uploads/2020/08/780370.png"
-                  class="h-8 ml-3"
+                  className="h-8 ml-3"
                 />
               </div>
             </div>
@@ -140,7 +140,7 @@ const Gateway = () => {
                 />
               </div>
             </div>
-            <div class="mb-3">
+            <div className="mb-3">
               <label for="card_no" className="font-bold text-sm mb-2 ml-1">
                 Card number
               </label>
@@ -195,7 +195,7 @@ const Gateway = () => {
                 <input
                   id="email"
                   name="email"
-                  class="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
+                  className="w-full px-3 py-2 mb-1 border-2 border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors"
                   placeholder="Your email"
                   type="email"
                   // onChange={updateInfo}

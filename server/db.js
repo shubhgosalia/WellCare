@@ -1,19 +1,14 @@
+// connecting to db
 const mongoose = require("mongoose");
 const mongoURI = process.env.MONGODB_URL;
-// const mongoURI = process.env.MONGODB_ATLAS_URL;
-//connecting to the database
+
 const connectToMongo = () => {
-  try {
-    mongoose.connect(mongoURI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+  mongoose
+    .connect(mongoURI)
+    .then(()=> console.log("Connected to mongo succesfully!"))
+    .catch((err) => {
+      console.log("Error!: ",err);
     });
-    console.log("database connected successfully");
-  } catch (err) {
-    console.log("Sorry,database did not connect :((");
-    console.log("err : ", err);
-  }
 };
 
 module.exports = connectToMongo;
-

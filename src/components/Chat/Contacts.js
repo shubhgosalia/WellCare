@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import BoldSearchIcon from "components/Icons/Bold/star";
+import BoldSearchIcon from "components/Icons/Bold/fullStar";
 import DocChat from "./DocChat";
 import { UserContext } from "context/UserContext";
 import { useNavigate } from "react-router-dom";
@@ -80,6 +80,7 @@ const Contacts = ({ currentChatContact }) => {
           <h4 className="text-light text-center">Loading....!!</h4>
         ) : contacts.length !== 0 ? (
           contacts
+            //applying filter to see if the word searched matches or is a subset of any of the doctor names
             .filter((contact) =>
               contact.doctor_id.name?.toLowerCase().includes(searchTerm)
             )

@@ -43,7 +43,7 @@ const Step5 = forwardRef((props, ref) => {
               onChange={updateImage}
               name="profile_pic"
               type="file"
-              className="w-full appearance-none p-1 px-2 text-gray-800 outline-none"
+              className="w-full appearance-none p-1 px-2 text-gray-500 outline-none"
             />
           </div>
         </label>
@@ -51,7 +51,7 @@ const Step5 = forwardRef((props, ref) => {
 
       <div className="mt-3 mx-2 w-full flex-1">
         <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
-          Your Bio(Include Experience)
+          Your Bio (Include Experience)
         </label>
         <div className="my-2 flex rounded-lg border border-gray-200 bg-white p-1">
           <textarea
