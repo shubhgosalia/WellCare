@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // importing Files
 import Categories from "components/Home/Categories";
@@ -38,7 +39,12 @@ const Part1 = ({ profile }) => {
         </div>
 
         {/* Button */}
-        <div className="w-1/3 mx-auto button">See Suggestions</div>
+        <div className="w-1/3 mx-auto button">
+          {" "}
+          <Link className="text-white px-1" to="/tac">
+            See Terms and Conditions
+          </Link>
+        </div>
       </div>
 
       {/* Categories */}

@@ -334,7 +334,7 @@ const Signup = () => {
                   required
                   onChange={check}
                 />
-                <label
+                {/* <label
                   htmlFor="terms-and-privacy"
                   className="ml-2 block text-base text-gray-200"
                 >
@@ -343,10 +343,9 @@ const Signup = () => {
                     className="text-primary-blue hover:text-secondary-blue px-1"
                     to="/tac"
                   >
-                    Terms and Consitions.
+                    Terms and Conditions.
                   </Link>
-                  and \{" "}
-                </label>
+                </label> */}
               </div>
 
               {/* Sign in Button */}
