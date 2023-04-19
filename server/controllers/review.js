@@ -2,12 +2,9 @@ const Review = require('../models/review');
 
 module.exports.createReview = async (req, res, next) => {
     try {
-        const review = await Review.create({ review: String(req.body.review), patient: req.user.id, doctor: req.body.doctor });
-        res.status(200).json({
-            status: "success",
-            data: {
-                review
-            },
+        await Review.create({ review: String(req.body.review), patient: req.user.id, doctor: req.body.doctor });
+        res.status(201).json({
+            success: true,
             msg: "Your review has been added successfully!"
         });
     }
@@ -36,14 +33,11 @@ module.exports.createReview = async (req, res, next) => {
 
 module.exports.updateReview = async(req,res,next)=>{
     try{
-        const review= await Review.findByIdAndUpdate(req.params.id,{
+        await Review.findByIdAndUpdate(req.params.id,{
             review:String(req.body.review)
         });
         res.status(200).json({
-            status: "success",
-            data: {
-                review
-            },
+            success: true,
             msg: "Your review has been updated successfully!"
         });
     }   
