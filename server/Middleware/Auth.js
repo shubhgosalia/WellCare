@@ -16,7 +16,10 @@ const Auth = async (req, _res, next) => {
         if (!user) {
             user = await Doctor.findById(decoder.id);
             if (!user) {
-                throw new AuthenticationError("Something went wrong...!!");
+                user = await Admin.findById(decoder.id);
+                if (!user) {
+                    throw new AuthenticationError("Something went wrong...!!");
+                }
             }
         }
         req.user = user;
