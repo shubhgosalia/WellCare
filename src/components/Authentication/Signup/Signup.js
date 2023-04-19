@@ -341,17 +341,11 @@ const Signup = () => {
                   I agree to the
                   <Link
                     className="text-primary-blue hover:text-secondary-blue px-1"
-                    to="/home"
+                    to="/tac"
                   >
-                    Terms
+                    Terms and Consitions.
                   </Link>
-                  and
-                  <Link
-                    className="text-primary-blue hover:text-secondary-blue px-1"
-                    to="/home"
-                  >
-                    Privacy Policy
-                  </Link>
+                  and \{" "}
                 </label>
               </div>
 
