@@ -63,7 +63,7 @@ const PhysioSearch = () => {
             <div className="mx-auto my-10 text-3xl font-bold"> Loading....</div>
           ) : data.doctors.length === 0 ? (
             <div className="mx-auto my-10 text-3xl font-bold">
-              Sorry, no results found 
+              Sorry, no results found!
             </div>
           ) : (
             data.doctors.map((element, i) => (
