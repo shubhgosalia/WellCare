@@ -114,7 +114,7 @@ exports.PostQuery = async(req,res,next)=> {
         subject,
         desc,
         name: req.user.name,
-        profile_pic_link: req.use.profile_pic.image_url,
+        profile_pic_link: req.user.profile_pic.image_url,
         tag: req.user.type
        })
 
@@ -122,7 +122,7 @@ exports.PostQuery = async(req,res,next)=> {
         success:true,
         message:'We have recieved your query.Our team will look into it'
        })
-       
+
     }catch(err){
         console.log("err in posting query: ",err);
         return next(err);

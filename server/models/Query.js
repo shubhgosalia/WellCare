@@ -20,6 +20,6 @@ const querySchema = new mongoose.Schema({
   },
 });
 
-const Query = mongoose.model("Admin", querySchema);
+const Query = mongoose.model("Query", querySchema);
 
 module.exports = Query;
