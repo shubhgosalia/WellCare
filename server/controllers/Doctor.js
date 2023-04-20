@@ -93,9 +93,9 @@ exports.getDoctors = async (req, res, next) => {
     //filtering the doctors based on the category
     let doctors = await Doctor.find(query)
       .select(
-        "name age gender city specialization years_Of_Experience fees profile_pic"
+        "name rating fees address profile_pic years_Of_Experience category specialization locality"
       )
-      .sort({ age: 1 })
+      .sort({ rating:Number(query.ratings),fees: Number(query.fee),years_Of_Experience:Number(query.experience) })
       .skip(start - 1)
       .limit(limit + 1);
     //fetching limit+1 records in order to make sure there are more records to fetch for the user. If the records length is not same as limit+1 then we will know that there are no more records to fetch
@@ -109,8 +109,8 @@ exports.getDoctors = async (req, res, next) => {
       success: true,
       data: {
         doctors,
+        more: moreRecords,
       },
-      more: moreRecords,
     });
   } catch (err) {
     console.log(err);

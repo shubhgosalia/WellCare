@@ -21,32 +21,33 @@ const TopNutri = ({ info }) => {
   return (
     <>
       <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 mt-12 text-dark-100 mx-4">
-        <div style={{ marginLeft: 160 }}>
-          <div
-            style={{ marginLeft: 50 }}
-            className="text-3xl text-gray-200 font-bold"
-          >
-            {rating}/5
+        <div className="flex justify-center space-x-6">
+          {/* img */}
+          <div>
+            <img
+              src={profile_pic.image_url}
+              alt="Profile Pic"
+              className="w-32 h-32 rounded-lg mx-auto"
+            />
           </div>
-          <div className="flex">
-            <BoldFullStarIcon color="#ffdf00" size="27" />
-            <BoldFullStarIcon color="#ffdf00" size="27" />
-            <BoldFullStarIcon color="#ffdf00" size="27" />
-            <BoldFullStarIcon color="#ffdf00" size="27" />
-            <BoldHalfStarIcon color="#ffdf00" size="27" />
-          </div>
-          <div className="text-white text-md font-thin ml-2 mt-1">
-            <i>(72% rated 4 star)</i>
-          </div>
-        </div>
+          <div>
+            {/* Average Rating */}
+            <div className="text-3xl text-gray-200 font-bold">{rating}/5</div>
 
-        {/* img */}
-        <div style={{ width: 140, marginTop: -105 }}>
-          <img
-            src={profile_pic.image_url}
-            alt="Profile Pic"
-            className="w-32 h-32 rounded-lg  mx-auto"
-          />
+            {/* Stars */}
+            <div className="flex">
+              <BoldFullStarIcon color="#ffdf00" size="27" />
+              <BoldFullStarIcon color="#ffdf00" size="27" />
+              <BoldFullStarIcon color="#ffdf00" size="27" />
+              <BoldFullStarIcon color="#ffdf00" size="27" />
+              <BoldHalfStarIcon color="#ffdf00" size="27" />
+            </div>
+
+            {/* static */}
+            <div className="text-white text-md font-thin ml-2 mt-1">
+              <i>(72% rated 4 star)</i>
+            </div>
+          </div>
         </div>
 
         {/* Credentials */}
@@ -64,8 +65,7 @@ const TopNutri = ({ info }) => {
         </div>
 
         {/* Locality + Location hyperlink */}
-       {/* Locality + Location hyperlink */}
-       <div className="text-dark-100 text-lg flex flex-col">
+        <div className="text-dark-100 text-lg flex flex-col">
           <Link to={address} className="font-semibold">{locality}</Link>
   
           {/* Per session fee */}
@@ -74,7 +74,6 @@ const TopNutri = ({ info }) => {
           </div>
         </div>
 
-        {/* % Upvoted */}
         {/* % Upvoted */}
         <div className="">
           <button
@@ -95,7 +94,7 @@ const TopNutri = ({ info }) => {
 
         {/* book appointment*/}
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
-          <Link to={`/doctorProfile/${_id}`}> View More</Link>
+          <Link to={`/doctorProfile/${_id}`}>View More</Link>
         </button>
       </div>
     </>
