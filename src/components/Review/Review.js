@@ -9,7 +9,7 @@ const Review = ({review}) => {
           <img src={review.patient.profile_pic.image_url} alt="profilePic" className="w-8 h-8 bg-white rounded-full"/>
 
           {/* User name */}
-          <div className="text-2xl font-bold">{review.patient.username}</div>
+          <div className="text-2xl font-bold">{review.patient.name}</div>
         </div>
 
         {/* Review text */}

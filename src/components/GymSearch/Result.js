@@ -5,7 +5,7 @@ import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
 import { Link } from "react-router-dom";
 
-const Result = () => {
+const Result = ({element}) => {
   // const [date, SetDate] = useState(new Date());
   // const navigate = useNavigate();
 
@@ -16,14 +16,14 @@ const Result = () => {
           {/* img */}
           <div>
             <img
-              // src={profile_pic.image_url}
+              src={element.profile_pic.image_url}
               alt="Profile Pic"
               className="w-32 h-32 rounded-lg mx-auto"
             />
           </div>
           <div>
             {/* Average Rating */}
-            <div className="text-3xl text-gray-200 font-bold">4/5</div>
+            <div className="text-3xl text-gray-200 font-bold">{element.rating}/5</div>
 
             {/* Stars */}
             <div className="flex">
@@ -44,23 +44,23 @@ const Result = () => {
         {/* Credentials */}
         <div className="flex flex-col space-y-0">
           {/* Name */}
-          <div className="font-black text-2xl">Krish</div>
+          <div className="font-black text-2xl">{element.name}</div>
 
           {/* Speciality */}
-          <div className="text-lg font-semibold text-dark-900">Categeory</div>
+          <div className="text-lg font-semibold text-dark-900">Category</div>
 
           {/* Experience */}
           <div className="text-lg text-dark-900">
-            5 years experience overall
+          {element.years_Of_Experience} years experience overall
           </div>
         </div>
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-          <Link className="font-semibold">Malad</Link>
+          <Link className="font-semibold">{element.locality}</Link>
 
           {/* Per session fee */}
-          <div className="font-semibold">₹1500 per session</div>
+          <div className="font-semibold">₹{element.fees} per session</div>
         </div>
 
         {/* % Upvoted */}

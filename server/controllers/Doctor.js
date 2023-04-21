@@ -93,7 +93,7 @@ exports.getDoctors = async (req, res, next) => {
     //filtering the doctors based on the category
     let doctors = await Doctor.find(query)
       .select(
-        "name rating fees address profile_pic years_Of_Experience category specialization locality"
+        "name rating fees address profile_pic years_Of_Experience category specialization locality licenseNumber phoneNumber"
       )
       .sort({ rating:Number(query.ratings),fees: Number(query.fee),years_Of_Experience:Number(query.experience) })
       .skip(start - 1)
@@ -125,15 +125,9 @@ exports.getDoctor = async (req, res, next) => {
       "-type -verifyTokenExpiry -verifyToken -mailVerified -time_registered -adminVerified"
     );
     const reviews = await Review.find({
-      $or: [
-        {
-          patient: req.user.id,
-        },
-        {
-          doctor: req.params.id,
-        },
-      ],
-    }).select('-doctor').populate('patient','username profile_pic');
+        doctor: req.params.id
+    }).select('-doctor').populate('patient','name profile_pic');
+    console.log("review : ",reviews);
     res.status(200).json({
       success: true,
       data: {

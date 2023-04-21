@@ -71,7 +71,6 @@ const PhysioSearch = () => {
             ))
           )}
         </div>
-
       </div>
     </>
   );

@@ -10,7 +10,7 @@ import BoldLicenceIcon from "components/Icons/Bold/licence"
 import LightUserNameIcon from "components/Icons/Light/userName"
 
 
-const Main = ({experience,locality,email}) => {
+const Main = (props) => {
   // YearsOf experience email address
   const handleBookAppointment = () => {};
   return (
@@ -23,7 +23,7 @@ const Main = ({experience,locality,email}) => {
           </div>
 
           {/*  */}
-          <div className="text-lg font-bold">{experience} years Experience</div>
+          <div className="text-lg font-bold">{props.data.years_Of_Experience} years of Experience</div>
         </div>
 
         {/* medical registration verified */}
@@ -44,7 +44,7 @@ const Main = ({experience,locality,email}) => {
 
           {/*  */}
           <div className="text-lg font-bold">
-           Wellness Clinic , {locality}
+           Wellness Clinic , {props.data.locality}
           </div>
         </div>
 
@@ -55,7 +55,7 @@ const Main = ({experience,locality,email}) => {
           </div>
 
           {/*  */}
-          <div className="text-lg font-bold">₹1000/session</div>
+          <div className="text-lg font-bold">₹{props.data.fees}/session</div>
         </div>
 
 
@@ -66,7 +66,7 @@ const Main = ({experience,locality,email}) => {
           </div>
 
           {/*  */}
-          <div className="text-lg font-bold">License ID : 5983026932</div>
+          <div className="text-lg font-bold">License ID : {props.data.licenseNumber}</div>
         </div>
 
         {/* Phone no. */}
@@ -76,7 +76,7 @@ const Main = ({experience,locality,email}) => {
           </div>
 
           {/*  */}
-          <div className="text-lg font-bold">Phone no. : +91 8462736754</div>
+          <div className="text-lg font-bold">Phone no. : +91 {props.data.phoneNumber}</div>
         </div>
 
         {/* button */}

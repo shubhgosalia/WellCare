@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -8,7 +8,24 @@ import Main from "components/Profile/Main";
 import Swal from "sweetalert2";
 import ReviewContainer from "components/Review/Review";
 
+// importing context
+import { UserContext } from "context/UserContext";
+import { useNavigate } from "react-router-dom";
+
 const ExpertProfile = () => {
+  const navigate = useNavigate();
+  const { isLoggedIn, profile } = useContext(UserContext);
+  const [newReview, setNewReview] = useState([]);
+  const [createReview, setCreateReview] = useState("");
+
+  //checking if the user is logged in or not
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+    console.log("profile : ", profile);
+  }, []);
+
   const curr_date = new Date();
   const maxdate = new Date(curr_date);
   maxdate.setDate(maxdate.getDate() + 2);
@@ -35,8 +52,7 @@ const ExpertProfile = () => {
       const res = await axios.get(`http://localhost:4000/doctor/${id}`, {
         withCredentials: true,
       });
-      console.log(res.data.data.doctor);
-    isLoad(false);
+      isLoad(false);
       setData(res.data.data);
     } catch (err) {
       console.log("errr : ", err);
@@ -53,6 +69,55 @@ const ExpertProfile = () => {
     getDoctor();
   }, []);
 
+  useEffect(() => {
+    setNewReview(data.reviews.filter((x) => x.patient._id === profile.id));
+  }, [data]);
+
+  const submitReview = async () => {
+    if (createReview.trim() === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid input!",
+      });
+      return;
+    }
+    try {
+      isLoad(true);
+      let res = await axios.post(
+        "http://localhost:4000/review",
+        {
+          review: createReview,
+          doctor: id,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      isLoad(false);
+      if (res.data.success) {
+        setNewReview([
+          {
+            name: profile.name,
+            review: createReview,
+            profile_pic: profile.profile_pic,
+          },
+        ]);
+        Swal.fire({
+          icon: "success",
+          title: res.data.message,
+        });
+        getDoctor();
+      }
+    } catch (err) {
+      console.log("err : ", err);
+      isLoad(false);
+      Swal.fire({
+        icon: "error",
+        title: "Something went wrong!",
+      });
+    }
+  };
+
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* Navbar */}
@@ -65,21 +130,12 @@ const ExpertProfile = () => {
         {/* Header */}
         <div className="">
           {/* profile_pic, name,category,bio  */}
-          <Header
-            profile_pic={data.doctor.profile_pic}
-            name={data.doctor.name}
-            category={data.doctor.category}
-            bio={data.doctor.bio}
-          />
+          <Header data={data.doctor} />
         </div>
 
         <div className="flex h-[60%]">
           <div className="w-[30%]">
-            <Main
-              experience={data.doctor.years_Of_Experience}
-              email={data.doctor.email}
-              locality={data.doctor.locality}
-            />
+            <Main data={data.doctor} />
           </div>
 
           {/* Reviews */}
@@ -91,23 +147,40 @@ const ExpertProfile = () => {
               {/* <ReviewContainer /> */}
               {load ? (
                 <p>Loading...</p>
-              ) : data.reviews.length !== 0 ? (
+              ) : //   newReview.length !== 0 &&
+              //  (  newReview.map((review) => {
+              //     return <ReviewContainer key={review._id} review={review} />;
+              //   }))
+              data.reviews.length !== 0 || newReview.length !== 0 ? (
                 data.reviews.map((review) => {
                   return <ReviewContainer key={review._id} review={review} />;
                 })
               ) : (
-                <p>No reviews yet.....</p>
+                <p className="text-center text-white font-semibold">
+                  No reviews yet.....
+                </p>
               )}
             </div>
 
             {/* create review */}
-            <div className="flex space-x-4 w-full px-4">
-              {/* input area */}
-              <input className="rounded-lg w-[70%] focus:outline-none bg-dark-100 p-1 text-lg text-white border border-dark-600"></input>
+            {newReview.length === 0 ? (
+              <div className="flex space-x-4 w-full px-4">
+                {/* input area */}
+                <input
+                  className="rounded-lg w-[70%] focus:outline-none bg-dark-100 p-1 text-lg text-white border border-dark-600"
+                  type="text"
+                  id="createReview"
+                  name="createReview"
+                  value={createReview}
+                  onChange={(event) => setCreateReview(event.target.value)}
+                />
 
-              {/* button */}
-              <div className="button w-44">Submit</div>
-            </div>
+                {/* button */}
+                <div className="button w-44" onClick={submitReview}>
+                  {load ? "Loading..." : "Submit"}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

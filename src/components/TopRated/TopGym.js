@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import BoldFullStarIcon from "components/Icons/Bold/fullStar";
 import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
@@ -16,6 +16,8 @@ const TopGym = ({ info }) => {
     locality,
     _id,
   } = info;
+
+
   return (
     <>
       <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 mt-12 text-dark-100 mx-4">
@@ -34,11 +36,13 @@ const TopGym = ({ info }) => {
 
             {/* Stars */}
             <div className="flex">
+              {/* {numOfStars.map(() => (
+              ))} */}
               <BoldFullStarIcon color="#ffdf00" size="27" />
               <BoldFullStarIcon color="#ffdf00" size="27" />
               <BoldFullStarIcon color="#ffdf00" size="27" />
               <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldHalfStarIcon color="#ffdf00" size="27" />
+              <BoldFullStarIcon color="#ffdf00" size="27" />
             </div>
 
             {/* static */}
@@ -64,12 +68,12 @@ const TopGym = ({ info }) => {
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-          <Link to={address} className="font-semibold">{locality}</Link>
-  
+          <Link to={address} className="font-semibold">
+            {locality}
+          </Link>
+
           {/* Per session fee */}
-          <div className="font-semibold">
-            ₹{fees} per session
-          </div>
+          <div className="font-semibold">₹{fees} per session</div>
         </div>
 
         {/* % Upvoted */}
