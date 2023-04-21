@@ -1,5 +1,4 @@
 const mongoose=require("mongoose");
-
 const adminSchema=new mongoose.Schema({
     email: {
         type: String,
@@ -14,6 +13,25 @@ const adminSchema=new mongoose.Schema({
     password: {
         type: String,
         required: [true, "User should have a password"],
+    },
+    mailVerified: {
+        type: Boolean,
+        default: true
+    },
+    profile_pic: {
+        image_url: {
+            type: String,
+            // required: [true, "User should have a  image url"],
+            default: "https://res.cloudinary.com/dprscch9k/image/upload/v1677739579/Well%20Care/k6njbwcuucgeqkmv9sft.png",
+        },
+        file_name: {
+            type: String,
+            // required: [true, "User should have a  image file_name"]
+        }
+    },
+    type: {
+        type: String,
+        default: "Admin"
     },
 })
 

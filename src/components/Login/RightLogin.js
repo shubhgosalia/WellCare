@@ -42,7 +42,13 @@ const Login = () => {
           icon: "success",
           title: res.data.message,
         });
-        navigate("/home");
+        if(data.type === "Admin"){
+          navigate("/adminDashboard")
+        }
+        else{
+          navigate("/home");
+        }
+        
       }
       setLoad(false);
     } catch (err) {
@@ -151,6 +157,24 @@ const Login = () => {
               className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
             >
               Patient
+            </label>
+          </div>
+
+          <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
+            <input
+              id="bordered-radio-1"
+              type="radio"
+              value="Admin"
+              name="type"
+              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+              checked={data.type === "Admin" ? true : false}
+              onChange={login}
+            />
+            <label
+              htmlFor="bordered-radio-1"
+              className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
+            >
+              Admin
             </label>
           </div>
 

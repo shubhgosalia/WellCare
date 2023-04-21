@@ -1,5 +1,7 @@
 const Patient = require("../models/Patient");
 const Doctor = require("../models/Doctor");
+const Admin = require("../models/Admin");
+
 const { AuthenticationError, ClientError } = require("../Utils/Errors");
 const SendEmail = require("../utils/Email");
 const jwt = require("jsonwebtoken");
@@ -117,8 +119,20 @@ exports.Login = async (req, res, next) => {
           },
         ],
       });
-    } else {
+    } else if ((req.body.type === "Patient")){
       user = await Doctor.findOne({
+        $or: [
+          {
+            username: user_name,
+          },
+          {
+            email: user_name,
+          },
+        ],
+      });
+    }
+    else{
+      user = await Admin.findOne({
         $or: [
           {
             username: user_name,
