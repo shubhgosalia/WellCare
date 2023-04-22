@@ -7,7 +7,8 @@ import BoldPhysioIcon from "components/Icons/Bold/physio";
 import BoldCalendarCheck from "components/Icons/Bold/calendarCheck"
 import BoldSettingsIcon from "components/Icons/Bold/settings"
 import BoldUserIcon from "components/Icons/Bold/myAccount"
-
+import axios from "axios";
+import Swal from "sweetalert2";
 const Admin = () => {
 
   const [stats,setStats]=useState({
