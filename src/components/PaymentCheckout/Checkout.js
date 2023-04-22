@@ -1,9 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "components/Utils/Navbar";
 import { useLocation } from "react-router-dom";
 import Head from "components/PaymentCheckout/Head";
+import axios from "axios";
+import Swal from "sweetalert2";
 const Checkout = () => {
+  const [load, setLoad] = useState(false);
   const location = useLocation();
+  const paymentHandler = async () => {
+    try {
+      setLoad(true);
+      let res = await axios.get(
+        "http://localhost:4000/patient/checkoutSession/643ecd1f71e37175cffbf026",
+        {
+          withCredentials: true,
+        }
+      );
+      console.log("resp  : ", res.data.session.url);
+      setLoad(false);
+      window.location.href=res.data.session.url
+      // setDocs(res.data.data);
+    } catch (err) {
+      console.log("error : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  };
 
   return (
     <div className="w-full flex flex-row font-body-primary">
@@ -80,8 +105,11 @@ const Checkout = () => {
                     />
                   </div>
                 </div>
-                <button className="bg-slate-500 hover:bg-gray-600 py-2 text-sm rounded-md">
-                  <a href="/paymentGateway">Proceed to Payment</a>
+                <button
+                  className="bg-slate-500 hover:bg-gray-600 py-2 text-sm rounded-md"
+                  onClick={paymentHandler}
+                >
+                  Proceed to Payment
                 </button>
 
                 <div className="flex items-center mt-5">

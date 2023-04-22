@@ -97,9 +97,14 @@ const ExpertProfile = () => {
       if (res.data.success) {
         setNewReview([
           {
-            name: profile.name,
             review: createReview,
-            profile_pic: profile.profile_pic,
+            patient: {
+                profile_pic: {
+                    image_url: profile.profile_pic
+                },
+                _id: profile.id,
+            },
+            id: 0
           },
         ]);
         Swal.fire({
@@ -144,16 +149,36 @@ const ExpertProfile = () => {
               Reviews
             </div>
             <div className="overflow-y-scroll h-[75%] rounded-lg">
+              {/* created new review */}
+              <div>
+                {newReview.length !== 0 &&
+                  newReview.map((review) => {
+                    return (
+                      <ReviewContainer
+                        key={review._id}
+                        review={review}
+                        id={profile.id}
+                      />
+                    );
+                  })}
+              </div>
+
               {/* <ReviewContainer /> */}
               {load ? (
                 <p>Loading...</p>
-              ) : //   newReview.length !== 0 &&
-              //  (  newReview.map((review) => {
-              //     return <ReviewContainer key={review._id} review={review} />;
-              //   }))
-              data.reviews.length !== 0 || newReview.length !== 0 ? (
+              ) : data.reviews.length !== 0 || newReview.length !== 0 ? (
                 data.reviews.map((review) => {
-                  return <ReviewContainer key={review._id} review={review} />;
+                  if (review.patient._id !== profile.id) {
+                    return (
+                      <ReviewContainer
+                        key={review._id}
+                        review={review}
+                        id={profile.id}
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
                 })
               ) : (
                 <p className="text-center text-white font-semibold">

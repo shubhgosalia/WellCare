@@ -108,7 +108,6 @@ const TopNutri = ({ info }) => {
           <div className="font-semibold mt-2">₹{fees} per session</div>
         </div>
 
-
         {/* % Upvoted */}
         <div className="">
           <button
@@ -128,8 +127,13 @@ const TopNutri = ({ info }) => {
         </div>
 
         {/* book appointment*/}
-        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
-          <Link to={`/doctorProfile/${_id}`}>View More</Link>
+        <button>
+          <Link
+            to={`/doctorProfile/${_id}`}
+            className="w-full bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2 px-10"
+          >
+            View More
+          </Link>
         </button>
       </div>
     </>

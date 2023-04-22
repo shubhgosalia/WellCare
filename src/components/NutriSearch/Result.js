@@ -108,6 +108,13 @@ const Result = ({ element }) => {
             <BoldThumbsupIcon color="#ffffff" size="23" />
             <div>94%</div>
           </button>
+          <a
+            href="/doctorProfile"
+            className="font-thin text-white hover:underline"
+          >
+            <i>120 Patient Reviews</i>
+          </a>
+
         </div>
 
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">

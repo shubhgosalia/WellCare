@@ -12,7 +12,7 @@ const Result = ({ element }) => {
 
   return (
     <>
-      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 mt-12 text-dark-100 mx-4">
+      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 text-dark-100 mx-4">
         <div className="flex justify-center space-x-6">
           {/* img */}
           <div>
@@ -85,7 +85,7 @@ const Result = ({ element }) => {
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-        <Link
+          <Link
             to={element.address}
             className="flex space-x-2 font-semibold bg-dark-100 hover:bg-dark-200 ease-in-out delay-100 shadow-lg cursor-pointer transition p-1 rounded-lg w-1/2"
             target="_blank"
@@ -107,10 +107,9 @@ const Result = ({ element }) => {
             <BoldThumbsupIcon color="#ffffff" size="23" />
             <div>94%</div>
           </button>
-
           <a
             href="/doctorProfile"
-            className="mt-2 font-thin text-white hover:underline"
+            className="font-thin text-white hover:underline"
           >
             <i>120 Patient Reviews</i>
           </a>
