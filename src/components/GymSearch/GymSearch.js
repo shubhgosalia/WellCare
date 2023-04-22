@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Heading from "components/GymSearch/Heading";
 import Filter from "components/GymSearch/Filter";
 import DoctorResult from "components/GymSearch/Result";
@@ -24,7 +24,7 @@ const GymSearch = () => {
           experience: data.experience,
           locality: data.locality,
           page: 1,
-          category:"Gym Trainer"
+          category: "Gym Trainer",
         },
         withCredentials: true,
       });
@@ -43,8 +43,8 @@ const GymSearch = () => {
   };
   return (
     <>
-       {/* Main Container */}
-       <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">
+      {/* Main Container */}
+      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">
         <div className="top-0 w-[100%] mx-auto">
           {/* Title */}
           <Heading />
@@ -55,7 +55,7 @@ const GymSearch = () => {
 
         {/* Results */}
         <div
-          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto grid grid-rows-3 grid-flow-col gap-6 relative"
+          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto"
           style={{ marginTop: -5 }}
         >
           {load ? (

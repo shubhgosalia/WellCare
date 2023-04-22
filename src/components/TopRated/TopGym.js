@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import BoldFullStarIcon from "components/Icons/Bold/fullStar";
 import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
+import BoldLocationIcon from "components/Icons/Bold/location";
 import { Link } from "react-router-dom";
 
 const TopGym = ({ info }) => {
@@ -12,6 +13,7 @@ const TopGym = ({ info }) => {
     address,
     profile_pic,
     years_Of_Experience,
+    clinic_name,
     category,
     locality,
     _id,
@@ -90,12 +92,17 @@ const TopGym = ({ info }) => {
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-          <Link to={address} className="font-semibold">
-            {locality}
+          <Link
+            to={address}
+            className="flex space-x-2 font-semibold bg-dark-100 hover:bg-dark-200 ease-in-out delay-100 shadow-lg cursor-pointer transition p-1 rounded-lg w-1/2"
+            target="_blank"
+          >
+            <BoldLocationIcon color="#ff0000" size="25" /> {clinic_name}
+            <div className="text-white">{locality}</div>
           </Link>
 
           {/* Per session fee */}
-          <div className="font-semibold">₹{fees} per session</div>
+          <div className="font-semibold mt-2">₹{fees} per session</div>
         </div>
 
         {/* % Upvoted */}

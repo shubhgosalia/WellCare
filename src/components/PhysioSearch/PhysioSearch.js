@@ -56,7 +56,7 @@ const PhysioSearch = () => {
 
         {/* Results */}
         <div
-          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto grid grid-rows-3 grid-flow-col gap-6 relative"
+          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto"
           style={{ marginTop: -5 }}
         >
           {load ? (

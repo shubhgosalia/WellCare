@@ -56,7 +56,10 @@ const NutriSearch = () => {
         </div>
 
         {/* Results */}
-        <div className="w-[85%] mx-auto" style={{ marginTop: -5 }}>
+        <div
+          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto"
+          style={{ marginTop: -5 }}
+        >
           {load ? (
             <div className="mx-auto my-10 text-3xl font-bold">Loading....</div>
           ) : data.doctors.length === 0 ? (

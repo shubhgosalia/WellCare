@@ -116,7 +116,7 @@ const TopPhysio = ({ info }) => {
 
           <a
             href="/doctorProfile"
-            className="font-thin text-white hover:underline mt-4"
+            className="font-thin text-white hover:underline"
           >
             <i>120 Patient Reviews</i>
           </a>
