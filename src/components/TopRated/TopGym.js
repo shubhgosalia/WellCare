@@ -31,7 +31,9 @@ const TopGym = ({ info }) => {
           </div>
           <div>
             {/* Average Rating */}
-            <div className="text-3xl text-gray-200 font-bold">{rating}/5</div>
+            <div className="text-3xl text-gray-200 font-bold">
+              {rating} Rating
+            </div>
 
             {/* Stars */}
             <div className="flex">
@@ -69,9 +71,6 @@ const TopGym = ({ info }) => {
             </div>
 
             {/* static */}
-            <div className="text-white text-md font-thin ml-2 mt-1">
-              <i>(72% rated 4 star)</i>
-            </div>
           </div>
         </div>
 

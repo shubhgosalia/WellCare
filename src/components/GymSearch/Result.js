@@ -24,7 +24,7 @@ const Result = ({ element }) => {
           <div>
             {/* Average Rating */}
             <div className="text-3xl text-gray-200 font-bold">
-              {element.rating}/5
+              {element.rating} Rating
             </div>
 
             {/* Stars */}
@@ -63,9 +63,6 @@ const Result = ({ element }) => {
             </div>
 
             {/* static */}
-            <div className="text-white text-md font-thin ml-2 mt-1">
-              <i>(72% rated 4 star)</i>
-            </div>
           </div>
         </div>
 

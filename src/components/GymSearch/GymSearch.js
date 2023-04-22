@@ -65,9 +65,11 @@ const GymSearch = () => {
               Sorry, no results found!
             </div>
           ) : (
-            data.doctors.map((element, i) => (
-              <DoctorResult element={element} key={i} />
-            ))
+            <div className="grid grid-cols-3 grid-flow-col gap-4 my-10">
+              {data.doctors.map((element, i) => (
+                <DoctorResult element={element} key={i} />
+              ))}
+            </div>
           )}
         </div>
       </div>

@@ -3,6 +3,7 @@ import React from "react";
 import BoldFullStarIcon from "components/Icons/Bold/fullStar";
 import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
+import LightStarIcon from "components/Icons/Light/star";
 import { Link } from "react-router-dom";
 
 const TopNutri = ({ info }) => {
@@ -32,7 +33,9 @@ const TopNutri = ({ info }) => {
           </div>
           <div>
             {/* Average Rating */}
-            <div className="text-3xl text-gray-200 font-bold">{rating}/5</div>
+            <div className="text-3xl text-gray-200 font-bold">
+              {rating} Rating
+            </div>
 
             {/* Stars */}
             <div className="flex">
@@ -70,9 +73,6 @@ const TopNutri = ({ info }) => {
             </div>
 
             {/* static */}
-            <div className="text-white text-md font-thin ml-2 mt-1">
-              <i>(72% rated 4 star)</i>
-            </div>
           </div>
         </div>
 

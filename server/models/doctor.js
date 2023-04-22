@@ -54,6 +54,9 @@ const doctorSchema = new mongoose.Schema({
         required: [true, "User should have a Email"],
         unique: true
     },
+    clinic_name:{
+        type:String
+    },
     address: {
         type: String
     },

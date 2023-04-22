@@ -205,11 +205,11 @@ exports.getCheckoutSession = async (req, res, next) => {
 
       // Add a success page
       // HOME PAGE
-      success_url: `${req.protocol}://${req.get('host')}`,
+      success_url: `http://localhost:3000/paymentSuccess`,
 
       // NEED TO CHECK 
       // CANCEL PAGE
-      cancel_url: `${req.protocol}://${req.get('host')}`,
+      cancel_url: `http://localhost:3000/paymentSuccess`,
       customer_email:req.user.email,
       submit_type:'book',
       line_items: [
