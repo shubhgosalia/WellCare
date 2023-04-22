@@ -1,17 +1,20 @@
 import React from "react";
 
-const Review = () => {
+const Review = ({review}) => {
   return (
-    <div className="mx-3 my-2 bg-white text-black p-3 rounded-md ">
+    <div className="bg-primary-blue mx-3 my-2 text-dark-100 p-3 rounded-lg">
       <div className="flex-col ">
-        {/* User name */}
-        <div className=" text-lg font-medium ">Krish Vadhani</div>
+        <div className="flex space-x-4">
+          {/* icon */}
+          <img src={review.patient.profile_pic.image_url} alt="profilePic" className="w-8 h-8 bg-white rounded-full"/>
+
+          {/* User name */}
+          <div className="text-2xl font-bold">{review.patient.name}</div>
+        </div>
+
         {/* Review text */}
-        <div className="">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam
-          quaerat maxime illo! Cupiditate dignissimos ipsam praesentium quod
-          eaque magni, voluptas consectetur tenetur repudiandae neque odit saepe
-          vero corrupti, blanditiis eius?
+        <div className="w-[90%] ml-4 text-dark-100 text-lg">
+          {review.review}
         </div>
       </div>
     </div>

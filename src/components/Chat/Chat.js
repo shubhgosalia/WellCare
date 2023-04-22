@@ -1,7 +1,6 @@
 import React, { useEffect, useContext, useState } from "react";
 import { UserContext } from "context/UserContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/index";
+import BoldEllipisIcon from "components/Icons/Bold/ellipis";
 import ChatInput from "./ChatInput";
 import ChatMessage from "./ChatMessage";
 import Swal from "sweetalert2";
@@ -154,7 +153,7 @@ const Chat = ({ contact, socket }) => {
                 </div>
               </div>
               <div className="flex items-center mr-10">
-                <FontAwesomeIcon icon={faEllipsisV} color="gray" />
+                <BoldEllipisIcon size="30" color="#4b5563" />
               </div>
             </div>
 

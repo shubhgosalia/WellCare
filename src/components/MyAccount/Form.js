@@ -10,17 +10,10 @@ import LightUserNameIcon from "components/Icons/Light/userName";
 
 const Form = ({ profile }) => {
   //
-  const [passwordVisiblity, setPasswordVisiblity] = useState(false);
+  // const [passwordVisiblity, setPasswordVisiblity] = useState(false);
+  // const [password,setPassword] = useState(profile.password);
 
-  const handlePassword = () => {
-    if (passwordVisiblity) {
-      setPasswordVisiblity(false);
-    } else {
-      setPasswordVisiblity(true);
-    }
-  };
 
-  let password = "Krish2001@";
   return (
     <div className="flex flex-col space-y-6 text-white mx-10 w-2/3 font-body-primary">
       {/* Name */}
@@ -32,7 +25,7 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">First Name</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100  outline-none text-xl">Yash</div>
+            <div className="py-1 bg-dark-100  outline-none text-xl">{profile.name.split(" ")[0]}</div>
           </div>
 
           {/* Icon */}
@@ -48,7 +41,7 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">Last Name</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100 outline-none text-xl">Sharma</div>
+            <div className="py-1 bg-dark-100 outline-none text-xl">{profile.name.split(" ").length > 1 ? profile.name.split(" ")[1] : null}</div>
           </div>
 
           {/* Icon */}
@@ -67,7 +60,7 @@ const Form = ({ profile }) => {
 
           {/* input */}
           <div className="py-1 bg-dark-100  outline-none text-xl cursor-pointer">
-            krishvadhani7@gmail.com
+           {profile.email}
           </div>
         </div>
 
@@ -86,7 +79,7 @@ const Form = ({ profile }) => {
 
           {/* input */}
           <div className="py-1 bg-dark-100  outline-none text-xl">
-            krish.vadhani
+            {profile.username}
           </div>
         </div>
 
@@ -94,52 +87,6 @@ const Form = ({ profile }) => {
         <div className="my-auto">
           <LightUserNameIcon size="30" color="#ffffff" />
         </div>
-      </div>
-
-      {/* password */}
-      <div className="flex flex-col space-y-2">
-        <div className="flex w-full justify-between bg-dark-100 rounded-lg  p-5 border border-dark-200">
-          {/* Label and Input */}
-          <div className="w-[90%] flex flex-col">
-            {/* label */}
-            <div className="text-base text-dark-600">Password</div>
-
-            {/* input */}
-            {passwordVisiblity ? (
-              <div className="py-1 bg-dark-100  outline-none text-xl">
-                {password}
-              </div>
-            ) : (
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter Password"
-                value={password}
-                readonly="readonly"
-                minLength={1}
-                autoComplete="do-not-autofill"
-                className="py-1 bg-dark-100  outline-none text-xl"
-              ></input>
-            )}
-          </div>
-
-          {/* Icon */}
-          {passwordVisiblity ? (
-            <div className="my-auto" onClick={handlePassword}>
-              <EyeOffIcon size="30" color="#ffffff" />
-            </div>
-          ) : (
-            <div className="my-auto" onClick={handlePassword}>
-              <FullEyeIcon size="30" color="#ffffff" />
-            </div>
-          )}
-        </div>
-
-        {/* update credentials */}
-        <Link className="button w-1/3" to="/updatePassword">
-          Update Password
-        </Link>
       </div>
 
       {/* age */}
@@ -151,7 +98,7 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">Age</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100  outline-none text-xl">21</div>
+            <div className="py-1 bg-dark-100  outline-none text-xl">{profile.age}</div>
           </div>
 
           {/* Icon */}
@@ -167,7 +114,7 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">Gender</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100 outline-none text-xl">Male</div>
+            <div className="py-1 bg-dark-100 outline-none text-xl">{profile.gender}</div>
           </div>
 
           {/* Icon */}
@@ -176,6 +123,10 @@ const Form = ({ profile }) => {
           </div>
         </div>
       </div>
+         {/* update credentials */}
+         <Link className="button w-1/3" to="/updatePassword">
+          Update Password
+        </Link>
     </div>
   );
 };

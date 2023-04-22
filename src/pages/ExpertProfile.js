@@ -1,54 +1,122 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-
 import Navbar from "components/Utils/Navbar";
 import Header from "components/Profile/Header";
 import Main from "components/Profile/Main";
+import Swal from "sweetalert2";
+import ReviewContainer from "components/Review/Review";
+
+// importing context
+import { UserContext } from "context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 const ExpertProfile = () => {
-  // const [date, SetDate] = useState(new Date());
-  // const navigate = useNavigate();
-  // const clickHandler = () => {
-  //   navigate("/slotBook", {
-  //     state: {
-  //       date: `${date}`,
-  //     },
-  //   });
-  // };
+  const navigate = useNavigate();
+  const { isLoggedIn, profile } = useContext(UserContext);
+  const [newReview, setNewReview] = useState([]);
+  const [createReview, setCreateReview] = useState("");
 
-  // const [reviews, setReviews] = useState([]);
+  //checking if the user is logged in or not
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+    console.log("profile : ", profile);
+  }, []);
 
   const curr_date = new Date();
   const maxdate = new Date(curr_date);
   maxdate.setDate(maxdate.getDate() + 2);
 
   const [data, setData] = useState({
-    years_Of_Experience: "",
-    bio: "",
-    email: "",
-    address: "",
-    category: "",
-    specialization: "",
-    fees: '',
-    profile_pic:'',
+    doctor: {
+      years_Of_Experience: "",
+      bio: "",
+      email: "",
+      locality: "",
+      category: "",
+      specialization: "",
+      fees: "",
+      profile_pic: "",
+    },
+    reviews: [],
   });
+  const [load, isLoad] = useState(false);
 
+  let { id } = useParams();
   const getDoctor = async () => {
+    isLoad(true);
     try {
       const res = await axios.get(`http://localhost:4000/doctor/${id}`, {
         withCredentials: true,
       });
+      isLoad(false);
+      setData(res.data.data);
     } catch (err) {
       console.log("errr : ", err);
+      isLoad(false);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
     }
   };
-  let { id } = useParams();
 
   useEffect(() => {
     getDoctor();
   }, []);
+
+  useEffect(() => {
+    setNewReview(data.reviews.filter((x) => x.patient._id === profile.id));
+  }, [data]);
+
+  const submitReview = async () => {
+    if (createReview.trim() === "") {
+      Swal.fire({
+        icon: "error",
+        title: "Invalid input!",
+      });
+      return;
+    }
+    try {
+      isLoad(true);
+      let res = await axios.post(
+        "http://localhost:4000/review",
+        {
+          review: createReview,
+          doctor: id,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      isLoad(false);
+      if (res.data.success) {
+        setNewReview([
+          {
+            name: profile.name,
+            review: createReview,
+            profile_pic: profile.profile_pic,
+          },
+        ]);
+        Swal.fire({
+          icon: "success",
+          title: res.data.message,
+        });
+        getDoctor();
+      }
+    } catch (err) {
+      console.log("err : ", err);
+      isLoad(false);
+      Swal.fire({
+        icon: "error",
+        title: "Something went wrong!",
+      });
+    }
+  };
 
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
@@ -58,23 +126,61 @@ const ExpertProfile = () => {
       </div>
 
       {/*  */}
-      <div className="w-[84%] min-h-screen">
+      <div className="w-[84%] h-screen overflow-y-hidden">
         {/* Header */}
         <div className="">
-          <Header />
+          {/* profile_pic, name,category,bio  */}
+          <Header data={data.doctor} />
         </div>
 
-        <div className="flex border-r-[1px] h-[60%]">
-          <div>
-            <Main />
+        <div className="flex h-[60%]">
+          <div className="w-[30%]">
+            <Main data={data.doctor} />
           </div>
 
           {/* Reviews */}
-          <div className="w-[75%] border-l-[1px] h-full overflow-auto pt-2 ">
-            <div className="font-black text-3xl text-center ">Reviews</div>
-            {/* {reviews.map((review) => {
-              return <Review key="review._id" review={review} />;
-            })} */}
+          <div className="w-[70%] flex flex-col space-y-2">
+            <div className="text-white font-black text-3xl text-center">
+              Reviews
+            </div>
+            <div className="overflow-y-scroll h-[75%] rounded-lg">
+              {/* <ReviewContainer /> */}
+              {load ? (
+                <p>Loading...</p>
+              ) : //   newReview.length !== 0 &&
+              //  (  newReview.map((review) => {
+              //     return <ReviewContainer key={review._id} review={review} />;
+              //   }))
+              data.reviews.length !== 0 || newReview.length !== 0 ? (
+                data.reviews.map((review) => {
+                  return <ReviewContainer key={review._id} review={review} />;
+                })
+              ) : (
+                <p className="text-center text-white font-semibold">
+                  No reviews yet.....
+                </p>
+              )}
+            </div>
+
+            {/* create review */}
+            {newReview.length === 0 ? (
+              <div className="flex space-x-4 w-full px-4">
+                {/* input area */}
+                <input
+                  className="rounded-lg w-[70%] focus:outline-none bg-dark-100 p-1 text-lg text-white border border-dark-600"
+                  type="text"
+                  id="createReview"
+                  name="createReview"
+                  value={createReview}
+                  onChange={(event) => setCreateReview(event.target.value)}
+                />
+
+                {/* button */}
+                <div className="button w-44" onClick={submitReview}>
+                  {load ? "Loading..." : "Submit"}
+                </div>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

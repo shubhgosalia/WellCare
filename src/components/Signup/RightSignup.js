@@ -280,9 +280,9 @@ const Signup = () => {
               onChange={updateInfo}
             >
               <option value="">Please select</option>
-              <option value="small">Male</option>
-              <option value="medium">Female</option>
-              <option value="large">Prefer not to say</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Not preferred">Prefer not to say</option>
             </select>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // importing Files
 import Categories from "components/Home/Categories";
@@ -18,27 +19,19 @@ const Part1 = ({ profile }) => {
         </div>
 
         {/* Description */}
-        <div className="text-dark-700 text-lg">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptate,
-          facere nesciunt non quisquam sapiente odio illo nisi? Fuga, accusamus
-          sapiente! Voluptatum nihil at corrupti veritatis, et non animi
-          inventore quis. Lorem ipsum dolor sit amet consectetur, adipisicing
-          elit. Voluptate, facere nesciunt non quisquam sapiente odio illo nisi?
-          Fuga, accusamus sapiente! Voluptatum nihil at corrupti veritatis, et
-          non animi inventore quis. Lorem ipsum dolor sit amet consectetur,
-          adipisicing elit. Voluptate, facere nesciunt non quisquam sapiente
-          odio illo nisi? Fuga, accusamus sapiente! Voluptatum nihil at corrupti
-          veritatis, et non animi inventore quis. Lorem ipsum dolor sit amet
-          consectetur, adipisicing elit. Voluptate, facere nesciunt non quisquam
-          sapiente odio illo nisi? Fuga, accusamus sapiente! Voluptatum nihil at
-          corrupti veritatis, et non animi inventore quis. Lorem ipsum dolor sit
-          amet consectetur, adipisicing elit. Voluptate, facere nesciunt non
-          quisquam sapiente odio illo nisi? Fuga, accusamus sapiente! Voluptatum
-          nihil at corrupti veritatis, et non animi inventore quis.
+        <div className="text-dark-700 font-bold text-2xl">
+<i>"For everyone, well-being is a journey. The secret is committing to that journey and taking those first steps with hope and belief in yourself."</i>
         </div>
-
+        <div className="text-white text-2xl">
+          <i>We, at WellCare are here to help you in your journey! And, we are thrilled to see you take the very first step! But, before you take the next step of exploring what we have at your disposal here at WellCare, do have a thorough look of our terms and conditions by clicking on the button below!</i> 
+</div>
         {/* Button */}
-        <div className="w-1/3 mx-auto button">See Suggestions</div>
+        <div className="w-1/3 mx-auto button">
+          {" "}
+          <Link className="text-white px-1" to="/tac">
+            See Terms and Conditions
+          </Link>
+        </div>
       </div>
 
       {/* Categories */}

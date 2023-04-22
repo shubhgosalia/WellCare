@@ -52,30 +52,24 @@ const TopPhysio = ({info}) => {
         {/* Credentials */}
         <div className="flex flex-col space-y-0">
           {/* Name */}
-          <div className="font-semibold text-2xl">Dr. {name}</div>
+          <div className="font-black text-2xl">{name}</div>
 
           {/* Speciality */}
-          <div className="text-lg text-dark-900">{specialization} Physiotherapist</div>
+          {/* <div className="text-lg font-semibold text-dark-900">{category}</div> */}
 
           {/* Experience */}
-          <div className="text-md text-dark-900">
-            <i>Experience : {years_Of_Experience} years</i>
+          <div className="text-lg text-dark-900">
+            {years_Of_Experience} years experience overall
           </div>
         </div>
 
         {/* Locality + Location hyperlink */}
-        <div className="font-semibold text-md">
-          <Link to={address}>{locality}</Link>
-            <span className="ml-2 text-black">•</span>
-            <a
-            className=" hover:underline text-black font-semibold ml-2 text-md"
-            href="https://tinyurl.com/3sktjaca"
-          >
-            {name}
-          </a>
+        <div className="text-dark-100 text-lg flex flex-col">
+          <Link to={address} className="font-semibold">{locality}</Link>
+  
           {/* Per session fee */}
-          <div className="text-md font-semibold text-black">
-            Fees : ₹{fees}/session
+          <div className="font-semibold">
+            ₹{fees} per session
           </div>
         </div>
 

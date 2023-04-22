@@ -29,7 +29,7 @@ const ChatMessage = ({ msg, time, self }) => {
           <div
             className={`text-md ${
               self ? "text-gray-300" : "text-gray-500"
-            } break-all
+            } break-words
             `}
           >
             {msg}

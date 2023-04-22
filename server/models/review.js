@@ -20,23 +20,26 @@ const reviewSchema=new mongoose.Schema({
     toObject:{virtuals:true}
 })
 
+// setting up an unique index 
+reviewSchema.index({patient:1,doctor:1},{unique:true});
+
 // Query Middlewares
 
 // Middleware to populate reviews
-reviewSchema.pre(/^find/,function(next){
-    // this.populate({
-    //     path:'patient',
-    //     select:'username'
-    // }).populate({
-    //     path:'doctor',
-    //     select:'username'
-    // });
-    this.populate({
-        path:'patient',
-        select:'username'
-    });
-    next();
-})
+// reviewSchema.pre(/^find/,function(next){
+//     // this.populate({
+//     //     path:'patient',
+//     //     select:'username'
+//     // }).populate({
+//     //     path:'doctor',
+//     //     select:'username'
+//     // });
+//     this.populate({
+//         path:'patient',
+//         select:'username'
+//     });
+//     next();
+// })
 
 
 const Review=mongoose.model('Review',reviewSchema)

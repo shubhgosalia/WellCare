@@ -1,7 +1,70 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navbar from "components/Utils/Navbar";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "context/UserContext";
 
 const ContactUs = () => {
+  const [data, setData] = useState({
+    subject: "",
+    desc: "",
+  });
+  const navigate = useNavigate();
+  const [load, setLoad] = useState(false);
+  const { isLoggedIn } = useContext(UserContext);
+
+  //if the user is already logged in don't allow it to register
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, []);
+
+  const changeVal = (e) => {
+    setData((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
+  const onSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      if (data.subject.trim() === "" || data.desc.trim() === "") {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Incomplete fields...",
+        });
+      }
+      setLoad(true);
+      let resp = await axios.post(
+        "http://localhost:4000/common/query",
+        {
+          subject: data.subject,
+          desc: data.desc,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      setLoad(false);
+      Swal.fire({
+        icon: "success",
+        title: resp.data.message,
+      });
+      navigate("/home");
+    } catch (err) {
+      console.log("errrorr : ", err);
+      setLoad(false);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong :(",
+      });
+    }
+  };
+
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* Navbar */}
@@ -87,111 +150,53 @@ const ContactUs = () => {
                   Contact our team
                 </div>
 
-                <form className="text-dark-100">
-                  <div className="form-group mb-6">
-                    <input
-                      type="email"
-                      className="form-control block w-full px-3 py-1.5 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:bg-white focus:border-blue-600 focus:outline-none"
-                      id="exampleInput7"
-                      placeholder="Email address"
-                    />
-                  </div>
-
+                <form className="text-dark-100" onSubmit={onSubmit}>
                   <div className="form group mb-6">
                     <select
                       aria-label="Default select example required"
-                      name="topic"
-                      className="form-control block w-full px-3 py-1.5 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out text-gray-400 m-0  focus:bg-white focus:border-blue-600 focus:outline-none"
+                      name="subject"
+                      value={data.subject}
+                      onChange={changeVal}
+                      className="form-control block w-full px-3 py-1.5 text-base font-normal bg-white bg-clip-padding border border-solid border-gray-300 rounded-lg transition ease-in-out text-gray-400 m-0  focus:bg-white focus:border-blue-600 focus:outline-none"
                     >
-                      <option>Topic</option>
-
-                      <option value="tg">Technical Glitch</option>
-
-                      <option value="Gs">Give Suggestion</option>
+                      <option value="" defaultValue={true}>
+                        Select
+                      </option>
+                      <option value="Technical Glitch">Technical Glitch</option>
+                      <option value="Give Suggestion">Give Suggestion</option>
+                      <option value="Query/Complaint">Query/Complaint</option>
                       <option value="other">Other</option>
                     </select>
                   </div>
 
                   <div className="form-group mb-6">
-                    <input
-                      type="text"
-                      className="form-control block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-               focus:bg-white focus:border-blue-600 focus:outline-none"
-                      id="exampleInput8"
-                      placeholder="Subject"
-                    />
-                  </div>
-
-                  <div className="form-group mb-6">
                     <textarea
                       className="
-              form-control
-              block
-              w-full
-              px-3
-              py-1.5
-              text-base
-              font-normal
-              bg-white bg-clip-padding
-              border border-solid border-gray-300
-              rounded
-              transition
-              ease-in-out
-              m-0
-               focus:bg-white focus:border-blue-600 focus:outline-none max-h-44
+                      form-control
+                      block
+                      w-full
+                      px-3
+                      py-1.5
+                      text-base
+                      font-normal
+                      bg-white bg-clip-padding
+                      border border-solid border-gray-300
+                      rounded-lg
+                      transition
+                      ease-in-out
+                      m-0
+                      focus:bg-white focus:border-blue-600 focus:outline-none max-h-44
             "
                       id="exampleFormControlTextarea13"
                       rows="3"
-                      placeholder="Message"
+                      placeholder="Description"
+                      name="desc"
+                      value={data.desc}
+                      onChange={changeVal}
                     ></textarea>
                   </div>
-                  <div className="form-group form-check mb-6">
-                    <input
-                      id="exampleCheck87"
-                      type="checkbox"
-                      value=""
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded dark:focus:ring-blue-600 dark:bg-gray-700 "
-                    />
-
-                    <label
-                      className="form-check-label ml-2 inline-block text-white"
-                      for="exampleCheck87"
-                    >
-                      You confirm that you have read and agreed to our T.A.C
-                    </label>
-                  </div>
-                  <button
-                    type="submit"
-                    className="
-            w-full
-            px-6
-            py-2.5
-            bg-blue-600
-            font-medium
-            text-xs
-            leading-tight
-            uppercase
-            rounded
-            shadow-md
-            hover:bg-blue-700 hover:shadow-lg
-            focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0
-            active:bg-blue-800 active:shadow-lg
-            transition
-            duration-150
-            ease-in-out"
-                  >
-                    Send
+                  <button type="submit" className="button w-full">
+                    {load ? "Loading..." : "Send"}
                   </button>
                 </form>
               </div>

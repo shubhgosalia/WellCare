@@ -114,13 +114,6 @@ const doctorSchema = new mongoose.Schema({
 
 doctorSchema.index({category:1});
 
-// Virtual populate
-// To populate all reviews of the doctor
-doctorSchema.virtual('review', {
-    ref: 'Review',
-    foreignField: 'doctor',
-    localField: '_id'
-})
 const Doctor = mongoose.model("Doctor", doctorSchema);
 
 module.exports = Doctor;

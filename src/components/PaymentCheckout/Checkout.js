@@ -2,10 +2,6 @@ import React from "react";
 import Navbar from "components/Utils/Navbar";
 import { useLocation } from "react-router-dom";
 import Head from "components/PaymentCheckout/Head";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCalendarDays } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-// import { faClock } from "../../../node_modules/@fortawesome/free-solid-svg-icons/index";
-
 const Checkout = () => {
   const location = useLocation();
 
@@ -30,14 +26,9 @@ const Checkout = () => {
               <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-6 flex flex-col justify-between leading-normal">
                 <div className="mb-4">
                   <div className="mb-2 text-gray-700 text-xl">
-                    {/* <FontAwesomeIcon icon={faCalendarDays} /> Date :{" "} */}
                     {location.state.findate}
                   </div>
                   <div className="text-gray-700 text-xl mb-2 mt-5">
-                    {/* <FontAwesomeIcon
-                      icon={faClock}
-                      style={{ marginRight: 3 }}
-                    /> */}
                     Time : {location.state.time}
                   </div>
                   <div className="border-t-2 mt-5"></div>

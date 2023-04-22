@@ -1,5 +1,5 @@
 const Schedule = require("../models/Schedule");
-
+const Query = require('../models/Query');
 
 //getting the profile of the user - doctor/patient
 exports.GetUser = async (req, res, next) => {
@@ -37,7 +37,7 @@ exports.GetUser = async (req, res, next) => {
                 profile_pic: user.profile_pic,
                 id: user.id,
                 type: user.type,
-                appointments
+                appointments,
             }
         }
         else {
@@ -102,6 +102,29 @@ exports.GetContacts = async (req, res, next) => {
         });
     } catch (err) {
         console.log("in the getting contacts route : ", err);
+        return next(err);
+    }
+}
+
+exports.PostQuery = async(req,res,next)=> {
+    try{
+       let subject = String(req.body.subject);
+       let desc = String(req.body.desc);
+       await Query.create({
+        subject,
+        desc,
+        name: req.user.name,
+        profile_pic_link: req.user.profile_pic.image_url,
+        tag: req.user.type
+       })
+
+       res.status(201).json({
+        success:true,
+        message:'We have recieved your query.Our team will look into it'
+       })
+
+    }catch(err){
+        console.log("err in posting query: ",err);
         return next(err);
     }
 }
