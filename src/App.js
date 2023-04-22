@@ -17,6 +17,7 @@ import Home from "components/Home/Home";
 import ContactUs from "../src/pages/ReachUs";
 import MyAccount from "../src/pages/MyAccount";
 import Profile from "../src/pages/ExpertProfile";
+import AdminLogin from "../src/pages/AdminLogin";
 
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 // import DoctorSearch from "components/DoctorSearch/Home";
@@ -119,6 +120,9 @@ function App() {
 
             {/* Contact Us and faq page */}
             <Route exact path="/contactUs" element={<ContactUs />} />
+
+            {/* Admin Login  */}
+            <Route exact path="/adminLogin" element={<AdminLogin />} />
 
             {/* Admin Dashboard  */}
             <Route exact path="/adminDashboard" element={<Admin />} />
