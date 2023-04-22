@@ -5,7 +5,7 @@ import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
 import { Link } from "react-router-dom";
 
-const Result = ({element}) => {
+const Result = ({ element }) => {
   // const [date, SetDate] = useState(new Date());
   // const navigate = useNavigate();
 
@@ -23,15 +23,43 @@ const Result = ({element}) => {
           </div>
           <div>
             {/* Average Rating */}
-            <div className="text-3xl text-gray-200 font-bold">{element.rating}/5</div>
+            <div className="text-3xl text-gray-200 font-bold">
+              {element.rating}/5
+            </div>
 
             {/* Stars */}
             <div className="flex">
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldHalfStarIcon color="#ffdf00" size="27" />
+              {element.rating >= 1 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 2 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 3 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 4 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating === 5 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+
+              {element.rating % 1 !== 0 ? (
+                <BoldHalfStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
             </div>
 
             {/* static */}
@@ -47,11 +75,13 @@ const Result = ({element}) => {
           <div className="font-black text-2xl">{element.name}</div>
 
           {/* Speciality */}
-          <div className="text-lg font-semibold text-dark-900">Category</div>
+          <div className="text-lg font-semibold text-dark-900">
+            {element.category}
+          </div>
 
           {/* Experience */}
           <div className="text-lg text-dark-900">
-          {element.years_Of_Experience} years experience overall
+            {element.years_Of_Experience} years experience overall
           </div>
         </div>
 
@@ -81,9 +111,8 @@ const Result = ({element}) => {
           </a>
         </div>
 
-        {/* book appointment*/}
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
-          <Link>View More</Link>
+          <Link to={`/doctorProfile/${element.id}`}> View More</Link>
         </button>
       </div>
     </>

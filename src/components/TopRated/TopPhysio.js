@@ -4,7 +4,7 @@ import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
 import { Link } from "react-router-dom";
 
-const TopPhysio = ({info}) => {
+const TopPhysio = ({ info }) => {
   const {
     name,
     rating,
@@ -14,7 +14,7 @@ const TopPhysio = ({info}) => {
     years_Of_Experience,
     specialization,
     locality,
-    _id
+    _id,
   } = info;
 
   return (
@@ -35,11 +35,37 @@ const TopPhysio = ({info}) => {
 
             {/* Stars */}
             <div className="flex">
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldHalfStarIcon color="#ffdf00" size="27" />
+              {rating >= 1 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating >= 2 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating >= 3 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating >= 4 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating === 5 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+
+              {rating % 1 !== 0 ? (
+                <BoldHalfStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
             </div>
 
             {/* static */}
@@ -65,12 +91,12 @@ const TopPhysio = ({info}) => {
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-          <Link to={address} className="font-semibold">{locality}</Link>
-  
+          <Link to={address} className="font-semibold">
+            {locality}
+          </Link>
+
           {/* Per session fee */}
-          <div className="font-semibold">
-            ₹{fees} per session
-          </div>
+          <div className="font-semibold">₹{fees} per session</div>
         </div>
 
         {/* % Upvoted */}

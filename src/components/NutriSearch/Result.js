@@ -5,7 +5,7 @@ import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
 import { Link } from "react-router-dom";
 
-const Result = ({element}) => {
+const Result = ({ element }) => {
   // const [date, SetDate] = useState(new Date());
   // const navigate = useNavigate();
 
@@ -29,11 +29,37 @@ const Result = ({element}) => {
 
             {/* Stars */}
             <div className="flex">
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldHalfStarIcon color="#ffdf00" size="27" />
+              {element.rating >= 1 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 2 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 3 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 4 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating === 5 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+
+              {element.rating % 1 !== 0 ? (
+                <BoldHalfStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
             </div>
 
             {/* static */}

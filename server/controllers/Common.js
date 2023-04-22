@@ -120,7 +120,7 @@ exports.PostQuery = async(req,res,next)=> {
 
        res.status(201).json({
         success:true,
-        message:'We have recieved your query.Our team will look into it'
+        message:'We have recieved your query. Our team will look into it'
        })
 
     }catch(err){

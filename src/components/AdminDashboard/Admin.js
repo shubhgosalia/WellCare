@@ -4,9 +4,9 @@ import StatHeading from "components/AdminDashboard/StatHeading";
 import BoldGymIcon from "components/Icons/Bold/gym";
 import BoldNutritionistIcon from "components/Icons/Bold/nutritionist";
 import BoldPhysioIcon from "components/Icons/Bold/physio";
-import BoldCalendarCheck from "components/Icons/Bold/calendarCheck"
-import BoldSettingsIcon from "components/Icons/Bold/settings"
-import BoldUserIcon from "components/Icons/Bold/myAccount"
+import BoldCalendarCheck from "components/Icons/Bold/calendarCheck";
+import BoldSettingsIcon from "components/Icons/Bold/settings";
+import BoldUserIcon from "components/Icons/Bold/myAccount";
 
 const Admin = () => {
   return (
@@ -31,7 +31,7 @@ const Admin = () => {
             >
               <div className="flex justify-center">
                 <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
-                  <BoldPhysioIcon size="30" color="#0d1117"  />
+                  <BoldPhysioIcon size="30" color="#0d1117" />
                 </div>
               </div>
               <div className="p-4">
@@ -55,7 +55,7 @@ const Admin = () => {
             >
               <div className="flex justify-center">
                 <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
-                  <BoldNutritionistIcon size="30" color="#0d1117"  />
+                  <BoldNutritionistIcon size="30" color="#0d1117" />
                 </div>
               </div>
               <div className="p-4">
@@ -79,7 +79,7 @@ const Admin = () => {
             >
               <div className="flex justify-center">
                 <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
-                  <BoldGymIcon size="30" color="#0d1117"  />
+                  <BoldGymIcon size="30" color="#0d1117" />
                 </div>
               </div>
               <div className="p-4">
@@ -102,7 +102,7 @@ const Admin = () => {
             >
               <div className="flex justify-center">
                 <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
-                <BoldUserIcon size="30" color="#0d1117" />
+                  <BoldUserIcon size="30" color="#0d1117" />
                 </div>
               </div>
               <div className="p-4">
@@ -126,7 +126,7 @@ const Admin = () => {
             >
               <div className="flex justify-center">
                 <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
-                <BoldCalendarCheck size="30" color="#0d1117" />
+                  <BoldCalendarCheck size="30" color="#0d1117" />
                 </div>
               </div>
               <div className="p-4">
@@ -150,7 +150,7 @@ const Admin = () => {
             >
               <div className="flex justify-center">
                 <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
-                <BoldSettingsIcon size="30" color="#0d1117" />
+                  <BoldSettingsIcon size="30" color="#0d1117" />
                 </div>
               </div>
               <div className="p-4">
