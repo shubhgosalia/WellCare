@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+
 const {ServerError} = require("./Errors");
 
 //sending mail to the client

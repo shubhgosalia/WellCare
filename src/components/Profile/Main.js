@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
 // bold icons
 import BoldVerifiedIcon from "components/Icons/Bold/verified";
-import BoldMailIcon from "components/Icons/Bold/mail";
 import BoldLocationIcon from "components/Icons/Bold/location";
 import BoldExpierenceIcon from "components/Icons/Bold/expierence";
 import BoldMoneyIcon from "components/Icons/Bold/money";
@@ -13,14 +12,14 @@ import LightUserNameIcon from "components/Icons/Light/userName";
 
 const Main = (props) => {
   const navigate = useNavigate();
-  const curr_date = new Date();
-  const [date, SetDate] = useState(curr_date);
+  // const curr_date = new Date();
+  const [date, SetDate] = useState(new Date());
   const [isOnline, setOnline] = useState(false);
   // YearsOf experience email address
   const handleBookAppointment = () => {
     navigate("/slotBook", {
       state: {
-        date: `${date}`,
+        date: new Date(date).toISOString().slice(0, 10),
         doc_id: props.doc_id,
         data: props.data,
         status: isOnline,
@@ -34,8 +33,12 @@ const Main = (props) => {
     setOnline(value);
   };
 
-  const maxdate = new Date(curr_date);
+  const maxdate = new Date();
   maxdate.setDate(maxdate.getDate() + 1);
+
+  useEffect(()=>{
+    console.log({'date':date})
+  },[date])
 
   return (
     <div className="flex text-white p-8">

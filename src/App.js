@@ -39,6 +39,9 @@ import UserQuery from "components/AdminDashboard/GetQuery";
 import Tac from "components/TAC/Tac";
 import ScheduledAppointments from "../src/pages/ExpertScheduledAppointments";
 
+import VideoCall from "pages/VideoCall";
+import Rating from "pages/Rating";  
+
 function App() {
   return (
     <>
@@ -143,6 +146,13 @@ function App() {
               path="/scheduledAppointments"
               element={<ScheduledAppointments />}
             />
+
+            {/* video call  */}
+            <Route exact path="/video/:roomId" element={<VideoCall />} />
+
+            {/* rating  */}
+            <Route exact path="/ratetheroom/:roomId" element={<Rating />} />
+
           </Routes>
         </UserProvider>
       </Router>

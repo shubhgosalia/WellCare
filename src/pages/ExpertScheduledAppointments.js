@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "components/Utils/Navbar";
+import Main from "components/ScheduledAppointments/Main";
 
 const ExpertScheduledAppointments = () => {
   return (
@@ -11,7 +12,7 @@ const ExpertScheduledAppointments = () => {
 
       {/*  */}
       <div className="w-[85%] bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100">
-
+        <Main />
       </div>
     </div>
   );

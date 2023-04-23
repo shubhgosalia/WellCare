@@ -11,7 +11,8 @@ const Checkout = () => {
   const location = useLocation();
   console.log(location.state);
   const { profile } = useContext(UserContext);
-
+  const doc_id=location.state.doc_id
+  const pat_id=profile.id
   console.log("Location in checkout ", location.state);
   const paymentHandler = async () => {
     try {
@@ -33,7 +34,7 @@ const Checkout = () => {
       console.log("resp  : ", res.data);
       setLoad(false);
       if (res.data.success) {
-        payment(location.state.doc_id);
+        payment(doc_id,pat_id,res.data.book_id);
       } else {
         Swal.fire({
           icon: "error",
@@ -52,12 +53,14 @@ const Checkout = () => {
     }
   };
 
-  const payment = async (doc_id,book_id) => {
+  const payment = async (doc_id,patient_id,book_id,) => {
     try {
       setLoad(true);
       let res = await axios.post(
         `http://localhost:4000/patient/checkoutSession/${doc_id}`,{
-          book_id:book_id
+          book_id:book_id,
+          doctor_id:doc_id,
+          patient_id:pat_id
         },
         {
           withCredentials: true,

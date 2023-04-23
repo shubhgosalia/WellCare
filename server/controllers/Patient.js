@@ -74,13 +74,16 @@ exports.Register = async (req, res, next) => {
 function calculateDiff(qDate) {
   let date = new Date(qDate);
   let sysDate = new Date().setHours(0, 0, 0);
+  console.log("date : ",date);
+  console.log("sys date : ",sysDate);
+
   // console.log("sysdate1 : ", date - sysDate);
   let diffDays = Math.floor((date - sysDate) / (1000 * 60 * 60 * 24));
   console.log("diff: ", diffDays);
   //checking for invalid dates
-  if (diffDays !== diffDays) {
-    throw new ClientError("Invalid Date");
-  }
+  // if (diffDays !== diffDays) {
+  //   throw new ClientError("Invalid Date");
+  // }
   //if the patient selects past date
   if (diffDays < 0) {
     throw new ClientError("Invalid Date");
@@ -197,6 +200,8 @@ exports.BookAppointment = async (req, res, next) => {
 exports.getCheckoutSession = async (req, res, next) => {
   console.log("Entering checkout.................")
   const book_id = req.body.book_id
+  const doc_id=req.body.doctor_id
+  const pat_id=req.body.patient_id
   try {
     // Get the doctor which patient is trying to book
     const doctor= await Doctor.findById(req.params.doc_id);
@@ -211,7 +216,7 @@ exports.getCheckoutSession = async (req, res, next) => {
 
       // Add a success page
       // HOME PAGE
-      success_url: `http://localhost:3000/paymentSuccess`,
+      success_url: `http://localhost:3000/paymentSuccess?doctor_id=${doc_id}&patient_id=${pat_id}&book_id=${book_id}`,
 
       // NEED TO CHECK 
       // CANCEL PAGE

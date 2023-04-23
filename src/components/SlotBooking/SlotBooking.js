@@ -15,12 +15,13 @@ const SlotBooking = (props) => {
   const [load, setLoad] = useState(false);
   const [data, setData] = useState([]);
   const doc_id = location.state.doc_id;
+  console.log("location : ",location.state);
   const navigate = useNavigate();
-  const clickHandler = (e) => {
+  const clickHandler = () => {
     navigate("/checkoutPayment", {
       state: {
         time: `${time}`,
-        date: `${new Date(location.state.date).toISOString().slice(0, 10)}`,
+        date: location.state.date,
         doc_id: doc_id,
         data: location.state.data,
         status: location.state.status,
