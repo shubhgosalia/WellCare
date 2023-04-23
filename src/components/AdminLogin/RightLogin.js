@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/home");
+      navigate("/adminDashboard");
     }
   }, []);
 
@@ -29,7 +29,6 @@ const Login = () => {
       let postData = {
         username: data.username,
         password: data.password,
-        type: data.type,
       };
 
       setLoad(true);

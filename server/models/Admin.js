@@ -10,6 +10,10 @@ const adminSchema=new mongoose.Schema({
         required: [true, "User should have a username"],
         unique: true,
     },
+    name: {
+        type: String,
+        required: [true, "User should have a name"]
+    },
     password: {
         type: String,
         required: [true, "User should have a password"],

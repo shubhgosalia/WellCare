@@ -38,8 +38,10 @@ import Admin from "components/AdminDashboard/Admin";
 import ExpertVerify from "components/AdminDashboard/ExpertVerify";
 import UserQuery from "components/AdminDashboard/GetQuery";
 import Tac from "components/TAC/Tac";
+import ProtectedRoute from "components/ProtectRoute/ProtectRoute";
 
 function App() {
+  
   return (
     <>
       <Router>
@@ -126,7 +128,11 @@ function App() {
             <Route exact path="/adminLogin" element={<AdminLogin />} />
 
             {/* Admin Dashboard  */}
-            <Route exact path="/adminDashboard" element={<Admin />} />
+            <Route exact path="/adminDashboard" element={
+              <ProtectedRoute adminRoute={true}>
+                <Admin />
+              </ProtectedRoute>
+            } />
 
             {/* Admin Expert Verification */}
             <Route exact path="/expertVerify" element={<ExpertVerify />} />

@@ -227,9 +227,13 @@ exports.getCheckoutSession = async (req, res, next) => {
           },
           quantity:1,
         },
-      ],  
+      ],
+      metadata:{
+        startTime:"Today"
+      }  
       
     });
+    session.success_url=`http://localhost:3000?${session.id}`
     res.status(200).json({
       success: true,
       session
@@ -237,6 +241,15 @@ exports.getCheckoutSession = async (req, res, next) => {
   } catch (err) {
     console.log("err in payment checkout session : ", err);
     return next(err);
+  }
+}
+
+exports.paymentStatus=async()=>{
+  try{
+    const session = await stripe.checkout.sessions.retrive(req.body.params.Id)
+  }
+  catch(err){
+
   }
 }
 
