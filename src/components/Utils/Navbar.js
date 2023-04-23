@@ -117,7 +117,7 @@ const Navbar = () => {
           )}
 
           {/* scheduled appointment */}
-          {profile.type === "Doctor" ? (
+          {/* {profile.type === "Doctor" ? (
             <Link to="/scheduledAppointments">
               {location.pathname === "/scheduledAppointments" ? (
                 <div className="active-route">
@@ -137,7 +137,7 @@ const Navbar = () => {
             </Link>
           ) : (
             <></>
-          )}
+          )} */}
 
           {/* Chat */}
           <Link to="/chat">

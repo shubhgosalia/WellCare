@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 
@@ -14,7 +14,7 @@ const Main = (props) => {
   const navigate = useNavigate();
   // const curr_date = new Date();
   const [date, SetDate] = useState(new Date());
-  const [isOnline, setOnline] = useState(false);
+  const [isOnline, setOnline] = useState("true");
   // YearsOf experience email address
   const handleBookAppointment = () => {
     navigate("/slotBook", {
@@ -22,7 +22,7 @@ const Main = (props) => {
         date: new Date(date).toISOString().slice(0, 10),
         doc_id: props.doc_id,
         data: props.data,
-        status: isOnline,
+        status: isOnline === "true" ? true : false,
       },
     });
   };
@@ -36,9 +36,9 @@ const Main = (props) => {
   const maxdate = new Date();
   maxdate.setDate(maxdate.getDate() + 1);
 
-  useEffect(()=>{
-    console.log({'date':date})
-  },[date])
+  useEffect(() => {
+    console.log({ date: date });
+  }, [date]);
 
   return (
     <div className="flex text-white p-8">
@@ -131,10 +131,10 @@ const Main = (props) => {
             <input
               id="virtual-radio1"
               type="radio"
-              value={true}
+              value={isOnline}
               name="inline-radio-group"
               className="w-4 h-4"
-              checked={isOnline ? true : false}
+              checked={isOnline === "true" ? true : false}
               onChange={setStatus}
             />
             <label
@@ -150,10 +150,10 @@ const Main = (props) => {
             <input
               id="virtual-radio2"
               type="radio"
-              value={false}
+              value={isOnline}
               name="inline-radio-group"
               className="w-4 h-4"
-              checked={!isOnline ? true : false}
+              checked={!isOnline !== "true" ? true : false}
               onChange={setStatus}
             />
             <label
