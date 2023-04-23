@@ -1,14 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Navbar from "components/Utils/Navbar";
 import Title from "components/SlotBooking/Title";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
-const SlotBooking = () => {
-  const location = useLocation();
+const SlotBooking = (props) => {
+  const {location} = useLocation();
   const [time, SetTime] = useState();
+  console.log(location.state.date);
   const [findate, SetFindate] = useState(location.state.date);
+  const doc_id = location.state.doc_id;
+  // const doc_data = location.state.data;
+  // console.log(location.state);
+  // console.log(doc_data);
+  console.log("doc_id", doc_id);
+  const [load, setLoad] = useState(false);
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
   const clickHandler = (e) => {
     navigate("/checkoutPayment", {
@@ -18,6 +28,29 @@ const SlotBooking = () => {
       },
     });
   };
+
+  // 2023-04-23
+
+  const getSlots = async () => {
+    try {
+      setLoad(true);
+      // let res = await axios.get(`http://localhost:4000/getAppointments/${doc_id}`);
+      // console.log("res : ", res);
+      // setData(res.data.data);
+      setLoad(false);
+    } catch (err) {
+      console.log("err : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong!!",
+      });
+    }
+  };
+
+  useEffect(() => {
+    getSlots();
+  }, []);
 
   return (
     <div className="w-full flex flex-row font-body-primary">
@@ -54,178 +87,27 @@ const SlotBooking = () => {
               Lung Physiotherapist
             </div>
           </div>
-          <div
-            className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto"
-            style={{ marginTop: -280, marginLeft: 400 }}
-          >
-            <div className="relative flex flex-col min-w-0 break-words bg-dark w-full mb-6 shadow-lg rounded ">
+          {load ? (
+            <p>Loading....</p>
+          ) : (
+            <div
+              className="w-full xl:w-8/12 mb-12 xl:mb-0 px-4 mx-auto"
+              style={{ marginTop: -280, marginLeft: 400 }}
+            >
+              <div className="relative flex flex-col min-w-0 break-words bg-dark w-full mb-6 shadow-lg rounded "></div>
               <div className="block w-full overflow-x-auto">
-                <table className="items-right bg-transparent w-full border-collapse ">
-                  <thead>
-                    <tr>
-                      <th className="px-6 bg-blueGray-50 text-white align-right border border-solid border-blueGray-100 py-3 text-2xl  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Morning
-                      </th>
-                      <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-2xl  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Afternoon
-                      </th>
-                      <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-2xl  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Evening
-                      </th>
-                      <th className="px-6 bg-blueGray-50 text-white align-middle border border-solid border-blueGray-100 py-3 text-2xl  border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
-                        Night
-                      </th>
-                    </tr>
-                  </thead>
-                  <br></br>
-                  <tbody>
-                    <tr>
-                      <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className=" bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          10.00 AM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
-                          12.30 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          4.00 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          8.00 PM
-                        </button>
-                      </td>
-                    </tr>
-                    <br></br>
-
-                    <tr>
-                      <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
-                          10.30 AM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 pl-5 pr-6 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          1.30 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          5.00 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          8.30 PM
-                        </button>
-                      </td>
-                    </tr>
-                    <br></br>
-
-                    <tr>
-                      <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          11.00 AM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 pl-5 pr-6 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          2.30 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
-                          6.00 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          9.00 PM
-                        </button>
-                      </td>
-                    </tr>
-                    <br></br>
-
-                    <tr>
-                      <td className="border-t-0 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left text-black-700 ">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          11.30 AM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4 ">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 pl-5 pr-6 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          3.30 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button
-                          onClick={clickHandler}
-                          onClickCapture={(e) => SetTime(e.target.innerHTML)}
-                          className="bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
-                        >
-                          7.00 PM
-                        </button>
-                      </td>
-                      <td className="border-t-0 px-6 align-right border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                        <button className="bg-transparent text-white text-xl font-semibold py-3 px-4 border border-blue-500  rounded opacity-50 cursor-not-allowed">
-                          9.30 PM
-                        </button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <button
+                  onClick={clickHandler}
+                  onClickCapture={(e) => SetTime(e.target.innerHTML)}
+                  className=" bg-transparent hover:bg-primary-blue text-white text-xl font-semibold hover:text-white py-3 px-4 border border-blue-500 hover:border-transparent rounded"
+                >
+                  10.00 AM
+                </button>
               </div>
             </div>
-          </div>
+          )}
+
+          {/*  */}
         </div>
       </div>
     </div>

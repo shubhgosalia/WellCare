@@ -140,7 +140,7 @@ const ExpertProfile = () => {
 
         <div className="flex h-[60%]">
           <div className="w-[30%]">
-            <Main data={data.doctor} />
+            <Main data={data.doctor} doc_id={id} />
           </div>
 
           {/* Reviews */}

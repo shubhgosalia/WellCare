@@ -84,7 +84,7 @@ const Result = ({ element }) => {
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-        <Link
+          <Link
             to={element.address}
             className="flex space-x-2 font-semibold bg-dark-100 hover:bg-dark-200 ease-in-out delay-100 shadow-lg cursor-pointer transition p-1 rounded-lg w-1/2"
             target="_blank"
@@ -95,7 +95,6 @@ const Result = ({ element }) => {
 
           {/* Per session fee */}
           <div className="font-semibold mt-2">₹{element.fees} per session</div>
-
         </div>
 
         {/* % Upvoted */}
@@ -113,7 +112,6 @@ const Result = ({ element }) => {
           >
             <i>120 Patient Reviews</i>
           </a>
-
         </div>
 
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">

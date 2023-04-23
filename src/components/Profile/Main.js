@@ -1,5 +1,7 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import DatePicker from "react-datepicker";
+
 // bold icons
 import BoldVerifiedIcon from "components/Icons/Bold/verified";
 import BoldMailIcon from "components/Icons/Bold/mail";
@@ -11,16 +13,27 @@ import LightUserNameIcon from "components/Icons/Light/userName";
 
 const Main = (props) => {
   const navigate = useNavigate();
-  
+
   const [date, SetDate] = useState("TODAY");
   // YearsOf experience email address
   const handleBookAppointment = () => {
-    navigate("/slotBook",{
+    navigate("/slotBook", {
       state: {
+        // data: {
+        //   date: `${date}`,
+        //   // doc_id: props.doc_id,
+        //   data1: "krish",
+        // },
+        // data1: "krish",
         date: `${date}`,
       },
     });
   };
+
+  const curr_date = new Date();
+  const maxdate = new Date(curr_date);
+  maxdate.setDate(maxdate.getDate() + 2);
+
   return (
     <div className="flex text-white p-8">
       <div className="w-[80%] mx-auto flex flex-col space-y-6">
@@ -92,14 +105,20 @@ const Main = (props) => {
           </div>
         </div>
 
-        <input
-          type="date"
-          style={{ height: 40, width: 200, padding: 10 }}
-          min={new Date().toISOString().split("T")[0]}
-          defaultValue={new Date().toISOString().substring(0, 10)}
-          onChange={(e) => SetDate(e.target.value)}
-          required
-        />
+        {/* Datepicker for appointment date selection
+        <div>
+          <div className="mb-1">Select Appointment/Session Date :</div>
+          <DatePicker
+            className="p-2 rounded-md text-black"
+            minDate={new Date(new Date().toISOString().split("T")[0])}
+            maxDate={new Date(maxdate)}
+            onChange={(app_date) => SetDate(app_date)}
+            selected={date}
+            placeholderText="select appointment date"
+            dateFormat="dd/MM/yyyy"
+          />
+        </div> */}
+
         {/* button */}
         <div className="button" onClick={handleBookAppointment}>
           Book Appointment

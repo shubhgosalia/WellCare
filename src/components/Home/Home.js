@@ -6,17 +6,17 @@ import Navbar from "components/Utils/Navbar";
 import Home1 from "components/Home/Center";
 import HomeRightSidebar from "components/Home/RightSidebar";
 
-// importing context 
+// importing context
 import { UserContext } from "context/UserContext";
 import { useNavigate } from "react-router-dom";
 
-const Home = () => {  
+const Home = () => {
   const navigate = useNavigate();
   // using the context for getting the current logged in user
   const { isLoggedIn, profile } = useContext(UserContext);
   useEffect(() => {
     if (!isLoggedIn) {
-      navigate('/login');
+      navigate("/login");
     }
   }, []);
 
@@ -35,7 +35,7 @@ const Home = () => {
 
       {/* 3b */}
       <div className="w-[20%] h-screen">
-        <HomeRightSidebar appointments={profile.appointments} type={profile.type} />
+        {/* <HomeRightSidebar appointments={profile.appointments} type={profile.type} /> */}
       </div>
     </div>
   );

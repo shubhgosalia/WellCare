@@ -115,7 +115,7 @@ const Result = ({ element }) => {
           </a>
         </div>
 
-        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
+        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2 px-10">
           <Link to={`/doctorProfile/${element.id}`}> View More</Link>
         </button>
       </div>

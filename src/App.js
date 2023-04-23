@@ -77,6 +77,9 @@ function App() {
             {/* Payment Success Page */}
             <Route exact path="/paymentSuccess" element={<Success />} />
 
+            {/* Pending Payment */}
+            <Route exact path="/pendingPayment" element={<Success />} />
+
             {/*Doctor registration page*/}
             <Route
               exact
