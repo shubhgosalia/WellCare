@@ -113,14 +113,14 @@ const AdminNav = () => {
                 <div className="my-auto">
                   <BoldQueryIcon color="#ffffff" size="27" />
                 </div>
-                <div className="text-2xl">User Query</div>
+                <div className="text-2xl">Query</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightQueryIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-2xl text-dark-600">User Query</div>
+                <div className="text-2xl text-dark-600">Query</div>
               </div>
             )}
           </Link>

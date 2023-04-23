@@ -37,6 +37,7 @@ import Admin from "components/AdminDashboard/Admin";
 import ExpertVerify from "components/AdminDashboard/ExpertVerify";
 import UserQuery from "components/AdminDashboard/GetQuery";
 import Tac from "components/TAC/Tac";
+import ScheduledAppointments from "../src/pages/ExpertScheduledAppointments";
 
 function App() {
   return (
@@ -135,6 +136,13 @@ function App() {
 
             {/* Terms and Condition Page */}
             <Route exact path="/tac" element={<Tac />} />
+
+            {/* Doctor side schedule appointment page. */}
+            <Route
+              exact
+              path="/scheduledAppointments"
+              element={<ScheduledAppointments />}
+            />
           </Routes>
         </UserProvider>
       </Router>

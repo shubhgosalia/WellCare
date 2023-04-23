@@ -17,6 +17,7 @@ import BoldStarIcon from "components/Icons/Bold/fullStar";
 import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldContactUsIcon from "components/Icons/Bold/contactUs";
+import BoldCalendarIcon from "components/Icons/Bold/calendarCheck"
 
 // importing modules
 import { UserContext } from "context/UserContext";
@@ -92,24 +93,51 @@ const Navbar = () => {
             )}
           </Link>
 
-          {/* Search */}
-          <Link to="/topRated">
-            {location.pathname === "/topRated" ? (
-              <div className="active-route">
-                <div className="my-auto">
-                  <BoldStarIcon color="#ffffff" size="27" />
+          {/* Top Rated */}
+          {profile.type === "Patient" ? (
+            <Link to="/topRated">
+              {location.pathname === "/topRated" ? (
+                <div className="active-route">
+                  <div className="my-auto">
+                    <BoldStarIcon color="#ffffff" size="27" />
+                  </div>
+                  <div>Top Rated</div>
                 </div>
-                <div>Top Rated</div>
-              </div>
-            ) : (
-              <div className="inactive-route">
-                <div className="my-auto">
-                  <LightStarIcon color="#94A3B8" size="27" />
+              ) : (
+                <div className="inactive-route">
+                  <div className="my-auto">
+                    <LightStarIcon color="#94A3B8" size="27" />
+                  </div>
+                  <div className=" text-dark-600">Top Rated</div>
                 </div>
-                <div className=" text-dark-600">Top Rated</div>
-              </div>
-            )}
-          </Link>
+              )}
+            </Link>
+          ) : (
+            <></>
+          )}
+
+          {/* scheduled appointment */}
+          {profile.type === "Doctor" ? (
+            <Link to="/scheduledAppointments">
+              {location.pathname === "/scheduledAppointments" ? (
+                <div className="active-route">
+                  <div className="my-auto">
+                    <BoldCalendarIcon color="#ffffff" size="27" />
+                  </div>
+                  <div>Appointments</div>
+                </div>
+              ) : (
+                <div className="inactive-route">
+                  <div className="my-auto">
+                    <BoldCalendarIcon color="#94A3B8" size="27" />
+                  </div>
+                  <div className=" text-dark-600">Appointments</div>
+                </div>
+              )}
+            </Link>
+          ) : (
+            <></>
+          )}
 
           {/* Chat */}
           <Link to="/chat">

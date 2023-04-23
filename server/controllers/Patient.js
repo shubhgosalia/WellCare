@@ -141,7 +141,7 @@ exports.BookAppointment = async (req, res, next) => {
     if (!newObj.isBookedByDoc)
       doctor = await Doctor.findOne({ id: data.doctor_id });
     // add the appointment
-    await Schedule.create(newObj);
+    let newBook = await Schedule.create(newObj);
 
     //send mails to the patient as well as doctor
     //if the doctor himself/herself has booked his/her slot then do not send any mails
@@ -149,40 +149,42 @@ exports.BookAppointment = async (req, res, next) => {
     if (newObj.isBookedByDoc) {
       return res.status(201).json({
         success: true,
-        msg: "Your slot has been reserved successfully!"
+        msg: "Your slot has been reserved successfully!",
+        book_id: newBook.id
       });
     }
 
-    let mail1 = {
-      to: req.user.email,
-      subject: "Appointment Booked",
-      html: `<div><b>Hello ${req.user.username},</b><br></br>  Your Appointment has been booked succesfully!.<br></br> <b>Appointment Details : </b> <br></br> Date: ${newObj.date} <br></br> 
-      Time: ${newObj.startTime}:00 ${newObj.startTime < 12 ? 'AM' : 'PM'} - ${newObj.endTime}:00 ${newObj.endTime < 12 ? 'AM' : 'PM'} <br></br>
-      Mode: ${newObj.isOnline ? 'Online' : 'Offline'} <br></br>
-      We hope you will get good treatment!
-      </div>`,
-    };
+    // let mail1 = {
+    //   to: req.user.email,
+    //   subject: "Appointment Booked",
+    //   html: `<div><b>Hello ${req.user.username},</b><br></br>  Your Appointment has been booked succesfully!.<br></br> <b>Appointment Details : </b> <br></br> Date: ${newObj.date} <br></br> 
+    //   Time: ${newObj.startTime}:00 ${newObj.startTime < 12 ? 'AM' : 'PM'} - ${newObj.endTime}:00 ${newObj.endTime < 12 ? 'AM' : 'PM'} <br></br>
+    //   Mode: ${newObj.isOnline ? 'Online' : 'Offline'} <br></br>
+    //   We hope you will get good treatment!
+    //   </div>`,
+    // };
 
-    let mail2 = {
-      to: doctor.email,
-      subject: "New Appointment",
-      html: `<div><b>Hello Dr. ${doctor.name},</b><br></br>  You have a new appointment!.<br></br> <b>Appointment Details : </b> <br></br> Date: ${newObj.date} <br></br> 
-      Time: ${newObj.startTime}:00 ${newObj.startTime < 12 ? 'AM' : 'PM'} - ${newObj.endTime}:00 ${newObj.endTime < 12 ? 'AM' : 'PM'} <br></br>
-      Mode: ${newObj.isOnline ? 'Online' : 'Offline'} <br></br>
-      We hope you a very good luck!
-      </div>`,
-    };
+    // let mail2 = {
+    //   to: doctor.email,
+    //   subject: "New Appointment",
+    //   html: `<div><b>Hello Dr. ${doctor.name},</b><br></br>  You have a new appointment!.<br></br> <b>Appointment Details : </b> <br></br> Date: ${newObj.date} <br></br> 
+    //   Time: ${newObj.startTime}:00 ${newObj.startTime < 12 ? 'AM' : 'PM'} - ${newObj.endTime}:00 ${newObj.endTime < 12 ? 'AM' : 'PM'} <br></br>
+    //   Mode: ${newObj.isOnline ? 'Online' : 'Offline'} <br></br>
+    //   We hope you a very good luck!
+    //   </div>`,
+    // };
 
-    try {
-      await SendEmail(mail1, next);
-      await SendEmail(mail2, next);
-    } catch (err) {
-      throw err;
-    }
+    // try {
+    //   await SendEmail(mail1, next);
+    //   await SendEmail(mail2, next);
+    // } catch (err) {
+    //   throw err;
+    // }
 
     return res.status(200).json({
       success: true,
-      msg: "Your appointment has been booked successfully!"
+      msg: "Your appointment has been booked successfully!",
+      book_id: newBook.id
     });
 
   } catch (err) {
@@ -194,10 +196,14 @@ exports.BookAppointment = async (req, res, next) => {
 // Payments
 exports.getCheckoutSession = async (req, res, next) => {
   console.log("Entering checkout.................")
+  const book_id = req.body.book_id
   try {
     // Get the doctor which patient is trying to book
     const doctor= await Doctor.findById(req.params.doc_id);
+    
     console.log(doctor)
+
+
     // Create checkout session
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -205,7 +211,7 @@ exports.getCheckoutSession = async (req, res, next) => {
 
       // Add a success page
       // HOME PAGE
-      success_url: `http://localhost:3000/paymentSuccess?${req.params.doc_id}`,
+      success_url: `http://localhost:3000/paymentSuccess`,
 
       // NEED TO CHECK 
       // CANCEL PAGE
@@ -222,7 +228,7 @@ exports.getCheckoutSession = async (req, res, next) => {
               description:`${doctor.bio}`,
               // images:`${doctor.profile_pic.image_url}`
             },
-            unit_amount:`${doctor.fees}`
+            unit_amount:`${doctor.fees}`*100
             
           },
           quantity:1,
@@ -236,6 +242,7 @@ exports.getCheckoutSession = async (req, res, next) => {
     })
   } catch (err) {
     console.log("err in payment checkout session : ", err);
+    await Schedule.findByIdAndDelete(book_id);
     return next(err);
   }
 }

@@ -131,20 +131,20 @@ const ExpertProfile = () => {
       </div>
 
       {/*  */}
-      <div className="w-[84%] h-screen overflow-y-hidden">
+      <div className="w-[84%] h-screen overflow-y-scroll">
         {/* Header */}
         <div className="">
           {/* profile_pic, name,category,bio  */}
           <Header data={data.doctor} />
         </div>
 
-        <div className="flex h-[60%]">
-          <div className="w-[30%]">
+        <div className="flex">
+          <div className="w-[40%] border border-white border-r-2 border-l-0 border-b-0 border-t-0">
             <Main data={data.doctor} doc_id={id} />
           </div>
 
           {/* Reviews */}
-          <div className="w-[70%] flex flex-col space-y-2">
+          <div className="w-[60%] flex flex-col space-y-2">
             <div className="text-white font-black text-3xl text-center">
               Reviews
             </div>
