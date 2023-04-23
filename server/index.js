@@ -46,6 +46,9 @@ app.use("/common", require("./routes/Common"));
 // requests related to  chat
 app.use("/chat", require("./routes/Chat"));
 
+// requests related to admin
+app.use("/admin", require("./routes/Admin"));
+
 //request for serving the favicon
 app.get("/favicon.ico", (_req, res) => {
   return res.sendStatus(204);

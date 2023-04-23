@@ -193,3 +193,16 @@ exports.mail = async (req, res, next) => {
     return next(err);
   }
 };
+    
+exports.GetQuery = async(req,res,next)=> {
+    try{
+       const query=await Query.find()
+       res.status(201).json({
+        success:true,
+        data:query
+       })
+    }catch(err){
+        console.log("err in Getting query: ",err);
+        return next(err);
+    }
+}

@@ -1,14 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import AdminNav from "components/AdminDashboard/AdminNav";
 import StatHeading from "components/AdminDashboard/StatHeading";
 import BoldGymIcon from "components/Icons/Bold/gym";
 import BoldNutritionistIcon from "components/Icons/Bold/nutritionist";
 import BoldPhysioIcon from "components/Icons/Bold/physio";
-import BoldCalendarCheck from "components/Icons/Bold/calendarCheck";
-import BoldSettingsIcon from "components/Icons/Bold/settings";
-import BoldUserIcon from "components/Icons/Bold/myAccount";
-
+import BoldCalendarCheck from "components/Icons/Bold/calendarCheck"
+import BoldSettingsIcon from "components/Icons/Bold/settings"
+import BoldUserIcon from "components/Icons/Bold/myAccount"
+import axios from "axios";
+import Swal from "sweetalert2";
 const Admin = () => {
+
+  const [stats,setStats]=useState({
+    physio:"",
+    nutri:"",
+    gym:"",
+    patients:"",
+    appointments:"",
+    avgSessions:""
+  });
+  
+  const [load, setLoad] = useState(false);
+
+  const fetchStats=async()=>{
+    try{
+      setLoad(true);
+      const res= await axios.get("http://localhost:4000/admin/stats",{
+        withCredentials:true
+      })
+      setLoad(false);
+      setStats(res.data.data);
+
+    }
+    catch(err){
+    console.log("error : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  }
+  useEffect(()=>{
+    fetchStats();
+  },[])
+
+
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* Navbar */}
@@ -35,9 +72,13 @@ const Admin = () => {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
-                  54
-                </h3>
+                {
+                  load? (<p className="text-center">Loading...</p>):
+                  <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                  {stats.physio}
+                 </h3>
+                }
+                
                 <h5 className="text-2xl font-medium mb-4 text-center text-gray-700">
                   Physiotherapists
                 </h5>
@@ -59,9 +100,13 @@ const Admin = () => {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-3xl font-bold text-blue-600 text-center mb-2">
-                  34
-                </h3>
+              {
+                  load? (<p className="text-center">Loading...</p>):
+                  <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                  {stats.nutri}
+                 </h3>
+                }
+                
                 <h5 className="text-2xl font-medium text-center mb-4 text-gray-700">
                   Nutritionists
                 </h5>
@@ -83,9 +128,13 @@ const Admin = () => {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-3xl font-bold text-blue-600 mb-2 text-center">
-                  24
-                </h3>
+              {
+                  load? (<p className="text-center">Loading...</p>):
+                  <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                  {stats.gym}
+                 </h3>
+                }
+                
                 <h5 className="text-2xl font-medium mb-4 text-center text-gray-700">
                   Gym Trainers
                 </h5>
@@ -106,9 +155,13 @@ const Admin = () => {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-3xl text-center font-bold text-blue-600 mb-2">
-                  49
-                </h3>
+              {
+                  load? (<p className="text-center">Loading...</p>):
+                  <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                  {stats.patients}
+                 </h3>
+                }
+                
                 <h5 className="text-2xl text-center font-medium mb-4 text-gray-700">
                   Patients/Users
                 </h5>
@@ -130,9 +183,13 @@ const Admin = () => {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-3xl text-center font-bold text-blue-600 mb-2">
-                  100
-                </h3>
+              {
+                  load? (<p className="text-center">Loading...</p>):
+                  <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                  {stats.appointments}
+                 </h3>
+                }
+              
                 <h5 className="text-2xl text-center text-gray-700 font-medium mb-4">
                   Appointments/Sessions
                 </h5>
@@ -154,9 +211,13 @@ const Admin = () => {
                 </div>
               </div>
               <div className="p-4">
-                <h3 className="text-3xl font-bold text-center text-blue-600 mb-4">
-                  2.04
-                </h3>
+              {
+                  load? (<p className="text-center">Loading...</p>):
+                  <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                  {stats.avgSessions}
+                 </h3>
+                }
+                
                 <h5 className="text-2xl text-center font-medium mb-4 text-gray-700">
                   Avg. Sessions per Patient
                 </h5>

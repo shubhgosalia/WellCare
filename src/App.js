@@ -17,6 +17,7 @@ import Home from "components/Home/Home";
 import ContactUs from "../src/pages/ReachUs";
 import MyAccount from "../src/pages/MyAccount";
 import Profile from "../src/pages/ExpertProfile";
+import AdminLogin from "../src/pages/AdminLogin";
 
 import DoctorRegistration from "components/DoctorRegistration/DoctorRegistration";
 // import DoctorSearch from "components/DoctorSearch/Home";
@@ -37,12 +38,13 @@ import Admin from "components/AdminDashboard/Admin";
 import ExpertVerify from "components/AdminDashboard/ExpertVerify";
 import UserQuery from "components/AdminDashboard/GetQuery";
 import Tac from "components/TAC/Tac";
-import ScheduledAppointments from "../src/pages/ExpertScheduledAppointments";
 
 import VideoCall from "pages/VideoCall";
 import Rating from "pages/Rating";  
+import ProtectedRoute from "components/ProtectRoute/ProtectRoute";
 
 function App() {
+  
   return (
     <>
       <Router>
@@ -128,8 +130,15 @@ function App() {
             {/* Contact Us and faq page */}
             <Route exact path="/contactUs" element={<ContactUs />} />
 
+            {/* Admin Login  */}
+            <Route exact path="/adminLogin" element={<AdminLogin />} />
+
             {/* Admin Dashboard  */}
-            <Route exact path="/adminDashboard" element={<Admin />} />
+            <Route exact path="/adminDashboard" element={
+              <ProtectedRoute adminRoute={true}>
+                <Admin />
+              </ProtectedRoute>
+            } />
 
             {/* Admin Expert Verification */}
             <Route exact path="/expertVerify" element={<ExpertVerify />} />
@@ -139,13 +148,6 @@ function App() {
 
             {/* Terms and Condition Page */}
             <Route exact path="/tac" element={<Tac />} />
-
-            {/* Doctor side schedule appointment page. */}
-            <Route
-              exact
-              path="/scheduledAppointments"
-              element={<ScheduledAppointments />}
-            />
 
             {/* video call  */}
             <Route exact path="/video/:roomId" element={<VideoCall />} />

@@ -149,7 +149,7 @@ const AdminNav = () => {
           </div>
 
           {/* Name */}
-          <div className="text-dark-900 font-bold text-xl">admin123</div>
+          <div className="text-dark-900 font-bold text-xl">{profile.name}</div>
         </div>
       </div>
     </div>

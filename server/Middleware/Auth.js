@@ -3,6 +3,7 @@ const { AuthenticationError } = require("../Utils/Errors");
 const { promisify } = require('util');
 const Patient = require('../models/Patient');
 const Doctor = require("../models/Doctor");
+const Admin = require("../models/Admin");
 
 //it will be executed on every request.If the token is not found then the user will need to login into the system.
 const Auth = async (req, _res, next) => {
@@ -16,7 +17,10 @@ const Auth = async (req, _res, next) => {
         if (!user) {
             user = await Doctor.findById(decoder.id);
             if (!user) {
-                throw new AuthenticationError("Something went wrong...!!");
+                user = await Admin.findById(decoder.id);
+                if (!user) {
+                    throw new AuthenticationError("Something went wrong...!!");
+                }
             }
         }
         req.user = user;

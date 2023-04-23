@@ -10,14 +10,14 @@ const Login = () => {
   const navigate = useNavigate();
   useEffect(() => {
     if (isLoggedIn) {
-      navigate("/home");
+      navigate("/adminDashboard");
     }
   }, []);
 
   let [data, setData] = useState({
     username: "",
     password: "",
-    type: "Patient",
+    type: "Admin",
   });
   const [load, setLoad] = useState(false);
   const { setLoginStatus } = useContext(UserContext);
@@ -29,7 +29,6 @@ const Login = () => {
       let postData = {
         username: data.username,
         password: data.password,
-        type: data.type,
       };
 
       setLoad(true);
@@ -42,8 +41,7 @@ const Login = () => {
           icon: "success",
           title: res.data.message,
         });
-        navigate("/home");
-        
+        navigate("/adminDashboard")
       }
       setLoad(false);
     } catch (err) {
@@ -118,42 +116,7 @@ const Login = () => {
             </div>
           </div>
 
-          {/* radio button */}
-          <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
-            <input
-              id="bordered-radio-1"
-              type="radio"
-              value="Doctor"
-              name="type"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-              checked={data.type === "Doctor" ? true : false}
-              onChange={login}
-            />
-            <label
-              htmlFor="bordered-radio-1"
-              className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
-            >
-              Doctor
-            </label>
-          </div>
-
-          <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
-            <input
-              id="bordered-radio-1"
-              type="radio"
-              value="Patient"
-              name="type"
-              className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
-              checked={data.type === "Patient" ? true : false}
-              onChange={login}
-            />
-            <label
-              htmlFor="bordered-radio-1"
-              className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
-            >
-              Patient
-            </label>
-          </div>
+          
 
           {/* Sign in Button */}
           <div>
@@ -164,20 +127,7 @@ const Login = () => {
             >
               {load ? "Loading..." : "Login"}
             </button>
-            <div className="my-3">
-              <div className="hover:underline-offset-8 text-blue-600">
-                <Link to="/forgotpassword">Forgot Password?</Link>
-              </div>
-            </div>
-            <div className="text-white my-3">
-              Don't have an account?
-              <Link
-                className="hover:underline-offset-8 text-blue-600 mx-2"
-                to="/signup"
-              >
-                Register
-              </Link>
-            </div>
+            
           </div>
         </div>
       </div>
