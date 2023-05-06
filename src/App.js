@@ -122,7 +122,12 @@ function App() {
             <Route exact path="/searchGymtrainers" element={<GymSearch />} />
 
             {/* Contact Us and faq page */}
-            <Route exact path="/contactUs" element={<ContactUs />} />
+            <Route exact path="/contactUs" element={
+               <ProtectedRoute adminRoute={false}>
+               <ContactUs />
+             </ProtectedRoute>
+              
+            } />
 
             {/* Admin Login  */}
             <Route exact path="/adminLogin" element={<AdminLogin />} />

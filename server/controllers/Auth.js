@@ -210,6 +210,7 @@ exports.GeneratePasswordLink = async (req, res, next) => {
       req.body.type === "Patient" ? "@" : "#"
     }`;
 
+    
     if (req.body.type === "Patient") {
       await Patient.findByIdAndUpdate(user[0].id, {
         verifyToken: token,
