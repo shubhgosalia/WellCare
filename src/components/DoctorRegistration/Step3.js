@@ -21,6 +21,13 @@ const Step3 = forwardRef((props, ref) => {
       if (userData.have_clinic === "false" && !userData.address) {
         return false;
       }
+      if (userData.have_clinic ==="true" && !userData.c_name){
+        return false;
+      }
+      if (userData.have_clinic==="false" && !userData.c_name){
+         return false
+      }
+
 
       return true;
     },
@@ -72,7 +79,22 @@ const Step3 = forwardRef((props, ref) => {
       {userData.have_clinic === "true" && (
         <div className="mt-3 w-full mx-2 flex-1">
           <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-            Clinic/Gym Address (Name - GMap Link)
+            Clinic/Gym Name
+          </label>
+          <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
+            <input
+              onChange={handleChange}
+              value={userData["c_name"] || ""}
+              name="c_name"
+              placeholder="Clinic/Gym name"
+              type="text"
+              required
+              className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            />
+          </div>
+
+          <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
+            Clinic/Gym Address (GMap Link)
           </label>
           <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
             <input
@@ -86,11 +108,28 @@ const Step3 = forwardRef((props, ref) => {
             />
           </div>
         </div>
+
+        
       )}
       {userData.have_clinic === "false" && (
         <div className="mt-3 w-full mx-2 flex-1">
           <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
-            Hospital/Centre Address (Name - GMap Link)
+            Hospital/Centre Name
+          </label>
+          <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
+            <input
+              onChange={handleChange}
+              value={userData["name"] || ""}
+              name="name"
+              placeholder="Hospital/Centre name"
+              type="text"
+              required
+              className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+            />
+          </div>
+
+          <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
+            Hospital/Centre Address (GMap Link)
           </label>
           <div className="bg-white my-2 p-1 flex border border-gray-200 rounded">
             <input
@@ -103,6 +142,7 @@ const Step3 = forwardRef((props, ref) => {
               className="p-1 px-2 appearance-none outline-none w-full text-gray-800"
             />
           </div>
+
         </div>
       )}
 

@@ -17,7 +17,7 @@ router.get('/getAppointments/:doc_id', Auth, GetAppointments);
 router.post('/bookAppointment/', Auth, BookAppointment);
 
 // Payments : checkout session
-router.get('/checkoutSession/:doc_id', Auth, getCheckoutSession);
+router.post('/checkoutSession/:doc_id', Auth, getCheckoutSession);
 
 
 module.exports = router;

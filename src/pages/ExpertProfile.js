@@ -97,9 +97,14 @@ const ExpertProfile = () => {
       if (res.data.success) {
         setNewReview([
           {
-            name: profile.name,
             review: createReview,
-            profile_pic: profile.profile_pic,
+            patient: {
+                profile_pic: {
+                    image_url: profile.profile_pic
+                },
+                _id: profile.id,
+            },
+            id: 0
           },
         ]);
         Swal.fire({
@@ -126,34 +131,54 @@ const ExpertProfile = () => {
       </div>
 
       {/*  */}
-      <div className="w-[84%] h-screen overflow-y-hidden">
+      <div className="w-[84%] h-screen overflow-y-scroll">
         {/* Header */}
         <div className="">
           {/* profile_pic, name,category,bio  */}
           <Header data={data.doctor} />
         </div>
 
-        <div className="flex h-[60%]">
-          <div className="w-[30%]">
-            <Main data={data.doctor} />
+        <div className="flex">
+          <div className="w-[40%] border border-white border-r-2 border-l-0 border-b-0 border-t-0">
+            <Main data={data.doctor} doc_id={id} />
           </div>
 
           {/* Reviews */}
-          <div className="w-[70%] flex flex-col space-y-2">
+          <div className="w-[60%] flex flex-col space-y-2">
             <div className="text-white font-black text-3xl text-center">
               Reviews
             </div>
             <div className="overflow-y-scroll h-[75%] rounded-lg">
+              {/* created new review */}
+              <div>
+                {newReview.length !== 0 &&
+                  newReview.map((review) => {
+                    return (
+                      <ReviewContainer
+                        key={review._id}
+                        review={review}
+                        id={profile.id}
+                      />
+                    );
+                  })}
+              </div>
+
               {/* <ReviewContainer /> */}
               {load ? (
                 <p>Loading...</p>
-              ) : //   newReview.length !== 0 &&
-              //  (  newReview.map((review) => {
-              //     return <ReviewContainer key={review._id} review={review} />;
-              //   }))
-              data.reviews.length !== 0 || newReview.length !== 0 ? (
+              ) : data.reviews.length !== 0 || newReview.length !== 0 ? (
                 data.reviews.map((review) => {
-                  return <ReviewContainer key={review._id} review={review} />;
+                  if (review.patient._id !== profile.id) {
+                    return (
+                      <ReviewContainer
+                        key={review._id}
+                        review={review}
+                        id={profile.id}
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
                 })
               ) : (
                 <p className="text-center text-white font-semibold">

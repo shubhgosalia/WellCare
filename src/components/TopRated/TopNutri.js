@@ -3,6 +3,9 @@ import React from "react";
 import BoldFullStarIcon from "components/Icons/Bold/fullStar";
 import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
+import LightStarIcon from "components/Icons/Light/star";
+import BoldLocationIcon from "components/Icons/Bold/location";
+
 import { Link } from "react-router-dom";
 
 const TopNutri = ({ info }) => {
@@ -13,9 +16,10 @@ const TopNutri = ({ info }) => {
     address,
     profile_pic,
     years_Of_Experience,
+    clinic_name,
     category,
     locality,
-    _id
+    _id,
   } = info;
 
   return (
@@ -32,21 +36,46 @@ const TopNutri = ({ info }) => {
           </div>
           <div>
             {/* Average Rating */}
-            <div className="text-3xl text-gray-200 font-bold">{rating}/5</div>
+            <div className="text-3xl text-gray-200 font-bold">
+              {rating} Rating
+            </div>
 
             {/* Stars */}
             <div className="flex">
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldHalfStarIcon color="#ffdf00" size="27" />
+              {rating >= 1 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating >= 2 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating >= 3 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating >= 4 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {rating === 5 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+
+              {rating % 1 !== 0 ? (
+                <BoldHalfStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
             </div>
 
             {/* static */}
-            <div className="text-white text-md font-thin ml-2 mt-1">
-              <i>(72% rated 4 star)</i>
-            </div>
           </div>
         </div>
 
@@ -66,12 +95,17 @@ const TopNutri = ({ info }) => {
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-          <Link to={address} className="font-semibold">{locality}</Link>
-  
+          <Link
+            to={address}
+            className="flex space-x-2 font-semibold bg-dark-100 hover:bg-dark-200 ease-in-out delay-100 shadow-lg cursor-pointer transition p-1 rounded-lg w-1/2"
+            target="_blank"
+          >
+            <BoldLocationIcon color="#ff0000" size="25" /> {clinic_name}
+            <div className="text-white">{locality}</div>
+          </Link>
+
           {/* Per session fee */}
-          <div className="font-semibold">
-            ₹{fees} per session
-          </div>
+          <div className="font-semibold mt-2">₹{fees} per session</div>
         </div>
 
         {/* % Upvoted */}
@@ -96,6 +130,7 @@ const TopNutri = ({ info }) => {
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
           <Link to={`/doctorProfile/${_id}`}>View More</Link>
         </button>
+
       </div>
     </>
   );

@@ -1,6 +1,45 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams, useLocation } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
+import queryString from "query-string";
 
 const Success = () => {
+  // let { book_id, doc_id, patient_id } = useSearchParams();
+  const [load, setLoad] = useState(false);
+  const { search } = useLocation();
+  const { book_id, doctor_id, patient_id } = queryString.parse(search);
+  console.log(book_id, doctor_id, patient_id)
+  const sendMailHandler = async () => {
+    try {
+      setLoad(true);
+      let res = await axios.post(
+        "http://localhost:4000/common/sendMail",
+        {
+          book_id: book_id,
+          doctor_id: doctor_id,
+          patient_id: patient_id,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      console.log("resp  : ", res.data.data);
+      setLoad(false);
+    } catch (err) {
+      console.log("error : ", err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
+    }
+  };
+
+  useEffect(() => {
+    sendMailHandler();
+  }, []);
   return (
     <div className="w-full">
       <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white  flex flex-col space-y-6">

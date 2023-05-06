@@ -56,19 +56,21 @@ const PhysioSearch = () => {
 
         {/* Results */}
         <div
-          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto grid grid-rows-3 grid-flow-col gap-6 relative"
+          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto"
           style={{ marginTop: -5 }}
         >
-          {load ? (
+          {load ? (           
             <div className="mx-auto my-10 text-3xl font-bold"> Loading....</div>
           ) : data.doctors.length === 0 ? (
             <div className="mx-auto my-10 text-3xl font-bold">
               Sorry, no results found!
             </div>
           ) : (
-            data.doctors.map((element, i) => (
-              <DoctorResult element={element} key={i} />
-            ))
+            <div className="grid grid-cols-3 grid-flow-col gap-4 my-10">
+              {data.doctors.map((element, i) => (
+                <DoctorResult element={element} key={i} />
+              ))}
+            </div>
           )}
         </div>
       </div>

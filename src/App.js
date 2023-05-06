@@ -38,6 +38,9 @@ import Admin from "components/AdminDashboard/Admin";
 import ExpertVerify from "components/AdminDashboard/ExpertVerify";
 import UserQuery from "components/AdminDashboard/GetQuery";
 import Tac from "components/TAC/Tac";
+
+import VideoCall from "pages/VideoCall";
+import Rating from "pages/Rating";  
 import ProtectedRoute from "components/ProtectRoute/ProtectRoute";
 
 function App() {
@@ -79,6 +82,9 @@ function App() {
 
             {/* Payment Success Page */}
             <Route exact path="/paymentSuccess" element={<Success />} />
+
+            {/* Pending Payment */}
+            <Route exact path="/pendingPayment" element={<Success />} />
 
             {/*Doctor registration page*/}
             <Route
@@ -147,6 +153,13 @@ function App() {
 
             {/* Terms and Condition Page */}
             <Route exact path="/tac" element={<Tac />} />
+
+            {/* video call  */}
+            <Route exact path="/video/:roomId" element={<VideoCall />} />
+
+            {/* rating  */}
+            <Route exact path="/ratetheroom/:roomId" element={<Rating />} />
+
           </Routes>
         </UserProvider>
       </Router>

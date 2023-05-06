@@ -3,15 +3,16 @@ import { useNavigate } from "react-router-dom";
 import BoldFullStarIcon from "components/Icons/Bold/fullStar";
 import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
+import BoldLocationIcon from "components/Icons/Bold/location";
 import { Link } from "react-router-dom";
 
-const Result = ({element}) => {
+const Result = ({ element }) => {
   // const [date, SetDate] = useState(new Date());
   // const navigate = useNavigate();
 
   return (
     <>
-      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 mt-12 text-dark-100 mx-4">
+      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 text-dark-100 mx-4">
         <div className="flex justify-center space-x-6">
           {/* img */}
           <div>
@@ -23,21 +24,46 @@ const Result = ({element}) => {
           </div>
           <div>
             {/* Average Rating */}
-            <div className="text-3xl text-gray-200 font-bold">{element.rating}/5</div>
+            <div className="text-3xl text-gray-200 font-bold">
+              {element.rating} Rating
+            </div>
 
             {/* Stars */}
             <div className="flex">
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldFullStarIcon color="#ffdf00" size="27" />
-              <BoldHalfStarIcon color="#ffdf00" size="27" />
+              {element.rating >= 1 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 2 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 3 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating >= 4 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+              {element.rating === 5 ? (
+                <BoldFullStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
+
+              {element.rating % 1 !== 0 ? (
+                <BoldHalfStarIcon color="#ffdf00" size="27" />
+              ) : (
+                <></>
+              )}
             </div>
 
             {/* static */}
-            <div className="text-white text-md font-thin ml-2 mt-1">
-              <i>(72% rated 4 star)</i>
-            </div>
           </div>
         </div>
 
@@ -47,20 +73,29 @@ const Result = ({element}) => {
           <div className="font-black text-2xl">{element.name}</div>
 
           {/* Speciality */}
-          <div className="text-lg font-semibold text-dark-900">Category</div>
+          <div className="text-lg font-semibold text-dark-900">
+            {element.category}
+          </div>
 
           {/* Experience */}
           <div className="text-lg text-dark-900">
-          {element.years_Of_Experience} years experience overall
+            {element.years_Of_Experience} years experience overall
           </div>
         </div>
 
         {/* Locality + Location hyperlink */}
         <div className="text-dark-100 text-lg flex flex-col">
-          <Link className="font-semibold">{element.locality}</Link>
+          <Link
+            to={element.address}
+            className="flex space-x-2 font-semibold bg-dark-100 hover:bg-dark-200 ease-in-out delay-100 shadow-lg cursor-pointer transition p-1 rounded-lg w-1/2"
+            target="_blank"
+          >
+            <BoldLocationIcon color="#ff0000" size="25" /> {element.clinic_name}
+            <div className="text-white">{element.locality}</div>
+          </Link>
 
           {/* Per session fee */}
-          <div className="font-semibold">₹{element.fees} per session</div>
+          <div className="font-semibold mt-2">₹{element.fees} per session</div>
         </div>
 
         {/* % Upvoted */}
@@ -72,18 +107,16 @@ const Result = ({element}) => {
             <BoldThumbsupIcon color="#ffffff" size="23" />
             <div>94%</div>
           </button>
-
           <a
             href="/doctorProfile"
-            className="mt-2 font-thin text-white hover:underline"
+            className="font-thin text-white hover:underline"
           >
             <i>120 Patient Reviews</i>
           </a>
         </div>
 
-        {/* book appointment*/}
-        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
-          <Link>View More</Link>
+        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2 px-10">
+          <Link to={`/doctorProfile/${element.id}`}> View More</Link>
         </button>
       </div>
     </>

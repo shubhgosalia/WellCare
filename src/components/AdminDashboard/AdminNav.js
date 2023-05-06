@@ -74,14 +74,14 @@ const AdminNav = () => {
                 <div className="my-auto">
                   <BoldStatIcon color="#ffffff" size="27" />
                 </div>
-                <div>Statistics</div>
+                <div className="text-2xl">Statistics</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightStatIcon color="#94A3B8" size="27" />
                 </div>
-                <div className="text-dark-600">Statistics</div>
+                <div className="text-2xl text-dark-600">Statistics</div>
               </div>
             )}
           </Link>
@@ -93,14 +93,14 @@ const AdminNav = () => {
                 <div className="my-auto">
                   <BoldVerifyIcon color="#ffffff" size="27" />
                 </div>
-                <div>Verify Experts</div>
+                <div className="text-2xl">Verify Experts</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightVerifyIcon color="#94A3B8" size="27" />
                 </div>
-                <div className=" text-dark-600">Verify Experts</div>
+                <div className="text-2xl text-dark-600">Verify Experts</div>
               </div>
             )}
           </Link>
@@ -113,14 +113,14 @@ const AdminNav = () => {
                 <div className="my-auto">
                   <BoldQueryIcon color="#ffffff" size="27" />
                 </div>
-                <div>User Query</div>
+                <div className="text-2xl">Query</div>
               </div>
             ) : (
               <div className="inactive-route">
                 <div className="my-auto">
                   <LightQueryIcon color="#94A3B8" size="27" />
                 </div>
-                <div className=" text-dark-600">User Query</div>
+                <div className="text-2xl text-dark-600">Query</div>
               </div>
             )}
           </Link>

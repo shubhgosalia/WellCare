@@ -56,7 +56,10 @@ const NutriSearch = () => {
         </div>
 
         {/* Results */}
-        <div className="w-[85%] mx-auto bg-rose-100" style={{ marginTop: -5 }}>
+        <div
+          className="w-[85%] h-full mx-auto items-center justify-start overflow-x-auto"
+          style={{ marginTop: -5 }}
+        >
           {load ? (
             <div className="mx-auto my-10 text-3xl font-bold">Loading....</div>
           ) : data.doctors.length === 0 ? (
@@ -64,7 +67,7 @@ const NutriSearch = () => {
               Sorry, no results found!
             </div>
           ) : (
-            <div className="grid grid-rows-2 grid-flow-col gap-4">
+            <div className="grid grid-cols-3 grid-flow-col gap-4 my-10">
               {data.doctors.map((element, i) => (
                 <DoctorResult element={element} key={i} />
               ))}

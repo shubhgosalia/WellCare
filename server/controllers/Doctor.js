@@ -38,6 +38,7 @@ exports.Register = async (req, res, next) => {
       category: user.category,
       have_clinic: user.have_clinic,
       address: user.address,
+      clinic_name:user.clinic_name
     });
 
     //generating the link
@@ -93,7 +94,7 @@ exports.getDoctors = async (req, res, next) => {
     //filtering the doctors based on the category
     let doctors = await Doctor.find(query)
       .select(
-        "name rating fees address profile_pic years_Of_Experience category specialization locality licenseNumber phoneNumber"
+        "name rating fees address profile_pic years_Of_Experience category specialization locality licenseNumber phoneNumber clinic_name"
       )
       .sort({ rating:Number(query.ratings),fees: Number(query.fee),years_Of_Experience:Number(query.experience) })
       .skip(start - 1)

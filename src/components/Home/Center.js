@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "context/UserContext";
 
 // importing Files
 import Categories from "components/Home/Categories";
 
 const Part1 = ({ profile }) => {
   // const [hour,setHour] = useState();
+  // const { isLoggedIn, profile, setLoginStatus } = useContext(UserContext);
 
   return (
     <div className="flex flex-col space-y-5 w-full pt-5 pb-10 justify-between min-h-screen">
@@ -20,14 +22,26 @@ const Part1 = ({ profile }) => {
 
         {/* Description */}
         <div className="text-dark-700 font-bold text-2xl">
-<i>"For everyone, well-being is a journey. The secret is committing to that journey and taking those first steps with hope and belief in yourself."</i>
+          <i>
+            "For everyone, well-being is a journey. The secret is committing to
+            that journey and taking those first steps with hope and belief in
+            yourself."
+          </i>
         </div>
+
+        {/*  */}
         <div className="text-white text-2xl">
-          <i>We, at WellCare are here to help you in your journey! And, we are thrilled to see you take the very first step! But, before you take the next step of exploring what we have at your disposal here at WellCare, do have a thorough look of our terms and conditions by clicking on the button below!</i> 
-</div>
+          <i>
+            We, at WellCare are here to help you in your journey! And, we are
+            thrilled to see you take the very first step! But, before you take
+            the next step of exploring what we have at your disposal here at
+            WellCare, do have a thorough look of our terms and conditions by
+            clicking on the button below!
+          </i>
+        </div>
+
         {/* Button */}
         <div className="w-1/3 mx-auto button">
-          {" "}
           <Link className="text-white px-1" to="/tac">
             See Terms and Conditions
           </Link>
@@ -35,7 +49,7 @@ const Part1 = ({ profile }) => {
       </div>
 
       {/* Categories */}
-      <Categories />
+      {profile.type === "Patient" ? <Categories /> : <></>}
     </div>
   );
 };
