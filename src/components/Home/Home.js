@@ -18,6 +18,11 @@ const Home = () => {
     if (!isLoggedIn) {
       navigate("/login");
     }
+    if (profile.type === "Doctor") {
+      if (!profile.adminVerified) {
+        navigate("/docNotverified");
+      }
+    }
   }, []);
 
   return (
@@ -35,7 +40,10 @@ const Home = () => {
 
       {/* 3b */}
       <div className="w-[20%] h-screen">
-        <HomeRightSidebar appointments={profile.appointments} type={profile.type} />
+        <HomeRightSidebar
+          appointments={profile.appointments}
+          type={profile.type}
+        />
       </div>
     </div>
   );

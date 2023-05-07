@@ -42,8 +42,8 @@ const Login = () => {
           icon: "success",
           title: res.data.message,
         });
+
         navigate("/home");
-        
       }
       setLoad(false);
     } catch (err) {

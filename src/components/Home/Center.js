@@ -15,7 +15,7 @@ const Part1 = ({ profile }) => {
       <div className="flex flex-col space-y-6 w-full">
         {/* Title */}
         <div className="flex flex-row space-x-3 text-white text-4xl">
-          <span className="my-auto">Good Morning,</span>
+          <span className="my-auto">Good Day,</span>
           <br />
           <span className="font-bold text-primary-blue">{profile.name}</span>
         </div>

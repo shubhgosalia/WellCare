@@ -49,8 +49,9 @@ const Main = (props) => {
             <BoldExpierenceIcon size="25" color="#ffffff" />
           </div>
           {/*  */}
-          <div className="text-md font-bold"></div>
-          {props.data.years_Of_Experience} Years of Experience
+          <div className="text-md font-bold">
+            {props.data.years_Of_Experience} Years of Experience
+          </div>
         </div>
 
         {/* medical registration verified */}

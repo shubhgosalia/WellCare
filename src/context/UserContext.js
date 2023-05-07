@@ -33,7 +33,7 @@ const UserProvider = ({ children }) => {
     gender: "",
     age: "",
     profile_pic: "",
-    certi_proof: "",
+    // certi_proof: "",
     id: "",
     type: "",
     licenseNumber: "",

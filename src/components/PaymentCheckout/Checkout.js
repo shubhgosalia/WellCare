@@ -11,8 +11,8 @@ const Checkout = () => {
   const location = useLocation();
   console.log(location.state);
   const { profile } = useContext(UserContext);
-  const doc_id=location.state.doc_id
-  const pat_id=profile.id
+  const doc_id = location.state.doc_id;
+  const pat_id = profile.id;
   console.log("Location in checkout ", location.state);
   const paymentHandler = async () => {
     try {
@@ -34,7 +34,7 @@ const Checkout = () => {
       console.log("resp  : ", res.data);
       setLoad(false);
       if (res.data.success) {
-        payment(doc_id,pat_id,res.data.book_id);
+        payment(doc_id, pat_id, res.data.book_id);
       } else {
         Swal.fire({
           icon: "error",
@@ -53,14 +53,15 @@ const Checkout = () => {
     }
   };
 
-  const payment = async (doc_id,patient_id,book_id,) => {
+  const payment = async (doc_id, patient_id, book_id) => {
     try {
       setLoad(true);
       let res = await axios.post(
-        `http://localhost:4000/patient/checkoutSession/${doc_id}`,{
-          book_id:book_id,
-          doctor_id:doc_id,
-          patient_id:pat_id
+        `http://localhost:4000/patient/checkoutSession/${doc_id}`,
+        {
+          book_id: book_id,
+          doctor_id: doc_id,
+          patient_id: pat_id,
         },
         {
           withCredentials: true,
@@ -102,7 +103,7 @@ const Checkout = () => {
               <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-6 flex flex-col justify-between leading-normal w-[500px]">
                 <div className="mb-4">
                   <div className="mb-2 text-gray-700 text-xl">
-                    {location.state.date}
+                    Date : {location.state.date}
                   </div>
                   <div className="text-gray-700 text-xl mb-2 mt-5">
                     Time : {location.state.time}
