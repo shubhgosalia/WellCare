@@ -119,7 +119,7 @@ exports.Login = async (req, res, next) => {
           },
         ],
       });
-    } else if ((req.body.type === "Patient")){
+    } else if (req.body.type === "Doctor"){
       user = await Doctor.findOne({
         $or: [
           {
@@ -210,6 +210,7 @@ exports.GeneratePasswordLink = async (req, res, next) => {
       req.body.type === "Patient" ? "@" : "#"
     }`;
 
+    
     if (req.body.type === "Patient") {
       await Patient.findByIdAndUpdate(user[0].id, {
         verifyToken: token,

@@ -93,27 +93,16 @@ exports.GetContacts = async (req, res, next) => {
   try {
     let contacts;
     if (req.user.type === "Doctor") {
-      contacts = await Schedule.find({
-        doctor_id: req.user.id,
-        isBookedByDoc: false,
-      }).populate("slot_blocked_by", {
-        name: 1,
-        email: 1,
-        profile_pic: 1,
-        id: 1,
-      });
+      const contacts_id = await Schedule.distinct("slot_blocked_by",{ doctor_id: req.user.id,
+          isBookedByDoc: false, 
+        })
+      contacts= await Patient.find({"_id":{$in:contacts_id}}).select("name email profile_pic id")
     } else {
-      contacts = await Schedule.find({ slot_blocked_by: req.user.id }).populate(
-        "doctor_id",
-        {
-          name: 1,
-          email: 1,
-          profile_pic: 1,
-          id: 1,
-        }
-      );
+      
+      const contacts_id = await Schedule.distinct("doctor_id",{ slot_blocked_by: req.user.id })
+      contacts= await Doctor.find({"_id":{$in:contacts_id}}).select("name email profile_pic id")
     }
-
+    console.log("Contact in server",contacts)
     return res.status(200).json({
       data: contacts,
       success: true,

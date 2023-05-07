@@ -85,7 +85,7 @@ const Expert = ({ info,verifyDoctor }) => {
                     {buttonText1}
                 </button>
             </td>
-            <td className="px-6 py-4 text-center">
+            {/* <td className="px-6 py-4 text-center">
                 <button className="text-primary-blue" onClick={toggleModal}>
                     View Certificate
                 </button>
@@ -108,7 +108,7 @@ const Expert = ({ info,verifyDoctor }) => {
                         </div>
                     </div>
                 )}
-            </td>
+            </td> */}
         </tr>
     )
 }

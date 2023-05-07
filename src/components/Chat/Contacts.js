@@ -79,10 +79,38 @@ const Contacts = ({ currentChatContact }) => {
         {load ? (
           <h4 className="text-light text-center">Loading....!!</h4>
         ) : contacts.length !== 0 ? (
+          // contacts
+          //   //applying filter to see if the word searched matches or is a subset of any of the doctor names
+          //   .filter((contact) =>
+          //     contact.doctor_id.name?.toLowerCase().includes(searchTerm)
+          //   )
+          //   .map((contact) => {
+          //     // console.log("contacts : ",contact);
+          //     return (
+          //       <DocChat
+          //         name={
+          //           profile.type === "Doctor"
+          //             ? contact.slot_blocked_by.name
+          //             : contact.doctor_id.name
+          //         }
+          //         image={
+          //           profile.type === "Doctor"
+          //             ? contact.slot_blocked_by.profile_pic.image_url
+          //             : contact.doctor_id.profile_pic.image_url
+          //         }
+          //         id={
+          //           profile.type === "Doctor"
+          //             ? contact.slot_blocked_by._id
+          //             : contact.doctor_id._id
+          //         }
+          //         currentChatContact={currentChatContact}
+          //       />
+          //     );
+          //   })
           contacts
             //applying filter to see if the word searched matches or is a subset of any of the doctor names
             .filter((contact) =>
-              contact.doctor_id.name?.toLowerCase().includes(searchTerm)
+              contact.name?.toLowerCase().includes(searchTerm)
             )
             .map((contact) => {
               // console.log("contacts : ",contact);
@@ -90,18 +118,18 @@ const Contacts = ({ currentChatContact }) => {
                 <DocChat
                   name={
                     profile.type === "Doctor"
-                      ? contact.slot_blocked_by.name
-                      : contact.doctor_id.name
+                      ? contact.name
+                      : contact.name
                   }
                   image={
                     profile.type === "Doctor"
-                      ? contact.slot_blocked_by.profile_pic.image_url
-                      : contact.doctor_id.profile_pic.image_url
+                      ? contact.profile_pic.image_url
+                      : contact.profile_pic.image_url
                   }
                   id={
                     profile.type === "Doctor"
-                      ? contact.slot_blocked_by._id
-                      : contact.doctor_id._id
+                      ? contact._id
+                      : contact._id
                   }
                   currentChatContact={currentChatContact}
                 />
