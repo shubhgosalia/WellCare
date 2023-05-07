@@ -12,6 +12,7 @@
     "@zegocloud/zego-uikit-prebuilt": "^1.8.0",
     "axios": "^1.2.0",
     "concurrently": "^7.6.0",
+    "creds": "^1.0.0",
     "date-fns": "^2.29.3",
     "emoji-picker-react": "^4.4.7",
     "flowbite": "^1.6.2",

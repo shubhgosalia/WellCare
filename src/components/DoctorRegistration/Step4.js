@@ -9,9 +9,9 @@ const Step4 = forwardRef((props, ref) => {
     setUserData({ ...userData, [name]: value });
   };
 
-  const updateCerti = (e) => {
-    setUserData({ ...userData, certi_proof: e.target.files[0] });
-  };
+  // const updateCerti = (e) => {
+  //   setUserData({ ...userData, certi_proof: e.target.files[0] });
+  // };
 
   useImperativeHandle(ref, () => ({
     checkFields() {
@@ -27,9 +27,9 @@ const Step4 = forwardRef((props, ref) => {
       if (!userData.fees) {
         return false;
       }
-      if (!userData.certi_proof) {
-        return false;
-      }
+      // if (!userData.certi_proof) {
+      //   return false;
+      // }
       return true;
     },
   }));
@@ -52,7 +52,7 @@ const Step4 = forwardRef((props, ref) => {
         </div>
       </div>
 
-      <div className="mt-3 mx-2 w-full flex-1">
+      {/* <div className="mt-3 mx-2 w-full flex-1">
         <label className="mt-3 h-6 text-xs font-bold uppercase leading-8 text-gray-500">
           Click to upload degree/course certificate
           <div className="my-2 flex rounded border border-gray-200 bg-white p-1">
@@ -65,7 +65,7 @@ const Step4 = forwardRef((props, ref) => {
           </div>
         </label>
       </div>
-
+ */}
       <div className="mt-3 w-full mx-2 flex-1">
         <label className="font-bold h-6 mt-3 text-gray-500 text-xs leading-8 uppercase">
           Experience (in yrs)

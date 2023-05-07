@@ -9,7 +9,7 @@ const Success = () => {
   const [load, setLoad] = useState(false);
   const { search } = useLocation();
   const { book_id, doctor_id, patient_id } = queryString.parse(search);
-  console.log(book_id, doctor_id, patient_id)
+  console.log(book_id, doctor_id, patient_id);
   const sendMailHandler = async () => {
     try {
       setLoad(true);
@@ -83,7 +83,7 @@ const Success = () => {
                       d="M7 16l-4-4m0 0l4-4m-4 4h18"
                     />
                   </svg>
-                  <a href="/home" className="text-lg font-medium">
+                  <a href="/" className="text-lg font-medium">
                     Home
                   </a>
                 </button>

@@ -69,7 +69,7 @@ const ForgotPassword = () => {
             <h2 className="mb-3 text-xl font-bold leading-tight tracking-tight text-blue-600 md:text-2xl dark:text-white">
               Password Reset
             </h2>
-            <p className="text-white mb-2">
+            <p className="text-gray-600 mb-2">
               Don't worry, please enter your e-mail address and we will send you
               a link to reset your password!
             </p>
@@ -77,7 +77,7 @@ const ForgotPassword = () => {
               <div>
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-md font-medium text-gray-600"
                 >
                   Your email
                 </label>
@@ -93,9 +93,9 @@ const ForgotPassword = () => {
               </div>
 
               {/* radio button */}
-              <label className="my-1 text-xs font-bold uppercase leading-8 text-gray-200">
-                Gender
-              </label>
+              {/* <label className="block text-md font-medium text-gray-600 dark:text-white">
+                You are?
+              </label> */}
               <div className="flex items-center pl-4 rounded-lg border border-gray-200 dark:border-gray-700">
                 <input
                   id="bordered-radio-1"
@@ -108,7 +108,7 @@ const ForgotPassword = () => {
                 />
                 <label
                   htmlFor="bordered-radio-1"
-                  className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
+                  className="py-4 ml-2 w-full text-sm font-medium text-gray-500"
                 >
                   Doctor
                 </label>
@@ -126,7 +126,7 @@ const ForgotPassword = () => {
                 />
                 <label
                   htmlFor="bordered-radio-1"
-                  className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
+                  className="py-4 ml-2 w-full text-sm font-medium text-gray-500"
                 >
                   Patient
                 </label>

@@ -40,11 +40,11 @@ import UserQuery from "components/AdminDashboard/GetQuery";
 import Tac from "components/TAC/Tac";
 
 import VideoCall from "pages/VideoCall";
-import Rating from "pages/Rating";  
+import Rating from "pages/Rating";
 import ProtectedRoute from "components/ProtectRoute/ProtectRoute";
+import Notverified from "components/DocNotverified/Notverified";
 
 function App() {
-  
   return (
     <>
       <Router>
@@ -134,11 +134,15 @@ function App() {
             <Route exact path="/adminLogin" element={<AdminLogin />} />
 
             {/* Admin Dashboard  */}
-            <Route exact path="/adminDashboard" element={
-              <ProtectedRoute adminRoute={true}>
-                <Admin />
-              </ProtectedRoute>
-            } />
+            <Route
+              exact
+              path="/adminDashboard"
+              element={
+                <ProtectedRoute adminRoute={true}>
+                  <Admin />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Admin Expert Verification */}
             <Route exact path="/expertVerify" element={<ExpertVerify />} />
@@ -155,6 +159,8 @@ function App() {
             {/* rating  */}
             <Route exact path="/ratetheroom/:roomId" element={<Rating />} />
 
+            {/* Doc not verified message page */}
+            <Route exact path="/docNotverified" element={<Notverified />} />
           </Routes>
         </UserProvider>
       </Router>

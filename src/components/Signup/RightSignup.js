@@ -129,12 +129,8 @@ const Signup = () => {
       </div>
       {/* Redirect To Doctor register */}
       <p className="mt-1 px-6" style={{ color: "white" }}>
-        Are you a doctor/Expert?
-        <Link
-          className="ml-2"
-          style={{ color: "blue" }}
-          to="/doctorRegistration"
-        >
+        Are you a doctor/Expert ?
+        <Link className="ml-2 text-primary-blue" to="/doctorRegistration">
           Signup Here
         </Link>
       </p>
@@ -328,14 +324,14 @@ const Signup = () => {
             I agree to the
             <Link
               className="text-primary-blue hover:text-secondary-blue px-1"
-              to="/home"
+              to="/tac"
             >
               Terms
             </Link>
             and
             <Link
               className="text-primary-blue hover:text-secondary-blue px-1"
-              to="/home"
+              to="/tac"
             >
               Privacy Policy
             </Link>
@@ -354,9 +350,9 @@ const Signup = () => {
           </button>
         </div>
         <div className="text-white">
-          Already registered?
+          Already registered ?
           <Link
-            className="hover:underline-offset-8 text-blue-600 mx-2"
+            className="hover:underline-offset-8 text-primary-blue mx-2"
             to="/login"
           >
             Login
