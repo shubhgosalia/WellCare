@@ -119,7 +119,7 @@ exports.Login = async (req, res, next) => {
           },
         ],
       });
-    } else if ((req.body.type === "Patient")){
+    } else if (req.body.type === "Doctor"){
       user = await Doctor.findOne({
         $or: [
           {
