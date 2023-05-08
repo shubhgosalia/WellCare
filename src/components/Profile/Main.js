@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
+import { Link } from "react-router-dom";
 
 // bold icons
 import BoldVerifiedIcon from "components/Icons/Bold/verified";
@@ -21,24 +22,23 @@ const Main = (props) => {
   const [date, SetDate] = useState(new Date());
   const [isOnline, setOnline] = useState("true");
   const { search } = useLocation();
-  
+
   const { book_id } = queryString.parse(search);
-  console.log("Profile page book id:",book_id)
+  console.log("Profile page book id:", book_id);
   const [load, setLoad] = useState(false);
-  const deleteBooking=async(book_id)=>{
-    if(book_id){
+  const deleteBooking = async (book_id) => {
+    if (book_id) {
       try {
         setLoad(true);
         let res = await axios.delete(
           `http://localhost:4000/patient/deleteAppointment/${book_id}`,
-          
+
           {
             withCredentials: true,
           }
         );
-  
+
         setLoad(false);
-        
       } catch (err) {
         console.log("error : ", err);
         Swal.fire({
@@ -48,10 +48,10 @@ const Main = (props) => {
         });
       }
     }
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     deleteBooking(book_id);
-  },[])
+  }, []);
   // YearsOf experience email address
   const handleBookAppointment = () => {
     navigate("/slotBook", {
@@ -103,14 +103,17 @@ const Main = (props) => {
 
         {/* Clinic/center address */}
         <div className="flex space-x-3">
-          <div>
+          <Link
+            to={props.data.address}
+            target="_blank"
+            className="flex space-x-1"
+          >
             <BoldLocationIcon size="25" color="#FF0000" />
-          </div>
-
-          {/*  */}
-          <div className="text-md font-bold">
-            Wellness Clinic , {props.data.locality}
-          </div>
+            {/*  */}
+            <div className="text-md font-bold">
+              {props.data.clinic_name} , {props.data.locality}
+            </div>
+          </Link>
         </div>
 
         {/* fees */}

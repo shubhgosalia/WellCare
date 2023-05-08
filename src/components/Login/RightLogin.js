@@ -133,7 +133,7 @@ const Login = () => {
               htmlFor="bordered-radio-1"
               className="py-4 ml-2 w-full text-sm font-medium text-gray-200 dark:text-gray-500"
             >
-              Doctor
+              Doctor / Expert
             </label>
           </div>
 
@@ -165,14 +165,14 @@ const Login = () => {
               {load ? "Loading..." : "Login"}
             </button>
             <div className="my-3">
-              <div className="hover:underline-offset-8 text-blue-600">
+              <div className="hover:underline-offset-8 text-primary-blue">
                 <Link to="/forgotpassword">Forgot Password?</Link>
               </div>
             </div>
             <div className="text-white my-3">
               Don't have an account?
               <Link
-                className="hover:underline-offset-8 text-blue-600 mx-2"
+                className="hover:underline-offset-8 text-primary-blue mx-2"
                 to="/signup"
               >
                 Register

@@ -97,11 +97,13 @@ const TopPhysio = ({ info }) => {
         <div className="text-dark-100 text-lg flex flex-col">
           <Link
             to={address}
-            className="flex space-x-2 font-semibold bg-dark-100 hover:bg-dark-200 ease-in-out delay-100 shadow-lg cursor-pointer transition p-1 rounded-lg w-1/2"
+            className="flex space-x-1 font-semibold bg-dark-100 hover:bg-dark-200 ease-in-out delay-100 shadow-lg cursor-pointer transition p-1 rounded-lg w-3.5/4"
             target="_blank"
           >
-            <BoldLocationIcon color="#ff0000" size="25" /> {clinic_name}
-            <div className="text-white">{locality}</div>
+            <BoldLocationIcon color="#ff0000" size="25" />
+            <div className="text-white">
+              {clinic_name}, {locality}
+            </div>
           </Link>
 
           {/* Per session fee */}
