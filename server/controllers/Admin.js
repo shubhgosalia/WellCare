@@ -49,7 +49,7 @@ exports.getAllDoctors = async (req, res, next) => {
   }
 };
 
-// router to veirfy the paticular doctor
+// router to veirfy the particular doctor
 exports.verifyDoctor = async (req, res, next) => {
   try {
     const doctor = await Doctor.findByIdAndUpdate(
@@ -65,9 +65,9 @@ exports.verifyDoctor = async (req, res, next) => {
       to: doctor.email,
       subject: "Congratulations! You are Verified",
       html: `<div><b>Hello ${doctor.name},</b><br></br>  
-            your profile has been verified by our admin team. You are now a verified expert registered onto our portal. <br></br> 
+            Your profile has been verified by our admin team. You are now a verified expert registered onto our portal. <br></br> 
             Go ahead and log onto our portal now! Cheers! <br></br> 
-            CLick on this link : http://localhost:3000/login
+            Click on this link : http://localhost:3000/login
             </div>`,
     };
     try {
