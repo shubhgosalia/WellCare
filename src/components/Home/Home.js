@@ -18,7 +18,7 @@ const Home = () => {
     if (!isLoggedIn) {
       navigate("/login");
     }
-    console.log("Profile is", profile)
+    console.log("Profile inside home page is ", profile);
     if (profile.type === "Doctor") {
       if (!profile.adminVerified) {
         navigate("/docNotverified");

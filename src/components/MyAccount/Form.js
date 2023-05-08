@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // icons
@@ -15,7 +15,9 @@ import BoldExpierenceIcon from "components/Icons/Bold/experience";
 const Form = ({ profile }) => {
   // const [passwordVisiblity, setPasswordVisiblity] = useState(false);
   // const [password,setPassword] = useState(profile.password);
-
+  useEffect(() => {
+    console.log("Profile inside myAccount of doctor ", profile);
+  }, []);
   return (
     <div className="flex flex-col space-y-6 text-white mx-10 w-2/3 font-body-primary">
       {/* Name */}
@@ -70,7 +72,7 @@ const Form = ({ profile }) => {
 
               {/* input */}
               <div className="py-1 bg-dark-100  outline-none text-xl">
-                Orthopedic Physiotherapist
+                {profile.specialization} {profile.category}
               </div>
             </div>
 
@@ -87,7 +89,9 @@ const Form = ({ profile }) => {
               <div className="text-base text-dark-600">Experience (in yrs)</div>
 
               {/* input */}
-              <div className="py-1 bg-dark-100 outline-none text-xl">4</div>
+              <div className="py-1 bg-dark-100 outline-none text-xl">
+                {profile.years_Of_Experience}
+              </div>
             </div>
 
             {/* Icon */}
@@ -130,7 +134,7 @@ const Form = ({ profile }) => {
 
               {/* input */}
               <div className="py-1 bg-dark-100  outline-none text-xl">
-                123456789
+                {profile.licenseNumber}
               </div>
             </div>
 
@@ -147,7 +151,9 @@ const Form = ({ profile }) => {
               <div className="text-base text-dark-600">Fee/session</div>
 
               {/* input */}
-              <div className="py-1 bg-dark-100 outline-none text-xl">₹ 500</div>
+              <div className="py-1 bg-dark-100 outline-none text-xl">
+                ₹ {profile.fees}
+              </div>
             </div>
 
             {/* Icon */}

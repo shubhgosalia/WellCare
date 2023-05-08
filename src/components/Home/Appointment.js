@@ -31,9 +31,9 @@ export default function upcomingAppointment({ apt, type }) {
             <div className="text-sm">Patient</div>
           ) : (
             <div className="text-sm">
-              {apt.doctor_id.specialization === ""
+              {apt.doctor_id.specialization === " "
                 ? apt.doctor_id.category
-                : apt.doctor_id.specialization}{" "}
+                : apt.doctor_id.specialization}
             </div>
           )}
         </div>
