@@ -1,5 +1,4 @@
 import React from "react";
-
 import BoldFullStarIcon from "components/Icons/Bold/fullStar";
 import BoldHalfStarIcon from "components/Icons/Bold/halfStar";
 import BoldThumbsupIcon from "components/Icons/Bold/thumbsUp";
@@ -84,7 +83,7 @@ const TopNutri = ({ info }) => {
           {/* Name */}
           <div className="font-black text-2xl">{name}</div>
 
-          {/* Speciality */}
+          {/* Category */}
           <div className="text-lg font-semibold text-dark-900">{category}</div>
 
           {/* Experience */}
@@ -130,7 +129,6 @@ const TopNutri = ({ info }) => {
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
           <Link to={`/doctorProfile/${_id}`}>View More</Link>
         </button>
-
       </div>
     </>
   );

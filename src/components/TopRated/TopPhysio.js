@@ -14,6 +14,8 @@ const TopPhysio = ({ info }) => {
     profile_pic,
     years_Of_Experience,
     clinic_name,
+    category,
+    specialization,
     locality,
     _id,
   } = info;
@@ -81,7 +83,9 @@ const TopPhysio = ({ info }) => {
           <div className="font-black text-2xl">{name}</div>
 
           {/* Speciality */}
-          {/* <div className="text-lg font-semibold text-dark-900">{category}</div> */}
+          <div className="text-lg font-semibold text-dark-900">
+            {specialization} {category}
+          </div>
 
           {/* Experience */}
           <div className="text-lg text-dark-900">
@@ -123,7 +127,7 @@ const TopPhysio = ({ info }) => {
         </div>
 
         {/* book appointment*/}
-          <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
+        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
           <Link to={`/doctorProfile/${_id}`}>View More</Link>
         </button>
       </div>

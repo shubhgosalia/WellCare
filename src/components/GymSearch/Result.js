@@ -72,7 +72,7 @@ const Result = ({ element }) => {
           {/* Name */}
           <div className="font-black text-2xl">{element.name}</div>
 
-          {/* Speciality */}
+          {/* Category */}
           <div className="text-lg font-semibold text-dark-900">
             {element.category}
           </div>
