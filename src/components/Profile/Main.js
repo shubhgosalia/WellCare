@@ -5,7 +5,7 @@ import DatePicker from "react-datepicker";
 // bold icons
 import BoldVerifiedIcon from "components/Icons/Bold/verified";
 import BoldLocationIcon from "components/Icons/Bold/location";
-import BoldExpierenceIcon from "components/Icons/Bold/expierence";
+import BoldExpierenceIcon from "components/Icons/Bold/experience";
 import BoldMoneyIcon from "components/Icons/Bold/money";
 import BoldLicenceIcon from "components/Icons/Bold/licence";
 import LightUserNameIcon from "components/Icons/Light/userName";

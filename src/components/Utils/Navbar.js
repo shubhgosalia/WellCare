@@ -17,7 +17,7 @@ import BoldStarIcon from "components/Icons/Bold/fullStar";
 import BoldMyAccountIcon from "components/Icons/Bold/myAccount";
 import BoldChatIcon from "components/Icons/Bold/chat";
 import BoldContactUsIcon from "components/Icons/Bold/contactUs";
-import BoldCalendarIcon from "components/Icons/Bold/calendarCheck"
+import BoldCalendarIcon from "components/Icons/Bold/calendarCheck";
 
 // importing modules
 import { UserContext } from "context/UserContext";

@@ -7,12 +7,14 @@ import BoldMailIcon from "components/Icons/Bold/mail";
 import FullEyeIcon from "components/Icons/Bold/fullEye";
 import EyeOffIcon from "components/Icons/Bold/eyeOff";
 import LightUserNameIcon from "components/Icons/Light/userName";
+import BoldMoneyIcon from "components/Icons/Bold/money";
+import BoldLicenceIcon from "components/Icons/Bold/licence";
+import BoldCategoryIcon from "components/Icons/Bold/user";
+import BoldExpierenceIcon from "components/Icons/Bold/experience";
 
 const Form = ({ profile }) => {
-  //
   // const [passwordVisiblity, setPasswordVisiblity] = useState(false);
   // const [password,setPassword] = useState(profile.password);
-
 
   return (
     <div className="flex flex-col space-y-6 text-white mx-10 w-2/3 font-body-primary">
@@ -25,7 +27,9 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">First Name</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100  outline-none text-xl">{profile.name.split(" ")[0]}</div>
+            <div className="py-1 bg-dark-100  outline-none text-xl">
+              {profile.name.split(" ")[0]}
+            </div>
           </div>
 
           {/* Icon */}
@@ -41,7 +45,11 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">Last Name</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100 outline-none text-xl">{profile.name.split(" ").length > 1 ? profile.name.split(" ")[1] : null}</div>
+            <div className="py-1 bg-dark-100 outline-none text-xl">
+              {profile.name.split(" ").length > 1
+                ? profile.name.split(" ")[1]
+                : null}
+            </div>
           </div>
 
           {/* Icon */}
@@ -50,6 +58,47 @@ const Form = ({ profile }) => {
           </div>
         </div>
       </div>
+
+      {/* Category specializatiob & Exp in yrs */}
+      {profile.type === "Doctor" ? (
+        <div className="flex space-x-3">
+          {/* Category Specialization */}
+          <div className="form-property">
+            <div className="w-[90%] flex flex-col">
+              {/* label */}
+              <div className="text-base text-dark-600">Category</div>
+
+              {/* input */}
+              <div className="py-1 bg-dark-100  outline-none text-xl">
+                Orthopedic Physiotherapist
+              </div>
+            </div>
+
+            {/* Icon */}
+            <div className="my-auto">
+              <BoldCategoryIcon size="30" color="#ffffff" />
+            </div>
+          </div>
+
+          {/* Fee per session */}
+          <div className="form-property">
+            <div className="w-[90%] flex flex-col">
+              {/* label */}
+              <div className="text-base text-dark-600">Experience (in yrs)</div>
+
+              {/* input */}
+              <div className="py-1 bg-dark-100 outline-none text-xl">4</div>
+            </div>
+
+            {/* Icon */}
+            <div className="my-auto">
+              <BoldExpierenceIcon size="30" color="#ffffff" />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
 
       {/* Email Id */}
       <div className="flex w-full justify-between bg-dark-100 rounded-lg  p-5 border border-dark-200">
@@ -60,7 +109,7 @@ const Form = ({ profile }) => {
 
           {/* input */}
           <div className="py-1 bg-dark-100  outline-none text-xl cursor-pointer">
-           {profile.email}
+            {profile.email}
           </div>
         </div>
 
@@ -69,6 +118,47 @@ const Form = ({ profile }) => {
           <BoldMailIcon size="30" color="#ffffff" />
         </div>
       </div>
+
+      {/* License ID & Fee/session for doctor side */}
+      {profile.type === "Doctor" ? (
+        <div className="flex space-x-3">
+          {/* License ID */}
+          <div className="form-property">
+            <div className="w-[90%] flex flex-col">
+              {/* label */}
+              <div className="text-base text-dark-600">License ID</div>
+
+              {/* input */}
+              <div className="py-1 bg-dark-100  outline-none text-xl">
+                123456789
+              </div>
+            </div>
+
+            {/* Icon */}
+            <div className="my-auto">
+              <BoldLicenceIcon size="30" color="#ffffff" />
+            </div>
+          </div>
+
+          {/* Fee per session */}
+          <div className="form-property">
+            <div className="w-[90%] flex flex-col">
+              {/* label */}
+              <div className="text-base text-dark-600">Fee/session</div>
+
+              {/* input */}
+              <div className="py-1 bg-dark-100 outline-none text-xl">₹ 500</div>
+            </div>
+
+            {/* Icon */}
+            <div className="my-auto">
+              <BoldMoneyIcon size="30" color="#ffffff" />
+            </div>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
 
       {/* Username */}
       <div className="flex w-full justify-between bg-dark-100 rounded-lg  p-5 border border-dark-200">
@@ -98,7 +188,9 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">Age</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100  outline-none text-xl">{profile.age}</div>
+            <div className="py-1 bg-dark-100  outline-none text-xl">
+              {profile.age}
+            </div>
           </div>
 
           {/* Icon */}
@@ -114,7 +206,9 @@ const Form = ({ profile }) => {
             <div className="text-base text-dark-600">Gender</div>
 
             {/* input */}
-            <div className="py-1 bg-dark-100 outline-none text-xl">{profile.gender}</div>
+            <div className="py-1 bg-dark-100 outline-none text-xl">
+              {profile.gender}
+            </div>
           </div>
 
           {/* Icon */}
@@ -123,10 +217,10 @@ const Form = ({ profile }) => {
           </div>
         </div>
       </div>
-         {/* update credentials */}
-         <Link className="button w-1/3" to="/updatePassword">
-          Update Password
-        </Link>
+      {/* update credentials */}
+      <Link className="button w-1/3" to="/updatePassword">
+        Update Password
+      </Link>
     </div>
   );
 };

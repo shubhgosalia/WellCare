@@ -1,4 +1,6 @@
 import React from "react";
+import BoldVerifiedIcon from "components/Icons/Bold/verified";
+
 // import UserImage from "../../assets/Krish.png";
 
 const Header = ({ profile_pic, name }) => {
