@@ -8,6 +8,7 @@ export default function Final() {
   const { userData } = useStepperContext();
 
   useEffect(() => {
+    console.log("userData in registration is ",userData)
     registerDoctor();
   }, []);
 
@@ -33,9 +34,11 @@ export default function Final() {
         password: userData.password,
         category: userData.category,
         bio: userData.bio,
+        clinic_name: userData.c_name
       };
 
       setLoad(true);
+      console.log("Post Data is ",postData );
       console.log("postinggg...");
       let res = await axios.post(
         "http://localhost:4000/doctor/register",

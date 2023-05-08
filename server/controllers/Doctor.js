@@ -10,10 +10,12 @@ const { ClientError } = require("../Utils/Errors");
 exports.Register = async (req, res, next) => {
   try {
     console.log("abcde");
-    // const { path, filename } = req.file
+    const { path, filename } = req.file
     //validating the fields
+    console.log("Request body in Backend Doctor regist:",req.body)
     let user = await RegisterDoctorJoi(req.body);
     //hashing the password
+    console.log("User in doctor regist",user)
     const salt = await bcrypt.genSalt(10);
     let newpassword = await bcrypt.hash(user.password, salt);
     //creating new doctor object
@@ -30,10 +32,10 @@ exports.Register = async (req, res, next) => {
       specialization: user.specialization,
       years_Of_Experience: user.years_Of_Experience,
       fees: user.fees,
-      // profile_pic: {
-      //   image_url: path,
-      //   file_name: filename
-      // },
+      profile_pic: {
+        image_url: path,
+        file_name: filename
+      },
       bio: user.bio,
       category: user.category,
       have_clinic: user.have_clinic,
@@ -73,12 +75,12 @@ exports.Register = async (req, res, next) => {
     }
   } catch (err) {
     console.log("Error in the register doctor route : ", err);
-    // if (!req.file) {
-    //   return next(new ClientError("Please upload your profile picture"));
-    // }
+    if (!req.file) {
+      return next(new ClientError("Please upload your profile picture"));
+    }
     // Deleting the file in cloudinary as there is some Error
-    // const { filename } = req.file
-    // cloudinary.uploader.destroy(filename)
+    const { filename } = req.file
+    cloudinary.uploader.destroy(filename)
     return next(err);
   }
 };
