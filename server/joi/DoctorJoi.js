@@ -21,6 +21,7 @@ exports.RegisterDoctorJoi = async (body) => {
     address: joi.string(),
     have_clinic: joi.boolean(),
     category: joi.string().required(),
+    clinic_name:joi.string().required()
   });
 
   try {

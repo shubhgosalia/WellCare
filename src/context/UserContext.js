@@ -46,6 +46,7 @@ const UserProvider = ({ children }) => {
     bio: "",
     // upcoming appointments
     appointments: [],
+    adminVerified:""
   });
   let navigate = useNavigate();
 
