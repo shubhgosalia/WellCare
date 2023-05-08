@@ -115,6 +115,19 @@ exports.GetAppointments = async (req, res, next) => {
   }
 }
 
+exports.DeleteAppointment= async(req,res,next)=>{
+  try{
+    await Schedule.findByIdAndDelete(req.params.id);
+    res.status(200).json({
+      success:true,
+      message:"Book Appointment deleted"
+    })
+  }
+  catch(err){
+    console.log("Error in delete appointment is", err)
+    return next(err);
+  }
+}
 
 exports.BookAppointment = async (req, res, next) => {
   try {
@@ -220,7 +233,7 @@ exports.getCheckoutSession = async (req, res, next) => {
 
       // NEED TO CHECK 
       // CANCEL PAGE
-      cancel_url: `http://localhost:3000/slotBook`,
+      cancel_url: `http://localhost:3000/doctorProfile/${req.params.doc_id}?book_id=${book_id}`,
       customer_email:req.user.email,
       submit_type:'book',
       line_items: [
@@ -268,9 +281,9 @@ exports.paymentStatus=async()=>{
 //fetching highest rated doctors
 exports.getHighestRatedDoctors = async(req,res,next) => {
   try{
-    let physio = await Doctor.find({category: 'Physiotherapist'}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
-    let nutri = await Doctor.find({category: 'Nutritionist'}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
-    let gym = await Doctor.find({category: 'Gym Trainer'}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
+    let physio = await Doctor.find({category: 'Physiotherapist',adminVerified:true}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
+    let nutri = await Doctor.find({category: 'Nutritionist',adminVerified:true}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
+    let gym = await Doctor.find({category: 'Gym Trainer',adminVerified:true}).select('name rating fees address profile_pic years_Of_Experience category specialization locality').sort({rating: -1}).limit(3);
 
     res.status(200).json({
       // name, avgRating, Location map link, fees, exp, profile pic, specialization

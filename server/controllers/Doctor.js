@@ -91,6 +91,7 @@ exports.getDoctors = async (req, res, next) => {
     let start = (req.query.page - 1) * limit + 1;
     let query = { ...req.query };
     query.mailVerified = true;
+    query.adminVerified = true;
     //filtering the doctors based on the category
     let doctors = await Doctor.find(query)
       .select(

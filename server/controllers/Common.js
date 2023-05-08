@@ -46,6 +46,7 @@ exports.GetUser = async (req, res, next) => {
         id: user.id,
         type: user.type,
         appointments,
+        adminVerified:user.adminVerified
       };
     } else {
       // Sending patient related information

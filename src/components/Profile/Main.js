@@ -9,12 +9,49 @@ import BoldExpierenceIcon from "components/Icons/Bold/expierence";
 import BoldMoneyIcon from "components/Icons/Bold/money";
 import BoldLicenceIcon from "components/Icons/Bold/licence";
 import LightUserNameIcon from "components/Icons/Light/userName";
+import queryString from "query-string";
+import { useLocation } from "react-router-dom";
+
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const Main = (props) => {
   const navigate = useNavigate();
   // const curr_date = new Date();
   const [date, SetDate] = useState(new Date());
   const [isOnline, setOnline] = useState("true");
+  const { search } = useLocation();
+  
+  const { book_id } = queryString.parse(search);
+  console.log("Profile page book id:",book_id)
+  const [load, setLoad] = useState(false);
+  const deleteBooking=async(book_id)=>{
+    if(book_id){
+      try {
+        setLoad(true);
+        let res = await axios.delete(
+          `http://localhost:4000/patient/deleteAppointment/${book_id}`,
+          
+          {
+            withCredentials: true,
+          }
+        );
+  
+        setLoad(false);
+        
+      } catch (err) {
+        console.log("error : ", err);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.response.data.error,
+        });
+      }
+    }
+  }
+  useEffect(()=>{
+    deleteBooking(book_id);
+  },[])
   // YearsOf experience email address
   const handleBookAppointment = () => {
     navigate("/slotBook", {
