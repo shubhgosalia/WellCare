@@ -2,7 +2,11 @@ const Patient = require("../models/Patient");
 const Doctor = require("../models/Doctor");
 const Admin = require("../models/Admin");
 
-const { AuthenticationError, ClientError } = require("../Utils/Errors");
+const {
+  AuthenticationError,
+  ClientError,
+  AuthorizationError,
+} = require("../Utils/Errors");
 const SendEmail = require("../utils/Email");
 const jwt = require("jsonwebtoken");
 const { promisify } = require("util");
@@ -36,9 +40,10 @@ exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
     if (!user[0]) {
       throw new AuthenticationError("No such account exists...");
     }
-
+    console.log("Date : ", Date.now());
+    console.log("user : ", new Date(user[0].verifyTokenExpiry).getTime());
     //if the token is expired then delete the record
-    if (user[0].verifyTokenExpiry < Date.now()) {
+    if (new Date(user[0].verifyTokenExpiry).getTime() < Date.now()) {
       if (last_sym === "@") {
         await Patient.findByIdAndDelete(user[0].id);
       } else {
@@ -48,6 +53,8 @@ exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
         "invalid/expired url... please register again"
       );
     }
+
+    console.log("user .... : ", user[0]);
 
     //if the patient/doctor verifies the mail then we will update the account and send the mail accordingly
     if (last_sym === "@") {
@@ -64,6 +71,8 @@ exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
       });
     }
 
+    console.log("hehehhehehehheheheh");
+
     //sending welcome email
     let mailoptions = {
       to: user[0].email,
@@ -77,6 +86,8 @@ exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
     };
 
     await SendEmail(mailoptions, next);
+
+    console.log("mail sent");
 
     return res.status(200).json({
       message: "Email verified successfully!!",
@@ -119,7 +130,7 @@ exports.Login = async (req, res, next) => {
           },
         ],
       });
-    } else if (req.body.type === "Doctor"){
+    } else if (req.body.type === "Doctor") {
       user = await Doctor.findOne({
         $or: [
           {
@@ -130,8 +141,7 @@ exports.Login = async (req, res, next) => {
           },
         ],
       });
-    }
-    else{
+    } else {
       user = await Admin.findOne({
         $or: [
           {
@@ -150,6 +160,12 @@ exports.Login = async (req, res, next) => {
 
     if (!user.mailVerified) {
       throw new ClientError("Email not verified. Please verify your email!");
+    }
+
+    if (user.type === "Doctor" && !user.adminVerified) {
+      throw new AuthorizationError(
+        "Profile under review.You'll get a mail after successful verification"
+      );
     }
 
     if (!(await isPasswordMatch(pass_word, user.password))) {
@@ -210,7 +226,6 @@ exports.GeneratePasswordLink = async (req, res, next) => {
       req.body.type === "Patient" ? "@" : "#"
     }`;
 
-    
     if (req.body.type === "Patient") {
       await Patient.findByIdAndUpdate(user[0].id, {
         verifyToken: token,

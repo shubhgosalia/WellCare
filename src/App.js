@@ -43,6 +43,7 @@ import VideoCall from "pages/VideoCall";
 import Rating from "pages/Rating";
 import ProtectedRoute from "components/ProtectRoute/ProtectRoute";
 import Notverified from "components/DocNotverified/Notverified";
+import VerifySuccess from "components/VerifySuccess/VerifySuccess";
 
 function App() {
   return (
@@ -128,12 +129,15 @@ function App() {
             <Route exact path="/searchGymtrainers" element={<GymSearch />} />
 
             {/* Contact Us and faq page */}
-            <Route exact path="/contactUs" element={
-               <ProtectedRoute adminRoute={false}>
-               <ContactUs />
-             </ProtectedRoute>
-              
-            } />
+            <Route
+              exact
+              path="/contactUs"
+              element={
+                <ProtectedRoute adminRoute={false}>
+                  <ContactUs />
+                </ProtectedRoute>
+              }
+            />
 
             {/* Admin Login  */}
             <Route exact path="/adminLogin" element={<AdminLogin />} />
@@ -166,6 +170,9 @@ function App() {
 
             {/* Doc not verified message page */}
             <Route exact path="/docNotverified" element={<Notverified />} />
+
+            {/* Email verification success page on registration */}
+            <Route exact path="/VerifySuccess" element={<VerifySuccess />} />
           </Routes>
         </UserProvider>
       </Router>

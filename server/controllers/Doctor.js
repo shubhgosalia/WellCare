@@ -10,12 +10,12 @@ const { ClientError } = require("../Utils/Errors");
 exports.Register = async (req, res, next) => {
   try {
     console.log("abcde");
-    const { path, filename } = req.file
+    const { path, filename } = req.file;
     //validating the fields
-    console.log("Request body in Backend Doctor regist:",req.body)
+    console.log("Request body in Backend Doctor regist:", req.body);
     let user = await RegisterDoctorJoi(req.body);
     //hashing the password
-    console.log("User in doctor regist",user)
+    console.log("User in doctor regist", user);
     const salt = await bcrypt.genSalt(10);
     let newpassword = await bcrypt.hash(user.password, salt);
     //creating new doctor object
@@ -34,13 +34,13 @@ exports.Register = async (req, res, next) => {
       fees: user.fees,
       profile_pic: {
         image_url: path,
-        file_name: filename
+        file_name: filename,
       },
       bio: user.bio,
       category: user.category,
       have_clinic: user.have_clinic,
       address: user.address,
-      clinic_name:user.clinic_name
+      clinic_name: user.clinic_name,
     });
 
     //generating the link
@@ -49,7 +49,7 @@ exports.Register = async (req, res, next) => {
     let link = `http://localhost:4000/auth/verifyAccount/${token}#`;
 
     //link will expire after one day
-    doctor.verifyTokenExpiry =  Date.now() + 60 * 60 * 1000 * 24;
+    doctor.verifyTokenExpiry = Date.now() + 60 * 60 * 1000 * 24;
     console.log("doctor 123....");
     //storing in the database
     await doctor.save();
@@ -79,8 +79,8 @@ exports.Register = async (req, res, next) => {
       return next(new ClientError("Please upload your profile picture"));
     }
     // Deleting the file in cloudinary as there is some Error
-    const { filename } = req.file
-    cloudinary.uploader.destroy(filename)
+    const { filename } = req.file;
+    cloudinary.uploader.destroy(filename);
     return next(err);
   }
 };
@@ -99,7 +99,11 @@ exports.getDoctors = async (req, res, next) => {
       .select(
         "name rating fees address profile_pic years_Of_Experience category specialization locality licenseNumber phoneNumber clinic_name"
       )
-      .sort({ rating:Number(query.ratings),fees: Number(query.fee),years_Of_Experience:Number(query.experience) })
+      .sort({
+        rating: Number(query.ratings),
+        fees: Number(query.fee),
+        years_Of_Experience: Number(query.experience),
+      })
       .skip(start - 1)
       .limit(limit + 1);
     //fetching limit+1 records in order to make sure there are more records to fetch for the user. If the records length is not same as limit+1 then we will know that there are no more records to fetch
@@ -129,14 +133,16 @@ exports.getDoctor = async (req, res, next) => {
       "-type -verifyTokenExpiry -verifyToken -mailVerified -time_registered -adminVerified"
     );
     const reviews = await Review.find({
-        doctor: req.params.id
-    }).select('-doctor').populate('patient','name profile_pic');
-    console.log("review : ",reviews);
+      doctor: req.params.id,
+    })
+      .select("-doctor")
+      .populate("patient", "name profile_pic");
+    console.log("review : ", reviews);
     res.status(200).json({
       success: true,
       data: {
         doctor,
-        reviews
+        reviews,
       },
     });
   } catch (err) {
