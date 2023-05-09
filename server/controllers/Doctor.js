@@ -49,7 +49,7 @@ exports.Register = async (req, res, next) => {
     let link = `http://localhost:4000/auth/verifyAccount/${token}#`;
 
     //link will expire after one day
-    doctor.verifyTokenExpiry = Date.now() + 60 * 60 * 1000 * 24;
+    doctor.verifyTokenExpiry =  Date.now() + 60 * 60 * 1000 * 24;
     console.log("doctor 123....");
     //storing in the database
     await doctor.save();
@@ -63,7 +63,7 @@ exports.Register = async (req, res, next) => {
     };
 
     try {
-      // await SendEmail(mailoptions, next);
+      await SendEmail(mailoptions, next);
       return res.status(201).json({
         message: "Verification link has been sent on your registered Email ID",
         success: true,
