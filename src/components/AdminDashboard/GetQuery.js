@@ -1,25 +1,22 @@
-import React,{useState,useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import AdminNav from "components/AdminDashboard/AdminNav";
 import QueryHeading from "components/AdminDashboard/QueryHeading";
-import axios from "axios"
+import axios from "axios";
 import Query from "./Query";
 import Swal from "sweetalert2";
 const GetQuery = () => {
-  
-
   const [queries, setQueries] = useState([]);
   const [load, setLoad] = useState(false);
   const fetchQueries = async () => {
     try {
       setLoad(true);
       const res = await axios.get("http://localhost:4000/common/getQuery", {
-        withCredentials: true
-      })
+        withCredentials: true,
+      });
       console.log("resp  : ", res.data.data);
       setLoad(false);
       setQueries(res.data.data);
-    }
-    catch (err) {
+    } catch (err) {
       console.log("error : ", err);
       Swal.fire({
         icon: "error",
@@ -27,11 +24,11 @@ const GetQuery = () => {
         text: err.response.data.error,
       });
     }
-  }
+  };
 
   useEffect(() => {
     fetchQueries();
-  }, [])
+  }, []);
 
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
@@ -49,14 +46,12 @@ const GetQuery = () => {
           <div className="overflow-x-auto w-full">
             <table className="mx-auto max-w-6xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden">
               <thead className="bg-gray-700">
-
-                
                 <tr className="text-white text-left">
                   <th className="font-semibold text-md uppercase px-6 py-4">
                     User
                   </th>
-                  
-                  <th className="font-semibold text-md uppercase px-14 py-4">
+
+                  <th className="font-semibold text-md uppercase px-6 py-4">
                     Subject
                   </th>
                   <th className="font-semibold text-md uppercase px-6 py-4">
@@ -65,21 +60,15 @@ const GetQuery = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {
-                  load? (
-                    <p className="text-center">Loading...</p>
-                  ): queries.length !==0 ? (
-                    queries.map((item) => {
-                      return (
-                        <Query key={item._id} info={item} />
-                      )
-                    })
-                  )
-                  :(
-                    <p className="text-center">No Queries ....</p>
-                  )
-                }
-
+                {load ? (
+                  <p className="text-center text-2xl p-5">Loading...</p>
+                ) : queries.length !== 0 ? (
+                  queries.map((item) => {
+                    return <Query key={item._id} info={item} />;
+                  })
+                ) : (
+                  <div className="p-5 text-2xl">No Queries ....</div>
+                )}
               </tbody>
             </table>
           </div>

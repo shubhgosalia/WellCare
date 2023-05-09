@@ -16,6 +16,7 @@ const Expert = ({ info, verifyDoctor }) => {
     licenseNumber,
     phoneNumber,
     locality,
+    specialization,
     clinic_name,
   } = info;
 
@@ -60,7 +61,9 @@ const Expert = ({ info, verifyDoctor }) => {
         </div>
       </td>
       <td className="px-6 py-4">
-        <div classNameName="text-lg">{category}</div>
+        <div classNameName="text-lg">
+          {specialization} {category}
+        </div>
         <p className="text-gray-500 text-md font-medium tracking-wide">
           {email}
         </p>
@@ -73,7 +76,7 @@ const Expert = ({ info, verifyDoctor }) => {
             classNameName=" hover:underline text-black font-medium text-md"
             href="https://tinyurl.com/4rvxy5jz"
           >
-            {clinic_name} {locality}
+            {clinic_name}, {locality}
           </a>
           <div>+91 {phoneNumber}</div>
         </div>

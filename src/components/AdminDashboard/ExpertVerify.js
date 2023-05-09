@@ -15,13 +15,12 @@ const ExpertVerify = () => {
     try {
       setLoad(true);
       const res = await axios.get("http://localhost:4000/admin/getAllDoctors", {
-        withCredentials: true
-      })
+        withCredentials: true,
+      });
       console.log("resp  : ", res.data.data.doctors);
       setLoad(false);
       setExperts(res.data.data.doctors);
-    }
-    catch (err) {
+    } catch (err) {
       console.log("error : ", err);
       Swal.fire({
         icon: "error",
@@ -29,38 +28,40 @@ const ExpertVerify = () => {
         text: err.response.data.error,
       });
     }
-  }
+  };
 
   useEffect(() => {
     fetchExperts();
-  }, [])
+  }, []);
 
-
-  const verifyDoctor = async(_id) => {
+  const verifyDoctor = async (_id) => {
     try {
-        setLoad(true);
-        let res= await axios.patch(`http://localhost:4000/admin/verifyDoctor/${_id}`,{},{
-            withCredentials: true
-        })
-        if (res.data.success) {
-            Swal.fire({
-                icon: "success",
-                title: "Expert Verified!",
-                text: "This expert can now be seen on the WellCare Portal!",
-            });
-            fetchExperts();
+      setLoad(true);
+      let res = await axios.patch(
+        `http://localhost:4000/admin/verifyDoctor/${_id}`,
+        {},
+        {
+          withCredentials: true,
         }
-        setLoad(false);
-    }
-    catch (err) {
-        setLoad(false);
+      );
+      if (res.data.success) {
         Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: err.response.data.error,
-          });
+          icon: "success",
+          title: "Expert Verified!",
+          text: "This expert can now be seen on the WellCare Portal!",
+        });
+        fetchExperts();
+      }
+      setLoad(false);
+    } catch (err) {
+      setLoad(false);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.response.data.error,
+      });
     }
-}
+  };
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* Navbar */}
@@ -81,10 +82,10 @@ const ExpertVerify = () => {
                   <th className="font-semibold text-md uppercase px-6 py-4">
                     Name
                   </th>
-                  <th className="font-semibold text-md uppercase px-6 py-4">
+                  <th className="font-semibold text-md uppercase px-8 py-4">
                     Category
                   </th>
-                  <th className="font-semibold text-md uppercase px-6 py-4">
+                  <th className="font-semibold text-md uppercase px-6 py-4 text-center">
                     Clinic/Centre Address
                   </th>
                   <th className="font-semibold text-md uppercase px-6 py-4 text-center">
@@ -99,20 +100,23 @@ const ExpertVerify = () => {
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-              {
-                  load? (
-                    <p className="text-center">Loading...</p>
-                  ): experts.length !==0 ? (
-                    experts.map((item) => {
-                      return (
-                        <Expert key={item._id} info={item} verifyDoctor={verifyDoctor}/>
-                      )
-                    })
-                  )
-                  :(
-                    <p className="text-center">All Experts are verified...</p>
-                  )
-                }
+                {load ? (
+                  <div className="text-center text-2xl p-5">Loading...</div>
+                ) : experts.length !== 0 ? (
+                  experts.map((item) => {
+                    return (
+                      <Expert
+                        key={item._id}
+                        info={item}
+                        verifyDoctor={verifyDoctor}
+                      />
+                    );
+                  })
+                ) : (
+                  <div className="text-center p-5 text-2xl">
+                    All Experts are verified...
+                  </div>
+                )}
               </tbody>
             </table>
           </div>

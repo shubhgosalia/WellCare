@@ -34,7 +34,7 @@ exports.Register = async (req, res, next) => {
 exports.getAllDoctors = async (req, res, next) => {
   try {
     const doctors = await Doctor.find({ adminVerified: false }).select(
-      "name age gender category email licenseNumber phoneNumber locality clinic_name"
+      "name age gender category email licenseNumber phoneNumber locality clinic_name specialization"
     );
     // const doctors= await Doctor.find({adminVerified:false})
 
