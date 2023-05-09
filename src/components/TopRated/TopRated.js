@@ -47,7 +47,7 @@ const TopRated = () => {
       <div className="w-[16%] min-h-screen">
         <Navbar />
       </div>
-      
+
       <div className="w-[84%]">
         {/* Main Container */}
         <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">
@@ -64,7 +64,7 @@ const TopRated = () => {
           </div>
 
           {/* Top Rated Physios */}
-          <div className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative">
+          <div className="w-[85%] mx-auto h-full flex items-center justify-start gap-6 relative">
             {load ? (
               <p className="text-center">Loading...</p>
             ) : docs["physio"].length !== 0 ? (
@@ -116,7 +116,7 @@ const TopRated = () => {
           {/* Top rated Gym Trainers */}
           <div
             className="w-[85%] mx-auto h-full flex items-center justify-start overflow-x-auto gap-6 relative"
-            style={{ marginTop: -22}}
+            style={{ marginTop: -22 }}
           >
             {load ? (
               <p className="text-center">Loading...</p>

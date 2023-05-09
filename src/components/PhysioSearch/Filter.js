@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-const Filter = ({method}) => {
+const Filter = ({ method }) => {
   //filters
   let [filter, setFilter] = useState({
     ratings: "1",
@@ -10,9 +10,9 @@ const Filter = ({method}) => {
     locality: "Andheri",
   });
 
-  useEffect(()=>{
-     method(filter);
-  },[]);
+  useEffect(() => {
+    method(filter);
+  }, []);
 
   //updating the filters
   const updateFilters = (e) => {
@@ -21,9 +21,9 @@ const Filter = ({method}) => {
     });
   };
 
-  const callMethod = ()=> {
+  const callMethod = () => {
     method(filter);
-  }
+  };
 
   return (
     <div className="w-[85%] mt-5 mx-auto bg-primary-blue p-4 text-dark-100 rounded-lg flex justify-between">

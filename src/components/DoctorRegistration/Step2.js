@@ -68,6 +68,7 @@ const Step2 = forwardRef((props, ref) => {
               name="specialization"
               onChange={handleChange}
             >
+              <option>Select Specialization</option>
               <option
                 value="Orthopedic"
                 selected={
