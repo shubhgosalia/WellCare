@@ -20,20 +20,23 @@ const catchAsyncError = require("../Utils/catchAsyncError");
 exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
   try {
     //getting the token
+    console.log("token ",req.params)
     let token = req.params.token;
-
+    console.log("Token in verification is",token)
     //if last letter @:patient or #:doctor
     let last_sym = token.charAt(token.length - 1);
+    console.log("last_digit is ",last_sym)
     let a = token.slice(0, -1);
+    console.log("A in verification is",a);
     let user;
     //PATIENT PART
     if (last_sym === "@") {
-      user = await Patient.find({ token: a });
+      user = await Patient.find({ verifyToken: a });
       console.log("Patient : ", user[0]);
     }
     //DOCTOR PART
     else {
-      user = await Doctor.find({ token: a });
+      user = await Doctor.find({ verifyToken: a });
       console.log("Doctor : ", user[0]);
     }
     //if there is no such patient or Doctor
@@ -89,10 +92,11 @@ exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
 
     console.log("mail sent");
 
-    return res.status(200).json({
-      message: "Email verified successfully!!",
-      success: true,
-    });
+    // return res.status(200).json({
+    //   message: "Email verified successfully!!",
+    //   success: true,
+    // });
+    return res.redirect("http://localhost:3000/VerifySuccess")
   } catch (err) {
     console.log("err in the verification email : ", err);
     return next(err);

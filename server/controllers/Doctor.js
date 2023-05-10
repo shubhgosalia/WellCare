@@ -46,7 +46,7 @@ exports.Register = async (req, res, next) => {
     //generating the link
     let { token } = TokenGenerator();
     doctor.verifyToken = token;
-    let link = `http://localhost:4000/auth/verifyAccount/${token}#`;
+    let link = `http://localhost:4000/auth/verifyAccount/${token}*`;
 
     //link will expire after one day
     doctor.verifyTokenExpiry = Date.now() + 60 * 60 * 1000 * 24;
