@@ -89,6 +89,7 @@ exports.Register = async (req, res, next) => {
 exports.getDoctors = async (req, res, next) => {
   try {
     //right now setting the limit to 5
+    console.log("Query Object is",req.query)
     let limit = 5;
     let start = (req.query.page - 1) * limit + 1;
     let query = { ...req.query };
@@ -100,24 +101,24 @@ exports.getDoctors = async (req, res, next) => {
         "name rating fees address profile_pic years_Of_Experience category specialization locality licenseNumber phoneNumber clinic_name"
       )
       .sort({
-        rating: Number(query.ratings),
+        // rating: Number(query.ratings),
         fees: Number(query.fee),
-        years_Of_Experience: Number(query.experience),
+        // years_Of_Experience: Number(query.experience),
       })
-      .skip(start - 1)
-      .limit(limit + 1);
+      // .skip(start - 1)
+      // .limit(limit + 1);
     //fetching limit+1 records in order to make sure there are more records to fetch for the user. If the records length is not same as limit+1 then we will know that there are no more records to fetch
-    let moreRecords = false;
-    if (doctors.length === limit + 1) {
-      moreRecords = true;
-      //since fetched extra one record to popping it off
-      doctors.pop();
-    }
+    // let moreRecords = false;
+    // if (doctors.length === limit + 1) {
+    //   moreRecords = true;
+    //   //since fetched extra one record to popping it off
+    //   doctors.pop();
+    // }
     res.status(200).json({
       success: true,
       data: {
         doctors,
-        more: moreRecords,
+        // more: moreRecords,
       },
     });
   } catch (err) {

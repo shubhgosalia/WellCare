@@ -29,7 +29,7 @@ const NutriSearch = () => {
         },
         withCredentials: true,
       });
-      console.log("resp", res.data.data);
+      console.log("resp in filters is ", res.data.data);
       setData(res.data.data);
       setLoad(false);
     } catch (err) {

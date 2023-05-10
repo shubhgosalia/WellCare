@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 const Filter = ({ method }) => {
   //filters
   let [filter, setFilter] = useState({
-    ratings: "1",
+    ratings: "-1",
     specialization: "Orthopedic",
-    fee: "1",
-    experience: "1",
+    fee: "-1",
+    experience: "-1",
     locality: "Andheri",
   });
 

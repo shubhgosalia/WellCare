@@ -5,9 +5,9 @@ import axios from "axios";
 const Filter = ({method}) => {
   //filters
   let [filter, setFilter] = useState({
-    ratings: "1",
-    fee: "1",
-    experience: "1",
+    ratings: "-1",
+    fee: "-1",
+    experience: "-1",
     locality: "Andheri",
   });
 
@@ -43,8 +43,8 @@ const Filter = ({method}) => {
           onChange={updateFilters}
         >
           {/* <option value="None">None</option> */}
-          <option value="hightolow">High to Low</option>
-          <option value="lowtohigh">Low to High</option>
+          <option value="-1">High to Low</option>
+          <option value="1">Low to High</option>
         </select>
       </div>
 
@@ -61,8 +61,8 @@ const Filter = ({method}) => {
           onChange={updateFilters}
         >
           {/* <option value="None">None</option> */}
-          <option value="hightolow">High to Low</option>
-          <option value="lowtohigh">Low to High</option>
+          <option value="-1">High to Low</option>
+          <option value="1">Low to High</option>
         </select>
       </div>
 
@@ -78,8 +78,8 @@ const Filter = ({method}) => {
           onChange={updateFilters}
         >
           {/* <option value="None">None</option> */}
-          <option value="hightolow">High to Low</option>
-          <option value="lowtohigh">Low to High</option>
+          <option value="-1">High to Low</option>
+          <option value="1">Low to High</option>
         </select>
       </div>
 
