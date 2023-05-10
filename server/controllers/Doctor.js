@@ -89,24 +89,26 @@ exports.Register = async (req, res, next) => {
 exports.getDoctors = async (req, res, next) => {
   try {
     //right now setting the limit to 5
-    console.log("Query Object is",req.query)
+    console.log("entered:");
     let limit = 5;
     let start = (req.query.page - 1) * limit + 1;
     let query = { ...req.query };
+    console.log("Query is", query);
     query.mailVerified = true;
     query.adminVerified = true;
+    console.log(Number(query.ratings));
     //filtering the doctors based on the category
-    let doctors = await Doctor.find(query)
+    let doctors = await Doctor.find()
       .select(
         "name rating fees address profile_pic years_Of_Experience category specialization locality licenseNumber phoneNumber clinic_name"
       )
       .sort({
-        // rating: Number(query.ratings),
+        rating: "",
         fees: Number(query.fee),
         // years_Of_Experience: Number(query.experience),
-      })
-      // .skip(start - 1)
-      // .limit(limit + 1);
+      });
+    // .skip(start - 1)
+    // .limit(limit + 1);
     //fetching limit+1 records in order to make sure there are more records to fetch for the user. If the records length is not same as limit+1 then we will know that there are no more records to fetch
     // let moreRecords = false;
     // if (doctors.length === limit + 1) {

@@ -5,8 +5,8 @@ const Filter = ({ method }) => {
   let [filter, setFilter] = useState({
     ratings: "-1",
     specialization: "Orthopedic",
-    fee: "-1",
-    experience: "-1",
+    fee: "None",
+    experience: "None",
     locality: "Andheri",
   });
 
@@ -17,7 +17,30 @@ const Filter = ({ method }) => {
   //updating the filters
   const updateFilters = (e) => {
     setFilter((prevObj) => {
-      return { ...prevObj, [e.target.name]: e.target.value };
+      if (e.target.name === "ratings") {
+        return {
+          ...prevObj,
+          [e.target.name]: e.target.value,
+          fee: "None",
+          experience: "None",
+        };
+      } else if (e.target.name === "fee") {
+        return {
+          ...prevObj,
+          [e.target.name]: e.target.value,
+          ratings: "None",
+          experience: "None",
+        };
+      } else if (e.target.name === "experience") {
+        return {
+          ...prevObj,
+          [e.target.name]: e.target.value,
+          ratings: "None",
+          fee: "None",
+        };
+      } else {
+        return { ...prevObj, [e.target.name]: e.target.value };
+      }
     });
   };
 
@@ -38,6 +61,7 @@ const Filter = ({ method }) => {
           id="state"
           className="rounded-lg p-2"
           onChange={updateFilters}
+          value={filter.specialization}
         >
           {/* <option value="None">None</option> */}
           <option value="Orthopedic">Orthopedic</option>
@@ -59,8 +83,9 @@ const Filter = ({ method }) => {
           id="state"
           className="rounded-lg p-2"
           onChange={updateFilters}
+          value={filter.fee}
         >
-          {/* <option value="None">None</option> */}
+          <option value="None">None</option>
           <option value="-1">High to Low</option>
           <option value="1">Low to High</option>
         </select>
@@ -77,8 +102,9 @@ const Filter = ({ method }) => {
           id="state"
           className="rounded-lg p-2"
           onChange={updateFilters}
+          value={filter.experience}
         >
-          {/* <option value="None">None</option> */}
+          <option value="None">None</option>
           <option value="-1">High to Low</option>
           <option value="1">Low to High</option>
         </select>
@@ -90,14 +116,15 @@ const Filter = ({ method }) => {
           Rating:
         </label>
         <select
-          name="rating"
+          name="ratings"
           id="state"
           className="rounded-lg p-2 w-full"
           onChange={updateFilters}
+          value={filter.ratings}
         >
-          {/* <option value="None">None</option> */}
           <option value="-1">High to Low</option>
           <option value="1">Low to High</option>
+          <option value="None">None</option>
         </select>
       </div>
 
@@ -111,6 +138,7 @@ const Filter = ({ method }) => {
           id="state"
           className="rounded-lg p-2"
           onChange={updateFilters}
+          value={filter.locality}
         >
           {/* <option value="None">None</option> */}
           <option value="Andheri">Andheri</option>
