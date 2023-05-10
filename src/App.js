@@ -42,7 +42,7 @@ import Tac from "components/TAC/Tac";
 import VideoCall from "pages/VideoCall";
 import Rating from "pages/Rating";
 import ProtectedRoute from "components/ProtectRoute/ProtectRoute";
-import Notverified from "components/DocNotverified/Notverified";
+// import Notverified from "components/DocNotverified/Notverified";
 import VerifySuccess from "components/VerifySuccess/VerifySuccess";
 
 function App() {
@@ -169,7 +169,7 @@ function App() {
             <Route exact path="/ratetheroom/:roomId" element={<Rating />} />
 
             {/* Doc not verified message page */}
-            <Route exact path="/docNotverified" element={<Notverified />} />
+            {/* <Route exact path="/docNotverified" element={<Notverified />} /> */}
 
             {/* Email verification success page on registration */}
             <Route exact path="/VerifySuccess" element={<VerifySuccess />} />
