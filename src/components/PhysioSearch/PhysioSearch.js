@@ -15,31 +15,39 @@ const PhysioSearch = () => {
 
   const filterDocs = async (data) => {
     console.log("data : ", data);
-    try {
-      setLoad(true);
-      let res = await axios.get("http://localhost:4000/doctor", {
-        params: {
-          ratings: data.ratings,
-          specialization: data.specialization,
-          fee: data.fee,
-          experience: data.experience,
-          locality: data.locality,
-          page: 1,
-        },
-        withCredentials: true,
-      });
-      console.log("resp", res.data.data);
-      setData(res.data.data);
-      setLoad(false);
-    } catch (err) {
-      console.log("errorr : ", err);
-      setLoad(false);
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: err.response.data.error,
-      });
+    let newObj = {};
+    for (let key in data) {
+      if (data[key] !== "None") {
+        newObj[key] = data[key];
+      }
     }
+
+    console.log("new : ", newObj["a"]);
+    // try {
+    //   setLoad(true);
+    //   let res = await axios.get("http://localhost:4000/doctor", {
+    //     params: {
+    //       ratings: data.ratings,
+    //       specialization: data.specialization,
+    //       fee: data.fee,
+    //       experience: data.experience,
+    //       locality: data.locality,
+    //       page: 1,
+    //     },
+    //     withCredentials: true,
+    //   });
+    //   console.log("resp", res.data.data);
+    //   setData(res.data.data);
+    //   setLoad(false);
+    // } catch (err) {
+    //   console.log("errorr : ", err);
+    //   setLoad(false);
+    //   Swal.fire({
+    //     icon: "error",
+    //     title: "Oops...",
+    //     text: err.response.data.error,
+    //   });
+    // }
   };
 
   return (

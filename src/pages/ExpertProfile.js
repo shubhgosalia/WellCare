@@ -99,12 +99,12 @@ const ExpertProfile = () => {
           {
             review: createReview,
             patient: {
-                profile_pic: {
-                    image_url: profile.profile_pic
-                },
-                _id: profile.id,
+              profile_pic: {
+                image_url: profile.profile_pic,
+              },
+              _id: profile.id,
             },
-            id: 0
+            id: 0,
           },
         ]);
         Swal.fire({
@@ -135,7 +135,7 @@ const ExpertProfile = () => {
         {/* Header */}
         <div className="">
           {/* profile_pic, name,category,bio  */}
-          <Header data={data.doctor} />
+          <Header data={data.doctor} review={data.reviews} />
         </div>
 
         <div className="flex">

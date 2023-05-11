@@ -2,6 +2,7 @@ import React from "react";
 // import UserImage from "../../assets/Krish.png";
 
 const Header = (props) => {
+  // console.log(props.reviews.data.reviews);
   return (
     <div className="bg-gradient-to-tr from-dark-100 to-dark-200 h-full flex space-x-6 text-white py-4">
       {/* Image */}
@@ -15,13 +16,17 @@ const Header = (props) => {
 
       {/* Name */}
       <div className="mt-auto mb-4 flex flex-col space-y-2 font-body-primary">
-        <div className="px-1 text-2xl">{props.data.specialization} {props.data.category}</div>
-        <div className="text-8xl font-bold">{props.data.name}</div>
-        <div className="text-xl font-semibold px-1 text-dark-600">{props.data.email}</div>
-        <div className="font-medium text-xl px-1">{props.data.gender}, {props.data.age}yrs</div>
-        <div className="w-[80%] text-lg font-normal px-1">
-          {props.data.bio}
+        <div className="px-1 text-2xl">
+          {props.data.specialization} {props.data.category}
         </div>
+        <div className="text-8xl font-bold">{props.data.name}</div>
+        <div className="text-xl font-semibold px-1 text-dark-600">
+          {props.data.email}
+        </div>
+        <div className="font-medium text-xl px-1">
+          {props.data.gender}, {props.data.age}yrs
+        </div>
+        <div className="w-[80%] text-lg font-normal px-1">{props.data.bio}</div>
       </div>
     </div>
   );
