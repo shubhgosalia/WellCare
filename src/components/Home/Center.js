@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "context/UserContext";
+import BoldFullStarIcon from "components/Icons/Bold/fullStar";
+import BoldVerifiedIcon from "components/Icons/Bold/verified";
 
 // importing Files
 import Categories from "components/Home/Categories";
@@ -60,7 +62,66 @@ const Part1 = ({ profile }) => {
       </div>
 
       {/* Categories */}
-      {profile.type === "Patient" ? <Categories /> : <></>}
+      {profile.type === "Patient" ? (
+        <Categories />
+      ) : (
+        // Rating and Medically verified cards
+        <>
+          <div className="text-3xl text-center text-dark-700 font-semibold">
+            Here is something for you to know!
+          </div>
+          <div className="grid lg:gap-x-8 lg:grid-cols-2">
+            <div className="mb-12 lg:mb-0 ">
+              <div
+                className="rounded-lg shadow-lg block h-full bg-white ml-20"
+                style={{ width: 420 }}
+              >
+                <div className="flex justify-center">
+                  <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
+                    <BoldFullStarIcon size="30" color="#000000" />
+                  </div>
+                </div>
+                <div className="p-4">
+                  {
+                    <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                      {profile.rating} Stars
+                    </h3>
+                  }
+
+                  <h5 className="text-2xl font-medium mb-4 text-center text-gray-700">
+                    Your Rating
+                  </h5>
+                </div>
+              </div>
+            </div>
+
+            <div className="mb-12 lg:mb-0 ">
+              <div
+                className="rounded-lg shadow-lg block h-full bg-white"
+                style={{ width: 420 }}
+              >
+                <div className="flex justify-center">
+                  <div className="p-4 bg-blue-600 rounded-full shadow-lg inline-block -mt-8">
+                    <BoldVerifiedIcon size="30" color="#000000" />
+                  </div>
+                </div>
+                <div className="p-4">
+                  {
+                    <h3 className="text-3xl font-bold text-center text-blue-600 mb-2">
+                      {/* {profile.rating} Stars */}
+                      Medically Verified
+                    </h3>
+                  }
+
+                  <h5 className="text-2xl font-medium mb-4 text-center text-gray-700">
+                    Your Status
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

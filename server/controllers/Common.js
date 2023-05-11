@@ -4,7 +4,7 @@ const SendEmail = require("../utils/Email");
 const Patient = require("../models/Patient");
 const Doctor = require("../models/Doctor");
 const crypto = require("crypto");
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 //getting the profile of the user - doctor/patient
 exports.GetUser = async (req, res, next) => {
@@ -46,7 +46,8 @@ exports.GetUser = async (req, res, next) => {
         id: user.id,
         type: user.type,
         appointments,
-        adminVerified:user.adminVerified
+        adminVerified: user.adminVerified,
+        rating: user.rating,
       };
     } else {
       // Sending patient related information
@@ -94,16 +95,22 @@ exports.GetContacts = async (req, res, next) => {
   try {
     let contacts;
     if (req.user.type === "Doctor") {
-      const contacts_id = await Schedule.distinct("slot_blocked_by",{ doctor_id: req.user.id,
-          isBookedByDoc: false, 
-        })
-      contacts= await Patient.find({"_id":{$in:contacts_id}}).select("name email profile_pic id")
+      const contacts_id = await Schedule.distinct("slot_blocked_by", {
+        doctor_id: req.user.id,
+        isBookedByDoc: false,
+      });
+      contacts = await Patient.find({ _id: { $in: contacts_id } }).select(
+        "name email profile_pic id"
+      );
     } else {
-      
-      const contacts_id = await Schedule.distinct("doctor_id",{ slot_blocked_by: req.user.id })
-      contacts= await Doctor.find({"_id":{$in:contacts_id}}).select("name email profile_pic id")
+      const contacts_id = await Schedule.distinct("doctor_id", {
+        slot_blocked_by: req.user.id,
+      });
+      contacts = await Doctor.find({ _id: { $in: contacts_id } }).select(
+        "name email profile_pic id"
+      );
     }
-    console.log("Contact in server",contacts)
+    console.log("Contact in server", contacts);
     return res.status(200).json({
       data: contacts,
       success: true,
@@ -138,23 +145,35 @@ exports.PostQuery = async (req, res, next) => {
 
 exports.mail = async (req, res, next) => {
   try {
-    let patient = await Patient.findById(mongoose.Types.ObjectId(req.body.patient_id));
-    let doctor = await Doctor.findById(mongoose.Types.ObjectId(req.body.doctor_id));
-    let book = await Schedule.findById(mongoose.Types.ObjectId(req.body.book_id));
+    let patient = await Patient.findById(
+      mongoose.Types.ObjectId(req.body.patient_id)
+    );
+    let doctor = await Doctor.findById(
+      mongoose.Types.ObjectId(req.body.doctor_id)
+    );
+    let book = await Schedule.findById(
+      mongoose.Types.ObjectId(req.body.book_id)
+    );
     // console.log(patient)
-    let id = crypto.randomBytes(20).toString('hex');
+    let id = crypto.randomBytes(20).toString("hex");
     let meetLink = `http://localhost:3000/video/${id}`;
 
     let mail1 = {
       to: doctor.email,
       subject: "New Appointment",
-      html: `<div><b>Hello Dr. ${doctor.name},</b><br></br>  You have a new appointment!.<br></br> <b>Appointment Details : </b> <br></br> Date: ${book.date} <br></br> 
-        Time: ${book.startTime}:00 ${book.startTime < 12 ? 'AM' : 'PM'} - ${book.endTime}:00 ${book.endTime < 12 ? 'AM' : 'PM'} <br></br>
+      html: `<div><b>Hello Dr. ${
+        doctor.name
+      },</b><br></br>  You have a new appointment!.<br></br> <b>Appointment Details : </b> <br></br> Date: ${
+        book.date
+      } <br></br> 
+        Time: ${book.startTime}:00 ${book.startTime < 12 ? "AM" : "PM"} - ${
+        book.endTime
+      }:00 ${book.endTime < 12 ? "AM" : "PM"} <br></br>
         ${book.isOnline ? `Meeting Url  : ${meetLink}<br></br>` : ""}
         We hope you a very good luck!
-      </div>`
+      </div>`,
     };
-    
+
     let mail2 = {
       to: patient.email,
       subject: "Appointment Booked",
@@ -175,24 +194,23 @@ exports.mail = async (req, res, next) => {
     await SendEmail(mail2, next);
 
     res.status(200).json({
-        success:true
+      success: true,
     });
-
   } catch (err) {
     console.log("err in posting query: ", err);
     return next(err);
   }
 };
-    
-exports.GetQuery = async(req,res,next)=> {
-    try{
-       const query=await Query.find()
-       res.status(201).json({
-        success:true,
-        data:query
-       })
-    }catch(err){
-        console.log("err in Getting query: ",err);
-        return next(err);
-    }
-}
+
+exports.GetQuery = async (req, res, next) => {
+  try {
+    const query = await Query.find();
+    res.status(201).json({
+      success: true,
+      data: query,
+    });
+  } catch (err) {
+    console.log("err in Getting query: ", err);
+    return next(err);
+  }
+};
