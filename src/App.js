@@ -129,29 +129,13 @@ function App() {
             <Route exact path="/searchGymtrainers" element={<GymSearch />} />
 
             {/* Contact Us and faq page */}
-            <Route
-              exact
-              path="/contactUs"
-              element={
-                <ProtectedRoute adminRoute={false}>
-                  <ContactUs />
-                </ProtectedRoute>
-              }
-            />
+            <Route exact path="/contactUs" element={<ContactUs />} />
 
             {/* Admin Login  */}
             <Route exact path="/adminLogin" element={<AdminLogin />} />
 
             {/* Admin Dashboard  */}
-            <Route
-              exact
-              path="/adminDashboard"
-              element={
-                <ProtectedRoute adminRoute={true}>
-                  <Admin />
-                </ProtectedRoute>
-              }
-            />
+            <Route exact path="/adminDashboard" element={<Admin />} />
 
             {/* Admin Expert Verification */}
             <Route exact path="/expertVerify" element={<ExpertVerify />} />

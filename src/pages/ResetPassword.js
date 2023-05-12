@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavbarHome from "components/Utils/Navbar";
 import axios from "axios";
 import Swal from "sweetalert2";
-
+import { useParams } from "react-router-dom";
 const ResetPassword = (props) => {
+  let { id } = useParams();
+  useEffect(() => {
+    console.log("Props in reset PAssword", props);
+  }, []);
+
   const [pass, setPass] = useState({
     password: "",
     cPassword: "",
@@ -63,7 +68,7 @@ const ResetPassword = (props) => {
   };
   return (
     <>
-      <NavbarHome />
+      {/* <NavbarHome /> */}
       <div className="bg-white h-px mx-10"></div>
       <section className="bg-dark-100 dark:bg-gray-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
@@ -105,19 +110,19 @@ const ResetPassword = (props) => {
                 />
               </div>
               <div className="flex items-start">
-                <div className="flex items-center h-5">
-                  <input
+                {/* <div className="flex items-center h-5"> */}
+                {/* <input
                     id="newsletter"
                     aria-describedby="newsletter"
                     type="checkbox"
                     className="w-4 h-4 border border-gray-300 rounded-lg bg-gray-50 focus:ring-3 focus:ring-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-600 dark:ring-offset-gray-800"
                     required=""
-                  />
-                </div>
+                  /> */}
+                {/* </div> */}
               </div>
               <button
                 type="submit"
-                className="w-full text-white bg-600 hover:bg-700 focus:ring-4 focus:outline-none focus:ring-300 font-medium rounded-lg  text-sm px-5 py-2.5 text-center dark:bg-600 dark:hover:bg-700 dark:focus:ring-800"
+                className="w-full text-black bg-600 hover:bg-700 focus:ring-4 focus:outline-none focus:ring-300 font-medium rounded-lg  text-md px-5 py-2.5 text-center bg-primary-blue"
                 disabled={load ? true : false}
                 onClick={submit_form}
               >

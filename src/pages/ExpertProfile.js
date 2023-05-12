@@ -135,7 +135,7 @@ const ExpertProfile = () => {
         {/* Header */}
         <div className="">
           {/* profile_pic, name,category,bio  */}
-          <Header data={data.doctor} review={data.reviews} />
+          <Header data={data.doctor} />
         </div>
 
         <div className="flex">

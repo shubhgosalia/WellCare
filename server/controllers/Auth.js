@@ -20,14 +20,14 @@ const catchAsyncError = require("../Utils/catchAsyncError");
 exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
   try {
     //getting the token
-    console.log("token ",req.params)
+    console.log("token ", req.params);
     let token = req.params.token;
-    console.log("Token in verification is",token)
+    console.log("Token in verification is", token);
     //if last letter @:patient or #:doctor
     let last_sym = token.charAt(token.length - 1);
-    console.log("last_digit is ",last_sym)
+    console.log("last_digit is ", last_sym);
     let a = token.slice(0, -1);
-    console.log("A in verification is",a);
+    console.log("A in verification is", a);
     let user;
     //PATIENT PART
     if (last_sym === "@") {
@@ -96,7 +96,7 @@ exports.VerifyAccount = catchAsyncError(async (req, res, next) => {
     //   message: "Email verified successfully!!",
     //   success: true,
     // });
-    return res.redirect("http://localhost:3000/VerifySuccess")
+    return res.redirect("http://localhost:3000/VerifySuccess");
   } catch (err) {
     console.log("err in the verification email : ", err);
     return next(err);
@@ -227,7 +227,7 @@ exports.GeneratePasswordLink = async (req, res, next) => {
     //generating the link
     let { token } = TokenGenerator();
     let link = `http://localhost:3000/resetpassword/${token}${
-      req.body.type === "Patient" ? "@" : "#"
+      req.body.type === "Patient" ? "@" : "*"
     }`;
 
     if (req.body.type === "Patient") {
