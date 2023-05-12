@@ -29,7 +29,7 @@ const reviewSchema = new mongoose.Schema(
 );
 
 // setting up an unique index
-reviewSchema.index({ patient: 1, doctor: 1 }, { unique: true });
+// reviewSchema.index({ patient: 1, doctor: 1 }, { unique: true });
 
 // Query Middlewares
 

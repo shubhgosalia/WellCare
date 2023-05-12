@@ -6,7 +6,8 @@ const { ClientError } = require("../Utils/Errors");
 exports.RegisterDoctorJoi = async (body) => {
   const schema = joi.object({
     name: joi.string().required(),
-    email: joi.string().regex(/^[a-z]+\d*\.?[a-z\d]*@(gmail|hotmail|yahoo|somaiya)\.(com|in|edu)$/).required(),
+    // email: joi.string().regex(/^[a-z]+\d*\.?[a-z\d]*@(gmail|hotmail|yahoo|somaiya)\.(com|in|edu)$/).required(),
+    email: joi.string().required(),
     username: joi.string().min(5).max(25).required(),
     password: joi.string().min(8).max(15).regex(/^[a-zA-Z]+[a-zA-Z\d]*[@$#]+[a-zA-Z@$#\d]*\d+$/).required(),
     phoneNumber: joi.string().length(10).pattern(/^[0-9]+$/).required(),
