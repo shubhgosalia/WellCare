@@ -17,6 +17,7 @@ const ExpertProfile = () => {
   const { isLoggedIn, profile } = useContext(UserContext);
   const [newReview, setNewReview] = useState([]);
   const [createReview, setCreateReview] = useState("");
+  const [positiveReview, setPositiveReview] = useState(0);
 
   //checking if the user is logged in or not
   useEffect(() => {
@@ -123,6 +124,16 @@ const ExpertProfile = () => {
     }
   };
 
+  useEffect(() => {
+    let count = 0;
+    data.reviews.forEach((element) => {
+      if (element.score > 0) {
+        count = count + 1;
+      }
+    });
+    setPositiveReview((count / data.reviews.length) * 100);
+  }, [data]);
+
   return (
     <div className="w-full flex flex-row bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 font-body-primary">
       {/* Navbar */}
@@ -135,7 +146,7 @@ const ExpertProfile = () => {
         {/* Header */}
         <div className="">
           {/* profile_pic, name,category,bio  */}
-          <Header data={data.doctor} />
+          <Header data={data.doctor} reviewPercentage={positiveReview} />
         </div>
 
         <div className="flex">

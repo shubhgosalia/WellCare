@@ -21,6 +21,7 @@ const Result = ({ element }) => {
               className="w-32 h-32 rounded-lg mx-auto"
             />
           </div>
+
           <div>
             {/* Average Rating */}
             <div className="text-3xl text-gray-200 font-bold">
@@ -97,23 +98,6 @@ const Result = ({ element }) => {
 
           {/* Per session fee */}
           <div className="font-semibold mt-2">₹{element.fees} per session</div>
-        </div>
-
-        {/* % Upvoted */}
-        <div className="">
-          <button
-            type="button"
-            className="flex space-x-1 px-3 py-1 text-md font-semibold text-white bg-green-900 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            <BoldThumbsupIcon color="#ffffff" size="23" />
-            <div>94%</div>
-          </button>
-          <a
-            href="/doctorProfile"
-            className="font-thin text-white hover:underline"
-          >
-            <i>120 Patient Reviews</i>
-          </a>
         </div>
 
         <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">

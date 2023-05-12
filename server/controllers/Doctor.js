@@ -92,21 +92,27 @@ exports.getDoctors = async (req, res, next) => {
     console.log("entered:");
     let limit = 5;
     let start = (req.query.page - 1) * limit + 1;
-    let query = { ...req.query };
-    console.log("Query is", query);
-    query.mailVerified = true;
-    query.adminVerified = true;
-    console.log(Number(query.ratings));
+    let query = {
+      "mailVerified":true,
+      "adminVerified":true,
+    };
+    query['category'] = req.query.category;
+    query['locality'] = req.query.locality;
+    if(req.query.category === 'Physiotherapist'){
+      query['specialization'] = req.query.specialization;
+    }
+    let sortVar = query.ratings !== undefined ? 'ratings' : (query.fees !== undefined ? 'fees' : 'experience');
+    let obj={};
+    obj[sortVar] = query[sortVar];
     //filtering the doctors based on the category
-    let doctors = await Doctor.find()
-      .select(
+    let doctors = await Doctor.find(query).select(
         "name rating fees address profile_pic years_Of_Experience category specialization locality licenseNumber phoneNumber clinic_name"
-      )
-      .sort({
-        rating: "",
-        fees: Number(query.fee),
-        // years_Of_Experience: Number(query.experience),
-      });
+      ).sort(obj);
+      // .sort({
+      //   a:1
+      //   // fees: 1,
+      //   // years_Of_Experience: Number(query.experience),
+      // });
     // .skip(start - 1)
     // .limit(limit + 1);
     //fetching limit+1 records in order to make sure there are more records to fetch for the user. If the records length is not same as limit+1 then we will know that there are no more records to fetch

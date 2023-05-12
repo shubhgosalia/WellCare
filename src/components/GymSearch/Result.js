@@ -12,7 +12,7 @@ const Result = ({ element }) => {
 
   return (
     <>
-      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 text-dark-100 mx-4">
+      <div className="flex flex-col bg-primary-blue p-5 rounded-lg space-y-4 mt-12 text-dark-100 mx-4">
         <div className="flex justify-center space-x-6">
           {/* img */}
           <div>
@@ -22,6 +22,7 @@ const Result = ({ element }) => {
               className="w-32 h-32 rounded-lg mx-auto"
             />
           </div>
+
           <div>
             {/* Average Rating */}
             <div className="text-3xl text-gray-200 font-bold">
@@ -72,9 +73,9 @@ const Result = ({ element }) => {
           {/* Name */}
           <div className="font-black text-2xl">{element.name}</div>
 
-          {/* Category */}
+          {/* Speciality */}
           <div className="text-lg font-semibold text-dark-900">
-            {element.category}
+            {element.specialization} {element.category}
           </div>
 
           {/* Experience */}
@@ -92,7 +93,6 @@ const Result = ({ element }) => {
           >
             <BoldLocationIcon color="#ff0000" size="25" />
             <div className="text-white">
-              {" "}
               {element.clinic_name}, {element.locality}
             </div>
           </Link>
@@ -101,24 +101,8 @@ const Result = ({ element }) => {
           <div className="font-semibold mt-2">₹{element.fees} per session</div>
         </div>
 
-        {/* % Upvoted */}
-        <div className="">
-          <button
-            type="button"
-            className="flex space-x-1 px-3 py-1 text-md font-semibold text-white bg-green-900 rounded-lg hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800"
-          >
-            <BoldThumbsupIcon color="#ffffff" size="23" />
-            <div>94%</div>
-          </button>
-          <a
-            href="/doctorProfile"
-            className="font-thin text-white hover:underline"
-          >
-            <i>120 Patient Reviews</i>
-          </a>
-        </div>
-
-        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2 px-10">
+        
+        <button className="bg-dark-100 hover:bg-dark-200 text-white text-lg font-bold rounded-lg py-2">
           <Link to={`/doctorProfile/${element.id}`}> View More</Link>
         </button>
       </div>

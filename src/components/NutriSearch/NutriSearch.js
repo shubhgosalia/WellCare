@@ -46,7 +46,7 @@ const NutriSearch = () => {
   return (
     <>
       {/* Main Container */}
-      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">
+      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 text-white py-6 flex flex-col space-y-6 h-full">
         <div className="top-0 w-[100%] mx-auto">
           {/* Title */}
           <Heading />

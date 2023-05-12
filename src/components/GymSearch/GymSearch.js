@@ -44,7 +44,7 @@ const GymSearch = () => {
   return (
     <>
       {/* Main Container */}
-      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-6">
+      <div className="bg-gradient-to-r from-dark-100 via-dark-200 to-dark-100 min-h-screen text-white py-6 flex flex-col space-y-10">
         <div className="top-0 w-[100%] mx-auto">
           {/* Title */}
           <Heading />
@@ -65,7 +65,7 @@ const GymSearch = () => {
               Sorry, no results found!
             </div>
           ) : (
-            <div className="grid grid-cols-3 grid-flow-col gap-4 my-10">
+            <div className="grid grid-cols-3 grid-flow-col gap-4">
               {data.doctors.map((element, i) => (
                 <DoctorResult element={element} key={i} />
               ))}
