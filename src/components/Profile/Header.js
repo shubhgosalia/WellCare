@@ -2,7 +2,6 @@ import React, { useState } from "react";
 // import UserImage from "../../assets/Krish.png";
 
 const Header = (props) => {
-
   return (
     <div className="bg-gradient-to-tr from-dark-100 to-dark-200 h-full flex space-x-6 text-white py-4">
       {/* Image */}
@@ -26,12 +25,15 @@ const Header = (props) => {
           <div className="text-xl font-semibold px-1 text-dark-600">
             {props.data.email}
           </div>
-          {
-             isNaN(props.reviewPercentage) ? 
-               <div className="bg-green-500 rounded-md font-bold px-4 py-2">0% most Likely</div>
-               :
-               <div className="bg-green-500 rounded-md font-bold px-4 py-2">{Number.parseInt(props.reviewPercentage)}% most Likely</div>
-          }
+          {isNaN(props.reviewPercentage) ? (
+            <div className="bg-green-500 rounded-md font-bold px-4 py-2">
+              0% postive reviews
+            </div>
+          ) : (
+            <div className="bg-green-500 rounded-md font-bold px-4 py-2">
+              {Number.parseInt(props.reviewPercentage)}% positive reviews
+            </div>
+          )}
         </div>
 
         <div className="font-medium text-xl px-1">
